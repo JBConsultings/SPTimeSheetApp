@@ -39,7 +39,7 @@
     "scriptResources": {
       "time-sheet-web-part": {
         "type": "path",
-        "path": "time-sheet-web-part.js"
+        "path": "time-sheet-web-part_d891dc67e4d2becdd75b.js"
       },
       "react": {
         "type": "component",

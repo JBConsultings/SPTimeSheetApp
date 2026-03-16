@@ -23,6 +23,8 @@ export interface IExportStyles {
 
   'card-gradient-warning': string;
 
+  'cardSlideIn': string;
+
   'dashboard-header': string;
 
   'dashboard-page-title': string;

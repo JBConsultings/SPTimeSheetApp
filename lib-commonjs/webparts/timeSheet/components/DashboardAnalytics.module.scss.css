@@ -279,35 +279,37 @@
 }
 
 .analyticsHeader {
-  margin-bottom: var(--space-8);
-  text-align: center;
+  margin-bottom: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  padding-bottom: 16px;
 }
 
 .analyticsTitle {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-800));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 var(--space-2) 0;
-  line-height: var(--line-height-tight);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .analyticsSubtitle {
-  font-size: var(--font-size-base);
-  color: var(--color-secondary-600);
+  font-size: 13px;
+  color: #94a3b8;
   margin: 0;
-  font-weight: var(--font-weight-medium);
+  font-weight: 400;
 }
 
-/* ─── Stats Grid ─────────────────────────────────────────────────────────────────────────────── */
+/* ─── Stats Grid — 4-col single row ─────────────────────────────────────────────────────────── */
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: var(--space-6);
-  margin-bottom: var(--space-10);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  margin-bottom: var(--space-8);
 }
 
 .statsCard {
@@ -456,7 +458,7 @@
 .chartsRow {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-6);
+  gap: 3%;
   width: 100%;
 }
 
@@ -513,16 +515,15 @@
   }
 }
 .chartContainer {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
+  background: #ffffff;
   border-radius: var(--radius-2xl);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
   transition: var(--transition-base);
   position: relative;
   overflow: hidden;
   width: 100%;
-  min-height: 320px;
 }
 
 .chartContainer::before {
@@ -543,38 +544,42 @@
 }
 
 .chartTitle {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-secondary-900);
-  margin: 0 0 var(--space-6) 0;
-  text-align: center;
-  letter-spacing: -0.025em;
-  line-height: var(--line-height-tight);
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  margin: 0 0 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chartTitle::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 14px;
+  background: linear-gradient(180deg, #6366f1, #8b5cf6);
+  border-radius: 2px;
+  flex-shrink: 0;
 }
 
 .chart {
   width: 100%;
-  height: 280px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-secondary-600);
-  font-family: var(--font-family);
+  height: 240px;
 }
 
 .chartMedium {
   width: 100%;
-  flex: 1;
 }
 
 .chartFullWidth .chart {
-  height: 320px;
+  height: 240px;
 }
 
 .chartMedium .chart {
-  height: 280px;
+  height: 240px;
 }
 
 /* ─── Recent Activity ────────────────────────────────────────────────────────────────────────── */
@@ -724,43 +729,39 @@
 }
 
 /* ─── Responsive Design ──────────────────────────────────────────────────────────────────────── */
-/* Desktop - 2x2 grid with optimal spacing */
-@media (min-width: 1025px) {
+/* Tablet — collapse stats to 2-col */
+@media (max-width: 900px) {
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: var(--space-6);
-    max-width: 800px;
-    margin: 0 auto var(--space-10) auto;
+    gap: var(--space-4);
+  }
+  .chartsRow {
+    grid-template-columns: 1fr;
   }
 }
-/* Tablet - 2x2 grid maintained */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .statsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: var(--space-5);
-  }
-  .statsCard {
-    padding: var(--space-5);
-  }
-}
-/* Mobile - 1x4 grid (single column, 4 rows) */
-@media (max-width: 768px) {
+/* Mobile */
+@media (max-width: 600px) {
   .analyticsContainer {
     padding: var(--space-4) 0;
   }
   .statsGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-    gap: var(--space-4);
-    margin-bottom: var(--space-6);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3);
+    margin-bottom: var(--space-5);
   }
   .statsCard {
     padding: var(--space-4);
   }
+  .statsValue {
+    font-size: var(--font-size-xl);
+  }
   .chartContainer {
-    padding: var(--space-4);
+    padding: 16px;
+  }
+  .chart,
+  .chartFullWidth .chart,
+  .chartMedium .chart {
+    height: 200px;
   }
   .recentActivity {
     padding: var(--space-4);

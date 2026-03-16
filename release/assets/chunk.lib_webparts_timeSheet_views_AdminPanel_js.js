@@ -1,6 +1,104 @@
 "use strict";
 (self["webpackJsonp_c7e5e177-9baf-42a9-91c9-2ea9fecc19a8_0.0.1"] = self["webpackJsonp_c7e5e177-9baf-42a9-91c9-2ea9fecc19a8_0.0.1"] || []).push([["lib_webparts_timeSheet_views_AdminPanel_js"],{
 
+/***/ 10592:
+/*!*****************************************************************!*\
+  !*** ./lib/webparts/timeSheet/views/AdminPanel.module.scss.css ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/@microsoft/sp-css-loader/node_modules/@microsoft/load-themed-styles/lib-es6/index.js */ 96323);
+// Imports
+
+
+_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(":root{--color-primary-50:#eff6ff;--color-primary-100:#dbeafe;--color-primary-200:#bfdbfe;--color-primary-300:#93c5fd;--color-primary-400:#60a5fa;--color-primary-500:#3b82f6;--color-primary-600:#2563eb;--color-primary-700:#1d4ed8;--color-primary-800:#1e40af;--color-primary-900:#1e3a8a;--color-secondary-50:#f8fafc;--color-secondary-100:#f1f5f9;--color-secondary-200:#e2e8f0;--color-secondary-300:#cbd5e1;--color-secondary-400:#94a3b8;--color-secondary-500:#64748b;--color-secondary-600:#475569;--color-secondary-700:#334155;--color-secondary-800:#1e293b;--color-secondary-900:#0f172a;--color-success-50:#f0fdf4;--color-success-100:#dcfce7;--color-success-500:#22c55e;--color-success-600:#16a34a;--color-success-700:#15803d;--color-warning-50:#fffbeb;--color-warning-100:#fef3c7;--color-warning-500:#f59e0b;--color-warning-600:#d97706;--color-error-50:#fef2f2;--color-error-100:#fee2e2;--color-error-500:#ef4444;--color-error-600:#dc2626;--gradient-primary:linear-gradient(135deg,#667eea,#764ba2);--gradient-success:linear-gradient(135deg,#84fab0,#8fd3f4);--gradient-warning:linear-gradient(135deg,#ffecd2,#fcb69f);--gradient-purple:linear-gradient(135deg,#a8edea,#fed6e3);--gradient-blue:linear-gradient(135deg,#667eea,#764ba2);--gradient-ocean:linear-gradient(135deg,#667db6,#0082c8 35%,#0082c8);--glass-bg:hsla(0,0%,100%,.25);--glass-border:hsla(0,0%,100%,.18);--glass-shadow:0 8px 32px 0 rgba(31,38,135,.37);--glass-backdrop:blur(8px);--shadow-xs:0 1px 2px 0 rgba(0,0,0,.05);--shadow-sm:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-primary:0 10px 25px rgba(59,130,246,.15);--shadow-success:0 10px 25px rgba(34,197,94,.15);--shadow-warning:0 10px 25px rgba(245,158,11,.15);--shadow-error:0 10px 25px rgba(239,68,68,.15);--font-family:\"Segoe UI\",\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:1.875rem;--font-size-4xl:2.25rem;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--line-height-tight:1.25;--line-height-snug:1.375;--line-height-normal:1.5;--line-height-relaxed:1.625;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--radius-sm:0.125rem;--radius-base:0.25rem;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-full:9999px;--z-dropdown:1000;--z-sticky:1020;--z-fixed:1030;--z-modal-backdrop:1040;--z-modal:1050;--z-popover:1060;--z-tooltip:1070;--transition-fast:all 150ms ease;--transition-base:all 200ms ease;--transition-slow:all 300ms ease;--transition-bounce:all 200ms cubic-bezier(0.68,-0.55,0.265,1.55)}.modern-card_e26157a1{backdrop-filter:var(--glass-backdrop);background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;position:relative;transition:var(--transition-base)}.modern-card_e26157a1:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.4),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.modern-card_e26157a1:hover{border-color:hsla(0,0%,100%,.3);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.card-gradient-primary_e26157a1{background:var(--gradient-primary);color:#fff}.card-gradient-success_e26157a1{background:var(--gradient-success);color:var(--color-secondary-800)}.card-gradient-warning_e26157a1{background:var(--gradient-warning);color:var(--color-secondary-800)}.card-gradient-purple_e26157a1{background:var(--gradient-purple);color:var(--color-secondary-800)}.text-gradient-primary_e26157a1{-webkit-text-fill-color:transparent;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;font-weight:var(--font-weight-bold)}.animate-fade-in_e26157a1{animation:fadeIn_e26157a1 .6s ease-out}.animate-slide-up_e26157a1{animation:slideUp_e26157a1 .5s ease-out}.animate-scale-in_e26157a1{animation:scaleIn_e26157a1 .3s ease-out}@keyframes scaleIn_e26157a1{0%{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}.hover-lift_e26157a1{transition:var(--transition-base)}.hover-lift_e26157a1:hover{box-shadow:var(--shadow-xl);transform:translateY(-4px)}.hover-glow_e26157a1{transition:var(--transition-base)}.hover-glow_e26157a1:hover{box-shadow:0 0 20px rgba(59,130,246,.4)}.flex-center_e26157a1,.flex-col-center_e26157a1{align-items:center;display:flex;justify-content:center}.flex-col-center_e26157a1{flex-direction:column}.bg-gradient-modern_e26157a1{background:linear-gradient(135deg,#f5f7fa,#c3cfe2)}.bg-gradient-warm_e26157a1{background:linear-gradient(135deg,#ffecd2,#fcb69f)}.bg-gradient-cool_e26157a1{background:linear-gradient(135deg,#667eea,#764ba2)}.container_e26157a1{animation:fadeIn_e26157a1 .4s ease-out both;font-family:Segoe UI,Inter,-apple-system,BlinkMacSystemFont,sans-serif}.header_e26157a1{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;overflow:hidden;padding:24px 32px;position:relative}.header_e26157a1:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);content:\"\";inset:0;pointer-events:none;position:absolute}.headerContent_e26157a1{align-items:center;display:flex;gap:12px;position:relative;z-index:1}.homeBtn_e26157a1{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;flex-shrink:0;height:36px;justify-content:center;transition:background .2s ease;width:36px}.homeBtn_e26157a1:hover{background:hsla(0,0%,100%,.28)}.homeBtn_e26157a1 svg{display:block}.headerTitle_e26157a1{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0;text-shadow:0 1px 2px rgba(0,0,0,.1)}.headerSubtitle_e26157a1{color:hsla(0,0%,100%,.85);font-size:13px;font-weight:400;margin:2px 0 0}.body_e26157a1{padding:24px 32px 32px}.tabs_e26157a1{border-bottom:2px solid #e2e8f0;display:flex;gap:4px;margin-bottom:24px}.tab_e26157a1{align-items:center;background:none;border:none;border-bottom:2px solid transparent;border-radius:6px 6px 0 0;color:#64748b;cursor:pointer;display:flex;font-size:14px;font-weight:600;gap:8px;margin-bottom:-2px;padding:10px 20px;transition:color .2s ease,border-color .2s ease}.tab_e26157a1:hover{background:rgba(102,126,234,.05);color:#667eea}.tabActive_e26157a1{background:rgba(102,126,234,.06);border-bottom-color:#667eea;color:#667eea}.tabIcon_e26157a1{font-size:16px}.tabContent_e26157a1{animation:slideUp_e26157a1 .3s ease-out both}.toolbar_e26157a1{align-items:center;display:flex;justify-content:space-between;margin-bottom:16px}.sectionLabel_e26157a1{align-items:center;color:#475569;display:flex;font-size:13px;font-weight:700;gap:8px;letter-spacing:.06em;text-transform:uppercase}.sectionLabel_e26157a1:before{background:linear-gradient(180deg,#667eea,#764ba2);border-radius:2px;content:\"\";display:inline-block;height:14px;width:3px}.addBtn_e26157a1{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:8px;box-shadow:0 2px 8px rgba(102,126,234,.35);color:#fff;cursor:pointer;display:inline-flex;font-size:13px;font-weight:600;gap:6px;padding:8px 16px;transition:opacity .2s ease,transform .15s ease,box-shadow .2s ease}.addBtn_e26157a1:hover{box-shadow:0 4px 14px rgba(102,126,234,.45);opacity:.92;transform:translateY(-1px)}.addBtn_e26157a1:active{transform:translateY(0)}.message_e26157a1{align-items:center;animation:slideUp_e26157a1 .2s ease-out both;border-radius:8px;display:flex;font-size:13px;font-weight:500;gap:8px;margin-bottom:14px;padding:10px 14px}.messageSuccess_e26157a1{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.3);color:#16a34a}.messageError_e26157a1{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:#dc2626}.messageDismiss_e26157a1{background:none;border:none;color:inherit;cursor:pointer;font-size:16px;line-height:1;margin-left:auto;opacity:.6;padding:0 2px}.messageDismiss_e26157a1:hover{opacity:1}.tableWrap_e26157a1{background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);overflow:hidden}.table_e26157a1{border-collapse:collapse;font-size:13px;width:100%}.thead_e26157a1{background:#f8fafc;border-bottom:2px solid #e2e8f0}.th_e26157a1{color:#475569;font-size:11px;font-weight:700;letter-spacing:.07em;padding:11px 14px;text-align:left;text-transform:uppercase;white-space:nowrap}.tr_e26157a1{border-bottom:1px solid #f1f5f9;transition:background .15s ease}.tr_e26157a1:last-child{border-bottom:none}.tr_e26157a1:hover{background:rgba(102,126,234,.04)}.td_e26157a1{color:#334155;padding:12px 14px;vertical-align:middle}.tdCode_e26157a1{background:rgba(102,126,234,.08);border-radius:4px;color:#667eea;display:inline-block;font-family:Consolas,Courier New,monospace;font-size:12px;font-weight:600;padding:3px 8px}.badge_e26157a1{align-items:center;border-radius:20px;display:inline-flex;font-size:11px;font-weight:700;gap:5px;letter-spacing:.04em;padding:3px 10px}.badgeActive_e26157a1{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.25);color:#16a34a}.badgeInactive_e26157a1{background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.25);color:#64748b}.badgeDot_e26157a1{background:currentColor;border-radius:50%;height:6px;width:6px}.actions_e26157a1{align-items:center;display:flex;gap:4px}.iconBtn_e26157a1{align-items:center;background:#fff;border:1px solid #e2e8f0;border-radius:7px;color:#64748b;cursor:pointer;display:flex;height:30px;justify-content:center;transition:background .15s ease,color .15s ease,border-color .15s ease;width:30px}.iconBtn_e26157a1:hover{background:rgba(102,126,234,.08);border-color:rgba(102,126,234,.3);color:#667eea}.iconBtnDanger_e26157a1:hover{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3);color:#dc2626}.iconBtnSuccess_e26157a1:hover{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.3);color:#16a34a}.empty_e26157a1{color:#94a3b8;font-size:14px;padding:40px 20px;text-align:center}.loading_e26157a1{align-items:center;color:#64748b;display:flex;font-size:14px;gap:10px;justify-content:center;padding:48px}.spinner_e26157a1{animation:spin_e26157a1 .8s linear infinite;border:2px solid rgba(102,126,234,.2);border-radius:50%;border-top-color:#667eea;height:22px;width:22px}.drawerHeader_e26157a1{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;display:flex;flex-shrink:0;justify-content:space-between;padding:22px 28px}.drawerTitle_e26157a1{color:#fff;font-size:18px;font-weight:700;margin:0}.drawerClose_e26157a1{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;font-size:20px;height:34px;justify-content:center;line-height:1;transition:background .15s ease;width:34px}.drawerClose_e26157a1:hover{background:hsla(0,0%,100%,.28)}.drawerBody_e26157a1{display:flex;flex:1;flex-direction:column;gap:18px;min-height:0;overflow-y:auto;padding:28px}.drawerFooter_e26157a1{align-items:center;background:#f8fafc;border-top:1px solid #e2e8f0;display:flex;flex-shrink:0;gap:10px;padding:18px 28px}.field_e26157a1{display:flex;flex-direction:column;gap:5px}.fieldLabel_e26157a1{color:#475569;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}.fieldLabel_e26157a1 .required_e26157a1{color:#dc2626;margin-left:2px}.fieldInput_e26157a1{background:#fff;border:1px solid #e2e8f0;border-radius:8px;color:#1e293b;font-family:inherit;font-size:14px;outline:none;padding:9px 12px;transition:border-color .15s ease,box-shadow .15s ease}.fieldInput_e26157a1:focus{border-color:#667eea;box-shadow:0 0 0 3px rgba(102,126,234,.12)}.fieldInput_e26157a1:-ms-input-placeholder{color:#94a3b8}.fieldInput_e26157a1::placeholder{color:#94a3b8}.fieldTextarea_e26157a1{min-height:80px;resize:vertical}.toggleRow_e26157a1{align-items:center;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;display:flex;justify-content:space-between;padding:10px 12px}.toggleLabel_e26157a1{color:#334155;font-size:14px;font-weight:500}.toggle_e26157a1{cursor:pointer;height:22px;position:relative;width:40px}.toggle_e26157a1 input{height:0;opacity:0;position:absolute;width:0}.toggle_e26157a1 .track_e26157a1{background:#cbd5e1;border-radius:11px;inset:0;position:absolute;transition:background .2s ease}.toggle_e26157a1 .thumb_e26157a1{background:#fff;border-radius:50%;box-shadow:0 1px 3px rgba(0,0,0,.2);height:16px;left:3px;position:absolute;top:3px;transition:transform .2s ease;width:16px}.toggle_e26157a1 input:checked+.track_e26157a1{background:#667eea}.toggle_e26157a1 input:checked~.thumb_e26157a1{transform:translateX(18px)}.saveBtn_e26157a1{background:linear-gradient(135deg,#667eea,#764ba2);border:none;border-radius:8px;color:#fff;cursor:pointer;flex:1;font-size:14px;font-weight:600;padding:9px 20px;transition:opacity .2s ease}.saveBtn_e26157a1:hover{opacity:.9}.saveBtn_e26157a1:disabled{cursor:not-allowed;opacity:.55}.cancelBtn_e26157a1{background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;color:#475569;cursor:pointer;font-size:14px;font-weight:600;padding:9px 20px;transition:background .15s ease}.cancelBtn_e26157a1:hover{background:#e2e8f0}@keyframes fadeIn_e26157a1{0%{opacity:0}to{opacity:1}}@keyframes slideUp_e26157a1{0%{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes modalIn_e26157a1{0%{opacity:0;transform:scale(.92) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}@keyframes spin_e26157a1{to{transform:rotate(1turn)}}", true);
+
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  "modern-card": "modern-card_e26157a1",
+  "card-gradient-primary": "card-gradient-primary_e26157a1",
+  "card-gradient-success": "card-gradient-success_e26157a1",
+  "card-gradient-warning": "card-gradient-warning_e26157a1",
+  "card-gradient-purple": "card-gradient-purple_e26157a1",
+  "text-gradient-primary": "text-gradient-primary_e26157a1",
+  "animate-fade-in": "animate-fade-in_e26157a1",
+  fadeIn: "fadeIn_e26157a1",
+  "animate-slide-up": "animate-slide-up_e26157a1",
+  slideUp: "slideUp_e26157a1",
+  "animate-scale-in": "animate-scale-in_e26157a1",
+  scaleIn: "scaleIn_e26157a1",
+  "hover-lift": "hover-lift_e26157a1",
+  "hover-glow": "hover-glow_e26157a1",
+  "flex-center": "flex-center_e26157a1",
+  "flex-col-center": "flex-col-center_e26157a1",
+  "bg-gradient-modern": "bg-gradient-modern_e26157a1",
+  "bg-gradient-warm": "bg-gradient-warm_e26157a1",
+  "bg-gradient-cool": "bg-gradient-cool_e26157a1",
+  header: "header_e26157a1",
+  headerContent: "headerContent_e26157a1",
+  homeBtn: "homeBtn_e26157a1",
+  headerTitle: "headerTitle_e26157a1",
+  headerSubtitle: "headerSubtitle_e26157a1",
+  body: "body_e26157a1",
+  tabs: "tabs_e26157a1",
+  tab: "tab_e26157a1",
+  tabActive: "tabActive_e26157a1",
+  tabIcon: "tabIcon_e26157a1",
+  tabContent: "tabContent_e26157a1",
+  toolbar: "toolbar_e26157a1",
+  sectionLabel: "sectionLabel_e26157a1",
+  addBtn: "addBtn_e26157a1",
+  message: "message_e26157a1",
+  messageSuccess: "messageSuccess_e26157a1",
+  messageError: "messageError_e26157a1",
+  messageDismiss: "messageDismiss_e26157a1",
+  tableWrap: "tableWrap_e26157a1",
+  table: "table_e26157a1",
+  thead: "thead_e26157a1",
+  th: "th_e26157a1",
+  tr: "tr_e26157a1",
+  td: "td_e26157a1",
+  tdCode: "tdCode_e26157a1",
+  badge: "badge_e26157a1",
+  badgeActive: "badgeActive_e26157a1",
+  badgeInactive: "badgeInactive_e26157a1",
+  badgeDot: "badgeDot_e26157a1",
+  actions: "actions_e26157a1",
+  iconBtn: "iconBtn_e26157a1",
+  iconBtnDanger: "iconBtnDanger_e26157a1",
+  iconBtnSuccess: "iconBtnSuccess_e26157a1",
+  empty: "empty_e26157a1",
+  loading: "loading_e26157a1",
+  spinner: "spinner_e26157a1",
+  spin: "spin_e26157a1",
+  drawerHeader: "drawerHeader_e26157a1",
+  drawerTitle: "drawerTitle_e26157a1",
+  drawerClose: "drawerClose_e26157a1",
+  drawerBody: "drawerBody_e26157a1",
+  drawerFooter: "drawerFooter_e26157a1",
+  field: "field_e26157a1",
+  fieldLabel: "fieldLabel_e26157a1",
+  required: "required_e26157a1",
+  fieldInput: "fieldInput_e26157a1",
+  fieldTextarea: "fieldTextarea_e26157a1",
+  toggleRow: "toggleRow_e26157a1",
+  toggleLabel: "toggleLabel_e26157a1",
+  toggle: "toggle_e26157a1",
+  track: "track_e26157a1",
+  thumb: "thumb_e26157a1",
+  saveBtn: "saveBtn_e26157a1",
+  cancelBtn: "cancelBtn_e26157a1",
+  modalIn: "modalIn_e26157a1",
+  container: "container_e26157a1"
+});
+
+
+/***/ }),
+
 /***/ 14408:
 /*!****************************************************!*\
   !*** ./lib/webparts/timeSheet/views/AdminPanel.js ***!
@@ -11,71 +109,73 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react */ 21314);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 29425);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react */ 63208);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fluentui/react */ 46643);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 80954);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 49885);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 44533);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 27006);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fluentui/react */ 18681);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fluentui/react */ 67102);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @fluentui/react */ 16264);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @fluentui/react */ 5613);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @fluentui/react */ 73064);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @fluentui/react */ 72674);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @fluentui/react */ 92070);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @fluentui/react */ 15369);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 76702);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_ProjectService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/ProjectService */ 15607);
 /* harmony import */ var _services_CategoryService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/CategoryService */ 64268);
-
-
-
-var thStyle = { padding: '10px 12px', textAlign: 'left', fontWeight: 600, fontSize: 13 };
-var tdStyle = { padding: '8px 12px', borderBottom: '1px solid #edebe9', fontSize: 13, verticalAlign: 'middle' };
+/* harmony import */ var _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminPanel.module.scss */ 10592);
 
 
 
 
-// ─── Projects Tab ─────────────────────────────────────────────────────────────
+
+
+
+
+var MessageBar = function (_a) {
+    var text = _a.text, isError = _a.isError, onDismiss = _a.onDismiss;
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].message, " ").concat(isError ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageError : _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageSuccess) },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, text),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageDismiss, onClick: onDismiss }, "\u00D7")));
+};
+// ─── Projects Tab ──────────────────────────────────────────────────────────────
 var ProjectsTab = function () {
     var _a, _b, _c, _d, _e;
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), projects = _f[0], setProjects = _f[1];
     var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _g[0], setLoading = _g[1];
-    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), message = _h[0], setMessage = _h[1];
+    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _h[0], setMessage = _h[1];
     var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _j[0], setIsError = _j[1];
-    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), panelOpen = _k[0], setPanelOpen = _k[1];
+    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _k[0], setDrawerOpen = _k[1];
     var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editProject = _l[0], setEditProject = _l[1];
     var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _m[0], setSaving = _m[1];
     var load = function () {
         setLoading(true);
-        var finish = function () { return setLoading(false); };
         (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.getAllProjects)()
-            .then(function (items) { setProjects(items); finish(); })
-            .catch(function () { setMessage('Failed to load projects.'); setIsError(true); finish(); });
+            .then(function (items) {
+            setProjects(items);
+            setLoading(false);
+        })
+            .catch(function () {
+            setMessage("Failed to load projects.");
+            setIsError(true);
+            setLoading(false);
+        });
     };
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { load(); }, []);
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        load();
+    }, []);
     var openAdd = function () {
         setEditProject({ isActive: true });
-        setPanelOpen(true);
+        setDrawerOpen(true);
     };
     var openEdit = function (p) {
-        setEditProject((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p));
-        setPanelOpen(true);
+        setEditProject((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p));
+        setDrawerOpen(true);
     };
-    var handleSave = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(void 0, void 0, void 0, function () {
+    var closeDrawer = function () {
+        setDrawerOpen(false);
+    };
+    var handleSave = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
         var _a;
         var _b;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_c) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_c) {
             switch (_c.label) {
                 case 0:
                     if (!editProject.title || !editProject.projectCode) {
-                        setMessage('Project Name and Project Code are required.');
+                        setMessage("Project Name and Project Code are required.");
                         setIsError(true);
                         return [2 /*return*/];
                     }
@@ -87,22 +187,22 @@ var ProjectsTab = function () {
                     return [4 /*yield*/, (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.updateProject)(editProject.id, editProject)];
                 case 2:
                     _c.sent();
-                    setMessage('Project updated successfully.');
+                    setMessage("Project updated successfully.");
                     setIsError(false);
                     return [3 /*break*/, 5];
-                case 3: return [4 /*yield*/, (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.addProject)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, editProject), { isActive: (_b = editProject.isActive) !== null && _b !== void 0 ? _b : true }))];
+                case 3: return [4 /*yield*/, (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.addProject)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, editProject), { isActive: (_b = editProject.isActive) !== null && _b !== void 0 ? _b : true }))];
                 case 4:
                     _c.sent();
-                    setMessage('Project added successfully.');
+                    setMessage("Project added successfully.");
                     setIsError(false);
                     _c.label = 5;
                 case 5:
-                    setPanelOpen(false);
+                    setDrawerOpen(false);
                     load();
                     return [3 /*break*/, 8];
                 case 6:
                     _a = _c.sent();
-                    setMessage('Failed to save project.');
+                    setMessage("Failed to save project.");
                     setIsError(true);
                     return [3 /*break*/, 8];
                 case 7:
@@ -112,73 +212,157 @@ var ProjectsTab = function () {
             }
         });
     }); };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { tokens: { childrenGap: 12 } },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, horizontalAlign: "end" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, { iconProps: { iconName: 'Add' }, text: "Add Project", onClick: openAdd })),
-        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.MessageBar, { messageBarType: isError ? _fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBarType.error : _fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBarType.success, onDismiss: function () { return setMessage(''); } }, message)),
-        loading ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_10__.SpinnerSize.medium }) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { style: { width: '100%', borderCollapse: 'collapse' } },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null,
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { style: { background: '#0078d4', color: '#fff' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Code"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Project Name"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Client"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Status"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, thStyle), { width: 120 }) }, "Actions"))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, projects.map(function (p, i) {
-                var _a;
-                return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: p.id, style: { background: i % 2 === 0 ? '#fff' : '#f5f7fa' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, p.projectCode),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, p.title),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, (_a = p.clientName) !== null && _a !== void 0 ? _a : '—'),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: p.isActive ? '#107c10' : '#a19f9d', fontWeight: 600 } }, p.isActive ? 'Active' : 'Inactive')),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, tokens: { childrenGap: 4 } },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'Edit' }, title: "Edit", onClick: function () { return openEdit(p); } }),
-                            p.isActive
-                                ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'Hide' }, title: "Deactivate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deactivateProject)(p.id).then(load); } })
-                                : react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'View' }, title: "Activate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.activateProject)(p.id).then(load); } })))));
-            })))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.Panel, { isOpen: panelOpen, onDismiss: function () { return setPanelOpen(false); }, type: _fluentui_react__WEBPACK_IMPORTED_MODULE_13__.PanelType.medium, headerText: editProject.id ? 'Edit Project' : 'Add Project' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { tokens: { childrenGap: 12 }, style: { padding: '16px 0' } },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Project Name", required: true, value: (_a = editProject.title) !== null && _a !== void 0 ? _a : '', onChange: function (_, v) { return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p), { title: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Project Code", required: true, value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : '', onChange: function (_, v) { return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p), { projectCode: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Client Name", value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : '', onChange: function (_, v) { return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p), { clientName: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Description", multiline: true, rows: 3, value: (_d = editProject.description) !== null && _d !== void 0 ? _d : '', onChange: function (_, v) { return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p), { description: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.Toggle, { label: "Active", checked: (_e = editProject.isActive) !== null && _e !== void 0 ? _e : true, onChange: function (_, c) { return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, p), { isActive: c })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, tokens: { childrenGap: 8 } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, { text: "Save", onClick: handleSave, disabled: saving }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.DefaultButton, { text: "Cancel", onClick: function () { return setPanelOpen(false); } })),
-                saving && react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_10__.SpinnerSize.small })))));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabContent },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toolbar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].sectionLabel }, "Projects"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].addBtn, onClick: openAdd },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
+                "Add Project")),
+        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loading },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading projects\u2026"))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tableWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].table },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].thead },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Code"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Project Name"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Client"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Status"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th, style: { width: 90 } }, "Actions"))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, projects.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { colSpan: 5, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].empty }, "No projects found."))) : (projects.map(function (p) {
+                    var _a;
+                    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: p.id, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tr },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tdCode }, p.projectCode)),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td }, p.title),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td }, (_a = p.clientName) !== null && _a !== void 0 ? _a : "—"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(p.isActive ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeActive : _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeInactive) },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeDot }),
+                                p.isActive ? "Active" : "Inactive")),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].actions },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, title: "Edit", onClick: function () { return openEdit(p); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                p.isActive ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtnSuccess), title: "Activate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deactivateProject)(p.id).then(load); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtnDanger), title: "Deactivate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.activateProject)(p.id).then(load); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                })))))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
+                main: {
+                    width: 540,
+                    maxWidth: "96vw",
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    maxHeight: "92vh",
+                },
+                scrollableContent: {
+                    display: "flex",
+                    flexDirection: "column",
+                    maxHeight: "92vh",
+                },
+            } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerHeader },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerTitle }, editProject.id ? "Edit Project" : "Add Project"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerClose, onClick: closeDrawer }, "\u00D7")),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerBody },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel },
+                        "Project Name ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].required }, "*")),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, placeholder: "Enter project name", value: (_a = editProject.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p), { title: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel },
+                        "Project Code ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].required }, "*")),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, placeholder: "e.g. PROJ-001", value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p), { projectCode: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel }, "Client Name"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, placeholder: "Enter client name", value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : "", onChange: function (e) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p), { clientName: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel }, "Description"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldTextarea), placeholder: "Optional description", value: (_d = editProject.description) !== null && _d !== void 0 ? _d : "", onChange: function (e) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p), { description: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggleRow },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggleLabel }, "Active"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggle },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", checked: (_e = editProject.isActive) !== null && _e !== void 0 ? _e : true, onChange: function (e) {
+                                return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, p), { isActive: e.target.checked })); });
+                            } }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].track }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].thumb }))),
+                message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerFooter },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].saveBtn, onClick: handleSave, disabled: saving }, saving
+                    ? "Saving…"
+                    : editProject.id
+                        ? "Update Project"
+                        : "Add Project"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cancelBtn, onClick: closeDrawer }, "Cancel")))));
 };
-// ─── Categories Tab ───────────────────────────────────────────────────────────
+// ─── Categories Tab ────────────────────────────────────────────────────────────
 var CategoriesTab = function () {
     var _a, _b, _c, _d;
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), categories = _e[0], setCategories = _e[1];
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _f[0], setLoading = _f[1];
-    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), message = _g[0], setMessage = _g[1];
+    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _g[0], setMessage = _g[1];
     var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _h[0], setIsError = _h[1];
-    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), panelOpen = _j[0], setPanelOpen = _j[1];
+    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _j[0], setDrawerOpen = _j[1];
     var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editCat = _k[0], setEditCat = _k[1];
     var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _l[0], setSaving = _l[1];
     var load = function () {
         setLoading(true);
-        var finish = function () { return setLoading(false); };
         (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.getAllCategories)()
-            .then(function (items) { setCategories(items); finish(); })
-            .catch(function () { setMessage('Failed to load categories.'); setIsError(true); finish(); });
+            .then(function (items) {
+            setCategories(items);
+            setLoading(false);
+        })
+            .catch(function () {
+            setMessage("Failed to load categories.");
+            setIsError(true);
+            setLoading(false);
+        });
     };
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { load(); }, []);
-    var openAdd = function () { setEditCat({ isActive: true, sortOrder: 0 }); setPanelOpen(true); };
-    var openEdit = function (c) { setEditCat((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, c)); setPanelOpen(true); };
-    var handleSave = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(void 0, void 0, void 0, function () {
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        load();
+    }, []);
+    var openAdd = function () {
+        setEditCat({ isActive: true, sortOrder: 0 });
+        setDrawerOpen(true);
+    };
+    var openEdit = function (c) {
+        setEditCat((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, c));
+        setDrawerOpen(true);
+    };
+    var closeDrawer = function () {
+        setDrawerOpen(false);
+    };
+    var handleSave = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
         var _a;
         var _b;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_c) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_c) {
             switch (_c.label) {
                 case 0:
                     if (!editCat.title) {
-                        setMessage('Category Name is required.');
+                        setMessage("Category Name is required.");
                         setIsError(true);
                         return [2 /*return*/];
                     }
@@ -190,22 +374,22 @@ var CategoriesTab = function () {
                     return [4 /*yield*/, (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.updateCategory)(editCat.id, editCat)];
                 case 2:
                     _c.sent();
-                    setMessage('Category updated.');
+                    setMessage("Category updated.");
                     setIsError(false);
                     return [3 /*break*/, 5];
-                case 3: return [4 /*yield*/, (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.addCategory)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, editCat), { isActive: (_b = editCat.isActive) !== null && _b !== void 0 ? _b : true }))];
+                case 3: return [4 /*yield*/, (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.addCategory)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, editCat), { isActive: (_b = editCat.isActive) !== null && _b !== void 0 ? _b : true }))];
                 case 4:
                     _c.sent();
-                    setMessage('Category added.');
+                    setMessage("Category added.");
                     setIsError(false);
                     _c.label = 5;
                 case 5:
-                    setPanelOpen(false);
+                    setDrawerOpen(false);
                     load();
                     return [3 /*break*/, 8];
                 case 6:
                     _a = _c.sent();
-                    setMessage('Failed to save category.');
+                    setMessage("Failed to save category.");
                     setIsError(true);
                     return [3 /*break*/, 8];
                 case 7:
@@ -215,58 +399,125 @@ var CategoriesTab = function () {
             }
         });
     }); };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { tokens: { childrenGap: 12 } },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, horizontalAlign: "end" },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, { iconProps: { iconName: 'Add' }, text: "Add Category", onClick: openAdd })),
-        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.MessageBar, { messageBarType: isError ? _fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBarType.error : _fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBarType.success, onDismiss: function () { return setMessage(''); } }, message)),
-        loading ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_10__.SpinnerSize.medium }) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { style: { width: '100%', borderCollapse: 'collapse' } },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null,
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { style: { background: '#0078d4', color: '#fff' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Category Name"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Description"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, thStyle), { width: 80 }) }, "Sort"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: thStyle }, "Status"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { style: (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, thStyle), { width: 120 }) }, "Actions"))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, categories.map(function (c, i) {
-                var _a, _b;
-                return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: c.id, style: { background: i % 2 === 0 ? '#fff' : '#f5f7fa' } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, c.title),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, (_a = c.description) !== null && _a !== void 0 ? _a : '—'),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle }, (_b = c.sortOrder) !== null && _b !== void 0 ? _b : 0),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: c.isActive ? '#107c10' : '#a19f9d', fontWeight: 600 } }, c.isActive ? 'Active' : 'Inactive')),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { style: tdStyle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, tokens: { childrenGap: 4 } },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'Edit' }, title: "Edit", onClick: function () { return openEdit(c); } }),
-                            c.isActive
-                                ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'Hide' }, title: "Deactivate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deactivateCategory)(c.id).then(load); } })
-                                : react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'View' }, title: "Activate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.activateCategory)(c.id).then(load); } })))));
-            })))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.Panel, { isOpen: panelOpen, onDismiss: function () { return setPanelOpen(false); }, type: _fluentui_react__WEBPACK_IMPORTED_MODULE_13__.PanelType.medium, headerText: editCat.id ? 'Edit Category' : 'Add Category' },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { tokens: { childrenGap: 12 }, style: { padding: '16px 0' } },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Category Name", required: true, value: (_a = editCat.title) !== null && _a !== void 0 ? _a : '', onChange: function (_, v) { return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, c), { title: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.TextField, { label: "Description", multiline: true, rows: 3, value: (_b = editCat.description) !== null && _b !== void 0 ? _b : '', onChange: function (_, v) { return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, c), { description: v })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_17__.SpinButton, { label: "Sort Order", value: String((_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0), min: 0, max: 9999, step: 1, onChange: function (_, v) { return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, c), { sortOrder: parseInt(v !== null && v !== void 0 ? v : '0', 10) })); }); }, style: { maxWidth: 120 } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.Toggle, { label: "Active", checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (_, c) { return setEditCat(function (prev) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_4__.__assign)({}, prev), { isActive: c })); }); } }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, tokens: { childrenGap: 8 } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.PrimaryButton, { text: "Save", onClick: handleSave, disabled: saving }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.DefaultButton, { text: "Cancel", onClick: function () { return setPanelOpen(false); } })),
-                saving && react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_10__.SpinnerSize.small })))));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabContent },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toolbar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].sectionLabel }, "Activity Categories"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].addBtn, onClick: openAdd },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
+                "Add Category")),
+        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loading },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading categories\u2026"))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tableWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].table },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].thead },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Category Name"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Description"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th, style: { width: 70 } }, "Sort"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th }, "Status"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].th, style: { width: 90 } }, "Actions"))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, categories.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { colSpan: 5, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].empty }, "No categories found."))) : (categories.map(function (c) {
+                    var _a, _b;
+                    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: c.id, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tr },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td }, c.title),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td }, (_a = c.description) !== null && _a !== void 0 ? _a : "—"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td }, (_b = c.sortOrder) !== null && _b !== void 0 ? _b : 0),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(c.isActive ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeActive : _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeInactive) },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badgeDot }),
+                                c.isActive ? "Active" : "Inactive")),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].td },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].actions },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, title: "Edit", onClick: function () { return openEdit(c); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                c.isActive ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtnSuccess), title: "Activate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deactivateCategory)(c.id).then(load); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].iconBtnDanger), title: "Deactivate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.activateCategory)(c.id).then(load); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                })))))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
+                main: {
+                    width: 540,
+                    maxWidth: "96vw",
+                    borderRadius: 16,
+                    overflow: "hidden",
+                    display: "flex",
+                    flexDirection: "column",
+                    maxHeight: "92vh",
+                },
+                scrollableContent: {
+                    display: "flex",
+                    flexDirection: "column",
+                    maxHeight: "92vh",
+                },
+            } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerHeader },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerTitle }, editCat.id ? "Edit Category" : "Add Category"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerClose, onClick: closeDrawer }, "\u00D7")),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerBody },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel },
+                        "Category Name ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].required }, "*")),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, placeholder: "Enter category name", value: (_a = editCat.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
+                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, c), { title: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel }, "Description"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldTextarea), placeholder: "Optional description", value: (_b = editCat.description) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
+                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, c), { description: e.target.value })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].field },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldLabel }, "Sort Order"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "number", className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fieldInput, min: 0, max: 9999, value: (_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0, onChange: function (e) {
+                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, c), { sortOrder: parseInt(e.target.value, 10) || 0 })); });
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggleRow },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggleLabel }, "Active"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].toggle },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (e) {
+                                return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_5__.__assign)({}, c), { isActive: e.target.checked })); });
+                            } }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].track }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].thumb }))),
+                message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].drawerFooter },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].saveBtn, onClick: handleSave, disabled: saving }, saving
+                    ? "Saving…"
+                    : editCat.id
+                        ? "Update Category"
+                        : "Add Category"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cancelBtn, onClick: closeDrawer }, "Cancel")))));
 };
-// ─── Main Admin Panel ─────────────────────────────────────────────────────────
 var AdminPanel = function () {
     var navigateHome = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext).navigateHome;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { padding: 24 } },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.Stack, { horizontal: true, verticalAlign: "center", tokens: { childrenGap: 8 }, style: { marginBottom: 16 } },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: 'Home' }, title: "Home", onClick: navigateHome }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_18__.Text, { variant: "xLarge" }, "Manage Projects & Categories")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_19__.Pivot, null,
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_20__.PivotItem, { headerText: "Projects", itemIcon: "KnowledgeArticle" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { paddingTop: 16 } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(ProjectsTab, null))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_20__.PivotItem, { headerText: "Activity Categories", itemIcon: "Tag" },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { paddingTop: 16 } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(CategoriesTab, null))))));
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("projects"), activeTab = _a[0], setActiveTab = _a[1];
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].headerContent },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].homeBtn, title: "Back to Home", onClick: navigateHome },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M8.354 1.146a.5.5 0 00-.708 0l-6 6A.5.5 0 002 7.5v7a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4h2v4a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-7a.5.5 0 00-.146-.354L13 5.793V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5v1.293L8.354 1.146z" }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].headerTitle }, "Manage Projects & Categories"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].headerSubtitle }, "Configure projects and activity categories")))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].body },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabs },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tab, " ").concat(activeTab === "projects" ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabActive : ""), onClick: function () { return setActiveTab("projects"); } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabIcon }, "\uD83D\uDCC1"),
+                    "Projects"),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tab, " ").concat(activeTab === "categories" ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabActive : ""), onClick: function () { return setActiveTab("categories"); } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tabIcon }, "\uD83C\uDFF7\uFE0F"),
+                    "Activity Categories")),
+            activeTab === "projects" ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(ProjectsTab, null) : react__WEBPACK_IMPORTED_MODULE_0__.createElement(CategoriesTab, null))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminPanel);
 

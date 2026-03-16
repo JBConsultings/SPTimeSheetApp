@@ -283,27 +283,27 @@ const DashboardAnalytics: React.FC = () => {
         />
       </div>
 
-      {/* Charts Grid - Enhanced Full Width Layout */}
+      {/* Charts Grid */}
       <div className={styles.chartsGrid}>
         <Chart
           data={last7Days}
           type="line"
-          title="Last 7 Days Hours Trend"
+          title="Last 7 Days — Hours Trend"
           className={styles.chartFullWidth}
         />
-        
+
         <div className={styles.chartsRow}>
-          <Chart
-            data={monthlyHours}
-            type="doughnut"
-            title="Monthly Hours by Project"
-            className={styles.chartMedium}
-          />
-          
           <Chart
             data={weeklyDistribution}
             type="bar"
             title="This Week's Distribution"
+            className={styles.chartMedium}
+          />
+
+          <Chart
+            data={monthlyHours}
+            type="doughnut"
+            title="Monthly Hours by Project"
             className={styles.chartMedium}
           />
         </div>

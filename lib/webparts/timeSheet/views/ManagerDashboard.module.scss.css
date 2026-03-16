@@ -1,7 +1,5 @@
 .container {
   padding: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
   font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
   color: #161616;
   animation: fadeIn 250ms ease both;
@@ -21,33 +19,47 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
+  margin: -32px -32px 28px -32px;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 .header .homeBtn {
+  position: relative;
+  z-index: 1;
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  background: #ffffff;
-  color: #525252;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header .homeBtn:hover {
-  background: #edf4ff;
-  color: #0f62fe;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.28);
 }
 .header .title {
+  position: relative;
+  z-index: 1;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.3px;
-  color: #161616;
+  color: white;
   margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .filterBar {
@@ -100,7 +112,7 @@
 }
 .filterInput:focus,
 .filterSelect:focus {
-  border-color: #0f62fe;
+  border-color: #667eea;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.15);
 }
@@ -170,7 +182,7 @@
   width: 32px;
   height: 32px;
   border: 3px solid #e0e0e0;
-  border-top-color: #0f62fe;
+  border-top-color: #667eea;
   border-radius: 50%;
   animation: spin 700ms linear infinite;
 }
@@ -179,7 +191,7 @@
   width: 18px;
   height: 18px;
   border: 2px solid #e0e0e0;
-  border-top-color: #0f62fe;
+  border-top-color: #667eea;
   border-radius: 50%;
   animation: spin 700ms linear infinite;
   flex-shrink: 0;
@@ -292,8 +304,8 @@
   color: #24a148;
 }
 .badge.submitted {
-  background: #edf4ff;
-  color: #0f62fe;
+  background: rgba(102, 126, 234, 0.08);
+  color: #667eea;
 }
 .badge.rejected {
   background: #fff1f1;
@@ -333,13 +345,13 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 .btn.btnPrimary {
-  background: #0f62fe;
+  background: #667eea;
   color: #fff;
-  border-color: #0f62fe;
+  border-color: #667eea;
 }
 .btn.btnPrimary:hover:not(:disabled) {
-  background: #0353e9;
-  border-color: #0353e9;
+  background: #5a6fd6;
+  border-color: #5a6fd6;
   box-shadow: 0 4px 12px rgba(15, 98, 254, 0.35);
 }
 .btn.btnApprove {
@@ -372,84 +384,86 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  z-index: 200;
-  animation: overlayIn 200ms ease both;
-}
-
-@keyframes overlayIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 480px;
-  max-width: 100vw;
-  background: #ffffff;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.16), 0 4px 8px rgba(0, 0, 0, 0.08);
-  z-index: 201;
+.modalContainer {
+  width: 580px;
+  max-width: calc(100vw - 32px) !important;
+  border-radius: 12px !important;
   display: flex;
   flex-direction: column;
-  animation: slideIn 220ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  overflow: hidden;
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-.panelHeader {
+.modalHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 18px 24px;
   border-bottom: 1px solid #e0e0e0;
   flex-shrink: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-.panelHeader h2 {
+
+.modalTitle {
   margin: 0;
   font-size: 17px;
   font-weight: 700;
-  color: #161616;
-}
-.panelHeader .panelCloseBtn {
-  width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid #e0e0e0;
-  background: none;
-  color: #525252;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 150ms cubic-bezier(0.4, 0, 0.2, 1), color 150ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.panelHeader .panelCloseBtn:hover {
-  background: #f4f4f4;
-  color: #161616;
+  color: #fff;
 }
 
-.panelBody {
-  flex: 1;
+.modalCloseBtn {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 4px !important;
+}
+.modalCloseBtn:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+}
+
+.modalBody {
   overflow-y: auto;
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-height: calc(100vh - 220px);
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid #e0e0e0;
+  flex-shrink: 0;
+  background: #ffffff;
+}
+
+.fluentBtnApprove {
+  background-color: #42be65 !important;
+  border-color: #42be65 !important;
+}
+.fluentBtnApprove:hover:not(:disabled) {
+  background-color: #36a35a !important;
+  border-color: #36a35a !important;
+}
+
+.fluentBtnReject {
+  background-color: #da1e28 !important;
+  border-color: #da1e28 !important;
+}
+.fluentBtnReject:hover:not(:disabled) {
+  background-color: #b81922 !important;
+  border-color: #b81922 !important;
+}
+
+.fluentBtnResubmit {
+  background-color: #b28600 !important;
+  border-color: #b28600 !important;
+}
+.fluentBtnResubmit:hover:not(:disabled) {
+  background-color: #9a7400 !important;
+  border-color: #9a7400 !important;
 }
 
 .panelMeta {
@@ -484,7 +498,7 @@
   border-collapse: collapse;
 }
 .panelTable thead tr {
-  background: #0f62fe;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
 }
 .panelTable thead tr th {
@@ -555,7 +569,7 @@
   transition: border-color 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1), background 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .commentField textarea:focus {
-  border-color: #0f62fe;
+  border-color: #667eea;
   background: #ffffff;
   box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.15);
 }

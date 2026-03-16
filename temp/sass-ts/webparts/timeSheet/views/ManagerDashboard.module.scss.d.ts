@@ -49,6 +49,12 @@ export interface IExportStyles {
 
   'filterSelect': string;
 
+  'fluentBtnApprove': string;
+
+  'fluentBtnReject': string;
+
+  'fluentBtnResubmit': string;
+
   'header': string;
 
   'homeBtn': string;
@@ -59,19 +65,19 @@ export interface IExportStyles {
 
   'messageBar': string;
 
-  'overlay': string;
+  'modalBody': string;
 
-  'overlayIn': string;
+  'modalCloseBtn': string;
 
-  'panel': string;
+  'modalContainer': string;
 
-  'panelBody': string;
+  'modalFooter': string;
 
-  'panelCloseBtn': string;
+  'modalHeader': string;
+
+  'modalTitle': string;
 
   'panelFooter': string;
-
-  'panelHeader': string;
 
   'panelMeta': string;
 
@@ -96,8 +102,6 @@ export interface IExportStyles {
   'rowName': string;
 
   'rowRight': string;
-
-  'slideIn': string;
 
   'spin': string;
 

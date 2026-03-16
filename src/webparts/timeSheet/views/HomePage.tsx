@@ -4,7 +4,7 @@ import { Icon, TooltipHost, TooltipDelay } from '@fluentui/react';
 import { AppContext } from '../context/AppContext';
 import { AppView } from '../models/ITimesheetModels';
 import DashboardAnalytics from '../components/DashboardAnalytics';
-import './HomePage.module.scss';
+import styles from './HomePage.module.scss';
 
 interface INavCard {
   view: AppView;
@@ -72,28 +72,27 @@ const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="webpart-container" style={{border: '1px solid #d5d5d5', padding: '20px', borderRadius: '20px', backgroundColor: '#f3f4f4'}}>
-      <div className="dashboard-root">
+    <div className={styles['webpart-container']}>
+      <div className={styles['dashboard-root']}>
 
         {/* Header */}
-        <div className="dashboard-header">
-          <div className="header-content">
-            <h1 className="dashboard-page-title">TimeSheet Dashboard</h1>
-            <p className="dashboard-section-title">
+        <div className={styles['dashboard-header']}>
+          <div className={styles['header-content']}>
+            <h1 className={styles['dashboard-page-title']}>TimeSheet Dashboard</h1>
+            <p className={styles['dashboard-section-title']}>
               Welcome, <strong>{currentUser.displayName}</strong> · {currentUser.role}
             </p>
           </div>
         </div>
 
-        {/* Top Navigation Bar */}
         {/* Quick Access Navigation Cards */}
-        <div className="quick-access-section">
-          <div className="section-header">
-            <h2 className="section-title">Quick Access</h2>
-            <p className="section-subtitle">Choose an action to get started</p>
+        <div className={styles['quick-access-section']}>
+          <div className={styles['section-header']}>
+            <h2 className={styles['section-title']}>Quick Access</h2>
+            <p className={styles['section-subtitle']}>Choose an action to get started</p>
           </div>
-          
-          <div className="navigation-grid">
+
+          <div className={styles['navigation-grid']}>
             {visibleCards.map((card, index) => (
               <TooltipHost
                 key={card.view}
@@ -101,7 +100,7 @@ const HomePage: React.FC = () => {
                 delay={TooltipDelay.medium}
               >
                 <div
-                  className={`nav-card ${index === 0 ? 'nav-card-primary' : ''}`}
+                  className={`${styles['nav-card']}${index === 0 ? ` ${styles['nav-card-primary']}` : ''}`}
                   onClick={() => navigateTo(card.view)}
                   role="button"
                   tabIndex={0}
@@ -114,33 +113,22 @@ const HomePage: React.FC = () => {
                   }}
                   style={{ '--accent-color': card.color } as React.CSSProperties}
                 >
-                  <div className="nav-card-header">
-                    <div className="nav-card-icon">
-                      <Icon
-                        iconName={card.iconName}
-                        styles={{
-                          root: {
-                            fontSize: 24,
-                            color: card.color,
-                          }
-                        }}
-                      />
-                    </div>
-                    <div className="nav-card-badge">
-                      <span className="badge-text">{card.value}</span>
-                    </div>
+                  <div className={styles['nav-card-icon-wrap']}>
+                    <Icon
+                      iconName={card.iconName}
+                      styles={{ root: { fontSize: 20, color: card.color } }}
+                    />
                   </div>
-                  
-                  <div className="nav-card-content">
-                    <h3 className="nav-card-title">{card.label}</h3>
-                    <p className="nav-card-description">{card.subtitle}</p>
+
+                  <div className={styles['nav-card-info']}>
+                    <h3 className={styles['nav-card-title']}>{card.label}</h3>
+                    <p className={styles['nav-card-description']}>{card.subtitle}</p>
                   </div>
-                  
-                  <div className="nav-card-action">
-                    <Icon iconName="ChevronRight" className="action-icon" />
+
+                  <div className={styles['nav-card-footer']}>
+                    <span className={styles['nav-card-tag']}>{card.value}</span>
+                    <Icon iconName="ChevronRight" className={styles['action-icon']} />
                   </div>
-                  
-                  <div className="nav-card-glow" />
                 </div>
               </TooltipHost>
             ))}

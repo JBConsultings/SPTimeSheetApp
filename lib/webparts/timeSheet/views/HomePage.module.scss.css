@@ -349,85 +349,100 @@
   color: white;
 }
 
-/* ─── Modern Card-Based Navigation ──────────────────────────────────────────────────────────── */
+/* ─── Quick Access Navigation — Flush Flex Strip ─────────────────────────────────────────── */
 .quick-access-section {
-  padding: 32px 0;
-  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+  padding: 24px 0 28px;
+  background: #f8fafc;
   position: relative;
-  overflow: hidden;
 }
 
+/* Thin separator line between header and cards */
 .quick-access-section::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
-  pointer-events: none;
+  left: 32px;
+  right: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2), transparent);
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
-}
-
-.section-title {
-  font-size: 28px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #1e293b, #475569);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin: 0 0 8px 0;
-  line-height: 1.2;
-}
-
-.section-subtitle {
-  font-size: 16px;
-  color: #64748b;
-  margin: 0;
-  font-weight: 400;
-}
-
-.navigation-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
   padding: 0 32px;
   position: relative;
   z-index: 1;
 }
 
-.nav-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(226, 232, 240, 0.6);
-  border-radius: 16px;
-  padding: 24px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+/* Purple accent bar matching the dashboard header */
+.section-header::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  width: 4px;
+  height: 22px;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
 }
 
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  font-weight: 400;
+  margin-left: auto;
+}
+
+/* ─── Full-width flex strip — zero orphaned cards ──────────────────────────────────────────── */
+.navigation-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  padding: 0 32px;
+  align-items: stretch;
+}
+
+/* ─── Individual card ──────────────────────────────────────────────────────────────────────── */
+.nav-card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(203, 213, 225, 0.6);
+  border-top: 3px solid var(--accent-color, #0078d4);
+  border-radius: 10px;
+  padding: 18px 16px 16px;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Subtle top-corner wash that appears on hover */
 .nav-card::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(248, 250, 252, 0.4) 100%);
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  border-radius: 16px;
+  border-radius: 9px;
+  pointer-events: none;
 }
 
 .nav-card:hover::before {
@@ -435,141 +450,130 @@
 }
 
 .nav-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: var(--accent-color, #3b82f6);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.12), 0 4px 8px -2px rgba(0, 0, 0, 0.06), 0 0 0 1px var(--accent-color, #0078d4);
+  border-color: var(--accent-color, #0078d4);
 }
 
 .nav-card:active {
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-2px);
+  transition-duration: 0.1s;
 }
 
 .nav-card:focus {
-  outline: 3px solid var(--accent-color, #3b82f6);
+  outline: 2px solid var(--accent-color, #0078d4);
   outline-offset: 2px;
 }
 
+/* Featured first card gets a very subtle purple tint at rest */
 .nav-card-primary {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(147, 197, 253, 0.04) 100%);
-  border-color: rgba(59, 130, 246, 0.3);
+  border-top-width: 3px;
+  background: linear-gradient(160deg, rgba(102, 126, 234, 0.04) 0%, #ffffff 50%);
 }
 
-.nav-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 2;
-}
-
-.nav-card-icon {
+/* ─── Card internals ───────────────────────────────────────────────────────────────────────── */
+/* Icon container — neutral pill with the card's accent icon inside */
+.nav-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #f1f5f9;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  margin-bottom: 14px;
+  transition: transform 0.25s ease, background 0.2s ease;
 }
 
-.nav-card:hover .nav-card-icon {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+.nav-card:hover .nav-card-icon-wrap {
+  transform: scale(1.06) rotate(3deg);
+  background: #e8edf2;
 }
 
-.nav-card-badge {
-  background: var(--accent-color, #3b82f6);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.nav-card:hover .nav-card-badge {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.badge-text {
-  display: block;
-}
-
-.nav-card-content {
-  margin-bottom: 20px;
-  position: relative;
-  z-index: 2;
+/* Text block — grows to fill available vertical space */
+.nav-card-info {
+  flex: 1;
+  min-width: 0;
+  margin-bottom: 14px;
 }
 
 .nav-card-title {
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 700;
   color: #1e293b;
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   line-height: 1.3;
-  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
 }
 
 .nav-card:hover .nav-card-title {
-  color: var(--accent-color, #3b82f6);
+  color: var(--accent-color, #0078d4);
 }
 
 .nav-card-description {
-  font-size: 14px;
-  color: #64748b;
+  font-size: 11px;
+  color: #94a3b8;
   margin: 0;
-  line-height: 1.5;
-  transition: all 0.3s ease;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.nav-card:hover .nav-card-description {
-  color: #475569;
-}
-
-.nav-card-action {
+/* Footer row — tag chip on the left, arrow on the right */
+.nav-card-footer {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  position: relative;
-  z-index: 2;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Tag chip — matches the card accent color */
+.nav-card-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--accent-color, #0078d4);
+  background: #f0f4f8;
+  padding: 3px 9px;
+  border-radius: 5px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-card:hover .nav-card-tag {
+  background: var(--accent-color, #0078d4);
+  color: #ffffff;
 }
 
 .action-icon {
-  color: #94a3b8;
-  transition: all 0.3s ease;
-  transform: translateX(0);
+  font-size: 12px;
+  color: #cbd5e1;
+  transition: color 0.2s ease, transform 0.25s ease;
 }
 
 .nav-card:hover .action-icon {
-  color: var(--accent-color, #3b82f6);
-  transform: translateX(4px);
-}
-
-.nav-card-glow {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, var(--accent-color, #3b82f6) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.nav-card:hover .nav-card-glow {
-  opacity: 0.05;
+  color: var(--accent-color, #0078d4);
+  transform: translateX(3px);
 }
 
 /* ─── Responsive Design ─────────────────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .navigation-grid {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .nav-card {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 160px;
+  }
+}
 @media (max-width: 768px) {
   .webpart-container {
     margin: 8px;
@@ -585,27 +589,17 @@
     font-size: 13px;
   }
   .quick-access-section {
-    padding: 24px 0;
+    padding: 20px 0 24px;
   }
-  .section-title {
-    font-size: 24px;
-  }
-  .section-subtitle {
-    font-size: 14px;
+  .section-header {
+    padding: 0 20px;
+    margin-bottom: 14px;
   }
   .navigation-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
     padding: 0 20px;
   }
   .nav-card {
-    padding: 20px;
-  }
-  .nav-card-title {
-    font-size: 18px;
-  }
-  .nav-card-description {
-    font-size: 13px;
+    padding: 16px 14px 14px;
   }
 }
 @media (max-width: 480px) {
@@ -619,34 +613,24 @@
     font-size: 22px;
   }
   .quick-access-section {
-    padding: 20px 0;
+    padding: 16px 0 20px;
   }
-  .section-title {
-    font-size: 22px;
-  }
-  .section-subtitle {
-    font-size: 13px;
-  }
-  .navigation-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+  .section-header {
     padding: 0 16px;
   }
+  .navigation-grid {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 0 16px;
+    gap: 8px;
+  }
   .nav-card {
-    padding: 18px;
+    flex: none;
+    width: 100%;
+    padding: 14px 14px 12px;
   }
   .nav-card:hover {
-    transform: translateY(-4px) scale(1.01);
-  }
-  .nav-card-icon {
-    width: 40px;
-    height: 40px;
-  }
-  .nav-card-title {
-    font-size: 16px;
-  }
-  .nav-card-description {
-    font-size: 12px;
+    transform: translateY(-3px);
   }
 }
 /* ─── Content Area ──────────────────────────────────────────────────────────────────────────── */

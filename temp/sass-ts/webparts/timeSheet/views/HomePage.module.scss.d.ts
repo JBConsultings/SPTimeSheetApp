@@ -9,8 +9,6 @@ export interface IExportStyles {
 
   'animate-slide-up': string;
 
-  'badge-text': string;
-
   'bg-gradient-cool': string;
 
   'bg-gradient-modern': string;
@@ -49,21 +47,17 @@ export interface IExportStyles {
 
   'nav-card': string;
 
-  'nav-card-action': string;
-
-  'nav-card-badge': string;
-
-  'nav-card-content': string;
-
   'nav-card-description': string;
 
-  'nav-card-glow': string;
+  'nav-card-footer': string;
 
-  'nav-card-header': string;
+  'nav-card-icon-wrap': string;
 
-  'nav-card-icon': string;
+  'nav-card-info': string;
 
   'nav-card-primary': string;
+
+  'nav-card-tag': string;
 
   'nav-card-title': string;
 

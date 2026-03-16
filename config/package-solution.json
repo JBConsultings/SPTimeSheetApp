@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "time-sheet-app-client-side-solution",
+    "id": "6304a8ec-18c1-4008-b8f0-963e8fbc5742",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "TimeSheetApp description"
+      },
+      "longDescription": {
+        "default": "TimeSheetApp description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "time-sheet-app Feature",
+        "description": "The feature that activates elements of the time-sheet-app solution.",
+        "id": "54fd6f60-d871-44f4-8ccd-79fd51e84823",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/time-sheet-app.sppkg"
+  }
+}

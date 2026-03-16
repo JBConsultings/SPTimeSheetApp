@@ -1,0 +1,1 @@
+{"version":3,"file":"ITimeSheetProps.d.ts","sourceRoot":"","sources":["../../../../src/webparts/timeSheet/components/ITimeSheetProps.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,4BAA4B,CAAC;AAE5D,MAAM,WAAW,eAAe;IAC9B,SAAS,EAAE,cAAc,CAAC;IAC1B,WAAW,EAAE,OAAO,CAAC;IACrB,eAAe,EAAE,OAAO,CAAC;IACzB,eAAe,EAAE,MAAM,CAAC;CACzB"}

@@ -1,0 +1,592 @@
+// ─── Design Tokens ────────────────────────────────────────────────────────────
+$primary:        #0f62fe;
+$primary-hover:  #0353e9;
+$primary-light:  #edf4ff;
+$accent:         #42be65;
+$accent-hover:   #36a35a;
+$danger:         #da1e28;
+$danger-hover:   #b81922;
+$danger-light:   #fff1f1;
+$warning-light:  #fdf6d8;
+
+$text-primary:   #161616;
+$text-secondary: #525252;
+$text-muted:     #8d8d8d;
+
+$surface:        #ffffff;
+$surface-alt:    #f4f4f4;
+$border:         #e0e0e0;
+$border-focus:   #0f62fe;
+
+$radius-sm:  4px;
+$radius-md:  8px;
+$radius-lg:  12px;
+
+$shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+$shadow-md:  0 4px 12px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06);
+$shadow-lg:  0 12px 40px rgba(0,0,0,.16), 0 4px 8px rgba(0,0,0,.08);
+
+$transition: 150ms cubic-bezier(.4,0,.2,1);
+
+// ─── Status colors ────────────────────────────────────────────────────────────
+$status-approved:   #24a148;
+$status-submitted:  #0f62fe;
+$status-rejected:   #da1e28;
+$status-draft:      #b28600;
+
+// ─── Layout ──────────────────────────────────────────────────────────────────
+.container {
+  padding: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  color: $text-primary;
+  animation: fadeIn 250ms ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+
+  .homeBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    border: 1px solid $border;
+    background: $surface;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background $transition, box-shadow $transition, color $transition;
+
+    &:hover {
+      background: $primary-light;
+      color: $primary;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: $text-primary;
+    margin: 0;
+  }
+}
+
+// ─── Filter Bar ───────────────────────────────────────────────────────────────
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 150px;
+  flex: 1;
+
+  label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: $text-secondary;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+}
+
+.filterGroupWide {
+  min-width: 220px;
+  flex: 2;
+}
+
+.filterInput,
+.filterSelect {
+  height: 36px;
+  padding: 0 10px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: $text-primary;
+  background: $surface-alt;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color $transition, box-shadow $transition, background $transition;
+
+  &:focus {
+    border-color: $primary;
+    background: $surface;
+    box-shadow: 0 0 0 3px rgba(15,98,254,.15);
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.filterSelect {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23525252' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-color: $surface-alt;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+// ─── Messages ────────────────────────────────────────────────────────────────
+.messageBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: $radius-md;
+  margin-bottom: 12px;
+  font-size: 13.5px;
+  border-width: 1px;
+  border-style: solid;
+
+  &.success { background: #defbe6; border-color: #a7f0ba; color: #044317; }
+  &.error   { background: $danger-light; border-color: #ffd7d9; color: #750e13; }
+
+  .dismissBtn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    &:hover { opacity: 1; }
+  }
+}
+
+// ─── Loading ──────────────────────────────────────────────────────────────────
+.loadingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  gap: 14px;
+  color: $text-secondary;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid $border;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+}
+
+.spinnerSm {
+  width: 18px;
+  height: 18px;
+  border: 2px solid $border;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ─── Empty State ──────────────────────────────────────────────────────────────
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 52px 24px;
+  gap: 10px;
+  text-align: center;
+  color: $text-muted;
+
+  .emptyTitle    { font-size: 15px; font-weight: 600; color: $text-secondary; }
+  .emptySubtitle { font-size: 13px; }
+}
+
+// ─── Row Cards ────────────────────────────────────────────────────────────────
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rowCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  transition: box-shadow $transition, border-color $transition;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    border-color: #c6c6c6;
+  }
+}
+
+.rowLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.rowName {
+  font-size: 15px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.rowMeta {
+  font-size: 12.5px;
+  color: $text-muted;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+}
+
+.rowRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+// ─── Status Badge ─────────────────────────────────────────────────────────────
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+
+  &::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  &.approved  { background: #defbe6;      color: $status-approved; }
+  &.submitted { background: $primary-light; color: $status-submitted; }
+  &.rejected  { background: $danger-light;  color: $status-rejected; }
+  &.draft     { background: $warning-light; color: $status-draft; }
+}
+
+// ─── Action Buttons ───────────────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: $radius-md;
+  border: 1px solid $border;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  transition: background $transition, box-shadow $transition, border-color $transition, color $transition;
+
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  &.btnDefault {
+    background: $surface;
+    color: $text-primary;
+    &:hover:not(:disabled) {
+      background: $surface-alt;
+      border-color: #c6c6c6;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &.btnPrimary {
+    background: $primary;
+    color: #fff;
+    border-color: $primary;
+    &:hover:not(:disabled) {
+      background: $primary-hover;
+      border-color: $primary-hover;
+      box-shadow: 0 4px 12px rgba(15,98,254,.35);
+    }
+  }
+
+  &.btnApprove {
+    background: $accent;
+    color: #fff;
+    border-color: $accent;
+    &:hover:not(:disabled) {
+      background: $accent-hover;
+      border-color: $accent-hover;
+      box-shadow: 0 4px 12px rgba(66,190,101,.3);
+    }
+  }
+
+  &.btnReject {
+    background: $surface;
+    color: $danger;
+    border-color: #ffd7d9;
+    &:hover:not(:disabled) {
+      background: $danger-light;
+      border-color: $danger;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &.btnResubmit {
+    background: $surface;
+    color: $status-draft;
+    border-color: #f5d73b;
+    &:hover:not(:disabled) {
+      background: $warning-light;
+      box-shadow: $shadow-sm;
+    }
+  }
+}
+
+// ─── Slide-in Panel (custom, no FluentUI) ────────────────────────────────────
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 200;
+  animation: overlayIn 200ms ease both;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 480px;
+  max-width: 100vw;
+  background: $surface;
+  box-shadow: $shadow-lg;
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 220ms cubic-bezier(.4,0,.2,1) both;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid $border;
+  flex-shrink: 0;
+
+  h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .panelCloseBtn {
+    width: 32px;
+    height: 32px;
+    border-radius: $radius-sm;
+    border: 1px solid $border;
+    background: none;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background $transition, color $transition;
+    &:hover { background: $surface-alt; color: $text-primary; }
+  }
+}
+
+.panelBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panelMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: $surface-alt;
+  border-radius: $radius-md;
+  border: 1px solid $border;
+
+  .panelMetaName {
+    font-size: 15px;
+    font-weight: 700;
+    color: $text-primary;
+  }
+
+  .panelMetaDetail {
+    font-size: 13px;
+    color: $text-secondary;
+    display: flex;
+    gap: 12px;
+  }
+}
+
+// ─── Panel Table ──────────────────────────────────────────────────────────────
+.panelTableWrap {
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  overflow: hidden;
+}
+
+.panelTable {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead tr {
+    background: $primary;
+    color: #fff;
+
+    th {
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+
+      &.colHrs { width: 56px; text-align: center; }
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $border;
+    transition: background $transition;
+
+    &:last-child { border-bottom: none; }
+    &:nth-child(even) { background: $surface-alt; }
+
+    td {
+      padding: 8px 12px;
+      font-size: 13px;
+      color: $text-primary;
+      vertical-align: top;
+
+      &.tdCenter { text-align: center; font-weight: 600; vertical-align: middle; }
+    }
+  }
+}
+
+// ─── Comment field ────────────────────────────────────────────────────────────
+.commentField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $text-secondary;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+
+    .required { color: $danger; margin-left: 2px; }
+  }
+
+  textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 13.5px;
+    font-family: inherit;
+    color: $text-primary;
+    background: $surface-alt;
+    border: 1px solid $border;
+    border-radius: $radius-sm;
+    outline: none;
+    resize: vertical;
+    min-height: 96px;
+    line-height: 1.5;
+    transition: border-color $transition, box-shadow $transition, background $transition;
+
+    &:focus {
+      border-color: $border-focus;
+      background: $surface;
+      box-shadow: 0 0 0 3px rgba(15,98,254,.15);
+    }
+
+    &::placeholder { color: $text-muted; }
+  }
+}
+
+// ─── Panel Footer ─────────────────────────────────────────────────────────────
+.panelFooter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid $border;
+  flex-shrink: 0;
+  background: $surface;
+}

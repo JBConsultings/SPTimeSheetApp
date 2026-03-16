@@ -1,0 +1,470 @@
+// ─── Design Tokens ────────────────────────────────────────────────────────────
+$primary:        #0f62fe;
+$primary-hover:  #0353e9;
+$primary-light:  #edf4ff;
+$accent:         #42be65;
+$accent-hover:   #36a35a;
+$danger:         #da1e28;
+$danger-light:   #fff1f1;
+$warning-light:  #fdf6d8;
+
+$text-primary:   #161616;
+$text-secondary: #525252;
+$text-muted:     #8d8d8d;
+
+$surface:        #ffffff;
+$surface-alt:    #f4f4f4;
+$border:         #e0e0e0;
+$border-focus:   #0f62fe;
+
+$radius-sm:  4px;
+$radius-md:  8px;
+$radius-lg:  12px;
+
+$shadow-sm:  0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+$shadow-md:  0 4px 12px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.06);
+
+$transition: 150ms cubic-bezier(.4,0,.2,1);
+
+// ─── Layout ──────────────────────────────────────────────────────────────────
+.container {
+  padding: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  color: $text-primary;
+  animation: fadeIn 250ms ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+
+  .homeBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    border: 1px solid $border;
+    background: $surface;
+    color: $text-secondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background $transition, box-shadow $transition, color $transition;
+
+    &:hover {
+      background: $primary-light;
+      color: $primary;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: $text-primary;
+    margin: 0;
+  }
+}
+
+// ─── Filter Card ─────────────────────────────────────────────────────────────
+.filterCard {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  max-width: 680px;
+}
+
+.filterTitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: $text-muted;
+  margin: 0 0 16px;
+}
+
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 150px;
+
+  label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: $text-secondary;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    .optional {
+      font-weight: 400;
+      color: $text-muted;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-left: 4px;
+      font-size: 11px;
+    }
+  }
+}
+
+.filterGroupFull {
+  flex-basis: 100%;
+}
+
+.filterInput,
+.filterSelect {
+  height: 36px;
+  padding: 0 10px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: $text-primary;
+  background: $surface-alt;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color $transition, box-shadow $transition, background $transition;
+
+  &:focus {
+    border-color: $primary;
+    background: $surface;
+    box-shadow: 0 0 0 3px rgba(15,98,254,.15);
+  }
+
+  &::placeholder { color: $text-muted; }
+}
+
+.filterSelect {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23525252' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-color: $surface-alt;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+// ─── Messages ────────────────────────────────────────────────────────────────
+.messageBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: $radius-md;
+  margin-bottom: 16px;
+  font-size: 13.5px;
+  border: 1px solid transparent;
+  max-width: 680px;
+
+  &.success { background: #defbe6; border-color: #a7f0ba; color: #044317; }
+  &.error   { background: $danger-light; border-color: #ffd7d9; color: #750e13; }
+
+  .dismissBtn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    padding: 2px 4px;
+    display: flex;
+    align-items: center;
+    &:hover { opacity: 1; }
+  }
+}
+
+// ─── Buttons ─────────────────────────────────────────────────────────────────
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 500;
+  border-radius: $radius-md;
+  border: 1px solid $border;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  transition: background $transition, box-shadow $transition, border-color $transition, color $transition;
+
+  &:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  &.btnDefault {
+    background: $surface;
+    color: $text-primary;
+    &:hover:not(:disabled) {
+      background: $surface-alt;
+      border-color: #c6c6c6;
+      box-shadow: $shadow-sm;
+    }
+  }
+
+  &.btnExcel {
+    background: #107c41;
+    color: #fff;
+    border-color: #107c41;
+    &:hover:not(:disabled) {
+      background: darken(#107c41, 8%);
+      border-color: darken(#107c41, 8%);
+      box-shadow: 0 4px 12px rgba(16,124,65,.35);
+    }
+  }
+
+  &.btnPdf {
+    background: $danger;
+    color: #fff;
+    border-color: $danger;
+    &:hover:not(:disabled) {
+      background: darken($danger, 8%);
+      border-color: darken($danger, 8%);
+      box-shadow: 0 4px 12px rgba(218,30,40,.3);
+    }
+  }
+}
+
+// ─── Loading ─────────────────────────────────────────────────────────────────
+.loadingWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0;
+  color: $text-secondary;
+  font-size: 14px;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid $border;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+.spinnerSm {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+.spinnerSmDark {
+  width: 16px;
+  height: 16px;
+  border: 2px solid $border;
+  border-top-color: $primary;
+  border-radius: 50%;
+  animation: spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ─── Results section ─────────────────────────────────────────────────────────
+.resultsSection {
+  animation: fadeIn 200ms ease both;
+}
+
+// ─── Summary strip ────────────────────────────────────────────────────────────
+.summaryStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 16px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  max-width: 680px;
+}
+
+.summaryItem {
+  flex: 1;
+  min-width: 140px;
+  padding: 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-right: 1px solid $border;
+
+  &:last-child { border-right: none; }
+
+  .summaryLabel {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: $text-muted;
+  }
+
+  .summaryValue {
+    font-size: 20px;
+    font-weight: 700;
+    color: $text-primary;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+
+  .summaryValueSm {
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-primary;
+    line-height: 1.4;
+  }
+}
+
+// ─── Export actions bar ───────────────────────────────────────────────────────
+.exportBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+// ─── Empty state ──────────────────────────────────────────────────────────────
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 10px;
+  text-align: center;
+  color: $text-muted;
+  border: 1px dashed $border;
+  border-radius: $radius-lg;
+
+  .emptyTitle    { font-size: 15px; font-weight: 600; color: $text-secondary; }
+  .emptySubtitle { font-size: 13px; }
+}
+
+// ─── Preview table ────────────────────────────────────────────────────────────
+.tableCard {
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  max-height: 420px;
+  overflow-y: auto;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar       { width: 6px; height: 6px; }
+  &::-webkit-scrollbar-track { background: $surface-alt; }
+  &::-webkit-scrollbar-thumb { background: #c6c6c6; border-radius: 3px; }
+  &::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+}
+
+.previewTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+
+    tr {
+      background: $primary;
+      color: #fff;
+
+      th {
+        padding: 11px 14px;
+        text-align: left;
+        font-size: 11.5px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        white-space: nowrap;
+
+        &.colHours  { width: 70px; text-align: center; }
+        &.colStatus { width: 100px; }
+        &.colDate   { width: 100px; white-space: nowrap; }
+      }
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $border;
+    transition: background $transition;
+
+    &:last-child { border-bottom: none; }
+    &:nth-child(even) { background: $surface-alt; }
+    &:hover { background: $primary-light; }
+
+    td {
+      padding: 8px 14px;
+      vertical-align: top;
+      color: $text-primary;
+
+      &.tdHours  { text-align: center; font-weight: 600; font-variant-numeric: tabular-nums; vertical-align: middle; }
+      &.tdStatus { vertical-align: middle; }
+    }
+  }
+}
+
+// ─── Inline status badge in table ─────────────────────────────────────────────
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+
+  &.approved  { background: #defbe6;       color: #24a148; }
+  &.submitted { background: $primary-light; color: $primary; }
+  &.rejected  { background: $danger-light;  color: $danger; }
+  &.draft     { background: $warning-light; color: #b28600; }
+}
+
+// ─── Table row count footer ───────────────────────────────────────────────────
+.tableFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px 14px;
+  background: $surface-alt;
+  border-top: 1px solid $border;
+  font-size: 12px;
+  color: $text-muted;
+}

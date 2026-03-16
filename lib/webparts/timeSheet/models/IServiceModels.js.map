@@ -1,0 +1,1 @@
+{"version":3,"file":"IServiceModels.js","sourceRoot":"","sources":["../../../../src/webparts/timeSheet/models/IServiceModels.ts"],"names":[],"mappings":"","sourcesContent":["export interface IApiError {\n  message: string;\n  statusCode?: number;\n}\n\nexport interface IServiceResult<T> {\n  data?: T;\n  error?: IApiError;\n  success: boolean;\n}\n"]}

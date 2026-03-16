@@ -1,0 +1,174 @@
+"use strict";
+self["webpackHotUpdatec7e5e177_9baf_42a9_91c9_2ea9fecc19a8_0_0_1"]("lib_webparts_timeSheet_views_HomePage_js",{
+
+/***/ 36033:
+/*!***************************************************************!*\
+  !*** ./lib/webparts/timeSheet/views/HomePage.module.scss.css ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/@microsoft/sp-css-loader/node_modules/@microsoft/load-themed-styles/lib-es6/index.js */ 96323);
+// Imports
+
+
+_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(":root{--color-primary-50:#eff6ff;--color-primary-100:#dbeafe;--color-primary-200:#bfdbfe;--color-primary-300:#93c5fd;--color-primary-400:#60a5fa;--color-primary-500:#3b82f6;--color-primary-600:#2563eb;--color-primary-700:#1d4ed8;--color-primary-800:#1e40af;--color-primary-900:#1e3a8a;--color-secondary-50:#f8fafc;--color-secondary-100:#f1f5f9;--color-secondary-200:#e2e8f0;--color-secondary-300:#cbd5e1;--color-secondary-400:#94a3b8;--color-secondary-500:#64748b;--color-secondary-600:#475569;--color-secondary-700:#334155;--color-secondary-800:#1e293b;--color-secondary-900:#0f172a;--color-success-50:#f0fdf4;--color-success-100:#dcfce7;--color-success-500:#22c55e;--color-success-600:#16a34a;--color-success-700:#15803d;--color-warning-50:#fffbeb;--color-warning-100:#fef3c7;--color-warning-500:#f59e0b;--color-warning-600:#d97706;--color-error-50:#fef2f2;--color-error-100:#fee2e2;--color-error-500:#ef4444;--color-error-600:#dc2626;--gradient-primary:linear-gradient(135deg,#667eea,#764ba2);--gradient-success:linear-gradient(135deg,#84fab0,#8fd3f4);--gradient-warning:linear-gradient(135deg,#ffecd2,#fcb69f);--gradient-purple:linear-gradient(135deg,#a8edea,#fed6e3);--gradient-blue:linear-gradient(135deg,#667eea,#764ba2);--gradient-ocean:linear-gradient(135deg,#667db6,#0082c8 35%,#0082c8);--glass-bg:hsla(0,0%,100%,.25);--glass-border:hsla(0,0%,100%,.18);--glass-shadow:0 8px 32px 0 rgba(31,38,135,.37);--glass-backdrop:blur(8px);--shadow-xs:0 1px 2px 0 rgba(0,0,0,.05);--shadow-sm:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-primary:0 10px 25px rgba(59,130,246,.15);--shadow-success:0 10px 25px rgba(34,197,94,.15);--shadow-warning:0 10px 25px rgba(245,158,11,.15);--shadow-error:0 10px 25px rgba(239,68,68,.15);--font-family:\"Segoe UI\",\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:1.875rem;--font-size-4xl:2.25rem;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--line-height-tight:1.25;--line-height-snug:1.375;--line-height-normal:1.5;--line-height-relaxed:1.625;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--radius-sm:0.125rem;--radius-base:0.25rem;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-full:9999px;--z-dropdown:1000;--z-sticky:1020;--z-fixed:1030;--z-modal-backdrop:1040;--z-modal:1050;--z-popover:1060;--z-tooltip:1070;--transition-fast:all 150ms ease;--transition-base:all 200ms ease;--transition-slow:all 300ms ease;--transition-bounce:all 200ms cubic-bezier(0.68,-0.55,0.265,1.55)}.modern-card_62dcd290{backdrop-filter:var(--glass-backdrop);background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;position:relative;transition:var(--transition-base)}.modern-card_62dcd290:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.4),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.modern-card_62dcd290:hover{border-color:hsla(0,0%,100%,.3);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.card-gradient-primary_62dcd290{background:var(--gradient-primary);color:#fff}.card-gradient-success_62dcd290{background:var(--gradient-success);color:var(--color-secondary-800)}.card-gradient-warning_62dcd290{background:var(--gradient-warning);color:var(--color-secondary-800)}.card-gradient-purple_62dcd290{background:var(--gradient-purple);color:var(--color-secondary-800)}.text-gradient-primary_62dcd290{-webkit-text-fill-color:transparent;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;font-weight:var(--font-weight-bold)}.animate-fade-in_62dcd290{animation:fadeIn_62dcd290 .6s ease-out}.animate-slide-up_62dcd290{animation:slideUp_62dcd290 .5s ease-out}.animate-scale-in_62dcd290{animation:scaleIn_62dcd290 .3s ease-out}@keyframes scaleIn_62dcd290{0%{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}.hover-lift_62dcd290{transition:var(--transition-base)}.hover-lift_62dcd290:hover{box-shadow:var(--shadow-xl);transform:translateY(-4px)}.hover-glow_62dcd290{transition:var(--transition-base)}.hover-glow_62dcd290:hover{box-shadow:0 0 20px rgba(59,130,246,.4)}.flex-center_62dcd290,.flex-col-center_62dcd290{align-items:center;display:flex;justify-content:center}.flex-col-center_62dcd290{flex-direction:column}.bg-gradient-modern_62dcd290{background:linear-gradient(135deg,#f5f7fa,#c3cfe2)}.bg-gradient-warm_62dcd290{background:linear-gradient(135deg,#ffecd2,#fcb69f)}.bg-gradient-cool_62dcd290{background:linear-gradient(135deg,#667eea,#764ba2)}.webpart-container_62dcd290{background:linear-gradient(135deg,#fff,#f8fafc);border:1px solid rgba(203,213,225,.4);border-radius:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);margin:16px;overflow:hidden;position:relative}.webpart-container_62dcd290:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.8),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.dashboard-root_62dcd290{font-family:Segoe UI,Inter,-apple-system,BlinkMacSystemFont,sans-serif;position:relative;width:100%}.dashboard-header_62dcd290{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;overflow:hidden;padding:24px 32px;position:relative}.dashboard-header_62dcd290:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);bottom:0;content:\"\";left:0;pointer-events:none;position:absolute;right:0;top:0}.header-content_62dcd290{position:relative;z-index:1}.dashboard-page-title_62dcd290{color:#fff;font-size:28px;font-weight:700;line-height:1.2;margin:0 0 8px;text-shadow:0 1px 2px rgba(0,0,0,.1)}.dashboard-section-title_62dcd290{color:hsla(0,0%,100%,.9);font-size:14px;font-weight:400;margin:0}.dashboard-section-title_62dcd290 strong{color:#fff;font-weight:600}.top-navigation_62dcd290{background:linear-gradient(135deg,#fff,#f8fafc);border-bottom:1px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden;position:relative}.nav-container_62dcd290{align-items:stretch;display:flex;height:64px;justify-content:flex-start;max-width:100%;overflow-x:auto;scroll-behavior:smooth}.nav-container_62dcd290::-webkit-scrollbar{height:2px}.nav-container_62dcd290::-webkit-scrollbar-track{background:transparent}.nav-container_62dcd290::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:1px}.nav-tooltip_62dcd290{display:flex!important;flex:1!important;height:100%!important;min-width:160px!important}.nav-tab_62dcd290{align-items:center;background:transparent;border:none;cursor:pointer;display:flex;flex-direction:column;height:100%;justify-content:center;overflow:hidden;position:relative;transition:all .3s cubic-bezier(.4,0,.2,1);width:100%}.nav-tab_62dcd290:before{background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(147,197,253,.02));bottom:0;content:\"\";left:0;opacity:0;position:absolute;right:0;top:0;transition:opacity .3s ease;z-index:1}.nav-tab_62dcd290:hover:before{opacity:1}.nav-tab-content_62dcd290{gap:12px;padding:16px 20px;position:relative;z-index:2}.nav-icon-wrapper_62dcd290,.nav-tab-content_62dcd290{align-items:center;display:flex;justify-content:center;transition:all .3s ease}.nav-icon-wrapper_62dcd290{backdrop-filter:blur(10px);background:hsla(0,0%,100%,.8);border-radius:8px;box-shadow:0 2px 4px rgba(0,0,0,.06);height:32px;width:32px}.nav-tab_62dcd290:hover .nav-icon-wrapper_62dcd290{background:hsla(0,0%,100%,.95);box-shadow:0 4px 12px rgba(0,0,0,.15);transform:translateY(-2px) scale(1.05)}.nav-icon_62dcd290{transition:all .3s ease}.nav-tab_62dcd290:hover .nav-icon_62dcd290{transform:scale(1.1)}.nav-text_62dcd290{color:#475569;font-size:14px;font-weight:600;letter-spacing:.025em;transition:all .3s ease;white-space:nowrap}.nav-tab_62dcd290:hover .nav-text_62dcd290{color:#1e293b;transform:translateY(-1px)}.nav-tab-indicator_62dcd290{border-radius:2px 2px 0 0;bottom:0;height:3px;left:50%;position:absolute;transform:translateX(-50%);transition:width .3s cubic-bezier(.4,0,.2,1);width:0;z-index:3}.nav-tab_62dcd290:hover .nav-tab-indicator_62dcd290{width:80%}.nav-tab_62dcd290:active{transform:scale(.98)}.nav-tab_62dcd290:focus{outline:2px solid #3b82f6;outline-offset:-2px;z-index:4}.nav-item_62dcd290:before{background:linear-gradient(135deg,#f8fafc,#f1f5f9);bottom:0;content:\"\";left:0;opacity:0;position:absolute;right:0;top:0;transition:opacity .2s ease;z-index:0}.nav-item_62dcd290:after{background:#3b82f6;bottom:-2px;content:\"\";height:3px;left:0;position:absolute;right:0;transform:scaleX(0);transition:transform .2s ease;z-index:1}.nav-item_62dcd290:hover{background:#f8fafc;color:#1e40af}.nav-item_62dcd290:hover:before{opacity:1}.nav-item_62dcd290:hover:after{transform:scaleX(1)}.nav-item_62dcd290:active{background:#f1f5f9}.nav-item_62dcd290:focus{z-index:2}.nav-label_62dcd290{font-weight:500;position:relative;transition:all .2s ease;z-index:1}.nav-item_62dcd290 i,.nav-item_62dcd290 svg{font-size:16px!important;position:relative;transition:all .2s ease;z-index:1}.nav-item_62dcd290:hover .nav-label_62dcd290{font-weight:600}.nav-item_62dcd290:hover i,.nav-item_62dcd290:hover svg{transform:scale(1.1)}.nav-item_62dcd290:first-child:hover:after{background:#3b82f6}.nav-item_62dcd290:nth-child(2):hover:after{background:#22c55e}.nav-item_62dcd290:nth-child(3):hover:after{background:#f59e0b}.nav-item_62dcd290:nth-child(4):hover:after{background:#8b5cf6}.nav-item_62dcd290:nth-child(5):hover:after{background:#ef4444}@media (max-width:768px){.webpart-container_62dcd290{border-radius:8px;margin:8px}.dashboard-header_62dcd290{padding:20px 24px}.dashboard-page-title_62dcd290{font-size:24px}.dashboard-section-title_62dcd290{font-size:13px}.top-navigation_62dcd290{background:#fff;justify-content:flex-start;min-height:50px;overflow-x:auto}.nav-item_62dcd290{border-right:1px solid #e2e8f0;flex:none;font-size:12px;min-width:80px;padding:12px 16px}.nav-item_62dcd290:last-child{border-right:none}.nav-item_62dcd290:after{height:2px}.nav-label_62dcd290{display:none}.nav-item_62dcd290 i,.nav-item_62dcd290 svg{font-size:18px!important}}@media (max-width:480px){.webpart-container_62dcd290{margin:4px}.dashboard-header_62dcd290{padding:16px 20px}.dashboard-page-title_62dcd290{font-size:22px}.nav-item_62dcd290{min-width:auto;padding:12px}}.dashboard-root_62dcd290>:last-child{padding:24px 32px 32px}@media (max-width:768px){.dashboard-root_62dcd290>:last-child{padding:20px 24px 24px}}@media (max-width:480px){.dashboard-root_62dcd290>:last-child{padding:16px 20px 20px}}@keyframes slideUp_62dcd290{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes fadeIn_62dcd290{0%{opacity:0}to{opacity:1}}.nav-item_62dcd290:focus{outline:2px solid #3b82f6;outline-offset:-2px}.nav-item_62dcd290:focus:not(:focus-visible){outline:none}", true);
+
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  "modern-card": "modern-card_62dcd290",
+  "card-gradient-primary": "card-gradient-primary_62dcd290",
+  "card-gradient-success": "card-gradient-success_62dcd290",
+  "card-gradient-warning": "card-gradient-warning_62dcd290",
+  "card-gradient-purple": "card-gradient-purple_62dcd290",
+  "text-gradient-primary": "text-gradient-primary_62dcd290",
+  "animate-fade-in": "animate-fade-in_62dcd290",
+  fadeIn: "fadeIn_62dcd290",
+  "animate-slide-up": "animate-slide-up_62dcd290",
+  slideUp: "slideUp_62dcd290",
+  "animate-scale-in": "animate-scale-in_62dcd290",
+  scaleIn: "scaleIn_62dcd290",
+  "hover-lift": "hover-lift_62dcd290",
+  "hover-glow": "hover-glow_62dcd290",
+  "flex-center": "flex-center_62dcd290",
+  "flex-col-center": "flex-col-center_62dcd290",
+  "bg-gradient-modern": "bg-gradient-modern_62dcd290",
+  "bg-gradient-warm": "bg-gradient-warm_62dcd290",
+  "bg-gradient-cool": "bg-gradient-cool_62dcd290",
+  "webpart-container": "webpart-container_62dcd290",
+  "dashboard-root": "dashboard-root_62dcd290",
+  "dashboard-header": "dashboard-header_62dcd290",
+  "header-content": "header-content_62dcd290",
+  "dashboard-page-title": "dashboard-page-title_62dcd290",
+  "dashboard-section-title": "dashboard-section-title_62dcd290",
+  "top-navigation": "top-navigation_62dcd290",
+  "nav-container": "nav-container_62dcd290",
+  "nav-tooltip": "nav-tooltip_62dcd290",
+  "nav-tab": "nav-tab_62dcd290",
+  "nav-tab-content": "nav-tab-content_62dcd290",
+  "nav-icon-wrapper": "nav-icon-wrapper_62dcd290",
+  "nav-icon": "nav-icon_62dcd290",
+  "nav-text": "nav-text_62dcd290",
+  "nav-tab-indicator": "nav-tab-indicator_62dcd290",
+  "nav-item": "nav-item_62dcd290",
+  "nav-label": "nav-label_62dcd290"
+});
+
+
+/***/ }),
+
+/***/ 50831:
+/*!**************************************************!*\
+  !*** ./lib/webparts/timeSheet/views/HomePage.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fluentui/react */ 880);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react */ 637);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 52394);
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
+/* harmony import */ var _components_DashboardAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/DashboardAnalytics */ 46695);
+/* harmony import */ var _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HomePage.module.scss */ 36033);
+
+
+
+
+
+
+var NAV_CARDS = [
+    {
+        view: 'DailyForm',
+        iconName: 'CalendarDay',
+        value: "Today",
+        label: "My Timesheet",
+        subtitle: "Enter today's hours",
+        color: '#0078d4',
+        roles: ['Employee', 'Manager', 'Admin'],
+    },
+    {
+        view: 'MyHistory',
+        iconName: 'History',
+        value: "History",
+        label: "My Submissions",
+        subtitle: "Past timesheets",
+        color: '#107c41',
+        roles: ['Employee', 'Manager', 'Admin'],
+    },
+    {
+        view: 'ManagerDashboard',
+        iconName: 'People',
+        value: "Team",
+        label: "Team Timesheets",
+        subtitle: "Review & approve",
+        color: '#e8a600',
+        roles: ['Manager', 'Admin'],
+    },
+    {
+        view: 'ExportPanel',
+        iconName: 'ExcelDocument',
+        value: "Export",
+        label: "Export Report",
+        subtitle: "Excel or PDF",
+        color: '#107c41',
+        roles: ['Manager', 'Admin'],
+    },
+    {
+        view: 'AdminPanel',
+        iconName: 'Settings',
+        value: "Admin",
+        label: "Manage Projects",
+        subtitle: "Projects & categories",
+        color: '#c4314b',
+        roles: ['Manager', 'Admin'],
+    },
+];
+var HomePage = function () {
+    var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo;
+    var visibleCards = NAV_CARDS.filter(function (c) { return c.roles.indexOf(currentUser.role) !== -1; });
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "webpart-container", style: { border: '1px solid #d5d5d5', padding: '20px', borderRadius: '20px', backgroundColor: '#f3f4f4' } },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "dashboard-root" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "dashboard-header" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "header-content" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: "dashboard-page-title" }, "TimeSheet Dashboard"),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: "dashboard-section-title" },
+                        "Welcome, ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, currentUser.displayName),
+                        " \u00B7 ",
+                        currentUser.role))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("nav", { className: "top-navigation", role: "navigation", "aria-label": "Main navigation" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "nav-container" }, visibleCards.map(function (card, index) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_4__.TooltipHost, { key: card.view, content: "".concat(card.subtitle, " - Click to navigate"), delay: _fluentui_react__WEBPACK_IMPORTED_MODULE_5__.TooltipDelay.medium, className: "nav-tooltip" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "nav-tab ".concat(index === 0 ? 'nav-tab-first' : '', " ").concat(index === visibleCards.length - 1 ? 'nav-tab-last' : ''), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                navigateTo(card.view);
+                            }
+                        } },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "nav-tab-content" },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "nav-icon-wrapper" },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Icon, { iconName: card.iconName, className: "nav-icon", styles: {
+                                        root: {
+                                            fontSize: 18,
+                                            color: card.color,
+                                            transition: 'all 0.2s ease'
+                                        }
+                                    } })),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "nav-text" }, card.label)),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "nav-tab-indicator", style: { backgroundColor: card.color } })))); }))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DashboardAnalytics__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);
+
+
+/***/ })
+
+});
+//# sourceMappingURL=lib_webparts_timeSheet_views_HomePage_js.c461d11abe7c3589660b.hot-update.js.map

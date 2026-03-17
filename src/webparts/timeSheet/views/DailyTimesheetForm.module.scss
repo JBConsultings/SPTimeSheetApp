@@ -1,7 +1,7 @@
 // ─── Design Tokens ────────────────────────────────────────────────────────────
-$primary:        #0f62fe;
-$primary-hover:  #0353e9;
-$primary-light:  #edf4ff;
+$primary:        #667eea;
+$primary-hover:  #5a6fd6;
+$primary-light:  rgba(102, 126, 234, 0.08);
 $accent:         #42be65;
 $danger:         #da1e28;
 $danger-light:   #fff1f1;
@@ -16,7 +16,7 @@ $text-muted:     #8d8d8d;
 $surface:        #ffffff;
 $surface-alt:    #f4f4f4;
 $border:         #e0e0e0;
-$border-focus:   #0f62fe;
+$border-focus:   #667eea;
 
 $radius-sm:  4px;
 $radius-md:  8px;
@@ -31,8 +31,6 @@ $transition: 150ms cubic-bezier(.4,0,.2,1);
 // ─── Layout ──────────────────────────────────────────────────────────────────
 .container {
   padding: 32px;
-  max-width: 1100px;
-  margin: 0 auto;
   font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
   color: $text-primary;
   animation: fadeIn 250ms ease both;
@@ -48,35 +46,50 @@ $transition: 150ms cubic-bezier(.4,0,.2,1);
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 28px;
+  margin: -32px -32px 28px -32px;
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(255,255,255,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
 
   .homeBtn {
+    position: relative;
+    z-index: 1;
     width: 36px;
     height: 36px;
     border-radius: $radius-md;
-    border: 1px solid $border;
-    background: $surface;
-    color: $text-secondary;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.15);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background $transition, box-shadow $transition, color $transition;
     flex-shrink: 0;
+    transition: background $transition;
 
-    &:hover {
-      background: $primary-light;
-      color: $primary;
-      box-shadow: $shadow-sm;
-    }
+    &:hover { background: rgba(255,255,255,0.28); }
   }
 
   .title {
+    position: relative;
+    z-index: 1;
     font-size: 22px;
     font-weight: 700;
     letter-spacing: -0.3px;
-    color: $text-primary;
+    color: white;
     margin: 0;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
   }
 }
 
@@ -102,9 +115,9 @@ $transition: 150ms cubic-bezier(.4,0,.2,1);
     flex-shrink: 0;
 
     &:hover:not(:disabled) {
-      background: $primary;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #fff;
-      border-color: $primary;
+      border-color: #667eea;
       box-shadow: $shadow-sm;
     }
 
@@ -225,7 +238,7 @@ table.timesheetTable {
   border-collapse: collapse;
 
   thead tr {
-    background: $primary;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
 
     th {

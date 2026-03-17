@@ -1,5 +1,14 @@
 import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
+import {
+  Modal,
+  IconButton,
+  PrimaryButton,
+  DefaultButton,
+  TextField,
+  Spinner,
+  SpinnerSize,
+} from '@fluentui/react';
 import { AppContext } from '../context/AppContext';
 import { ITimesheetEntry, ITeamTimesheetRow, TimesheetStatus } from '../models/ITimesheetModels';
 import { getTeamEntries, approveDayEntries, rejectDayEntries } from '../services/TimesheetService';
@@ -61,12 +70,6 @@ const IconHome = () => (
   </svg>
 );
 
-const IconClose = () => (
-  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
-    <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
-
 const IconCheck = () => (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
     <path d="M2 7l4 4 6-6" stroke="currentColor" strokeWidth="1.8" fill="none" strokeLinecap="round" strokeLinejoin="round" />
@@ -100,6 +103,12 @@ const IconError = () => (
   </svg>
 );
 
+const IconClose = () => (
+  <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+    <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 const IconUsers = () => (
   <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
     <circle cx="18" cy="18" r="7" stroke="currentColor" strokeWidth="2.5" />
@@ -124,8 +133,8 @@ const ManagerDashboard: React.FC = () => {
   const [error,          setError]          = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
-  // Review panel state
-  const [panelOpen,      setPanelOpen]      = useState(false);
+  // Review modal state
+  const [modalOpen,      setModalOpen]      = useState(false);
   const [reviewRow,      setReviewRow]      = useState<ITeamTimesheetRow | null>(null);
   const [reviewAction,   setReviewAction]   = useState<'approve' | 'reject' | 'resubmit' | null>(null);
   const [managerComment, setManagerComment] = useState('');
@@ -147,12 +156,17 @@ const ManagerDashboard: React.FC = () => {
 
   useEffect(() => { loadData(); }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
 
-  // ─── Panel helpers ────────────────────────────────────────────────────────
-  const openPanel = (row: ITeamTimesheetRow, action: 'approve' | 'reject' | 'resubmit'): void => {
+  // ─── Modal helpers ────────────────────────────────────────────────────────
+  const openModal = (row: ITeamTimesheetRow, action: 'approve' | 'reject' | 'resubmit'): void => {
     setReviewRow(row);
     setReviewAction(action);
     setManagerComment('');
-    setPanelOpen(true);
+    setModalOpen(true);
+  };
+
+  const closeModal = (): void => {
+    if (actionLoading) return;
+    setModalOpen(false);
   };
 
   const handleAction = async (): Promise<void> => {
@@ -168,7 +182,7 @@ const ManagerDashboard: React.FC = () => {
         const verb = reviewAction === 'resubmit' ? 'requested re-submission for' : 'rejected';
         setSuccessMessage(`Successfully ${verb} timesheet for ${reviewRow.employeeName}.`);
       }
-      setPanelOpen(false);
+      setModalOpen(false);
       loadData();
     } catch {
       setError('Action failed. Please try again.');
@@ -177,7 +191,7 @@ const ManagerDashboard: React.FC = () => {
     }
   };
 
-  const panelTitle =
+  const modalTitle =
     reviewAction === 'approve'  ? 'Approve Timesheet' :
     reviewAction === 'resubmit' ? 'Request Re-submission' :
     'Reject Timesheet';
@@ -186,11 +200,6 @@ const ManagerDashboard: React.FC = () => {
     reviewAction === 'approve'  ? 'Confirm Approve' :
     reviewAction === 'resubmit' ? 'Send Re-submit Request' :
     'Confirm Reject';
-
-  const confirmBtnClass =
-    reviewAction === 'approve'  ? styles.btnApprove :
-    reviewAction === 'reject'   ? styles.btnReject :
-    styles.btnResubmit;
 
   const confirmDisabled =
     actionLoading || (reviewAction !== 'approve' && !managerComment.trim());
@@ -312,13 +321,13 @@ const ManagerDashboard: React.FC = () => {
                   <>
                     <button
                       className={`${styles.btn} ${styles.btnApprove}`}
-                      onClick={() => openPanel(row, 'approve')}
+                      onClick={() => openModal(row, 'approve')}
                     >
                       <IconCheck /> Approve
                     </button>
                     <button
                       className={`${styles.btn} ${styles.btnReject}`}
-                      onClick={() => openPanel(row, 'reject')}
+                      onClick={() => openModal(row, 'reject')}
                     >
                       <IconReject /> Reject
                     </button>
@@ -328,7 +337,7 @@ const ManagerDashboard: React.FC = () => {
                 {row.status === 'Approved' && (
                   <button
                     className={`${styles.btn} ${styles.btnResubmit}`}
-                    onClick={() => openPanel(row, 'resubmit')}
+                    onClick={() => openModal(row, 'resubmit')}
                   >
                     <IconRefresh /> Request Re-submit
                   </button>
@@ -339,105 +348,101 @@ const ManagerDashboard: React.FC = () => {
         </div>
       )}
 
-      {/* ── Review Panel ────────────────────────────────────────────────────── */}
-      {panelOpen && (
-        <>
-          {/* Backdrop */}
-          <div className={styles.overlay} onClick={() => setPanelOpen(false)} />
+      {/* ── Fluent UI Review Modal ───────────────────────────────────────────── */}
+      <Modal
+        isOpen={modalOpen}
+        onDismiss={closeModal}
+        isBlocking={actionLoading}
+        containerClassName={styles.modalContainer}
+      >
+        {/* Modal header */}
+        <div className={styles.modalHeader}>
+          <h2 className={styles.modalTitle}>{modalTitle}</h2>
+          <IconButton
+            iconProps={{ iconName: 'Cancel' }}
+            ariaLabel="Close"
+            onClick={closeModal}
+            disabled={actionLoading}
+            className={styles.modalCloseBtn}
+          />
+        </div>
 
-          {/* Slide-in panel */}
-          <div className={styles.panel} role="dialog" aria-modal="true" aria-label={panelTitle}>
+        {/* Modal body */}
+        {reviewRow && (
+          <div className={styles.modalBody}>
 
-            {/* Panel header */}
-            <div className={styles.panelHeader}>
-              <h2>{panelTitle}</h2>
-              <button
-                className={styles.panelCloseBtn}
-                onClick={() => setPanelOpen(false)}
-                title="Close"
-              >
-                <IconClose />
-              </button>
+            {/* Summary */}
+            <div className={styles.panelMeta}>
+              <span className={styles.panelMetaName}>{reviewRow.employeeName}</span>
+              <span className={styles.panelMetaDetail}>
+                <span>{formatDateLabel(reviewRow.entryDate)}</span>
+                <span>Total: <strong>{reviewRow.totalHours.toFixed(2)} hrs</strong></span>
+              </span>
             </div>
 
-            {/* Panel body */}
-            {reviewRow && (
-              <div className={styles.panelBody}>
+            {/* Task breakdown table */}
+            <div className={styles.panelTableWrap}>
+              <table className={styles.panelTable}>
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th className={styles.colHrs}>Hrs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {reviewRow.entries.map((e) => (
+                    <tr key={e.id}>
+                      <td>{e.projectName}</td>
+                      <td>{e.activityCategoryName}</td>
+                      <td>{e.taskDescription}</td>
+                      <td className={styles.tdCenter}>{e.hoursSpent}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-                {/* Summary chip */}
-                <div className={styles.panelMeta}>
-                  <span className={styles.panelMetaName}>{reviewRow.employeeName}</span>
-                  <span className={styles.panelMetaDetail}>
-                    <span>{formatDateLabel(reviewRow.entryDate)}</span>
-                    <span>Total: <strong>{reviewRow.totalHours.toFixed(2)} hrs</strong></span>
-                  </span>
-                </div>
-
-                {/* Task breakdown table */}
-                <div className={styles.panelTableWrap}>
-                  <table className={styles.panelTable}>
-                    <thead>
-                      <tr>
-                        <th>Project</th>
-                        <th>Category</th>
-                        <th>Description</th>
-                        <th className={styles.colHrs}>Hrs</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {reviewRow.entries.map((e) => (
-                        <tr key={e.id}>
-                          <td>{e.projectName}</td>
-                          <td>{e.activityCategoryName}</td>
-                          <td>{e.taskDescription}</td>
-                          <td className={styles.tdCenter}>{e.hoursSpent}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                {/* Comment field (not shown for approve) */}
-                {reviewAction !== 'approve' && (
-                  <div className={styles.commentField}>
-                    <label>
-                      Manager Comments <span className={styles.required}>*</span>
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={managerComment}
-                      onChange={(e) => setManagerComment(e.target.value)}
-                      placeholder="Provide feedback for the employee…"
-                    />
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Panel footer */}
-            <div className={styles.panelFooter}>
-              <button
-                className={`${styles.btn} ${confirmBtnClass}`}
-                onClick={handleAction}
-                disabled={confirmDisabled}
-              >
-                {actionLoading
-                  ? <><div className={styles.spinnerSm} /> Processing…</>
-                  : confirmBtnLabel
-                }
-              </button>
-              <button
-                className={`${styles.btn} ${styles.btnDefault}`}
-                onClick={() => setPanelOpen(false)}
+            {/* Comment field — hidden for approve */}
+            {reviewAction !== 'approve' && (
+              <TextField
+                label="Manager Comments"
+                required
+                multiline
+                rows={4}
+                value={managerComment}
+                onChange={(_e, val) => setManagerComment(val || '')}
+                placeholder="Provide feedback for the employee…"
                 disabled={actionLoading}
-              >
-                Cancel
-              </button>
-            </div>
-
+              />
+            )}
           </div>
-        </>
-      )}
+        )}
+
+        {/* Modal footer */}
+        <div className={styles.modalFooter}>
+          <PrimaryButton
+            onClick={handleAction}
+            disabled={confirmDisabled}
+            className={
+              reviewAction === 'approve'  ? styles.fluentBtnApprove :
+              reviewAction === 'reject'   ? styles.fluentBtnReject :
+              styles.fluentBtnResubmit
+            }
+          >
+            {actionLoading
+              ? <><Spinner size={SpinnerSize.small} /><span style={{ marginLeft: 6 }}>Processing…</span></>
+              : confirmBtnLabel
+            }
+          </PrimaryButton>
+          <DefaultButton
+            text="Cancel"
+            onClick={closeModal}
+            disabled={actionLoading}
+          />
+        </div>
+      </Modal>
 
     </div>
   );

@@ -98,6 +98,7 @@ const HomePage: React.FC = () => {
                 key={card.view}
                 content={card.subtitle}
                 delay={TooltipDelay.medium}
+                styles={{ root: { flex: '1 1 0', minWidth: 0 } }}
               >
                 <div
                   className={`${styles['nav-card']}${index === 0 ? ` ${styles['nav-card-primary']}` : ''}`}

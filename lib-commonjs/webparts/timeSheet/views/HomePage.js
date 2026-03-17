@@ -71,7 +71,7 @@ var HomePage = function () {
                 React.createElement("div", { className: HomePage_module_scss_1.default['section-header'] },
                     React.createElement("h2", { className: HomePage_module_scss_1.default['section-title'] }, "Quick Access"),
                     React.createElement("p", { className: HomePage_module_scss_1.default['section-subtitle'] }, "Choose an action to get started")),
-                React.createElement("div", { className: HomePage_module_scss_1.default['navigation-grid'] }, visibleCards.map(function (card, index) { return (React.createElement(react_2.TooltipHost, { key: card.view, content: card.subtitle, delay: react_2.TooltipDelay.medium },
+                React.createElement("div", { className: HomePage_module_scss_1.default['navigation-grid'] }, visibleCards.map(function (card, index) { return (React.createElement(react_2.TooltipHost, { key: card.view, content: card.subtitle, delay: react_2.TooltipDelay.medium, styles: { root: { flex: '1 1 0', minWidth: 0 } } },
                     React.createElement("div", { className: "".concat(HomePage_module_scss_1.default['nav-card']).concat(index === 0 ? " ".concat(HomePage_module_scss_1.default['nav-card-primary']) : ''), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();

@@ -148,10 +148,10 @@ var DashboardAnalytics = function () {
             React.createElement(StatsCard, { title: "Approved", value: quickStats.approvedEntries, subtitle: "This month", icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })), color: "orange" })),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsGrid },
-            React.createElement(Chart, { data: last7Days, type: "line", title: "Last 7 Days Hours Trend", className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
+            React.createElement(Chart, { data: last7Days, type: "line", title: "Last 7 Days \u2014 Hours Trend", className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
             React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsRow },
-                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: "Monthly Hours by Project", className: DashboardAnalytics_module_scss_1.default.chartMedium }),
-                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: "This Week's Distribution", className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
+                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: "This Week's Distribution", className: DashboardAnalytics_module_scss_1.default.chartMedium }),
+                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: "Monthly Hours by Project", className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
         React.createElement(RecentActivity, { activities: recentActivity })));
 };
 exports.default = DashboardAnalytics;

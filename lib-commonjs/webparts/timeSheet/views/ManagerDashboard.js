@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var React = tslib_1.__importStar(require("react"));
 var react_1 = require("react");
+var react_2 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var dateUtils_1 = require("../utils/dateUtils");
@@ -56,8 +57,6 @@ function groupToTeamRows(entries) {
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 var IconHome = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
     React.createElement("path", { d: "M8 1L1 7h2v7h4v-4h2v4h4V7h2L8 1z" }))); };
-var IconClose = function () { return (React.createElement("svg", { width: "12", height: "12", viewBox: "0 0 12 12", fill: "currentColor" },
-    React.createElement("path", { d: "M1 1l10 10M11 1L1 11", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }))); };
 var IconCheck = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
     React.createElement("path", { d: "M2 7l4 4 6-6", stroke: "currentColor", strokeWidth: "1.8", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
 var IconReject = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
@@ -71,6 +70,8 @@ var IconSuccess = function () { return (React.createElement("svg", { width: "16"
 var IconError = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
     React.createElement("circle", { cx: "8", cy: "8", r: "7", stroke: "currentColor", strokeWidth: "1.3", fill: "none" }),
     React.createElement("path", { d: "M8 4v4M8 10v1", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }))); };
+var IconClose = function () { return (React.createElement("svg", { width: "12", height: "12", viewBox: "0 0 12 12", fill: "currentColor" },
+    React.createElement("path", { d: "M1 1l10 10M11 1L1 11", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }))); };
 var IconUsers = function () { return (React.createElement("svg", { width: "48", height: "48", viewBox: "0 0 48 48", fill: "none" },
     React.createElement("circle", { cx: "18", cy: "18", r: "7", stroke: "currentColor", strokeWidth: "2.5" }),
     React.createElement("circle", { cx: "32", cy: "18", r: "7", stroke: "currentColor", strokeWidth: "2.5" }),
@@ -82,18 +83,18 @@ var ManagerDashboard = function () {
     var _b = (0, dateUtils_1.currentWeekRange)(), wStart = _b.start, wEnd = _b.end;
     var _c = (0, react_1.useState)(wStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0, react_1.useState)(wEnd), endDate = _d[0], setEndDate = _d[1];
-    var _e = (0, react_1.useState)('Submitted'), statusFilter = _e[0], setStatusFilter = _e[1];
-    var _f = (0, react_1.useState)(''), employeeFilter = _f[0], setEmployeeFilter = _f[1];
-    var _g = (0, react_1.useState)([]), rows = _g[0], setRows = _g[1];
-    var _h = (0, react_1.useState)(true), loading = _h[0], setLoading = _h[1];
-    var _j = (0, react_1.useState)(''), error = _j[0], setError = _j[1];
-    var _k = (0, react_1.useState)(''), successMessage = _k[0], setSuccessMessage = _k[1];
-    // Review panel state
-    var _l = (0, react_1.useState)(false), panelOpen = _l[0], setPanelOpen = _l[1];
-    var _m = (0, react_1.useState)(null), reviewRow = _m[0], setReviewRow = _m[1];
-    var _o = (0, react_1.useState)(null), reviewAction = _o[0], setReviewAction = _o[1];
-    var _p = (0, react_1.useState)(''), managerComment = _p[0], setManagerComment = _p[1];
-    var _q = (0, react_1.useState)(false), actionLoading = _q[0], setActionLoading = _q[1];
+    var _f = (0, react_1.useState)('Submitted'), statusFilter = _f[0], setStatusFilter = _f[1];
+    var _g = (0, react_1.useState)(''), employeeFilter = _g[0], setEmployeeFilter = _g[1];
+    var _h = (0, react_1.useState)([]), rows = _h[0], setRows = _h[1];
+    var _j = (0, react_1.useState)(true), loading = _j[0], setLoading = _j[1];
+    var _k = (0, react_1.useState)(''), error = _k[0], setError = _k[1];
+    var _l = (0, react_1.useState)(''), successMessage = _l[0], setSuccessMessage = _l[1];
+    // Review modal state
+    var _m = (0, react_1.useState)(false), modalOpen = _m[0], setModalOpen = _m[1];
+    var _o = (0, react_1.useState)(null), reviewRow = _o[0], setReviewRow = _o[1];
+    var _p = (0, react_1.useState)(null), reviewAction = _p[0], setReviewAction = _p[1];
+    var _q = (0, react_1.useState)(''), managerComment = _q[0], setManagerComment = _q[1];
+    var _r = (0, react_1.useState)(false), actionLoading = _r[0], setActionLoading = _r[1];
     // ─── Load data ────────────────────────────────────────────────────────────
     var loadData = function () {
         setLoading(true);
@@ -107,12 +108,17 @@ var ManagerDashboard = function () {
             .catch(function () { setError('Failed to load team timesheets.'); setLoading(false); });
     };
     (0, react_1.useEffect)(function () { loadData(); }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
-    // ─── Panel helpers ────────────────────────────────────────────────────────
-    var openPanel = function (row, action) {
+    // ─── Modal helpers ────────────────────────────────────────────────────────
+    var openModal = function (row, action) {
         setReviewRow(row);
         setReviewAction(action);
         setManagerComment('');
-        setPanelOpen(true);
+        setModalOpen(true);
+    };
+    var closeModal = function () {
+        if (actionLoading)
+            return;
+        setModalOpen(false);
     };
     var handleAction = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
         var ids, verb, _a;
@@ -139,7 +145,7 @@ var ManagerDashboard = function () {
                     setSuccessMessage("Successfully ".concat(verb, " timesheet for ").concat(reviewRow.employeeName, "."));
                     _b.label = 5;
                 case 5:
-                    setPanelOpen(false);
+                    setModalOpen(false);
                     loadData();
                     return [3 /*break*/, 8];
                 case 6:
@@ -153,15 +159,12 @@ var ManagerDashboard = function () {
             }
         });
     }); };
-    var panelTitle = reviewAction === 'approve' ? 'Approve Timesheet' :
+    var modalTitle = reviewAction === 'approve' ? 'Approve Timesheet' :
         reviewAction === 'resubmit' ? 'Request Re-submission' :
             'Reject Timesheet';
     var confirmBtnLabel = reviewAction === 'approve' ? 'Confirm Approve' :
         reviewAction === 'resubmit' ? 'Send Re-submit Request' :
             'Confirm Reject';
-    var confirmBtnClass = reviewAction === 'approve' ? ManagerDashboard_module_scss_1.default.btnApprove :
-        reviewAction === 'reject' ? ManagerDashboard_module_scss_1.default.btnReject :
-            ManagerDashboard_module_scss_1.default.btnResubmit;
     var confirmDisabled = actionLoading || (reviewAction !== 'approve' && !managerComment.trim());
     // ─── Render ───────────────────────────────────────────────────────────────
     return (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.container },
@@ -210,57 +213,52 @@ var ManagerDashboard = function () {
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowRight },
                 React.createElement("span", { className: "".concat(ManagerDashboard_module_scss_1.default.badge, " ").concat(badgeClass(row.status)) }, row.status),
                 row.status === 'Submitted' && (React.createElement(React.Fragment, null,
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), onClick: function () { return openPanel(row, 'approve'); } },
+                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), onClick: function () { return openModal(row, 'approve'); } },
                         React.createElement(IconCheck, null),
                         " Approve"),
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), onClick: function () { return openPanel(row, 'reject'); } },
+                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), onClick: function () { return openModal(row, 'reject'); } },
                         React.createElement(IconReject, null),
                         " Reject"))),
-                row.status === 'Approved' && (React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnResubmit), onClick: function () { return openPanel(row, 'resubmit'); } },
+                row.status === 'Approved' && (React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnResubmit), onClick: function () { return openModal(row, 'resubmit'); } },
                     React.createElement(IconRefresh, null),
                     " Request Re-submit"))))); }))),
-        panelOpen && (React.createElement(React.Fragment, null,
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.overlay, onClick: function () { return setPanelOpen(false); } }),
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panel, role: "dialog", "aria-modal": "true", "aria-label": panelTitle },
-                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelHeader },
-                    React.createElement("h2", null, panelTitle),
-                    React.createElement("button", { className: ManagerDashboard_module_scss_1.default.panelCloseBtn, onClick: function () { return setPanelOpen(false); }, title: "Close" },
-                        React.createElement(IconClose, null))),
-                reviewRow && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelBody },
-                    React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelMeta },
-                        React.createElement("span", { className: ManagerDashboard_module_scss_1.default.panelMetaName }, reviewRow.employeeName),
-                        React.createElement("span", { className: ManagerDashboard_module_scss_1.default.panelMetaDetail },
-                            React.createElement("span", null, (0, dateUtils_1.formatDateLabel)(reviewRow.entryDate)),
-                            React.createElement("span", null,
-                                "Total: ",
-                                React.createElement("strong", null,
-                                    reviewRow.totalHours.toFixed(2),
-                                    " hrs")))),
-                    React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelTableWrap },
-                        React.createElement("table", { className: ManagerDashboard_module_scss_1.default.panelTable },
-                            React.createElement("thead", null,
-                                React.createElement("tr", null,
-                                    React.createElement("th", null, "Project"),
-                                    React.createElement("th", null, "Category"),
-                                    React.createElement("th", null, "Description"),
-                                    React.createElement("th", { className: ManagerDashboard_module_scss_1.default.colHrs }, "Hrs"))),
-                            React.createElement("tbody", null, reviewRow.entries.map(function (e) { return (React.createElement("tr", { key: e.id },
-                                React.createElement("td", null, e.projectName),
-                                React.createElement("td", null, e.activityCategoryName),
-                                React.createElement("td", null, e.taskDescription),
-                                React.createElement("td", { className: ManagerDashboard_module_scss_1.default.tdCenter }, e.hoursSpent))); })))),
-                    reviewAction !== 'approve' && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.commentField },
-                        React.createElement("label", null,
-                            "Manager Comments ",
-                            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.required }, "*")),
-                        React.createElement("textarea", { rows: 4, value: managerComment, onChange: function (e) { return setManagerComment(e.target.value); }, placeholder: "Provide feedback for the employee\u2026" }))))),
-                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelFooter },
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(confirmBtnClass), onClick: handleAction, disabled: confirmDisabled }, actionLoading
-                        ? React.createElement(React.Fragment, null,
-                            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.spinnerSm }),
-                            " Processing\u2026")
-                        : confirmBtnLabel),
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnDefault), onClick: function () { return setPanelOpen(false); }, disabled: actionLoading }, "Cancel")))))));
+        React.createElement(react_2.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: ManagerDashboard_module_scss_1.default.modalContainer },
+            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.modalHeader },
+                React.createElement("h2", { className: ManagerDashboard_module_scss_1.default.modalTitle }, modalTitle),
+                React.createElement(react_2.IconButton, { iconProps: { iconName: 'Cancel' }, ariaLabel: "Close", onClick: closeModal, disabled: actionLoading, className: ManagerDashboard_module_scss_1.default.modalCloseBtn })),
+            reviewRow && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.modalBody },
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelMeta },
+                    React.createElement("span", { className: ManagerDashboard_module_scss_1.default.panelMetaName }, reviewRow.employeeName),
+                    React.createElement("span", { className: ManagerDashboard_module_scss_1.default.panelMetaDetail },
+                        React.createElement("span", null, (0, dateUtils_1.formatDateLabel)(reviewRow.entryDate)),
+                        React.createElement("span", null,
+                            "Total: ",
+                            React.createElement("strong", null,
+                                reviewRow.totalHours.toFixed(2),
+                                " hrs")))),
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.panelTableWrap },
+                    React.createElement("table", { className: ManagerDashboard_module_scss_1.default.panelTable },
+                        React.createElement("thead", null,
+                            React.createElement("tr", null,
+                                React.createElement("th", null, "Project"),
+                                React.createElement("th", null, "Category"),
+                                React.createElement("th", null, "Description"),
+                                React.createElement("th", { className: ManagerDashboard_module_scss_1.default.colHrs }, "Hrs"))),
+                        React.createElement("tbody", null, reviewRow.entries.map(function (e) { return (React.createElement("tr", { key: e.id },
+                            React.createElement("td", null, e.projectName),
+                            React.createElement("td", null, e.activityCategoryName),
+                            React.createElement("td", null, e.taskDescription),
+                            React.createElement("td", { className: ManagerDashboard_module_scss_1.default.tdCenter }, e.hoursSpent))); })))),
+                reviewAction !== 'approve' && (React.createElement(react_2.TextField, { label: "Manager Comments", required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ''); }, placeholder: "Provide feedback for the employee\u2026", disabled: actionLoading })))),
+            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.modalFooter },
+                React.createElement(react_2.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, className: reviewAction === 'approve' ? ManagerDashboard_module_scss_1.default.fluentBtnApprove :
+                        reviewAction === 'reject' ? ManagerDashboard_module_scss_1.default.fluentBtnReject :
+                            ManagerDashboard_module_scss_1.default.fluentBtnResubmit }, actionLoading
+                    ? React.createElement(React.Fragment, null,
+                        React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }),
+                        React.createElement("span", { style: { marginLeft: 6 } }, "Processing\u2026"))
+                    : confirmBtnLabel),
+                React.createElement(react_2.DefaultButton, { text: "Cancel", onClick: closeModal, disabled: actionLoading })))));
 };
 exports.default = ManagerDashboard;
 //# sourceMappingURL=ManagerDashboard.js.map

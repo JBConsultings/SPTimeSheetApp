@@ -101,7 +101,7 @@ function statusClass(status: TimesheetStatus): string {
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }) => {
-  const { currentUser, navigateHome } = useContext(AppContext);
+  const { currentUser, navigateHome, navigateTo } = useContext(AppContext);
 
   const [currentDate, setCurrentDate] = useState<Date>(() => {
     const d = new Date(selectedDate);
@@ -172,7 +172,11 @@ const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }
     const d = new Date(currentDate);
     d.setDate(d.getDate() + offset);
     d.setHours(0, 0, 0, 0);
-    if (!isFutureDate(d)) setCurrentDate(d);
+    if (!isFutureDate(d)) {
+      setCurrentDate(d);
+      // Keep the URL in sync so the date persists on refresh and is shareable
+      navigateTo('DailyForm', { selectedDate: d });
+    }
   };
 
   const nextDay = (): Date => {

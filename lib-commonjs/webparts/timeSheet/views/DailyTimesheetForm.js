@@ -63,7 +63,7 @@ function statusClass(status) {
 // ─── Component ────────────────────────────────────────────────────────────────
 var DailyTimesheetForm = function (_a) {
     var selectedDate = _a.selectedDate;
-    var _b = (0, react_1.useContext)(AppContext_1.AppContext), currentUser = _b.currentUser, navigateHome = _b.navigateHome;
+    var _b = (0, react_1.useContext)(AppContext_1.AppContext), currentUser = _b.currentUser, navigateHome = _b.navigateHome, navigateTo = _b.navigateTo;
     var _c = (0, react_1.useState)(function () {
         var d = new Date(selectedDate);
         d.setHours(0, 0, 0, 0);
@@ -145,8 +145,11 @@ var DailyTimesheetForm = function (_a) {
         var d = new Date(currentDate);
         d.setDate(d.getDate() + offset);
         d.setHours(0, 0, 0, 0);
-        if (!(0, dateUtils_1.isFutureDate)(d))
+        if (!(0, dateUtils_1.isFutureDate)(d)) {
             setCurrentDate(d);
+            // Keep the URL in sync so the date persists on refresh and is shareable
+            navigateTo('DailyForm', { selectedDate: d });
+        }
     };
     var nextDay = function () {
         var n = new Date(currentDate);

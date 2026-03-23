@@ -211,7 +211,7 @@ function statusClass(status) {
 // ─── Component ────────────────────────────────────────────────────────────────
 var DailyTimesheetForm = function (_a) {
     var selectedDate = _a.selectedDate;
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _b.currentUser, navigateHome = _b.navigateHome;
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _b.currentUser, navigateHome = _b.navigateHome, navigateTo = _b.navigateTo;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
         var d = new Date(selectedDate);
         d.setHours(0, 0, 0, 0);
@@ -293,8 +293,11 @@ var DailyTimesheetForm = function (_a) {
         var d = new Date(currentDate);
         d.setDate(d.getDate() + offset);
         d.setHours(0, 0, 0, 0);
-        if (!(0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_8__.isFutureDate)(d))
+        if (!(0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_8__.isFutureDate)(d)) {
             setCurrentDate(d);
+            // Keep the URL in sync so the date persists on refresh and is shareable
+            navigateTo('DailyForm', { selectedDate: d });
+        }
     };
     var nextDay = function () {
         var n = new Date(currentDate);

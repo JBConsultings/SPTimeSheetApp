@@ -1,22 +1,14 @@
 import * as React from 'react';
+import { HashRouter } from 'react-router-dom';
 import { Spinner, SpinnerSize, MessageBar, MessageBarType } from '@fluentui/react';
 
 import { ITimeSheetProps } from './ITimeSheetProps';
-import { ICurrentUser, IAppNavigationState, AppView } from '../models/ITimesheetModels';
-import { AppContext } from '../context/AppContext';
+import { ICurrentUser } from '../models/ITimesheetModels';
 import { getCurrentUser } from '../services/UserService';
-
-// ─── Views ────────────────────────────────────────────────────────────────────
-const HomePage = React.lazy(() => import('../views/HomePage'));
-const DailyTimesheetForm = React.lazy(() => import('../views/DailyTimesheetForm'));
-const MyTimesheetHistory = React.lazy(() => import('../views/MyTimesheetHistory'));
-const ManagerDashboard = React.lazy(() => import('../views/ManagerDashboard'));
-const AdminPanel = React.lazy(() => import('../views/AdminPanel'));
-const ExportPanel = React.lazy(() => import('../views/ExportPanel'));
+import AppShell from './AppShell';
 
 interface ITimeSheetState {
   currentUser?: ICurrentUser;
-  navState: IAppNavigationState;
   loading: boolean;
   error?: string;
 }
@@ -25,10 +17,7 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
 
   constructor(props: ITimeSheetProps) {
     super(props);
-    this.state = {
-      navState: { currentView: 'Home' },
-      loading: true,
-    };
+    this.state = { loading: true };
   }
 
   public async componentDidMount(): Promise<void> {
@@ -50,32 +39,8 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
     }
   }
 
-  private navigateTo = (view: AppView, params?: Partial<IAppNavigationState>): void => {
-    this.setState((prev) => ({
-      navState: { ...prev.navState, currentView: view, ...params },
-    }));
-  };
-
-  private navigateHome = (): void => {
-    this.setState({ navState: { currentView: 'Home' } });
-  };
-
-  private renderView(): React.ReactNode {
-    const { navState } = this.state;
-
-    switch (navState.currentView) {
-      case 'Home':             return <HomePage />;
-      case 'DailyForm':        return <DailyTimesheetForm selectedDate={navState.selectedDate ?? new Date()} />;
-      case 'MyHistory':        return <MyTimesheetHistory />;
-      case 'ManagerDashboard': return <ManagerDashboard />;
-      case 'AdminPanel':       return <AdminPanel />;
-      case 'ExportPanel':      return <ExportPanel />;
-      default:                 return <HomePage />;
-    }
-  }
-
   public render(): React.ReactElement {
-    const { loading, error, currentUser, navState } = this.state;
+    const { loading, currentUser, error } = this.state;
 
     if (loading) {
       return (
@@ -93,24 +58,14 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
       );
     }
 
+    // HashRouter keeps routing within the # fragment so SharePoint's URL is untouched.
+    // The full URL for each view looks like:
+    //   https://tenant.sharepoint.com/sites/...#/daily-form?date=2026-03-23
+    // This survives page refresh and can be copied & shared.
     return (
-      <AppContext.Provider
-        value={{
-          currentUser,
-          navState,
-          navigateTo: this.navigateTo,
-          navigateHome: this.navigateHome,
-        }}
-      >
-        {error && (
-          <MessageBar messageBarType={MessageBarType.warning} isMultiline={false}>
-            {error}
-          </MessageBar>
-        )}
-        <React.Suspense fallback={<Spinner size={SpinnerSize.medium} label="Loading..." />}>
-          {this.renderView()}
-        </React.Suspense>
-      </AppContext.Provider>
+      <HashRouter>
+        <AppShell currentUser={currentUser} error={error} />
+      </HashRouter>
     );
   }
 }

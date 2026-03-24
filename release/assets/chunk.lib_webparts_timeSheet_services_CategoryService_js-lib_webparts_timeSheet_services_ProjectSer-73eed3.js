@@ -12,6 +12,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   activateCategory: () => (/* binding */ activateCategory),
 /* harmony export */   addCategory: () => (/* binding */ addCategory),
 /* harmony export */   deactivateCategory: () => (/* binding */ deactivateCategory),
+/* harmony export */   deleteCategory: () => (/* binding */ deleteCategory),
 /* harmony export */   getActiveCategories: () => (/* binding */ getActiveCategories),
 /* harmony export */   getAllCategories: () => (/* binding */ getAllCategories),
 /* harmony export */   updateCategory: () => (/* binding */ updateCategory)
@@ -177,6 +178,27 @@ function activateCategory(id) {
         });
     });
 }
+/**
+ * Permanently delete a category from the list.
+ */
+function deleteCategory(id) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function () {
+        var sp;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    sp = (0,_PnPSetup__WEBPACK_IMPORTED_MODULE_0__.getSP)();
+                    return [4 /*yield*/, sp.web.lists
+                            .getByTitle(_utils_constants__WEBPACK_IMPORTED_MODULE_1__.LISTS.ACTIVITY_CATEGORIES)
+                            .items.getById(id)
+                            .delete()];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
 
 
 /***/ }),
@@ -192,6 +214,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   activateProject: () => (/* binding */ activateProject),
 /* harmony export */   addProject: () => (/* binding */ addProject),
 /* harmony export */   deactivateProject: () => (/* binding */ deactivateProject),
+/* harmony export */   deleteProject: () => (/* binding */ deleteProject),
 /* harmony export */   getActiveProjects: () => (/* binding */ getActiveProjects),
 /* harmony export */   getAllProjects: () => (/* binding */ getAllProjects),
 /* harmony export */   updateProject: () => (/* binding */ updateProject)
@@ -366,6 +389,27 @@ function activateProject(id) {
         return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, updateProject(id, { isActive: true })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Permanently delete a project from the list.
+ */
+function deleteProject(id) {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function () {
+        var sp;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__generator)(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    sp = (0,_PnPSetup__WEBPACK_IMPORTED_MODULE_0__.getSP)();
+                    return [4 /*yield*/, sp.web.lists
+                            .getByTitle(_utils_constants__WEBPACK_IMPORTED_MODULE_1__.LISTS.PROJECTS)
+                            .items.getById(id)
+                            .delete()];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];

@@ -25,4 +25,8 @@ export declare function deactivateCategory(id: number): Promise<void>;
  * Re-activate a category.
  */
 export declare function activateCategory(id: number): Promise<void>;
+/**
+ * Permanently delete a category from the list.
+ */
+export declare function deleteCategory(id: number): Promise<void>;
 //# sourceMappingURL=CategoryService.d.ts.map

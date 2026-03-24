@@ -13,15 +13,19 @@ import { AppContext } from '../context/AppContext';
 import { ITimesheetEntry, ITeamTimesheetRow, TimesheetStatus } from '../models/ITimesheetModels';
 import { getTeamEntries, approveDayEntries, rejectDayEntries } from '../services/TimesheetService';
 import { formatDateLabel, currentWeekRange, formatDateShort } from '../utils/dateUtils';
+import { fmt } from '../utils/fmt';
+import * as strings from 'TimeSheetWebPartStrings';
 import styles from './ManagerDashboard.module.scss';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const STATUS_OPTIONS = [
-  { key: 'Submitted', text: 'Submitted' },
-  { key: 'Approved',  text: 'Approved' },
-  { key: 'Rejected',  text: 'Rejected' },
-  { key: 'All',       text: 'All Statuses' },
-];
+function getStatusOptions() {
+  return [
+    { key: 'Submitted', text: strings.StatusSubmitted },
+    { key: 'Approved',  text: strings.StatusApproved },
+    { key: 'Rejected',  text: strings.StatusRejected },
+    { key: 'All',       text: strings.AllStatuses },
+  ];
+}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status: TimesheetStatus): string {
@@ -151,7 +155,7 @@ const ManagerDashboard: React.FC = () => {
 
     getTeamEntries(startDate, endDate, opts)
       .then((entries) => { setRows(groupToTeamRows(entries)); setLoading(false); })
-      .catch(() => { setError('Failed to load team timesheets.'); setLoading(false); });
+      .catch(() => { setError(strings.LoadTeamFailed); setLoading(false); });
   };
 
   useEffect(() => { loadData(); }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
@@ -176,11 +180,11 @@ const ManagerDashboard: React.FC = () => {
     try {
       if (reviewAction === 'approve') {
         await approveDayEntries(ids, currentUser.displayName);
-        setSuccessMessage(`Approved timesheet for ${reviewRow.employeeName} on ${formatDateShort(reviewRow.entryDate)}.`);
+        setSuccessMessage(fmt(strings.ApprovedMsg, { name: reviewRow.employeeName, date: formatDateShort(reviewRow.entryDate) }));
       } else {
         await rejectDayEntries(ids, currentUser.displayName, managerComment);
-        const verb = reviewAction === 'resubmit' ? 'requested re-submission for' : 'rejected';
-        setSuccessMessage(`Successfully ${verb} timesheet for ${reviewRow.employeeName}.`);
+        const msg = reviewAction === 'resubmit' ? strings.ResubmitMsg : strings.RejectedMsg;
+        setSuccessMessage(fmt(msg, { name: reviewRow.employeeName }));
       }
       setModalOpen(false);
       loadData();
@@ -192,14 +196,14 @@ const ManagerDashboard: React.FC = () => {
   };
 
   const modalTitle =
-    reviewAction === 'approve'  ? 'Approve Timesheet' :
-    reviewAction === 'resubmit' ? 'Request Re-submission' :
-    'Reject Timesheet';
+    reviewAction === 'approve'  ? strings.ApproveModal :
+    reviewAction === 'resubmit' ? strings.RequestResubmitModal :
+    strings.RejectModal;
 
   const confirmBtnLabel =
-    reviewAction === 'approve'  ? 'Confirm Approve' :
-    reviewAction === 'resubmit' ? 'Send Re-submit Request' :
-    'Confirm Reject';
+    reviewAction === 'approve'  ? strings.ConfirmApprove :
+    reviewAction === 'resubmit' ? strings.SendResubmit :
+    strings.ConfirmReject;
 
   const confirmDisabled =
     actionLoading || (reviewAction !== 'approve' && !managerComment.trim());
@@ -213,13 +217,13 @@ const ManagerDashboard: React.FC = () => {
         <button className={styles.homeBtn} title="Home" onClick={navigateHome}>
           <IconHome />
         </button>
-        <h1 className={styles.title}>Team Timesheets</h1>
+        <h1 className={styles.title}>{strings.TeamTimesheetsTitle}</h1>
       </div>
 
       {/* Filter bar */}
       <div className={styles.filterBar}>
         <div className={styles.filterGroup}>
-          <label htmlFor="mgr-from">From</label>
+          <label htmlFor="mgr-from">{strings.From}</label>
           <input
             id="mgr-from"
             type="date"
@@ -230,7 +234,7 @@ const ManagerDashboard: React.FC = () => {
         </div>
 
         <div className={styles.filterGroup}>
-          <label htmlFor="mgr-to">To</label>
+          <label htmlFor="mgr-to">{strings.To}</label>
           <input
             id="mgr-to"
             type="date"
@@ -241,28 +245,28 @@ const ManagerDashboard: React.FC = () => {
         </div>
 
         <div className={styles.filterGroup}>
-          <label htmlFor="mgr-status">Status</label>
+          <label htmlFor="mgr-status">{strings.Status}</label>
           <select
             id="mgr-status"
             className={styles.filterSelect}
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
           >
-            {STATUS_OPTIONS.map((o) => (
+            {getStatusOptions().map((o) => (
               <option key={o.key} value={o.key}>{o.text}</option>
             ))}
           </select>
         </div>
 
         <div className={`${styles.filterGroup} ${styles.filterGroupWide}`}>
-          <label htmlFor="mgr-employee">Employee Email</label>
+          <label htmlFor="mgr-employee">{strings.EmployeeEmail}</label>
           <input
             id="mgr-employee"
             type="text"
             className={styles.filterInput}
             value={employeeFilter}
             onChange={(e) => setEmployeeFilter(e.target.value)}
-            placeholder="Filter by email…"
+            placeholder={strings.FilterByEmail}
           />
         </div>
       </div>
@@ -286,13 +290,13 @@ const ManagerDashboard: React.FC = () => {
       {loading ? (
         <div className={styles.loadingWrap}>
           <div className={styles.spinner} />
-          <span>Loading team timesheets…</span>
+          <span>{strings.LoadingTeam}</span>
         </div>
       ) : rows.length === 0 ? (
         <div className={styles.emptyState}>
           <IconUsers />
-          <span className={styles.emptyTitle}>No timesheets found</span>
-          <span className={styles.emptySubtitle}>Try adjusting the date range, status, or employee filter.</span>
+          <span className={styles.emptyTitle}>{strings.NoTimesheetsFound}</span>
+          <span className={styles.emptySubtitle}>{strings.NoTimesheetsHint}</span>
         </div>
       ) : (
         <div className={styles.list}>
@@ -323,13 +327,13 @@ const ManagerDashboard: React.FC = () => {
                       className={`${styles.btn} ${styles.btnApprove}`}
                       onClick={() => openModal(row, 'approve')}
                     >
-                      <IconCheck /> Approve
+                      <IconCheck /> {strings.ApproveBtn}
                     </button>
                     <button
                       className={`${styles.btn} ${styles.btnReject}`}
                       onClick={() => openModal(row, 'reject')}
                     >
-                      <IconReject /> Reject
+                      <IconReject /> {strings.RejectBtn}
                     </button>
                   </>
                 )}
@@ -339,7 +343,7 @@ const ManagerDashboard: React.FC = () => {
                     className={`${styles.btn} ${styles.btnResubmit}`}
                     onClick={() => openModal(row, 'resubmit')}
                   >
-                    <IconRefresh /> Request Re-submit
+                    <IconRefresh /> {strings.RequestResubmitBtn}
                   </button>
                 )}
               </div>
@@ -385,10 +389,10 @@ const ManagerDashboard: React.FC = () => {
               <table className={styles.panelTable}>
                 <thead>
                   <tr>
-                    <th>Project</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th className={styles.colHrs}>Hrs</th>
+                    <th>{strings.Project}</th>
+                    <th>{strings.Category}</th>
+                    <th>{strings.Description}</th>
+                    <th className={styles.colHrs}>{strings.Hrs}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -406,16 +410,23 @@ const ManagerDashboard: React.FC = () => {
 
             {/* Comment field — hidden for approve */}
             {reviewAction !== 'approve' && (
-              <TextField
-                label="Manager Comments"
-                required
-                multiline
-                rows={4}
-                value={managerComment}
-                onChange={(_e, val) => setManagerComment(val || '')}
-                placeholder="Provide feedback for the employee…"
-                disabled={actionLoading}
-              />
+              <>
+                <TextField
+                  label={strings.ManagerCommentLabel}
+                  required
+                  multiline
+                  rows={4}
+                  value={managerComment}
+                  onChange={(_e, val) => setManagerComment(val || '')}
+                  placeholder={strings.ManagerCommentPlaceholder}
+                  disabled={actionLoading}
+                />
+                {!managerComment.trim() && (
+                  <span style={{ color: '#a19f9d', fontSize: 12, display: 'block', marginTop: 4 }}>
+                    A comment is required before {reviewAction === 'reject' ? 'rejecting' : 'requesting re-submission of'} this timesheet.
+                  </span>
+                )}
+              </>
             )}
           </div>
         )}
@@ -432,12 +443,12 @@ const ManagerDashboard: React.FC = () => {
             }
           >
             {actionLoading
-              ? <><Spinner size={SpinnerSize.small} /><span style={{ marginLeft: 6 }}>Processing…</span></>
+              ? <><Spinner size={SpinnerSize.small} /><span style={{ marginLeft: 6 }}>{strings.Processing}</span></>
               : confirmBtnLabel
             }
           </PrimaryButton>
           <DefaultButton
-            text="Cancel"
+            text={strings.Cancel}
             onClick={closeModal}
             disabled={actionLoading}
           />

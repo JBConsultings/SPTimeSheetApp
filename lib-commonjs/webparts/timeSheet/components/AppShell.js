@@ -5,6 +5,7 @@ var React = tslib_1.__importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var react_1 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 // ─── Lazy-loaded views ────────────────────────────────────────────────────────
 var HomePage = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/HomePage')); }); });
 var DailyTimesheetForm = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/DailyTimesheetForm')); }); });
@@ -70,7 +71,7 @@ var AppShell = function (_a) {
     var navigateHome = function () { return navigate('/'); };
     return (React.createElement(AppContext_1.AppContext.Provider, { value: { currentUser: currentUser, navState: navState, navigateTo: navigateTo, navigateHome: navigateHome } },
         error && (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.warning, isMultiline: false }, error)),
-        React.createElement(React.Suspense, { fallback: React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.medium, label: "Loading..." }) },
+        React.createElement(React.Suspense, { fallback: React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.medium, label: strings.LoadingEllipsis }) },
             React.createElement(react_router_dom_1.Routes, null,
                 React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(HomePage, null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/daily-form", element: React.createElement(DailyTimesheetForm, { selectedDate: selectedDate !== null && selectedDate !== void 0 ? selectedDate : new Date() }) }),

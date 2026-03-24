@@ -18,6 +18,8 @@ import { getActiveProjects } from '../services/ProjectService';
 import { getActiveCategories } from '../services/CategoryService';
 import { formatDateLabel, isFutureDate } from '../utils/dateUtils';
 import { validateTaskRows } from '../utils/validationUtils';
+import { fmt } from '../utils/fmt';
+import * as strings from 'TimeSheetWebPartStrings';
 import styles from './CalendarView.module.scss';
 
 // ─── Row key counter ──────────────────────────────────────────────────────────
@@ -81,11 +83,6 @@ const IconInfo = (): JSX.Element => (
 );
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-const MONTH_NAMES = [
-  'January','February','March','April','May','June',
-  'July','August','September','October','November','December',
-];
-const DAY_NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function toDateStr(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
@@ -195,6 +192,7 @@ const CalendarView: React.FC = () => {
   const [modalError, setModalError]             = useState('');
   const [modalValidErrors, setModalValidErrors] = useState<string[]>([]);
   const [submitConfirm, setSubmitConfirm]       = useState(false);
+  const [rowErrors, setRowErrors]               = useState<Record<string, Record<string, boolean>>>({});
 
   const isReadOnly = modalDayStatus === 'Submitted' || modalDayStatus === 'Approved';
 
@@ -268,6 +266,7 @@ const CalendarView: React.FC = () => {
     setModalError('');
     setSubmitConfirm(false);
     setModalDeletedIds([]);
+    setRowErrors({});
 
     if (dayEntries.length > 0) {
       setModalDayStatus(dayEntries[0].status);
@@ -295,8 +294,22 @@ const CalendarView: React.FC = () => {
   };
 
   // ── Modal row helpers ─────────────────────────────────────────────────────
-  const updateModalRow = (rowKey: string, changes: Partial<ITaskRow>): void =>
+  const updateModalRow = (rowKey: string, changes: Partial<ITaskRow>): void => {
     setModalRows((prev) => prev.map((r) => r.rowKey === rowKey ? { ...r, ...changes, isDirty: true } : r));
+    // Clear per-field errors for changed fields
+    const changedFields = Object.keys(changes);
+    setRowErrors((prev) => {
+      if (!prev[rowKey]) return prev;
+      const rowErrs = { ...prev[rowKey] };
+      changedFields.forEach((f) => { delete rowErrs[f]; });
+      if (Object.keys(rowErrs).length === 0) {
+        const next = { ...prev };
+        delete next[rowKey];
+        return next;
+      }
+      return { ...prev, [rowKey]: rowErrs };
+    });
+  };
 
   const addModalRow = (): void => setModalRows((prev) => [...prev, emptyRow()]);
 
@@ -311,10 +324,45 @@ const CalendarView: React.FC = () => {
   const makeBaseEntry = (): { employeeId: number; employeeName: string; employeeEmail: string; entryDate: Date } | null =>
     selectedDate ? { employeeId: currentUser.id, employeeName: currentUser.displayName, employeeEmail: currentUser.email, entryDate: selectedDate } : null;
 
+  // ── Validate and highlight fields ─────────────────────────────────────────
+  const validateAndHighlight = (): boolean => {
+    const result = validateTaskRows(modalRows);
+    if (!result.valid) {
+      const newRowErrors: Record<string, Record<string, boolean>> = {};
+      result.errors.forEach((e) => {
+        if (!newRowErrors[e.rowKey]) newRowErrors[e.rowKey] = {};
+        newRowErrors[e.rowKey][e.field] = true;
+      });
+      setRowErrors(newRowErrors);
+      const msgs = result.errors.map((e) => e.message);
+      if (result.dayTotalError) msgs.push(result.dayTotalError);
+      setModalValidErrors(msgs);
+      return false;
+    }
+    setRowErrors({});
+    setModalValidErrors([]);
+    return true;
+  };
+
   // ── Save draft ────────────────────────────────────────────────────────────
   const handleSaveDraft = async (): Promise<void> => {
     const base = makeBaseEntry();
     if (!base) return;
+    const result = validateTaskRows(modalRows);
+    if (!result.valid) {
+      const newRowErrors: Record<string, Record<string, boolean>> = {};
+      result.errors.forEach((e) => {
+        if (!newRowErrors[e.rowKey]) newRowErrors[e.rowKey] = {};
+        newRowErrors[e.rowKey][e.field] = true;
+      });
+      setRowErrors(newRowErrors);
+      const msgs = result.errors.map((e) => e.message);
+      if (result.dayTotalError) msgs.push(result.dayTotalError);
+      setModalValidErrors(msgs);
+      return;
+    }
+    setRowErrors({});
+    setModalValidErrors([]);
     setModalSaving(true);
     setModalSuccess('');
     setModalError('');
@@ -323,10 +371,10 @@ const CalendarView: React.FC = () => {
       setModalRows(updated);
       setModalDeletedIds([]);
       setModalDayStatus('Draft');
-      setModalSuccess('Draft saved successfully.');
+      setModalSuccess(strings.SaveDraftSuccess);
       void loadEntries(gridStart, gridEnd);
     } catch {
-      setModalError('Failed to save draft. Please try again.');
+      setModalError(strings.SaveDraftFailed);
     } finally {
       setModalSaving(false);
     }
@@ -355,10 +403,10 @@ const CalendarView: React.FC = () => {
       setModalDayStatus('Submitted');
       setModalRows(savedRows.map((r) => ({ ...r, isDirty: false })));
       setModalDeletedIds([]);
-      setModalSuccess('Timesheet submitted successfully.');
+      setModalSuccess(strings.SubmitSuccess);
       void loadEntries(gridStart, gridEnd);
     } catch {
-      setModalError('Failed to submit timesheet. Please try again.');
+      setModalError(strings.SubmitFailed);
     } finally {
       setModalSaving(false);
       setSubmitConfirm(false);
@@ -379,7 +427,7 @@ const CalendarView: React.FC = () => {
       {/* Header */}
       <div className={styles.header}>
         <button className={styles.homeBtn} title="Home" onClick={navigateHome}><IconHome /></button>
-        <h1 className={styles.title}>Timesheet Calendar</h1>
+        <h1 className={styles.title}>{strings.CalendarTitle}</h1>
         {loading && <div className={styles.headerSpinner} />}
       </div>
 
@@ -390,7 +438,7 @@ const CalendarView: React.FC = () => {
         <div className={styles.calendarToolbar}>
           <button className={styles.navBtn} onClick={goBack}><IconLeft /></button>
           <span className={styles.monthLabel}>
-            {MONTH_NAMES[currentMonth.getMonth()]} {currentMonth.getFullYear()}
+            {strings.MonthNames[currentMonth.getMonth()]} {currentMonth.getFullYear()}
           </span>
           <button className={styles.navBtn} onClick={goForward} disabled={isNextDisabled()}>
             <IconRight />
@@ -399,7 +447,7 @@ const CalendarView: React.FC = () => {
 
         {/* Day-of-week header */}
         <div className={styles.calendarGrid}>
-          {DAY_NAMES.map((d) => (
+          {strings.DayNamesShort.map((d) => (
             <div key={d} className={styles.dayHeader}>{d}</div>
           ))}
 
@@ -425,7 +473,7 @@ const CalendarView: React.FC = () => {
                     !future    ? styles.clickable  : '',
                   ].join(' ')}
                   onClick={() => !future && handleDayClick(day)}
-                  title={future ? '' : `Click to ${dayEntries ? 'edit' : 'add'} entries`}
+                  title={future ? '' : (dayEntries ? strings.ClickToEdit : strings.ClickToAdd)}
                 >
                   <span className={styles.dayNumber}>{day.getDate()}</span>
                   {status && (
@@ -450,14 +498,14 @@ const CalendarView: React.FC = () => {
             <span className={styles.dot} style={{ background: statusColor(s) }} />{s}
           </span>
         ))}
-        <span className={styles.legendHint}>Click any past date to add or edit entries</span>
+        <span className={styles.legendHint}>{strings.LegendHint}</span>
       </div>
 
       {/* ── Entries below calendar ── */}
       <div className={styles.entriesSection}>
-        <h2 className={styles.sectionTitle}>Entries This Period</h2>
+        <h2 className={styles.sectionTitle}>{strings.EntriesThisPeriod}</h2>
         {monthEntries.length === 0 ? (
-          <p className={styles.emptyHint}>No entries yet. Click a date on the calendar to get started.</p>
+          <p className={styles.emptyHint}>{strings.NoEntriesHint}</p>
         ) : (
           <div className={styles.entriesWrap}>
             {Array.from(entriesByDate.entries()).map(([dateStr, dayEntries]) => {
@@ -476,10 +524,10 @@ const CalendarView: React.FC = () => {
                     <table className={styles.entriesTable}>
                       <thead>
                         <tr>
-                          <th>Project</th>
-                          <th>Category</th>
-                          <th>Task Description</th>
-                          <th>Hours</th>
+                          <th>{strings.Project}</th>
+                          <th>{strings.Category}</th>
+                          <th>{strings.TaskDescription}</th>
+                          <th>{strings.Hours}</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -519,10 +567,10 @@ const CalendarView: React.FC = () => {
                 </span>
                 <div className={styles.modalDateMeta}>
                   <span className={styles.modalDateMonth}>
-                    {MONTH_NAMES[selectedDate.getMonth()]} {selectedDate.getFullYear()}
+                    {strings.MonthNames[selectedDate.getMonth()]} {selectedDate.getFullYear()}
                   </span>
                   <span className={styles.modalDateWeekday}>
-                    {['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][selectedDate.getDay()]}
+                    {strings.DayNamesFull[selectedDate.getDay()]}
                   </span>
                 </div>
               </div>
@@ -563,7 +611,7 @@ const CalendarView: React.FC = () => {
                 )}
                 {isReadOnly && modalDayStatus !== 'Approved' && (
                   <div className={`${styles.alert} ${styles.alertInfo}`}>
-                    <IconInfo /><span>Submitted — awaiting manager review.</span>
+                    <IconInfo /><span>{strings.SubmittedAwaiting}</span>
                   </div>
                 )}
               </div>
@@ -572,7 +620,7 @@ const CalendarView: React.FC = () => {
             {/* ── Rejected manager comment ── */}
             {modalDayStatus === 'Rejected' && modalMgrComments && (
               <div className={styles.rejectedBanner}>
-                <span className={styles.rejectedLabel}>Manager feedback:</span>
+                <span className={styles.rejectedLabel}>{strings.ManagerFeedback}</span>
                 <span className={styles.rejectedMsg}>{modalMgrComments}</span>
               </div>
             )}
@@ -584,13 +632,12 @@ const CalendarView: React.FC = () => {
 
                   {/* Card top bar */}
                   <div className={styles.taskCardTop}>
-                    <span className={styles.taskIndex}>Task {idx + 1}</span>
-                    {!isReadOnly && (
+                    <span className={styles.taskIndex}>{fmt(strings.TaskLabel, { n: idx + 1 })}</span>
+                    {!isReadOnly && modalRows.length > 1 && (
                       <button
                         className={styles.taskDeleteBtn}
-                        disabled={modalRows.length === 1}
                         onClick={() => deleteModalRow(row.rowKey, row.id)}
-                        title="Remove task"
+                        title={strings.RemoveTask}
                       >
                         <IconTrash />
                       </button>
@@ -600,9 +647,10 @@ const CalendarView: React.FC = () => {
                   {/* Selects row */}
                   <div className={styles.taskFieldsRow}>
                     <div className={styles.taskField}>
-                      <label className={styles.fieldLbl}>Project</label>
+                      <label className={styles.fieldLbl}>{strings.Project}</label>
                       <select
                         className={styles.fieldSelect}
+                        style={rowErrors[row.rowKey]?.projectId ? { borderColor: '#da1e28' } : {}}
                         disabled={isReadOnly}
                         value={row.projectId}
                         onChange={(e) => {
@@ -610,15 +658,16 @@ const CalendarView: React.FC = () => {
                           updateModalRow(row.rowKey, { projectId: Number(e.target.value), projectName: proj?.title ?? '' });
                         }}
                       >
-                        <option value={0}>Select project…</option>
+                        <option value={0}>{strings.SelectProject}</option>
                         {projects.map((p) => <option key={p.id} value={p.id}>{p.title}</option>)}
                       </select>
                     </div>
 
                     <div className={styles.taskField}>
-                      <label className={styles.fieldLbl}>Category</label>
+                      <label className={styles.fieldLbl}>{strings.Category}</label>
                       <select
                         className={styles.fieldSelect}
+                        style={rowErrors[row.rowKey]?.activityCategoryId ? { borderColor: '#da1e28' } : {}}
                         disabled={isReadOnly}
                         value={row.activityCategoryId}
                         onChange={(e) => {
@@ -626,14 +675,14 @@ const CalendarView: React.FC = () => {
                           updateModalRow(row.rowKey, { activityCategoryId: Number(e.target.value), activityCategoryName: cat?.title ?? '' });
                         }}
                       >
-                        <option value={0}>Select category…</option>
+                        <option value={0}>{strings.SelectCategory}</option>
                         {categories.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
                       </select>
                     </div>
 
                     {/* Hours stepper */}
                     <div className={styles.hoursField}>
-                      <label className={styles.fieldLbl}>Hours</label>
+                      <label className={styles.fieldLbl}>{strings.Hours}</label>
                       <div className={styles.hoursStepper}>
                         <button
                           className={styles.stepBtn}
@@ -643,6 +692,7 @@ const CalendarView: React.FC = () => {
                         <input
                           type="number"
                           className={styles.hoursInput}
+                          style={rowErrors[row.rowKey]?.hoursSpent ? { borderColor: '#da1e28' } : {}}
                           disabled={isReadOnly}
                           value={row.hoursSpent}
                           min={0.25} max={24} step={0.25}
@@ -659,13 +709,14 @@ const CalendarView: React.FC = () => {
 
                   {/* Description */}
                   <div className={styles.taskDescField}>
-                    <label className={styles.fieldLbl}>Description</label>
+                    <label className={styles.fieldLbl}>{strings.Description}</label>
                     <textarea
                       className={styles.fieldTextarea}
+                      style={rowErrors[row.rowKey]?.taskDescription ? { borderColor: '#da1e28' } : {}}
                       disabled={isReadOnly}
                       rows={2}
                       value={row.taskDescription}
-                      placeholder="What did you work on?"
+                      placeholder={strings.WhatDidYouWorkOn}
                       onChange={(e) => updateModalRow(row.rowKey, { taskDescription: e.target.value })}
                     />
                   </div>
@@ -676,7 +727,7 @@ const CalendarView: React.FC = () => {
               {!isReadOnly && (
                 <button className={styles.addTaskBtn} onClick={addModalRow} disabled={modalSaving}>
                   <IconAdd />
-                  <span>Add another task</span>
+                  <span>{strings.AddAnotherTask}</span>
                 </button>
               )}
             </div>
@@ -685,7 +736,7 @@ const CalendarView: React.FC = () => {
             <div className={styles.modalFooter}>
               <div className={styles.footerTotal}>
                 <span className={styles.footerTotalNum}>{totalModalHours.toFixed(2)}</span>
-                <span className={styles.footerTotalLabel}>hrs total{totalModalHours > 24 ? ' · ⚠ over limit' : ''}</span>
+                <span className={styles.footerTotalLabel}>{strings.HrsTotal}{totalModalHours > 24 ? ` · ${strings.OverLimit}` : ''}</span>
               </div>
 
               {!isReadOnly && (
@@ -693,28 +744,28 @@ const CalendarView: React.FC = () => {
                   {!submitConfirm ? (
                     <>
                       <DefaultButton
-                        text="Save Draft"
+                        text={strings.SaveDraft}
                         iconProps={{ iconName: 'Save' }}
                         onClick={handleSaveDraft}
                         disabled={totalModalHours > 24 || modalSaving}
                       />
                       <PrimaryButton
-                        text="Submit"
+                        text={strings.Submit}
                         iconProps={{ iconName: 'Send' }}
-                        onClick={() => setSubmitConfirm(true)}
+                        onClick={() => { if (validateAndHighlight()) setSubmitConfirm(true); }}
                         disabled={totalModalHours > 24 || modalSaving}
                       />
                     </>
                   ) : (
                     <>
-                      <span className={styles.confirmPrompt}>Confirm submit?</span>
+                      <span className={styles.confirmPrompt}>{strings.ConfirmSubmit}</span>
                       <DefaultButton
-                        text="Cancel"
+                        text={strings.Cancel}
                         onClick={() => setSubmitConfirm(false)}
                         disabled={totalModalHours > 24 || modalSaving}
                       />
                       <PrimaryButton
-                        text="Yes, Submit"
+                        text={strings.YesSubmit}
                         iconProps={{ iconName: 'CheckMark' }}
                         onClick={handleSubmit}
                         disabled={totalModalHours > 24 || modalSaving}

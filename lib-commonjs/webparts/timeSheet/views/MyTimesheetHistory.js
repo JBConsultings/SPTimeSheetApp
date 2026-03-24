@@ -6,15 +6,18 @@ var react_1 = require("react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var dateUtils_1 = require("../utils/dateUtils");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var MyTimesheetHistory_module_scss_1 = tslib_1.__importDefault(require("./MyTimesheetHistory.module.scss"));
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: 'All', text: 'All Statuses' },
-    { key: 'Draft', text: 'Draft' },
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-];
+function getStatusOptions() {
+    return [
+        { key: 'All', text: strings.AllStatuses },
+        { key: 'Draft', text: strings.StatusDraft },
+        { key: 'Submitted', text: strings.StatusSubmitted },
+        { key: 'Approved', text: strings.StatusApproved },
+        { key: 'Rejected', text: strings.StatusRejected },
+    ];
+}
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === 'Approved')
@@ -80,6 +83,8 @@ var IconCalendar = function (_a) {
 };
 var IconChevronRight = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
     React.createElement("path", { d: "M5 2l5 5-5 5", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconTrash = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
+    React.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" }))); };
 // ─── Component ────────────────────────────────────────────────────────────────
 var MyTimesheetHistory = function () {
     var _a = (0, react_1.useContext)(AppContext_1.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo, navigateHome = _a.navigateHome;
@@ -90,6 +95,8 @@ var MyTimesheetHistory = function () {
     var _f = (0, react_1.useState)([]), summaries = _f[0], setSummaries = _f[1];
     var _g = (0, react_1.useState)(true), loading = _g[0], setLoading = _g[1];
     var _h = (0, react_1.useState)(''), error = _h[0], setError = _h[1];
+    var _j = (0, react_1.useState)(null), confirmDeleteKey = _j[0], setConfirmDeleteKey = _j[1];
+    var _k = (0, react_1.useState)(false), deleting = _k[0], setDeleting = _k[1];
     // ─── Data fetch ─────────────────────────────────────────────────────────────
     (0, react_1.useEffect)(function () {
         var cancelled = false;
@@ -104,12 +111,53 @@ var MyTimesheetHistory = function () {
         })
             .catch(function () {
             if (!cancelled) {
-                setError('Failed to load timesheet history.');
+                setError(strings.LoadHistoryFailed);
                 setLoading(false);
             }
         });
         return function () { cancelled = true; };
     }, [startDate, endDate, currentUser.email]);
+    // ─── Delete draft entries for a day ─────────────────────────────────────────
+    var handleDelete = function (summary, e) {
+        e.stopPropagation();
+        var key = summary.date.toISOString();
+        setDeleting(false);
+        setConfirmDeleteKey(key);
+    };
+    var confirmDelete = function (summary, e) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+        var _a;
+        return tslib_1.__generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    e.stopPropagation();
+                    setDeleting(true);
+                    setError('');
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, 4, 5]);
+                    return [4 /*yield*/, Promise.all(summary.entries
+                            .filter(function (en) { return en.id !== undefined; })
+                            .map(function (en) { return (0, TimesheetService_1.deleteEntry)(en.id); }))];
+                case 2:
+                    _b.sent();
+                    setSummaries(function (prev) { return prev.filter(function (s) { return s.date.toISOString() !== summary.date.toISOString(); }); });
+                    return [3 /*break*/, 5];
+                case 3:
+                    _a = _b.sent();
+                    setError('Failed to delete entries. Please try again.');
+                    return [3 /*break*/, 5];
+                case 4:
+                    setDeleting(false);
+                    setConfirmDeleteKey(null);
+                    return [7 /*endfinally*/];
+                case 5: return [2 /*return*/];
+            }
+        });
+    }); };
+    var cancelDelete = function (e) {
+        e.stopPropagation();
+        setConfirmDeleteKey(null);
+    };
     // ─── Derived ────────────────────────────────────────────────────────────────
     var filtered = statusFilter === 'All'
         ? summaries
@@ -119,43 +167,65 @@ var MyTimesheetHistory = function () {
         React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.header },
             React.createElement("button", { className: MyTimesheetHistory_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
                 React.createElement(IconHome, null)),
-            React.createElement("h1", { className: MyTimesheetHistory_module_scss_1.default.title }, "My Timesheet History")),
+            React.createElement("h1", { className: MyTimesheetHistory_module_scss_1.default.title }, strings.HistoryTitle)),
         React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.filterBar },
             React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "filter-from" }, "From"),
+                React.createElement("label", { htmlFor: "filter-from" }, strings.From),
                 React.createElement("input", { id: "filter-from", type: "date", className: MyTimesheetHistory_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
             React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "filter-to" }, "To"),
+                React.createElement("label", { htmlFor: "filter-to" }, strings.To),
                 React.createElement("input", { id: "filter-to", type: "date", className: MyTimesheetHistory_module_scss_1.default.filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
             React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "filter-status" }, "Status"),
-                React.createElement("select", { id: "filter-status", className: MyTimesheetHistory_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
+                React.createElement("label", { htmlFor: "filter-status" }, strings.Status),
+                React.createElement("select", { id: "filter-status", className: MyTimesheetHistory_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
         error && (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.errorBar },
             React.createElement(IconError, null),
             error)),
         loading ? (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.loadingWrap },
             React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.spinner }),
-            React.createElement("span", null, "Loading history\u2026"))) : filtered.length === 0 ? (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.emptyState },
+            React.createElement("span", null, strings.LoadingHistory))) : filtered.length === 0 ? (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.emptyState },
             React.createElement(IconCalendar, { className: MyTimesheetHistory_module_scss_1.default.emptyIcon }),
-            React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.emptyTitle }, "No entries found"),
-            React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.emptySubtitle }, "Try adjusting the date range or status filter."))) : (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.list }, filtered.map(function (summary) { return (React.createElement("div", { key: summary.date.toISOString(), className: MyTimesheetHistory_module_scss_1.default.summaryCard, onClick: function () { return navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
-            React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.cardLeft },
-                React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardDate }, (0, dateUtils_1.formatDateLabel)(summary.date)),
-                React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardMeta },
-                    summary.entries.length,
-                    " task",
-                    summary.entries.length !== 1 ? 's' : '',
-                    React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.dot }),
-                    summary.totalHours.toFixed(2),
-                    " hrs")),
-            React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 10 } },
-                React.createElement("span", { className: "".concat(MyTimesheetHistory_module_scss_1.default.badge, " ").concat(badgeClass(summary.status)) }, summary.status),
-                React.createElement(IconChevronRight, null)))); }))),
+            React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.emptyTitle }, strings.NoEntriesFound),
+            React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.emptySubtitle }, strings.NoEntriesHintHistory))) : (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.list }, filtered.map(function (summary) {
+            var key = summary.date.toISOString();
+            var isPendingDelete = confirmDeleteKey === key;
+            return (React.createElement("div", { key: key, className: MyTimesheetHistory_module_scss_1.default.summaryCard, onClick: function () { return !isPendingDelete && navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
+                React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.cardLeft },
+                    React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardDate }, (0, dateUtils_1.formatDateLabel)(summary.date)),
+                    React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardMeta },
+                        summary.entries.length,
+                        " task",
+                        summary.entries.length !== 1 ? 's' : '',
+                        React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.dot }),
+                        summary.totalHours.toFixed(2),
+                        " hrs")),
+                React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 10 } },
+                    React.createElement("span", { className: "".concat(MyTimesheetHistory_module_scss_1.default.badge, " ").concat(badgeClass(summary.status)) }, summary.status),
+                    summary.status === 'Draft' && !isPendingDelete && (React.createElement("button", { style: {
+                            background: 'none', border: '1px solid #da1e28', borderRadius: 6,
+                            color: '#da1e28', cursor: 'pointer', padding: '4px 8px',
+                            display: 'flex', alignItems: 'center', gap: 4, fontSize: 12,
+                        }, title: "Delete draft", onClick: function (e) { return handleDelete(summary, e); } },
+                        React.createElement(IconTrash, null),
+                        " Delete")),
+                    isPendingDelete && (React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }, onClick: function (e) { return e.stopPropagation(); } },
+                        React.createElement("span", { style: { color: '#6f6f6f' } }, "Delete draft?"),
+                        React.createElement("button", { style: {
+                                background: '#da1e28', border: 'none', borderRadius: 6,
+                                color: '#fff', cursor: 'pointer', padding: '4px 10px', fontSize: 12,
+                            }, disabled: deleting, onClick: function (e) { void confirmDelete(summary, e); } }, deleting ? '…' : 'Yes'),
+                        React.createElement("button", { style: {
+                                background: 'none', border: '1px solid #8d8d8d', borderRadius: 6,
+                                color: '#393939', cursor: 'pointer', padding: '4px 10px', fontSize: 12,
+                            }, disabled: deleting, onClick: cancelDelete }, "No"))),
+                    !isPendingDelete && React.createElement(IconChevronRight, null))));
+        }))),
         !loading && (React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.footer },
-            "Showing ",
+            strings.Showing,
+            " ",
             React.createElement("strong", null, filtered.length),
-            " day",
-            filtered.length !== 1 ? 's' : '',
+            " ",
+            strings.Days,
             "\u00A0\u00B7\u00A0",
             (0, dateUtils_1.formatDateShort)(startDate),
             " \u2013 ",

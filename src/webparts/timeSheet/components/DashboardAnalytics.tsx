@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { ITimesheetEntry } from '../models/ITimesheetModels';
 import { getAnalyticsData, IAnalyticsData, IChartData } from '../services/AnalyticsService';
 import { formatDateShort } from '../utils/dateUtils';
+import * as strings from 'TimeSheetWebPartStrings';
 import SimpleChart from './SimpleChart';
 import styles from './DashboardAnalytics.module.scss';
 
@@ -125,11 +126,11 @@ const RecentActivity: React.FC<IRecentActivityProps> = ({ activities }) => {
 
   return (
     <div className={styles.recentActivity}>
-      <h3 className={styles.activityTitle}>Recent Activity</h3>
+      <h3 className={styles.activityTitle}>{strings.RecentActivity}</h3>
       <div className={styles.activityList}>
         {activities.length === 0 ? (
           <div className={styles.emptyActivity}>
-            <span>No recent activity</span>
+            <span>{strings.NoRecentActivity}</span>
           </div>
         ) : (
           activities.map((activity) => (
@@ -175,7 +176,7 @@ const DashboardAnalytics: React.FC = () => {
         const data = await getAnalyticsData(currentUser.email);
         setAnalyticsData(data);
       } catch (err) {
-        setError('Failed to load analytics data');
+        setError(strings.AnalyticsFailed);
         console.error('Analytics error:', err);
       } finally {
         setLoading(false);
@@ -189,7 +190,7 @@ const DashboardAnalytics: React.FC = () => {
     return (
       <div className={styles.loadingContainer}>
         <div className={styles.spinner} />
-        <span>Loading analytics...</span>
+        <span>{strings.LoadingAnalytics}</span>
       </div>
     );
   }
@@ -208,7 +209,7 @@ const DashboardAnalytics: React.FC = () => {
   if (!analyticsData) {
     return (
       <div className={styles.emptyContainer}>
-        <span>No analytics data available</span>
+        <span>{strings.NoAnalyticsData}</span>
       </div>
     );
   }
@@ -224,16 +225,16 @@ const DashboardAnalytics: React.FC = () => {
   return (
     <div className={styles.analyticsContainer}>
       <div className={styles.analyticsHeader}>
-        <h2 className={styles.analyticsTitle}>Dashboard Analytics</h2>
-        <p className={styles.analyticsSubtitle}>Your timesheet insights and trends</p>
+        <h2 className={styles.analyticsTitle}>{strings.AnalyticsTitle}</h2>
+        <p className={styles.analyticsSubtitle}>{strings.AnalyticsSubtitle}</p>
       </div>
 
       {/* Quick Stats Grid */}
       <div className={styles.statsGrid}>
         <StatsCard
-          title="Total Hours"
+          title={strings.TotalHoursCard}
           value={quickStats.totalHours}
-          subtitle="This month"
+          subtitle={strings.ThisMonth}
           icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
@@ -247,9 +248,9 @@ const DashboardAnalytics: React.FC = () => {
         />
 
         <StatsCard
-          title="Avg Daily"
+          title={strings.AvgDaily}
           value={`${quickStats.avgDaily.toFixed(1)}h`}
-          subtitle="Last 7 days"
+          subtitle={strings.Last7Days}
           icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
@@ -259,9 +260,9 @@ const DashboardAnalytics: React.FC = () => {
         />
 
         <StatsCard
-          title="Submitted"
+          title={strings.SubmittedCard}
           value={quickStats.submittedEntries}
-          subtitle="This week"
+          subtitle={strings.ThisWeek}
           icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
@@ -271,9 +272,9 @@ const DashboardAnalytics: React.FC = () => {
         />
 
         <StatsCard
-          title="Approved"
+          title={strings.ApprovedCard}
           value={quickStats.approvedEntries}
-          subtitle="This month"
+          subtitle={strings.ThisMonth}
           icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -288,7 +289,7 @@ const DashboardAnalytics: React.FC = () => {
         <Chart
           data={last7Days}
           type="line"
-          title="Last 7 Days — Hours Trend"
+          title={strings.Last7DaysChart}
           className={styles.chartFullWidth}
         />
 
@@ -296,14 +297,14 @@ const DashboardAnalytics: React.FC = () => {
           <Chart
             data={weeklyDistribution}
             type="bar"
-            title="This Week's Distribution"
+            title={strings.WeekDistribution}
             className={styles.chartMedium}
           />
 
           <Chart
             data={monthlyHours}
             type="doughnut"
-            title="Monthly Hours by Project"
+            title={strings.MonthlyByProject}
             className={styles.chartMedium}
           />
         </div>

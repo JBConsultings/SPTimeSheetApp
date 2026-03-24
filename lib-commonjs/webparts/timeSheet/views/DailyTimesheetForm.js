@@ -3,17 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var React = tslib_1.__importStar(require("react"));
 var react_1 = require("react");
+var react_2 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var ProjectService_1 = require("../services/ProjectService");
 var CategoryService_1 = require("../services/CategoryService");
 var dateUtils_1 = require("../utils/dateUtils");
 var validationUtils_1 = require("../utils/validationUtils");
+var fmt_1 = require("../utils/fmt");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var DailyTimesheetForm_module_scss_1 = tslib_1.__importDefault(require("./DailyTimesheetForm.module.scss"));
 var rowCounter = 0;
-function newRowKey() {
-    return "row-".concat(++rowCounter);
-}
+function newRowKey() { return "row-".concat(++rowCounter); }
 function emptyRow() {
     return {
         rowKey: newRowKey(),
@@ -26,39 +27,37 @@ function emptyRow() {
         isDirty: true,
     };
 }
-// ─── Inline SVG icons (no icon-font dependency) ──────────────────────────────
+// ─── SVG Icons ────────────────────────────────────────────────────────────────
 var IconHome = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
     React.createElement("path", { d: "M8 1L1 7h2v7h4v-4h2v4h4V7h2L8 1z" }))); };
-var IconLeft = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
-    React.createElement("path", { d: "M10 3L5 8l5 5", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
-var IconRight = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
-    React.createElement("path", { d: "M6 3l5 5-5 5", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
-var IconAdd = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
-    React.createElement("path", { d: "M7 1v12M1 7h12", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }))); };
-var IconSave = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
-    React.createElement("path", { d: "M2 2h8l2 2v8a1 1 0 01-1 1H3a1 1 0 01-1-1V2z", stroke: "currentColor", strokeWidth: "1.2", fill: "none" }),
-    React.createElement("rect", { x: "4", y: "1", width: "6", height: "3", rx: ".5", fill: "currentColor" }),
-    React.createElement("rect", { x: "3", y: "7", width: "8", height: "5", rx: ".5", fill: "currentColor" }))); };
-var IconSend = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
-    React.createElement("path", { d: "M1 1l12 6-12 6V8.5l8-1.5-8-1.5V1z" }))); };
-var IconTrash = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
+var IconLeft = function () { return (React.createElement("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none" },
+    React.createElement("path", { d: "M11 4L6 9l5 5", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconRight = function () { return (React.createElement("svg", { width: "18", height: "18", viewBox: "0 0 18 18", fill: "none" },
+    React.createElement("path", { d: "M7 4l5 5-5 5", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconTrash = function () { return (React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 14 14", fill: "currentColor" },
     React.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" }))); };
-var IconClose = function () { return (React.createElement("svg", { width: "12", height: "12", viewBox: "0 0 12 12", fill: "currentColor" },
-    React.createElement("path", { d: "M1 1l10 10M11 1L1 11", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round" }))); };
-var IconCheck = function () { return (React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
-    React.createElement("path", { d: "M2 7l4 4 6-6", stroke: "currentColor", strokeWidth: "1.8", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
-var IconInfo = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
-    React.createElement("circle", { cx: "8", cy: "8", r: "7", stroke: "currentColor", strokeWidth: "1.3", fill: "none" }),
-    React.createElement("path", { d: "M8 7v4M8 5v.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }))); };
-// ─── Status badge config ──────────────────────────────────────────────────────
-function statusClass(status) {
+var IconPlus = function () { return (React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 14 14", fill: "currentColor" },
+    React.createElement("path", { d: "M7 1v12M1 7h12", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }))); };
+var IconMinus = function () { return (React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 14 14", fill: "currentColor" },
+    React.createElement("path", { d: "M1 7h12", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round" }))); };
+// ─── Status config ────────────────────────────────────────────────────────────
+function statusBarType(status) {
     if (status === 'Approved')
-        return DailyTimesheetForm_module_scss_1.default.approved;
+        return react_2.MessageBarType.success;
     if (status === 'Submitted')
-        return DailyTimesheetForm_module_scss_1.default.submitted;
+        return react_2.MessageBarType.info;
     if (status === 'Rejected')
-        return DailyTimesheetForm_module_scss_1.default.rejected;
-    return DailyTimesheetForm_module_scss_1.default.draft;
+        return react_2.MessageBarType.error;
+    return react_2.MessageBarType.warning;
+}
+function statusLabel(status) {
+    if (status === 'Approved')
+        return strings.StatusApproved;
+    if (status === 'Submitted')
+        return strings.StatusSubmitted;
+    if (status === 'Rejected')
+        return strings.StatusRejected;
+    return strings.StatusDraft;
 }
 // ─── Component ────────────────────────────────────────────────────────────────
 var DailyTimesheetForm = function (_a) {
@@ -70,19 +69,20 @@ var DailyTimesheetForm = function (_a) {
         return d;
     }), currentDate = _c[0], setCurrentDate = _c[1];
     var _d = (0, react_1.useState)([emptyRow()]), rows = _d[0], setRows = _d[1];
-    var _e = (0, react_1.useState)([]), deletedIds = _e[0], setDeletedIds = _e[1];
-    var _f = (0, react_1.useState)([]), projects = _f[0], setProjects = _f[1];
-    var _g = (0, react_1.useState)([]), categories = _g[0], setCategories = _g[1];
-    var _h = (0, react_1.useState)(true), loading = _h[0], setLoading = _h[1];
-    var _j = (0, react_1.useState)(false), saving = _j[0], setSaving = _j[1];
-    var _k = (0, react_1.useState)(false), submitConfirm = _k[0], setSubmitConfirm = _k[1];
-    var _l = (0, react_1.useState)(null), dayStatus = _l[0], setDayStatus = _l[1];
-    var _m = (0, react_1.useState)(''), managerComments = _m[0], setManagerComments = _m[1];
-    var _o = (0, react_1.useState)(''), successMessage = _o[0], setSuccessMessage = _o[1];
-    var _p = (0, react_1.useState)(''), errorMessage = _p[0], setErrorMessage = _p[1];
-    var _q = (0, react_1.useState)([]), validationErrors = _q[0], setValidationErrors = _q[1];
+    var _f = (0, react_1.useState)([]), deletedIds = _f[0], setDeletedIds = _f[1];
+    var _g = (0, react_1.useState)([]), projects = _g[0], setProjects = _g[1];
+    var _h = (0, react_1.useState)([]), categories = _h[0], setCategories = _h[1];
+    var _j = (0, react_1.useState)(true), loading = _j[0], setLoading = _j[1];
+    var _k = (0, react_1.useState)(false), saving = _k[0], setSaving = _k[1];
+    var _l = (0, react_1.useState)(false), submitConfirm = _l[0], setSubmitConfirm = _l[1];
+    var _m = (0, react_1.useState)(null), dayStatus = _m[0], setDayStatus = _m[1];
+    var _o = (0, react_1.useState)(''), managerComments = _o[0], setManagerComments = _o[1];
+    var _p = (0, react_1.useState)(''), successMessage = _p[0], setSuccessMessage = _p[1];
+    var _q = (0, react_1.useState)(''), errorMessage = _q[0], setErrorMessage = _q[1];
+    var _r = (0, react_1.useState)([]), validationErrors = _r[0], setValidationErrors = _r[1];
+    var _s = (0, react_1.useState)({}), rowErrors = _s[0], setRowErrors = _s[1];
     var isReadOnly = dayStatus === 'Submitted' || dayStatus === 'Approved';
-    // ─── Data Loading ───────────────────────────────────────────────────────────
+    // ─── Data Loading ─────────────────────────────────────────────────────────
     var loadData = (0, react_1.useCallback)(function (date) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
         var _a, entries, projs, cats, _b;
         var _c;
@@ -93,6 +93,7 @@ var DailyTimesheetForm = function (_a) {
                     setSuccessMessage('');
                     setErrorMessage('');
                     setValidationErrors([]);
+                    setRowErrors({});
                     _d.label = 1;
                 case 1:
                     _d.trys.push([1, 3, 4, 5]);
@@ -130,7 +131,7 @@ var DailyTimesheetForm = function (_a) {
                     return [3 /*break*/, 5];
                 case 3:
                     _b = _d.sent();
-                    setErrorMessage('Failed to load timesheet data. Please try again.');
+                    setErrorMessage(strings.LoadFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setLoading(false);
@@ -140,14 +141,13 @@ var DailyTimesheetForm = function (_a) {
         });
     }); }, [currentUser.email]);
     (0, react_1.useEffect)(function () { void loadData(currentDate); }, [currentDate, loadData]);
-    // ─── Navigation ─────────────────────────────────────────────────────────────
+    // ─── Navigation ───────────────────────────────────────────────────────────
     var changeDate = function (offset) {
         var d = new Date(currentDate);
         d.setDate(d.getDate() + offset);
         d.setHours(0, 0, 0, 0);
         if (!(0, dateUtils_1.isFutureDate)(d)) {
             setCurrentDate(d);
-            // Keep the URL in sync so the date persists on refresh and is shareable
             navigateTo('DailyForm', { selectedDate: d });
         }
     };
@@ -157,9 +157,23 @@ var DailyTimesheetForm = function (_a) {
         n.setHours(0, 0, 0, 0);
         return n;
     };
-    // ─── Row Actions ────────────────────────────────────────────────────────────
+    // ─── Row Actions ──────────────────────────────────────────────────────────
     var updateRow = function (rowKey, changes) {
-        return setRows(function (prev) { return prev.map(function (r) { return r.rowKey === rowKey ? tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({}, r), changes), { isDirty: true }) : r; }); });
+        setRows(function (prev) { return prev.map(function (r) { return r.rowKey === rowKey ? tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({}, r), changes), { isDirty: true }) : r; }); });
+        var changedFields = Object.keys(changes);
+        setRowErrors(function (prev) {
+            var _a;
+            if (!prev[rowKey])
+                return prev;
+            var rowErrs = tslib_1.__assign({}, prev[rowKey]);
+            changedFields.forEach(function (f) { delete rowErrs[f]; });
+            if (Object.keys(rowErrs).length === 0) {
+                var next = tslib_1.__assign({}, prev);
+                delete next[rowKey];
+                return next;
+            }
+            return tslib_1.__assign(tslib_1.__assign({}, prev), (_a = {}, _a[rowKey] = rowErrs, _a));
+        });
     };
     var addRow = function () { return setRows(function (prev) { return tslib_1.__spreadArray(tslib_1.__spreadArray([], prev, true), [emptyRow()], false); }); };
     var deleteRow = function (rowKey, id) {
@@ -169,13 +183,34 @@ var DailyTimesheetForm = function (_a) {
         if (id)
             setDeletedIds(function (prev) { return tslib_1.__spreadArray(tslib_1.__spreadArray([], prev, true), [id], false); });
     };
+    var adjustHours = function (rowKey, current, delta) {
+        var next = parseFloat(Math.max(0.25, Math.min(24, current + delta)).toFixed(2));
+        updateRow(rowKey, { hoursSpent: next });
+    };
     var totalHours = rows.reduce(function (s, r) { return s + (r.hoursSpent || 0); }, 0);
-    // ─── Save Draft ─────────────────────────────────────────────────────────────
+    // ─── Save Draft ───────────────────────────────────────────────────────────
     var handleSaveDraft = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-        var baseEntry, updatedRows, _a;
+        var result, newRowErrors_1, msgs, baseEntry, updatedRows, _a;
         return tslib_1.__generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    result = (0, validationUtils_1.validateTaskRows)(rows);
+                    if (!result.valid) {
+                        newRowErrors_1 = {};
+                        result.errors.forEach(function (e) {
+                            if (!newRowErrors_1[e.rowKey])
+                                newRowErrors_1[e.rowKey] = {};
+                            newRowErrors_1[e.rowKey][e.field] = true;
+                        });
+                        setRowErrors(newRowErrors_1);
+                        msgs = result.errors.map(function (e) { return e.message; });
+                        if (result.dayTotalError)
+                            msgs.push(result.dayTotalError);
+                        setValidationErrors(msgs);
+                        return [2 /*return*/];
+                    }
+                    setRowErrors({});
+                    setValidationErrors([]);
                     setSaving(true);
                     setSuccessMessage('');
                     setErrorMessage('');
@@ -194,11 +229,11 @@ var DailyTimesheetForm = function (_a) {
                     setRows(updatedRows);
                     setDeletedIds([]);
                     setDayStatus('Draft');
-                    setSuccessMessage('Draft saved successfully.');
+                    setSuccessMessage(strings.SaveDraftSuccess);
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setErrorMessage('Failed to save draft. Please try again.');
+                    setErrorMessage(strings.SaveDraftFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setSaving(false);
@@ -207,7 +242,7 @@ var DailyTimesheetForm = function (_a) {
             }
         });
     }); };
-    // ─── Submit ─────────────────────────────────────────────────────────────────
+    // ─── Submit ───────────────────────────────────────────────────────────────
     var handleSubmit = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
         var result, msgs, baseEntry, savedRows, ids, _a;
         return tslib_1.__generator(this, function (_b) {
@@ -245,11 +280,11 @@ var DailyTimesheetForm = function (_a) {
                     setDayStatus('Submitted');
                     setRows(savedRows.map(function (r) { return (tslib_1.__assign(tslib_1.__assign({}, r), { isDirty: false })); }));
                     setDeletedIds([]);
-                    setSuccessMessage('Timesheet submitted successfully.');
+                    setSuccessMessage(strings.SubmitSuccess);
                     return [3 /*break*/, 6];
                 case 4:
                     _a = _b.sent();
-                    setErrorMessage('Failed to submit timesheet. Please try again.');
+                    setErrorMessage(strings.SubmitFailed);
                     return [3 /*break*/, 6];
                 case 5:
                     setSaving(false);
@@ -259,103 +294,129 @@ var DailyTimesheetForm = function (_a) {
             }
         });
     }); };
-    // ─── Loading State ──────────────────────────────────────────────────────────
+    // ─── Dropdown options ─────────────────────────────────────────────────────
+    var projectOptions = projects.map(function (p) { return ({ key: p.id, text: p.title }); });
+    var categoryOptions = categories.map(function (c) { return ({ key: c.id, text: c.title }); });
+    // ─── Loading ──────────────────────────────────────────────────────────────
     if (loading) {
         return (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.loadingWrap },
-            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.spinner }),
-            React.createElement("span", null, "Loading timesheet\u2026")));
+            React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.large, label: "".concat(strings.Loading, "\u2026") })));
     }
-    // ─── Render ─────────────────────────────────────────────────────────────────
-    return (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.container },
-        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.header },
-            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
+    // ─── Date parts for display ───────────────────────────────────────────────
+    var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var dayOfWeek = dayNames[currentDate.getDay()];
+    var dateDisplay = (0, dateUtils_1.formatDateLabel)(currentDate);
+    // ─── Render ───────────────────────────────────────────────────────────────
+    return (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.page },
+        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.heroHeader },
+            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.homeBtn, title: strings.Home, onClick: navigateHome },
                 React.createElement(IconHome, null)),
-            React.createElement("h1", { className: DailyTimesheetForm_module_scss_1.default.title }, "Daily Timesheet")),
-        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.dayNav },
-            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.navBtn, title: "Previous day", onClick: function () { return changeDate(-1); } },
+            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.heroText },
+                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.heroLabel }, strings.DailyTimesheetTitle),
+                currentUser.displayName && (React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.heroUser }, currentUser.displayName))),
+            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.heroBadges },
+                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPill },
+                    React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillNum }, totalHours.toFixed(2)),
+                    React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillLabel }, strings.Hrs),
+                    totalHours > 24 && React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillExceeds }, "!")),
+                dayStatus && (React.createElement("span", { className: "".concat(DailyTimesheetForm_module_scss_1.default.statusPill, " ").concat(DailyTimesheetForm_module_scss_1.default["status".concat(dayStatus)]) }, statusLabel(dayStatus))))),
+        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.dateNav },
+            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.navArrow, title: strings.PreviousDay, onClick: function () { return changeDate(-1); } },
                 React.createElement(IconLeft, null)),
-            React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.dateLabel }, (0, dateUtils_1.formatDateLabel)(currentDate)),
-            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.navBtn, title: "Next day", onClick: function () { return changeDate(1); }, disabled: (0, dateUtils_1.isFutureDate)(nextDay()) },
+            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.datePill },
+                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.datePillDay }, dayOfWeek),
+                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.datePillFull }, dateDisplay)),
+            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.navArrow, title: strings.NextDay, onClick: function () { return changeDate(1); }, disabled: (0, dateUtils_1.isFutureDate)(nextDay()) },
                 React.createElement(IconRight, null))),
-        dayStatus && (React.createElement("div", { className: "".concat(DailyTimesheetForm_module_scss_1.default.statusBar, " ").concat(statusClass(dayStatus)) },
-            React.createElement("span", null,
-                "Status: ",
-                React.createElement("strong", null, dayStatus)),
-            dayStatus === 'Rejected' && managerComments && (React.createElement("span", null,
-                " \u2014 Manager: ",
-                managerComments)))),
-        successMessage && (React.createElement("div", { className: "".concat(DailyTimesheetForm_module_scss_1.default.messageBar, " ").concat(DailyTimesheetForm_module_scss_1.default.success) },
-            React.createElement(IconCheck, null),
-            React.createElement("span", null, successMessage),
-            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.dismissBtn, onClick: function () { return setSuccessMessage(''); } },
-                React.createElement(IconClose, null)))),
-        errorMessage && (React.createElement("div", { className: "".concat(DailyTimesheetForm_module_scss_1.default.messageBar, " ").concat(DailyTimesheetForm_module_scss_1.default.error) },
-            React.createElement("span", null, errorMessage),
-            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.dismissBtn, onClick: function () { return setErrorMessage(''); } },
-                React.createElement(IconClose, null)))),
-        validationErrors.length > 0 && (React.createElement("div", { className: "".concat(DailyTimesheetForm_module_scss_1.default.messageBar, " ").concat(DailyTimesheetForm_module_scss_1.default.warning) },
-            React.createElement("ul", { className: DailyTimesheetForm_module_scss_1.default.validationList }, validationErrors.map(function (e, i) { return React.createElement("li", { key: i }, e); })))),
-        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.tableCard },
-            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.tableWrap },
-                React.createElement("table", { className: DailyTimesheetForm_module_scss_1.default.timesheetTable },
-                    React.createElement("thead", null,
-                        React.createElement("tr", null,
-                            React.createElement("th", null, "Project"),
-                            React.createElement("th", null, "Activity Category"),
-                            React.createElement("th", { className: DailyTimesheetForm_module_scss_1.default.colDesc }, "Task Description"),
-                            React.createElement("th", { className: DailyTimesheetForm_module_scss_1.default.colHours }, "Hours"),
-                            !isReadOnly && React.createElement("th", { className: DailyTimesheetForm_module_scss_1.default.colDelete }))),
-                    React.createElement("tbody", null, rows.map(function (row) { return (React.createElement("tr", { key: row.rowKey },
-                        React.createElement("td", null,
-                            React.createElement("select", { className: DailyTimesheetForm_module_scss_1.default.select, disabled: isReadOnly, value: row.projectId, onChange: function (e) {
+        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.messages },
+            successMessage && (React.createElement(react_2.MessageBar, { messageBarType: react_2.MessageBarType.success, isMultiline: false, onDismiss: function () { return setSuccessMessage(''); }, dismissButtonAriaLabel: strings.Close }, successMessage)),
+            errorMessage && (React.createElement(react_2.MessageBar, { messageBarType: react_2.MessageBarType.error, isMultiline: false, onDismiss: function () { return setErrorMessage(''); }, dismissButtonAriaLabel: strings.Close }, errorMessage)),
+            validationErrors.length > 0 && (React.createElement(react_2.MessageBar, { messageBarType: react_2.MessageBarType.warning, isMultiline: true, onDismiss: function () { return setValidationErrors([]); }, dismissButtonAriaLabel: strings.Close },
+                React.createElement("ul", { className: DailyTimesheetForm_module_scss_1.default.validList }, validationErrors.map(function (e, i) { return React.createElement("li", { key: i }, e); })))),
+            dayStatus === 'Rejected' && managerComments && (React.createElement(react_2.MessageBar, { messageBarType: react_2.MessageBarType.error, isMultiline: true },
+                React.createElement("strong", null,
+                    strings.ManagerCommentLabel,
+                    ":"),
+                " ",
+                managerComments)),
+            isReadOnly && dayStatus !== 'Approved' && (React.createElement(react_2.MessageBar, { messageBarType: react_2.MessageBarType.info, isMultiline: false }, strings.SubmittedAwaitingReview))),
+        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.taskStack },
+            rows.map(function (row, idx) {
+                var rErr = rowErrors[row.rowKey] || {};
+                return (React.createElement("div", { key: row.rowKey, className: DailyTimesheetForm_module_scss_1.default.taskCard, style: { animationDelay: "".concat(idx * 40, "ms") } },
+                    React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardHeader },
+                        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardBadge },
+                            React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.cardBadgeDot }),
+                            React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.cardBadgeText }, (0, fmt_1.fmt)(strings.TaskLabel, { n: idx + 1 }))),
+                        !isReadOnly && rows.length > 1 && (React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.deleteRowBtn, title: strings.RemoveRow, onClick: function () { return deleteRow(row.rowKey, row.id); } },
+                            React.createElement(IconTrash, null),
+                            React.createElement("span", null, strings.Delete)))),
+                    React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardFields },
+                        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardFieldHalf },
+                            React.createElement(react_2.Dropdown, { label: strings.Project, placeholder: strings.SelectProjectOpt, selectedKey: row.projectId || null, options: projectOptions, disabled: isReadOnly, errorMessage: rErr.projectId ? 'Project is required.' : undefined, onChange: function (_e, opt) {
                                     var _a;
-                                    var proj = projects.find(function (p) { return p.id === Number(e.target.value); });
-                                    updateRow(row.rowKey, { projectId: Number(e.target.value), projectName: (_a = proj === null || proj === void 0 ? void 0 : proj.title) !== null && _a !== void 0 ? _a : '' });
-                                } },
-                                React.createElement("option", { value: 0 }, "\u2014 Select project \u2014"),
-                                projects.map(function (p) { return React.createElement("option", { key: p.id, value: p.id }, p.title); }))),
-                        React.createElement("td", null,
-                            React.createElement("select", { className: DailyTimesheetForm_module_scss_1.default.select, disabled: isReadOnly, value: row.activityCategoryId, onChange: function (e) {
+                                    var proj = projects.find(function (p) { return p.id === Number(opt === null || opt === void 0 ? void 0 : opt.key); });
+                                    updateRow(row.rowKey, { projectId: Number(opt === null || opt === void 0 ? void 0 : opt.key) || 0, projectName: (_a = proj === null || proj === void 0 ? void 0 : proj.title) !== null && _a !== void 0 ? _a : '' });
+                                }, styles: {
+                                    dropdown: { borderRadius: 6 },
+                                    title: { borderRadius: 6, fontSize: 13 },
+                                    label: { fontSize: 12, fontWeight: 600, color: '#525252' },
+                                } })),
+                        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardFieldHalf },
+                            React.createElement(react_2.Dropdown, { label: strings.ActivityCategory, placeholder: strings.SelectCategoryOpt, selectedKey: row.activityCategoryId || null, options: categoryOptions, disabled: isReadOnly, errorMessage: rErr.activityCategoryId ? 'Category is required.' : undefined, onChange: function (_e, opt) {
                                     var _a;
-                                    var cat = categories.find(function (c) { return c.id === Number(e.target.value); });
-                                    updateRow(row.rowKey, { activityCategoryId: Number(e.target.value), activityCategoryName: (_a = cat === null || cat === void 0 ? void 0 : cat.title) !== null && _a !== void 0 ? _a : '' });
-                                } },
-                                React.createElement("option", { value: 0 }, "\u2014 Select category \u2014"),
-                                categories.map(function (c) { return React.createElement("option", { key: c.id, value: c.id }, c.title); }))),
-                        React.createElement("td", null,
-                            React.createElement("textarea", { className: DailyTimesheetForm_module_scss_1.default.textarea, disabled: isReadOnly, rows: 2, value: row.taskDescription, onChange: function (e) { return updateRow(row.rowKey, { taskDescription: e.target.value }); }, placeholder: "Describe the task\u2026" })),
-                        React.createElement("td", { className: DailyTimesheetForm_module_scss_1.default.tdCenter },
-                            React.createElement("input", { type: "number", className: DailyTimesheetForm_module_scss_1.default.numberInput, disabled: isReadOnly, value: row.hoursSpent, min: 0.25, max: 24, step: 0.25, onChange: function (e) { return updateRow(row.rowKey, { hoursSpent: parseFloat(e.target.value) || 0 }); } })),
-                        !isReadOnly && (React.createElement("td", { className: DailyTimesheetForm_module_scss_1.default.tdCenter },
-                            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.deleteBtn, title: "Remove row", disabled: rows.length === 1, onClick: function () { return deleteRow(row.rowKey, row.id); } },
-                                React.createElement(IconTrash, null)))))); })))),
-            React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.totalsRow },
-                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.totalLabel },
-                    "Total: ",
-                    totalHours.toFixed(2),
-                    " hrs"),
-                totalHours > 24 && React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.totalExceeds }, "Exceeds 24 hr limit"))),
-        !isReadOnly && (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.actions },
-            React.createElement("button", { className: "".concat(DailyTimesheetForm_module_scss_1.default.btn, " ").concat(DailyTimesheetForm_module_scss_1.default.btnDefault), onClick: addRow, disabled: saving },
-                React.createElement(IconAdd, null),
-                " Add Task"),
-            React.createElement("button", { className: "".concat(DailyTimesheetForm_module_scss_1.default.btn, " ").concat(DailyTimesheetForm_module_scss_1.default.btnDefault), onClick: handleSaveDraft, disabled: saving },
-                React.createElement(IconSave, null),
-                " Save Draft"),
-            !submitConfirm ? (React.createElement("button", { className: "".concat(DailyTimesheetForm_module_scss_1.default.btn, " ").concat(DailyTimesheetForm_module_scss_1.default.btnPrimary), onClick: function () { return setSubmitConfirm(true); }, disabled: saving },
-                React.createElement(IconSend, null),
-                " Submit")) : (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.confirmRow },
-                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.confirmText },
-                    "Submit timesheet for ",
-                    (0, dateUtils_1.formatDateLabel)(currentDate),
-                    "?"),
-                React.createElement("button", { className: "".concat(DailyTimesheetForm_module_scss_1.default.btn, " ").concat(DailyTimesheetForm_module_scss_1.default.btnConfirm), onClick: handleSubmit, disabled: saving },
-                    React.createElement(IconCheck, null),
-                    " Confirm"),
-                React.createElement("button", { className: "".concat(DailyTimesheetForm_module_scss_1.default.btn, " ").concat(DailyTimesheetForm_module_scss_1.default.btnDefault), onClick: function () { return setSubmitConfirm(false); }, disabled: saving }, "Cancel"))))),
-        isReadOnly && dayStatus !== 'Approved' && (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.readOnlyNotice },
-            React.createElement(IconInfo, null),
-            "This timesheet has been submitted and is awaiting review."))));
+                                    var cat = categories.find(function (c) { return c.id === Number(opt === null || opt === void 0 ? void 0 : opt.key); });
+                                    updateRow(row.rowKey, { activityCategoryId: Number(opt === null || opt === void 0 ? void 0 : opt.key) || 0, activityCategoryName: (_a = cat === null || cat === void 0 ? void 0 : cat.title) !== null && _a !== void 0 ? _a : '' });
+                                }, styles: {
+                                    dropdown: { borderRadius: 6 },
+                                    title: { borderRadius: 6, fontSize: 13 },
+                                    label: { fontSize: 12, fontWeight: 600, color: '#525252' },
+                                } }))),
+                    React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardFieldFull },
+                        React.createElement(react_2.TextField, { label: strings.TaskDescription, multiline: true, rows: 2, resizable: false, disabled: isReadOnly, value: row.taskDescription, placeholder: strings.DescribePlaceholder, errorMessage: rErr.taskDescription ? 'Description is required.' : undefined, onChange: function (_e, val) { return updateRow(row.rowKey, { taskDescription: val || '' }); }, styles: {
+                                field: { fontSize: 13, borderRadius: 6 },
+                                fieldGroup: { borderRadius: 6 },
+                                subComponentStyles: { label: { root: { fontSize: 12, fontWeight: 600, color: '#525252' } } },
+                            } })),
+                    React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.cardFooter },
+                        React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursLabel }, strings.Hours),
+                        React.createElement("div", { className: "".concat(DailyTimesheetForm_module_scss_1.default.hoursStepper, " ").concat(rErr.hoursSpent ? DailyTimesheetForm_module_scss_1.default.hoursError : '') },
+                            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent <= 0.25, onClick: function () { return adjustHours(row.rowKey, row.hoursSpent, -0.25); } },
+                                React.createElement(IconMinus, null)),
+                            React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursValue }, (row.hoursSpent || 0).toFixed(2)),
+                            React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent >= 24, onClick: function () { return adjustHours(row.rowKey, row.hoursSpent, 0.25); } },
+                                React.createElement(IconPlus, null))),
+                        rErr.hoursSpent && (React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursErrMsg }, "Min 0.25 hrs required")))));
+            }),
+            !isReadOnly && (React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.addTaskBtn, onClick: addRow, disabled: saving },
+                React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.addTaskIcon },
+                    React.createElement(IconPlus, null)),
+                React.createElement("span", null, strings.AddTask)))),
+        React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.footerBar }, !isReadOnly && (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.footerActions }, !submitConfirm ? (React.createElement(React.Fragment, null,
+            React.createElement(react_2.DefaultButton, { text: strings.SaveDraft, iconProps: { iconName: 'Save' }, disabled: saving || totalHours > 24, onClick: handleSaveDraft, styles: { root: { borderRadius: 6 } } }),
+            React.createElement(react_2.PrimaryButton, { text: saving ? strings.Saving : strings.Submit, iconProps: { iconName: 'Send' }, disabled: saving || totalHours > 24, onRenderIcon: saving ? function () { return React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }); } : undefined, onClick: function () {
+                    var result = (0, validationUtils_1.validateTaskRows)(rows);
+                    if (!result.valid) {
+                        var newRowErrors_2 = {};
+                        result.errors.forEach(function (e) {
+                            if (!newRowErrors_2[e.rowKey])
+                                newRowErrors_2[e.rowKey] = {};
+                            newRowErrors_2[e.rowKey][e.field] = true;
+                        });
+                        setRowErrors(newRowErrors_2);
+                        var msgs = result.errors.map(function (e) { return e.message; });
+                        if (result.dayTotalError)
+                            msgs.push(result.dayTotalError);
+                        setValidationErrors(msgs);
+                        return;
+                    }
+                    setRowErrors({});
+                    setValidationErrors([]);
+                    setSubmitConfirm(true);
+                }, styles: { root: { borderRadius: 6 } } }))) : (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.confirmBar },
+            React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.confirmText }, (0, fmt_1.fmt)(strings.ConfirmSubmitDate, { date: (0, dateUtils_1.formatDateLabel)(currentDate) })),
+            React.createElement(react_2.PrimaryButton, { text: saving ? strings.Saving : strings.Confirm, iconProps: { iconName: 'CheckMark' }, disabled: saving, onClick: handleSubmit, styles: { root: { borderRadius: 6 } } }),
+            React.createElement(react_2.DefaultButton, { text: strings.Cancel, disabled: saving, onClick: function () { return setSubmitConfirm(false); }, styles: { root: { borderRadius: 6 } } }))))))));
 };
 exports.default = DailyTimesheetForm;
 //# sourceMappingURL=DailyTimesheetForm.js.map

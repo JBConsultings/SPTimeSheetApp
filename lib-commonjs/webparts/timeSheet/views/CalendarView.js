@@ -10,6 +10,8 @@ var ProjectService_1 = require("../services/ProjectService");
 var CategoryService_1 = require("../services/CategoryService");
 var dateUtils_1 = require("../utils/dateUtils");
 var validationUtils_1 = require("../utils/validationUtils");
+var fmt_1 = require("../utils/fmt");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var CalendarView_module_scss_1 = tslib_1.__importDefault(require("./CalendarView.module.scss"));
 // ─── Row key counter ──────────────────────────────────────────────────────────
 var rowCounter = 0;
@@ -45,11 +47,6 @@ var IconInfo = function () { return (React.createElement("svg", { width: "16", h
     React.createElement("circle", { cx: "8", cy: "8", r: "7", stroke: "currentColor", strokeWidth: "1.3", fill: "none" }),
     React.createElement("path", { d: "M8 7v4M8 5v.5", stroke: "currentColor", strokeWidth: "1.6", strokeLinecap: "round" }))); };
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-var MONTH_NAMES = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December',
-];
-var DAY_NAMES = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 function toDateStr(d) {
     return "".concat(d.getFullYear(), "-").concat(String(d.getMonth() + 1).padStart(2, '0'), "-").concat(String(d.getDate()).padStart(2, '0'));
 }
@@ -154,6 +151,7 @@ var CalendarView = function () {
     var _q = (0, react_1.useState)(''), modalError = _q[0], setModalError = _q[1];
     var _r = (0, react_1.useState)([]), modalValidErrors = _r[0], setModalValidErrors = _r[1];
     var _s = (0, react_1.useState)(false), submitConfirm = _s[0], setSubmitConfirm = _s[1];
+    var _t = (0, react_1.useState)({}), rowErrors = _t[0], setRowErrors = _t[1];
     var isReadOnly = modalDayStatus === 'Submitted' || modalDayStatus === 'Approved';
     // ── Load projects & categories once ─────────────────────────────────────
     (0, react_1.useEffect)(function () {
@@ -237,6 +235,7 @@ var CalendarView = function () {
         setModalError('');
         setSubmitConfirm(false);
         setModalDeletedIds([]);
+        setRowErrors({});
         if (dayEntries.length > 0) {
             setModalDayStatus(dayEntries[0].status);
             setModalMgrComments((_a = dayEntries[0].managerComments) !== null && _a !== void 0 ? _a : '');
@@ -263,7 +262,22 @@ var CalendarView = function () {
     };
     // ── Modal row helpers ─────────────────────────────────────────────────────
     var updateModalRow = function (rowKey, changes) {
-        return setModalRows(function (prev) { return prev.map(function (r) { return r.rowKey === rowKey ? tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({}, r), changes), { isDirty: true }) : r; }); });
+        setModalRows(function (prev) { return prev.map(function (r) { return r.rowKey === rowKey ? tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({}, r), changes), { isDirty: true }) : r; }); });
+        // Clear per-field errors for changed fields
+        var changedFields = Object.keys(changes);
+        setRowErrors(function (prev) {
+            var _a;
+            if (!prev[rowKey])
+                return prev;
+            var rowErrs = tslib_1.__assign({}, prev[rowKey]);
+            changedFields.forEach(function (f) { delete rowErrs[f]; });
+            if (Object.keys(rowErrs).length === 0) {
+                var next = tslib_1.__assign({}, prev);
+                delete next[rowKey];
+                return next;
+            }
+            return tslib_1.__assign(tslib_1.__assign({}, prev), (_a = {}, _a[rowKey] = rowErrs, _a));
+        });
     };
     var addModalRow = function () { return setModalRows(function (prev) { return tslib_1.__spreadArray(tslib_1.__spreadArray([], prev, true), [emptyRow()], false); }); };
     var deleteModalRow = function (rowKey, id) {
@@ -277,15 +291,53 @@ var CalendarView = function () {
     var makeBaseEntry = function () {
         return selectedDate ? { employeeId: currentUser.id, employeeName: currentUser.displayName, employeeEmail: currentUser.email, entryDate: selectedDate } : null;
     };
+    // ── Validate and highlight fields ─────────────────────────────────────────
+    var validateAndHighlight = function () {
+        var result = (0, validationUtils_1.validateTaskRows)(modalRows);
+        if (!result.valid) {
+            var newRowErrors_1 = {};
+            result.errors.forEach(function (e) {
+                if (!newRowErrors_1[e.rowKey])
+                    newRowErrors_1[e.rowKey] = {};
+                newRowErrors_1[e.rowKey][e.field] = true;
+            });
+            setRowErrors(newRowErrors_1);
+            var msgs = result.errors.map(function (e) { return e.message; });
+            if (result.dayTotalError)
+                msgs.push(result.dayTotalError);
+            setModalValidErrors(msgs);
+            return false;
+        }
+        setRowErrors({});
+        setModalValidErrors([]);
+        return true;
+    };
     // ── Save draft ────────────────────────────────────────────────────────────
     var handleSaveDraft = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-        var base, updated, _a;
+        var base, result, newRowErrors_2, msgs, updated, _a;
         return tslib_1.__generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     base = makeBaseEntry();
                     if (!base)
                         return [2 /*return*/];
+                    result = (0, validationUtils_1.validateTaskRows)(modalRows);
+                    if (!result.valid) {
+                        newRowErrors_2 = {};
+                        result.errors.forEach(function (e) {
+                            if (!newRowErrors_2[e.rowKey])
+                                newRowErrors_2[e.rowKey] = {};
+                            newRowErrors_2[e.rowKey][e.field] = true;
+                        });
+                        setRowErrors(newRowErrors_2);
+                        msgs = result.errors.map(function (e) { return e.message; });
+                        if (result.dayTotalError)
+                            msgs.push(result.dayTotalError);
+                        setModalValidErrors(msgs);
+                        return [2 /*return*/];
+                    }
+                    setRowErrors({});
+                    setModalValidErrors([]);
                     setModalSaving(true);
                     setModalSuccess('');
                     setModalError('');
@@ -298,12 +350,12 @@ var CalendarView = function () {
                     setModalRows(updated);
                     setModalDeletedIds([]);
                     setModalDayStatus('Draft');
-                    setModalSuccess('Draft saved successfully.');
+                    setModalSuccess(strings.SaveDraftSuccess);
                     void loadEntries(gridStart, gridEnd);
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setModalError('Failed to save draft. Please try again.');
+                    setModalError(strings.SaveDraftFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setModalSaving(false);
@@ -347,12 +399,12 @@ var CalendarView = function () {
                     setModalDayStatus('Submitted');
                     setModalRows(savedRows.map(function (r) { return (tslib_1.__assign(tslib_1.__assign({}, r), { isDirty: false })); }));
                     setModalDeletedIds([]);
-                    setModalSuccess('Timesheet submitted successfully.');
+                    setModalSuccess(strings.SubmitSuccess);
                     void loadEntries(gridStart, gridEnd);
                     return [3 /*break*/, 6];
                 case 4:
                     _a = _b.sent();
-                    setModalError('Failed to submit timesheet. Please try again.');
+                    setModalError(strings.SubmitFailed);
                     return [3 /*break*/, 6];
                 case 5:
                     setModalSaving(false);
@@ -370,20 +422,20 @@ var CalendarView = function () {
         React.createElement("div", { className: CalendarView_module_scss_1.default.header },
             React.createElement("button", { className: CalendarView_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
                 React.createElement(IconHome, null)),
-            React.createElement("h1", { className: CalendarView_module_scss_1.default.title }, "Timesheet Calendar"),
+            React.createElement("h1", { className: CalendarView_module_scss_1.default.title }, strings.CalendarTitle),
             loading && React.createElement("div", { className: CalendarView_module_scss_1.default.headerSpinner })),
         React.createElement("div", { className: CalendarView_module_scss_1.default.calendarCard },
             React.createElement("div", { className: CalendarView_module_scss_1.default.calendarToolbar },
                 React.createElement("button", { className: CalendarView_module_scss_1.default.navBtn, onClick: goBack },
                     React.createElement(IconLeft, null)),
                 React.createElement("span", { className: CalendarView_module_scss_1.default.monthLabel },
-                    MONTH_NAMES[currentMonth.getMonth()],
+                    strings.MonthNames[currentMonth.getMonth()],
                     " ",
                     currentMonth.getFullYear()),
                 React.createElement("button", { className: CalendarView_module_scss_1.default.navBtn, onClick: goForward, disabled: isNextDisabled() },
                     React.createElement(IconRight, null))),
             React.createElement("div", { className: CalendarView_module_scss_1.default.calendarGrid },
-                DAY_NAMES.map(function (d) { return (React.createElement("div", { key: d, className: CalendarView_module_scss_1.default.dayHeader }, d)); }),
+                strings.DayNamesShort.map(function (d) { return (React.createElement("div", { key: d, className: CalendarView_module_scss_1.default.dayHeader }, d)); }),
                 calendarWeeks.map(function (week, wi) {
                     return week.map(function (day, di) {
                         var dateStr = toDateStr(day);
@@ -399,7 +451,7 @@ var CalendarView = function () {
                                 today ? CalendarView_module_scss_1.default.today : '',
                                 future ? CalendarView_module_scss_1.default.future : '',
                                 !future ? CalendarView_module_scss_1.default.clickable : '',
-                            ].join(' '), onClick: function () { return !future && handleDayClick(day); }, title: future ? '' : "Click to ".concat(dayEntries ? 'edit' : 'add', " entries") },
+                            ].join(' '), onClick: function () { return !future && handleDayClick(day); }, title: future ? '' : (dayEntries ? strings.ClickToEdit : strings.ClickToAdd) },
                             React.createElement("span", { className: CalendarView_module_scss_1.default.dayNumber }, day.getDate()),
                             status && (React.createElement("div", { className: CalendarView_module_scss_1.default.eventPill, style: { background: statusColor(status), color: status === 'Draft' ? '#4b3800' : '#fff' } },
                                 totalHrs.toFixed(1),
@@ -411,10 +463,10 @@ var CalendarView = function () {
             ['Draft', 'Submitted', 'Approved', 'Rejected'].map(function (s) { return (React.createElement("span", { key: s, className: CalendarView_module_scss_1.default.legendItem },
                 React.createElement("span", { className: CalendarView_module_scss_1.default.dot, style: { background: statusColor(s) } }),
                 s)); }),
-            React.createElement("span", { className: CalendarView_module_scss_1.default.legendHint }, "Click any past date to add or edit entries")),
+            React.createElement("span", { className: CalendarView_module_scss_1.default.legendHint }, strings.LegendHint)),
         React.createElement("div", { className: CalendarView_module_scss_1.default.entriesSection },
-            React.createElement("h2", { className: CalendarView_module_scss_1.default.sectionTitle }, "Entries This Period"),
-            monthEntries.length === 0 ? (React.createElement("p", { className: CalendarView_module_scss_1.default.emptyHint }, "No entries yet. Click a date on the calendar to get started.")) : (React.createElement("div", { className: CalendarView_module_scss_1.default.entriesWrap }, Array.from(entriesByDate.entries()).map(function (_a) {
+            React.createElement("h2", { className: CalendarView_module_scss_1.default.sectionTitle }, strings.EntriesThisPeriod),
+            monthEntries.length === 0 ? (React.createElement("p", { className: CalendarView_module_scss_1.default.emptyHint }, strings.NoEntriesHint)) : (React.createElement("div", { className: CalendarView_module_scss_1.default.entriesWrap }, Array.from(entriesByDate.entries()).map(function (_a) {
                 var dateStr = _a[0], dayEntries = _a[1];
                 var status = dominantStatus(dayEntries);
                 var totalHours = dayEntries.reduce(function (s, e) { return s + e.hoursSpent; }, 0);
@@ -429,10 +481,10 @@ var CalendarView = function () {
                         React.createElement("table", { className: CalendarView_module_scss_1.default.entriesTable },
                             React.createElement("thead", null,
                                 React.createElement("tr", null,
-                                    React.createElement("th", null, "Project"),
-                                    React.createElement("th", null, "Category"),
-                                    React.createElement("th", null, "Task Description"),
-                                    React.createElement("th", null, "Hours"))),
+                                    React.createElement("th", null, strings.Project),
+                                    React.createElement("th", null, strings.Category),
+                                    React.createElement("th", null, strings.TaskDescription),
+                                    React.createElement("th", null, strings.Hours))),
                             React.createElement("tbody", null, dayEntries.map(function (entry) { return (React.createElement("tr", { key: entry.id },
                                 React.createElement("td", null, entry.projectName),
                                 React.createElement("td", null, entry.activityCategoryName),
@@ -445,10 +497,10 @@ var CalendarView = function () {
                     React.createElement("span", { className: CalendarView_module_scss_1.default.modalDayNum }, selectedDate.getDate()),
                     React.createElement("div", { className: CalendarView_module_scss_1.default.modalDateMeta },
                         React.createElement("span", { className: CalendarView_module_scss_1.default.modalDateMonth },
-                            MONTH_NAMES[selectedDate.getMonth()],
+                            strings.MonthNames[selectedDate.getMonth()],
                             " ",
                             selectedDate.getFullYear()),
-                        React.createElement("span", { className: CalendarView_module_scss_1.default.modalDateWeekday }, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][selectedDate.getDay()]))),
+                        React.createElement("span", { className: CalendarView_module_scss_1.default.modalDateWeekday }, strings.DayNamesFull[selectedDate.getDay()]))),
                 React.createElement("div", { className: CalendarView_module_scss_1.default.modalHeaderRight },
                     modalDayStatus && (React.createElement("span", { className: CalendarView_module_scss_1.default.modalStatusChip, "data-status": modalDayStatus.toLowerCase() },
                         React.createElement("span", { className: CalendarView_module_scss_1.default.modalStatusDot }),
@@ -469,61 +521,63 @@ var CalendarView = function () {
                     React.createElement("ul", { className: CalendarView_module_scss_1.default.validationList }, modalValidErrors.map(function (e, i) { return React.createElement("li", { key: i }, e); })))),
                 isReadOnly && modalDayStatus !== 'Approved' && (React.createElement("div", { className: "".concat(CalendarView_module_scss_1.default.alert, " ").concat(CalendarView_module_scss_1.default.alertInfo) },
                     React.createElement(IconInfo, null),
-                    React.createElement("span", null, "Submitted \u2014 awaiting manager review."))))),
+                    React.createElement("span", null, strings.SubmittedAwaiting))))),
             modalDayStatus === 'Rejected' && modalMgrComments && (React.createElement("div", { className: CalendarView_module_scss_1.default.rejectedBanner },
-                React.createElement("span", { className: CalendarView_module_scss_1.default.rejectedLabel }, "Manager feedback:"),
+                React.createElement("span", { className: CalendarView_module_scss_1.default.rejectedLabel }, strings.ManagerFeedback),
                 React.createElement("span", { className: CalendarView_module_scss_1.default.rejectedMsg }, modalMgrComments))),
             React.createElement("div", { className: CalendarView_module_scss_1.default.taskCardsWrap },
-                modalRows.map(function (row, idx) { return (React.createElement("div", { key: row.rowKey, className: CalendarView_module_scss_1.default.taskCard },
-                    React.createElement("div", { className: CalendarView_module_scss_1.default.taskCardTop },
-                        React.createElement("span", { className: CalendarView_module_scss_1.default.taskIndex },
-                            "Task ",
-                            idx + 1),
-                        !isReadOnly && (React.createElement("button", { className: CalendarView_module_scss_1.default.taskDeleteBtn, disabled: modalRows.length === 1, onClick: function () { return deleteModalRow(row.rowKey, row.id); }, title: "Remove task" },
-                            React.createElement(IconTrash, null)))),
-                    React.createElement("div", { className: CalendarView_module_scss_1.default.taskFieldsRow },
-                        React.createElement("div", { className: CalendarView_module_scss_1.default.taskField },
-                            React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, "Project"),
-                            React.createElement("select", { className: CalendarView_module_scss_1.default.fieldSelect, disabled: isReadOnly, value: row.projectId, onChange: function (e) {
-                                    var _a;
-                                    var proj = projects.find(function (p) { return p.id === Number(e.target.value); });
-                                    updateModalRow(row.rowKey, { projectId: Number(e.target.value), projectName: (_a = proj === null || proj === void 0 ? void 0 : proj.title) !== null && _a !== void 0 ? _a : '' });
-                                } },
-                                React.createElement("option", { value: 0 }, "Select project\u2026"),
-                                projects.map(function (p) { return React.createElement("option", { key: p.id, value: p.id }, p.title); }))),
-                        React.createElement("div", { className: CalendarView_module_scss_1.default.taskField },
-                            React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, "Category"),
-                            React.createElement("select", { className: CalendarView_module_scss_1.default.fieldSelect, disabled: isReadOnly, value: row.activityCategoryId, onChange: function (e) {
-                                    var _a;
-                                    var cat = categories.find(function (c) { return c.id === Number(e.target.value); });
-                                    updateModalRow(row.rowKey, { activityCategoryId: Number(e.target.value), activityCategoryName: (_a = cat === null || cat === void 0 ? void 0 : cat.title) !== null && _a !== void 0 ? _a : '' });
-                                } },
-                                React.createElement("option", { value: 0 }, "Select category\u2026"),
-                                categories.map(function (c) { return React.createElement("option", { key: c.id, value: c.id }, c.title); }))),
-                        React.createElement("div", { className: CalendarView_module_scss_1.default.hoursField },
-                            React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, "Hours"),
-                            React.createElement("div", { className: CalendarView_module_scss_1.default.hoursStepper },
-                                React.createElement("button", { className: CalendarView_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent <= 0.25, onClick: function () { return updateModalRow(row.rowKey, { hoursSpent: Math.max(0.25, parseFloat((row.hoursSpent - 0.25).toFixed(2))) }); } }, "\u2212"),
-                                React.createElement("input", { type: "number", className: CalendarView_module_scss_1.default.hoursInput, disabled: isReadOnly, value: row.hoursSpent, min: 0.25, max: 24, step: 0.25, onChange: function (e) { return updateModalRow(row.rowKey, { hoursSpent: parseFloat(e.target.value) || 0 }); } }),
-                                React.createElement("button", { className: CalendarView_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent >= 24, onClick: function () { return updateModalRow(row.rowKey, { hoursSpent: Math.min(24, parseFloat((row.hoursSpent + 0.25).toFixed(2))) }); } }, "+")))),
-                    React.createElement("div", { className: CalendarView_module_scss_1.default.taskDescField },
-                        React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, "Description"),
-                        React.createElement("textarea", { className: CalendarView_module_scss_1.default.fieldTextarea, disabled: isReadOnly, rows: 2, value: row.taskDescription, placeholder: "What did you work on?", onChange: function (e) { return updateModalRow(row.rowKey, { taskDescription: e.target.value }); } })))); }),
+                modalRows.map(function (row, idx) {
+                    var _a, _b, _c, _d;
+                    return (React.createElement("div", { key: row.rowKey, className: CalendarView_module_scss_1.default.taskCard },
+                        React.createElement("div", { className: CalendarView_module_scss_1.default.taskCardTop },
+                            React.createElement("span", { className: CalendarView_module_scss_1.default.taskIndex }, (0, fmt_1.fmt)(strings.TaskLabel, { n: idx + 1 })),
+                            !isReadOnly && modalRows.length > 1 && (React.createElement("button", { className: CalendarView_module_scss_1.default.taskDeleteBtn, onClick: function () { return deleteModalRow(row.rowKey, row.id); }, title: strings.RemoveTask },
+                                React.createElement(IconTrash, null)))),
+                        React.createElement("div", { className: CalendarView_module_scss_1.default.taskFieldsRow },
+                            React.createElement("div", { className: CalendarView_module_scss_1.default.taskField },
+                                React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, strings.Project),
+                                React.createElement("select", { className: CalendarView_module_scss_1.default.fieldSelect, style: ((_a = rowErrors[row.rowKey]) === null || _a === void 0 ? void 0 : _a.projectId) ? { borderColor: '#da1e28' } : {}, disabled: isReadOnly, value: row.projectId, onChange: function (e) {
+                                        var _a;
+                                        var proj = projects.find(function (p) { return p.id === Number(e.target.value); });
+                                        updateModalRow(row.rowKey, { projectId: Number(e.target.value), projectName: (_a = proj === null || proj === void 0 ? void 0 : proj.title) !== null && _a !== void 0 ? _a : '' });
+                                    } },
+                                    React.createElement("option", { value: 0 }, strings.SelectProject),
+                                    projects.map(function (p) { return React.createElement("option", { key: p.id, value: p.id }, p.title); }))),
+                            React.createElement("div", { className: CalendarView_module_scss_1.default.taskField },
+                                React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, strings.Category),
+                                React.createElement("select", { className: CalendarView_module_scss_1.default.fieldSelect, style: ((_b = rowErrors[row.rowKey]) === null || _b === void 0 ? void 0 : _b.activityCategoryId) ? { borderColor: '#da1e28' } : {}, disabled: isReadOnly, value: row.activityCategoryId, onChange: function (e) {
+                                        var _a;
+                                        var cat = categories.find(function (c) { return c.id === Number(e.target.value); });
+                                        updateModalRow(row.rowKey, { activityCategoryId: Number(e.target.value), activityCategoryName: (_a = cat === null || cat === void 0 ? void 0 : cat.title) !== null && _a !== void 0 ? _a : '' });
+                                    } },
+                                    React.createElement("option", { value: 0 }, strings.SelectCategory),
+                                    categories.map(function (c) { return React.createElement("option", { key: c.id, value: c.id }, c.title); }))),
+                            React.createElement("div", { className: CalendarView_module_scss_1.default.hoursField },
+                                React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, strings.Hours),
+                                React.createElement("div", { className: CalendarView_module_scss_1.default.hoursStepper },
+                                    React.createElement("button", { className: CalendarView_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent <= 0.25, onClick: function () { return updateModalRow(row.rowKey, { hoursSpent: Math.max(0.25, parseFloat((row.hoursSpent - 0.25).toFixed(2))) }); } }, "\u2212"),
+                                    React.createElement("input", { type: "number", className: CalendarView_module_scss_1.default.hoursInput, style: ((_c = rowErrors[row.rowKey]) === null || _c === void 0 ? void 0 : _c.hoursSpent) ? { borderColor: '#da1e28' } : {}, disabled: isReadOnly, value: row.hoursSpent, min: 0.25, max: 24, step: 0.25, onChange: function (e) { return updateModalRow(row.rowKey, { hoursSpent: parseFloat(e.target.value) || 0 }); } }),
+                                    React.createElement("button", { className: CalendarView_module_scss_1.default.stepBtn, disabled: isReadOnly || row.hoursSpent >= 24, onClick: function () { return updateModalRow(row.rowKey, { hoursSpent: Math.min(24, parseFloat((row.hoursSpent + 0.25).toFixed(2))) }); } }, "+")))),
+                        React.createElement("div", { className: CalendarView_module_scss_1.default.taskDescField },
+                            React.createElement("label", { className: CalendarView_module_scss_1.default.fieldLbl }, strings.Description),
+                            React.createElement("textarea", { className: CalendarView_module_scss_1.default.fieldTextarea, style: ((_d = rowErrors[row.rowKey]) === null || _d === void 0 ? void 0 : _d.taskDescription) ? { borderColor: '#da1e28' } : {}, disabled: isReadOnly, rows: 2, value: row.taskDescription, placeholder: strings.WhatDidYouWorkOn, onChange: function (e) { return updateModalRow(row.rowKey, { taskDescription: e.target.value }); } }))));
+                }),
                 !isReadOnly && (React.createElement("button", { className: CalendarView_module_scss_1.default.addTaskBtn, onClick: addModalRow, disabled: modalSaving },
                     React.createElement(IconAdd, null),
-                    React.createElement("span", null, "Add another task")))),
+                    React.createElement("span", null, strings.AddAnotherTask)))),
             React.createElement("div", { className: CalendarView_module_scss_1.default.modalFooter },
                 React.createElement("div", { className: CalendarView_module_scss_1.default.footerTotal },
                     React.createElement("span", { className: CalendarView_module_scss_1.default.footerTotalNum }, totalModalHours.toFixed(2)),
                     React.createElement("span", { className: CalendarView_module_scss_1.default.footerTotalLabel },
-                        "hrs total",
-                        totalModalHours > 24 ? ' · ⚠ over limit' : '')),
+                        strings.HrsTotal,
+                        totalModalHours > 24 ? " \u00B7 ".concat(strings.OverLimit) : '')),
                 !isReadOnly && (React.createElement("div", { className: CalendarView_module_scss_1.default.footerBtns }, !submitConfirm ? (React.createElement(React.Fragment, null,
-                    React.createElement(react_2.DefaultButton, { text: "Save Draft", iconProps: { iconName: 'Save' }, onClick: handleSaveDraft, disabled: totalModalHours > 24 || modalSaving }),
-                    React.createElement(react_2.PrimaryButton, { text: "Submit", iconProps: { iconName: 'Send' }, onClick: function () { return setSubmitConfirm(true); }, disabled: totalModalHours > 24 || modalSaving }))) : (React.createElement(React.Fragment, null,
-                    React.createElement("span", { className: CalendarView_module_scss_1.default.confirmPrompt }, "Confirm submit?"),
-                    React.createElement(react_2.DefaultButton, { text: "Cancel", onClick: function () { return setSubmitConfirm(false); }, disabled: totalModalHours > 24 || modalSaving }),
-                    React.createElement(react_2.PrimaryButton, { text: "Yes, Submit", iconProps: { iconName: 'CheckMark' }, onClick: handleSubmit, disabled: totalModalHours > 24 || modalSaving }))))))))));
+                    React.createElement(react_2.DefaultButton, { text: strings.SaveDraft, iconProps: { iconName: 'Save' }, onClick: handleSaveDraft, disabled: totalModalHours > 24 || modalSaving }),
+                    React.createElement(react_2.PrimaryButton, { text: strings.Submit, iconProps: { iconName: 'Send' }, onClick: function () { if (validateAndHighlight())
+                            setSubmitConfirm(true); }, disabled: totalModalHours > 24 || modalSaving }))) : (React.createElement(React.Fragment, null,
+                    React.createElement("span", { className: CalendarView_module_scss_1.default.confirmPrompt }, strings.ConfirmSubmit),
+                    React.createElement(react_2.DefaultButton, { text: strings.Cancel, onClick: function () { return setSubmitConfirm(false); }, disabled: totalModalHours > 24 || modalSaving }),
+                    React.createElement(react_2.PrimaryButton, { text: strings.YesSubmit, iconProps: { iconName: 'CheckMark' }, onClick: handleSubmit, disabled: totalModalHours > 24 || modalSaving }))))))))));
 };
 exports.default = CalendarView;
 //# sourceMappingURL=CalendarView.js.map

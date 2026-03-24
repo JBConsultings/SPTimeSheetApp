@@ -5,16 +5,19 @@ import { ITimesheetEntry, IExportFilter, TimesheetStatus } from '../models/ITime
 import { getEntriesForExport } from '../services/TimesheetService';
 import { exportToExcel, exportToPDF } from '../services/ExportService';
 import { currentMonthRange, formatDateShort } from '../utils/dateUtils';
+import * as strings from 'TimeSheetWebPartStrings';
 import styles from './ExportPanel.module.scss';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const STATUS_OPTIONS = [
-  { key: '',          text: 'All Statuses' },
-  { key: 'Draft',     text: 'Draft' },
-  { key: 'Submitted', text: 'Submitted' },
-  { key: 'Approved',  text: 'Approved' },
-  { key: 'Rejected',  text: 'Rejected' },
-];
+function getStatusOptions() {
+  return [
+    { key: '',          text: strings.AllStatuses },
+    { key: 'Draft',     text: strings.StatusDraft },
+    { key: 'Submitted', text: strings.StatusSubmitted },
+    { key: 'Approved',  text: strings.StatusApproved },
+    { key: 'Rejected',  text: strings.StatusRejected },
+  ];
+}
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function toDateInputValue(d: Date): string {
@@ -122,6 +125,10 @@ const ExportPanel: React.FC = () => {
 
   // ─── Handlers ───────────────────────────────────────────────────────────────
   const handlePreview = async (): Promise<void> => {
+    if (endDate < startDate) {
+      setError('End date must be on or after the start date.');
+      return;
+    }
     setLoading(true);
     setError('');
     setSuccessMessage('');
@@ -134,7 +141,7 @@ const ExportPanel: React.FC = () => {
       );
       setPreviewData(entries);
     } catch {
-      setError('Failed to load data. Please try again.');
+      setError(strings.LoadExportFailed);
     } finally {
       setLoading(false);
     }
@@ -146,9 +153,9 @@ const ExportPanel: React.FC = () => {
     setError('');
     try {
       await exportToExcel(previewData, buildFilter());
-      setSuccessMessage('Excel file downloaded successfully.');
+      setSuccessMessage(strings.ExcelSuccess);
     } catch {
-      setError('Excel export failed. Please try again.');
+      setError(strings.ExcelFailed);
     } finally {
       setExporting(false);
     }
@@ -160,10 +167,10 @@ const ExportPanel: React.FC = () => {
     setError('');
     try {
       await exportToPDF(previewData, buildFilter());
-      setSuccessMessage('PDF file downloaded successfully.');
+      setSuccessMessage(strings.PdfSuccess);
     } catch (err) {
       console.error('PDF export error:', err);
-      setError(err instanceof Error ? err.message : 'PDF export failed. Please try again.');
+      setError(err instanceof Error ? err.message : strings.PdfFailed);
     } finally {
       setExporting(false);
     }
@@ -185,34 +192,38 @@ const ExportPanel: React.FC = () => {
         <button className={styles.homeBtn} title="Home" onClick={navigateHome}>
           <IconHome />
         </button>
-        <h1 className={styles.title}>Export Timesheet Report</h1>
+        <h1 className={styles.title}>{strings.ExportTitle}</h1>
       </div>
 
       {/* Filter card */}
       <div className={styles.filterCard}>
-        <p className={styles.filterTitle}>Filter Options</p>
+        <p className={styles.filterTitle}>{strings.FilterOptions}</p>
 
         {/* Date row */}
         <div className={styles.filterRow}>
           <div className={styles.filterGroup}>
-            <label htmlFor="exp-from">From <span style={{ color: '#da1e28' }}>*</span></label>
+            <label htmlFor="exp-from">{strings.From} <span style={{ color: '#da1e28' }}>*</span></label>
             <input
               id="exp-from"
               type="date"
               className={styles.filterInput}
               value={toDateInputValue(startDate)}
-              onChange={(e) => e.target.value && setStartDate(fromDateInputValue(e.target.value))}
+              onChange={(e) => { if (e.target.value) { setStartDate(fromDateInputValue(e.target.value)); setError(''); } }}
             />
           </div>
           <div className={styles.filterGroup}>
-            <label htmlFor="exp-to">To <span style={{ color: '#da1e28' }}>*</span></label>
+            <label htmlFor="exp-to">{strings.To} <span style={{ color: '#da1e28' }}>*</span></label>
             <input
               id="exp-to"
               type="date"
               className={styles.filterInput}
+              style={endDate < startDate ? { borderColor: '#da1e28' } : {}}
               value={toDateInputValue(endDate)}
-              onChange={(e) => e.target.value && setEndDate(fromDateInputValue(e.target.value))}
+              onChange={(e) => { if (e.target.value) { setEndDate(fromDateInputValue(e.target.value)); setError(''); } }}
             />
+            {endDate < startDate && (
+              <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>Must be on or after the start date</span>
+            )}
           </div>
         </div>
 
@@ -220,7 +231,7 @@ const ExportPanel: React.FC = () => {
         <div className={styles.filterRow}>
           <div className={styles.filterGroup}>
             <label htmlFor="exp-email">
-              Employee Email <span className={styles.optional}>(optional)</span>
+              {strings.EmployeeEmail} <span className={styles.optional}>{strings.Optional}</span>
             </label>
             <input
               id="exp-email"
@@ -228,12 +239,12 @@ const ExportPanel: React.FC = () => {
               className={styles.filterInput}
               value={employeeEmail}
               onChange={(e) => setEmployeeEmail(e.target.value)}
-              placeholder="e.g. john@company.com"
+              placeholder={strings.EmailPlaceholder}
             />
           </div>
           <div className={styles.filterGroup}>
             <label htmlFor="exp-status">
-              Status <span className={styles.optional}>(optional)</span>
+              {strings.Status} <span className={styles.optional}>{strings.Optional}</span>
             </label>
             <select
               id="exp-status"
@@ -241,7 +252,7 @@ const ExportPanel: React.FC = () => {
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
             >
-              {STATUS_OPTIONS.map((o) => (
+              {getStatusOptions().map((o) => (
                 <option key={o.key} value={o.key}>{o.text}</option>
               ))}
             </select>
@@ -255,8 +266,8 @@ const ExportPanel: React.FC = () => {
           disabled={loading}
         >
           {loading
-            ? <><div className={styles.spinnerSmDark} /> Loading…</>
-            : <><IconSearch /> Preview Data</>
+            ? <><div className={styles.spinnerSmDark} /> {strings.LoadingData}</>
+            : <><IconSearch /> {strings.PreviewData}</>
           }
         </button>
       </div>
@@ -281,7 +292,7 @@ const ExportPanel: React.FC = () => {
       {loading && (
         <div className={styles.loadingWrap}>
           <div className={styles.spinner} />
-          <span>Loading data…</span>
+          <span>{strings.LoadingData}</span>
         </div>
       )}
 
@@ -292,19 +303,19 @@ const ExportPanel: React.FC = () => {
           {/* Summary strip */}
           <div className={styles.summaryStrip}>
             <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Records</span>
+              <span className={styles.summaryLabel}>{strings.Records}</span>
               <span className={styles.summaryValue}>{previewData.length}</span>
             </div>
             <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Total Hours</span>
+              <span className={styles.summaryLabel}>{strings.TotalHours}</span>
               <span className={styles.summaryValue}>{totalHours.toFixed(2)}</span>
             </div>
             <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Employees</span>
+              <span className={styles.summaryLabel}>{strings.Employees}</span>
               <span className={styles.summaryValue}>{uniqueEmployees}</span>
             </div>
             <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>Period</span>
+              <span className={styles.summaryLabel}>{strings.Period}</span>
               <span className={styles.summaryValueSm}>
                 {formatDateShort(startDate)} – {formatDateShort(endDate)}
               </span>
@@ -319,8 +330,8 @@ const ExportPanel: React.FC = () => {
               disabled={exporting || previewData.length === 0}
             >
               {exporting
-                ? <><div className={styles.spinnerSm} /> Exporting…</>
-                : <><IconExcel /> Export to Excel</>
+                ? <><div className={styles.spinnerSm} /> {strings.Exporting}</>
+                : <><IconExcel /> {strings.ExportExcel}</>
               }
             </button>
             <button
@@ -329,8 +340,8 @@ const ExportPanel: React.FC = () => {
               disabled={exporting || previewData.length === 0}
             >
               {exporting
-                ? <><div className={styles.spinnerSm} /> Exporting…</>
-                : <><IconPdf /> Export to PDF</>
+                ? <><div className={styles.spinnerSm} /> {strings.Exporting}</>
+                : <><IconPdf /> {strings.ExportPdf}</>
               }
             </button>
           </div>
@@ -339,8 +350,8 @@ const ExportPanel: React.FC = () => {
           {previewData.length === 0 ? (
             <div className={styles.emptyState}>
               <IconNoData />
-              <span className={styles.emptyTitle}>No data found</span>
-              <span className={styles.emptySubtitle}>Try adjusting your filters and previewing again.</span>
+              <span className={styles.emptyTitle}>{strings.NoDataFound}</span>
+              <span className={styles.emptySubtitle}>{strings.NoDataHint}</span>
             </div>
           ) : (
             <div className={styles.tableCard}>
@@ -348,13 +359,13 @@ const ExportPanel: React.FC = () => {
                 <table className={styles.previewTable}>
                   <thead>
                     <tr>
-                      <th>Employee</th>
-                      <th className={styles.colDate}>Date</th>
-                      <th>Project</th>
-                      <th>Category</th>
-                      <th>Description</th>
-                      <th className={styles.colHours}>Hours</th>
-                      <th className={styles.colStatus}>Status</th>
+                      <th>{strings.Employee}</th>
+                      <th className={styles.colDate}>{strings.Date}</th>
+                      <th>{strings.Project}</th>
+                      <th>{strings.Category}</th>
+                      <th>{strings.Description}</th>
+                      <th className={styles.colHours}>{strings.Hours}</th>
+                      <th className={styles.colStatus}>{strings.Status}</th>
                     </tr>
                   </thead>
                   <tbody>

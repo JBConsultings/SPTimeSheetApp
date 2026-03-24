@@ -5,6 +5,7 @@ import { Spinner, SpinnerSize, MessageBar, MessageBarType } from '@fluentui/reac
 import { ITimeSheetProps } from './ITimeSheetProps';
 import { ICurrentUser } from '../models/ITimesheetModels';
 import { getCurrentUser } from '../services/UserService';
+import * as strings from 'TimeSheetWebPartStrings';
 import AppShell from './AppShell';
 
 interface ITimeSheetState {
@@ -27,7 +28,7 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
     } catch {
       this.setState({
         loading: false,
-        error: 'Failed to load user profile. Defaulting to Employee role.',
+        error: strings.UserProfileFailed,
         currentUser: {
           id: 0,
           displayName: this.props.userDisplayName,
@@ -45,7 +46,7 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
     if (loading) {
       return (
         <div style={{ padding: 40, textAlign: 'center' }}>
-          <Spinner size={SpinnerSize.large} label="Loading Timesheet App..." />
+          <Spinner size={SpinnerSize.large} label={strings.LoadingApp} />
         </div>
       );
     }
@@ -53,7 +54,7 @@ export default class TimeSheet extends React.Component<ITimeSheetProps, ITimeShe
     if (!currentUser) {
       return (
         <MessageBar messageBarType={MessageBarType.error}>
-          Unable to load the application. Please refresh the page.
+          {strings.LoadFailedApp}
         </MessageBar>
       );
     }

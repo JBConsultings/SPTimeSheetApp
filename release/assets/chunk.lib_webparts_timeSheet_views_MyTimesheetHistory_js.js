@@ -63,12 +63,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/TimesheetService */ 30264);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MyTimesheetHistory.module.scss */ 55595);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyTimesheetHistory.module.scss */ 55595);
+
+
 
 
 
@@ -76,22 +81,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: 'All', text: 'All Statuses' },
-    { key: 'Draft', text: 'Draft' },
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-];
+function getStatusOptions() {
+    return [
+        { key: 'All', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AllStatuses },
+        { key: 'Draft', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusDraft },
+        { key: 'Submitted', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusSubmitted },
+        { key: 'Approved', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusApproved },
+        { key: 'Rejected', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusRejected },
+    ];
+}
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === 'Approved')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].approved;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].approved;
     if (status === 'Submitted')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].submitted;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].submitted;
     if (status === 'Rejected')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rejected;
-    return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].draft;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rejected;
+    return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].draft;
 }
 function toDateInputValue(d) {
     // Returns yyyy-mm-dd for <input type="date">
@@ -148,16 +155,20 @@ var IconCalendar = function (_a) {
 };
 var IconChevronRight = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M5 2l5 5-5 5", stroke: "currentColor", strokeWidth: "1.5", fill: "none", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconTrash = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 14 14", fill: "currentColor" },
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" }))); };
 // ─── Component ────────────────────────────────────────────────────────────────
 var MyTimesheetHistory = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo, navigateHome = _a.navigateHome;
-    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
+    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultEnd), endDate = _d[0], setEndDate = _d[1];
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('All'), statusFilter = _e[0], setStatusFilter = _e[1];
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), summaries = _f[0], setSummaries = _f[1];
     var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _g[0], setLoading = _g[1];
     var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), error = _h[0], setError = _h[1];
+    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), confirmDeleteKey = _j[0], setConfirmDeleteKey = _j[1];
+    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), deleting = _k[0], setDeleting = _k[1];
     // ─── Data fetch ─────────────────────────────────────────────────────────────
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         var cancelled = false;
@@ -172,62 +183,125 @@ var MyTimesheetHistory = function () {
         })
             .catch(function () {
             if (!cancelled) {
-                setError('Failed to load timesheet history.');
+                setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadHistoryFailed);
                 setLoading(false);
             }
         });
         return function () { cancelled = true; };
     }, [startDate, endDate, currentUser.email]);
+    // ─── Delete draft entries for a day ─────────────────────────────────────────
+    var handleDelete = function (summary, e) {
+        e.stopPropagation();
+        var key = summary.date.toISOString();
+        setDeleting(false);
+        setConfirmDeleteKey(key);
+    };
+    var confirmDelete = function (summary, e) { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
+        var _a;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    e.stopPropagation();
+                    setDeleting(true);
+                    setError('');
+                    _b.label = 1;
+                case 1:
+                    _b.trys.push([1, 3, 4, 5]);
+                    return [4 /*yield*/, Promise.all(summary.entries
+                            .filter(function (en) { return en.id !== undefined; })
+                            .map(function (en) { return (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.deleteEntry)(en.id); }))];
+                case 2:
+                    _b.sent();
+                    setSummaries(function (prev) { return prev.filter(function (s) { return s.date.toISOString() !== summary.date.toISOString(); }); });
+                    return [3 /*break*/, 5];
+                case 3:
+                    _a = _b.sent();
+                    setError('Failed to delete entries. Please try again.');
+                    return [3 /*break*/, 5];
+                case 4:
+                    setDeleting(false);
+                    setConfirmDeleteKey(null);
+                    return [7 /*endfinally*/];
+                case 5: return [2 /*return*/];
+            }
+        });
+    }); };
+    var cancelDelete = function (e) {
+        e.stopPropagation();
+        setConfirmDeleteKey(null);
+    };
     // ─── Derived ────────────────────────────────────────────────────────────────
     var filtered = statusFilter === 'All'
         ? summaries
         : summaries.filter(function (s) { return s.status === statusFilter; });
     // ─── Render ─────────────────────────────────────────────────────────────────
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].header },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].homeBtn, title: "Home", onClick: navigateHome },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].homeBtn, title: "Home", onClick: navigateHome },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconHome, null)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].title }, "My Timesheet History")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterBar },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-from" }, "From"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-from", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-to" }, "To"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-to", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-status" }, "Status"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "filter-status", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
-        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].errorBar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.HistoryTitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterBar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.From),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-from", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.To),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-to", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Status),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "filter-status", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
+        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].errorBar },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
             error)),
-        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].loadingWrap },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading history\u2026"))) : filtered.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyState },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCalendar, { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyIcon }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyTitle }, "No entries found"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptySubtitle }, "Try adjusting the date range or status filter."))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].list }, filtered.map(function (summary) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: summary.date.toISOString(), className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryCard, onClick: function () { return navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].cardLeft },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].cardDate }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateLabel)(summary.date)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].cardMeta },
-                    summary.entries.length,
-                    " task",
-                    summary.entries.length !== 1 ? 's' : '',
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dot }),
-                    summary.totalHours.toFixed(2),
-                    " hrs")),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 10 } },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].badge, " ").concat(badgeClass(summary.status)) }, summary.status),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconChevronRight, null)))); }))),
-        !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].footer },
-            "Showing ",
+        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loadingWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingHistory))) : filtered.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyState },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCalendar, { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyIcon }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoEntriesFound),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoEntriesHintHistory))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].list }, filtered.map(function (summary) {
+            var key = summary.date.toISOString();
+            var isPendingDelete = confirmDeleteKey === key;
+            return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: key, className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryCard, onClick: function () { return !isPendingDelete && navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardLeft },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardDate }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateLabel)(summary.date)),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardMeta },
+                        summary.entries.length,
+                        " task",
+                        summary.entries.length !== 1 ? 's' : '',
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dot }),
+                        summary.totalHours.toFixed(2),
+                        " hrs")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 10 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(badgeClass(summary.status)) }, summary.status),
+                    summary.status === 'Draft' && !isPendingDelete && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { style: {
+                            background: 'none', border: '1px solid #da1e28', borderRadius: 6,
+                            color: '#da1e28', cursor: 'pointer', padding: '4px 8px',
+                            display: 'flex', alignItems: 'center', gap: 4, fontSize: 12,
+                        }, title: "Delete draft", onClick: function (e) { return handleDelete(summary, e); } },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconTrash, null),
+                        " Delete")),
+                    isPendingDelete && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 6, fontSize: 12 }, onClick: function (e) { return e.stopPropagation(); } },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#6f6f6f' } }, "Delete draft?"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { style: {
+                                background: '#da1e28', border: 'none', borderRadius: 6,
+                                color: '#fff', cursor: 'pointer', padding: '4px 10px', fontSize: 12,
+                            }, disabled: deleting, onClick: function (e) { void confirmDelete(summary, e); } }, deleting ? '…' : 'Yes'),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { style: {
+                                background: 'none', border: '1px solid #8d8d8d', borderRadius: 6,
+                                color: '#393939', cursor: 'pointer', padding: '4px 10px', fontSize: 12,
+                            }, disabled: deleting, onClick: cancelDelete }, "No"))),
+                    !isPendingDelete && react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconChevronRight, null))));
+        }))),
+        !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].footer },
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Showing,
+            " ",
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, filtered.length),
-            " day",
-            filtered.length !== 1 ? 's' : '',
+            " ",
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Days,
             "\u00A0\u00B7\u00A0",
-            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(startDate),
+            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(startDate),
             " \u2013 ",
-            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(endDate)))));
+            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(endDate)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTimesheetHistory);
 

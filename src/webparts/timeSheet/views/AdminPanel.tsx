@@ -9,6 +9,7 @@ import {
   updateProject,
   deactivateProject,
   activateProject,
+  deleteProject,
 } from "../services/ProjectService";
 import {
   getAllCategories,
@@ -16,7 +17,9 @@ import {
   updateCategory,
   deactivateCategory,
   activateCategory,
+  deleteCategory,
 } from "../services/CategoryService";
+import * as strings from 'TimeSheetWebPartStrings';
 import styles from "./AdminPanel.module.scss";
 
 // ─── Shared helpers ────────────────────────────────────────────────────────────
@@ -47,6 +50,8 @@ const ProjectsTab: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editProject, setEditProject] = useState<Partial<IProject>>({});
   const [saving, setSaving] = useState(false);
+  const [formErrors, setFormErrors] = useState<{ title?: string; projectCode?: string }>({});
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
 
   const load = (): void => {
     setLoading(true);
@@ -56,7 +61,7 @@ const ProjectsTab: React.FC = () => {
         setLoading(false);
       })
       .catch(() => {
-        setMessage("Failed to load projects.");
+        setMessage(strings.LoadProjectsFailed);
         setIsError(true);
         setLoading(false);
       });
@@ -68,40 +73,46 @@ const ProjectsTab: React.FC = () => {
 
   const openAdd = (): void => {
     setEditProject({ isActive: true });
+    setFormErrors({});
     setDrawerOpen(true);
   };
   const openEdit = (p: IProject): void => {
     setEditProject({ ...p });
+    setFormErrors({});
     setDrawerOpen(true);
   };
   const closeDrawer = (): void => {
+    setFormErrors({});
     setDrawerOpen(false);
   };
 
   const handleSave = async (): Promise<void> => {
-    if (!editProject.title || !editProject.projectCode) {
-      setMessage("Project Name and Project Code are required.");
-      setIsError(true);
+    const errors: { title?: string; projectCode?: string } = {};
+    if (!editProject.title || !editProject.title.trim()) errors.title = 'Project Name is required.';
+    if (!editProject.projectCode || !editProject.projectCode.trim()) errors.projectCode = 'Project Code is required.';
+    if (errors.title || errors.projectCode) {
+      setFormErrors(errors);
       return;
     }
+    setFormErrors({});
     setSaving(true);
     try {
       if (editProject.id) {
         await updateProject(editProject.id, editProject);
-        setMessage("Project updated successfully.");
+        setMessage(strings.ProjectUpdated);
         setIsError(false);
       } else {
         await addProject({
           ...editProject,
           isActive: editProject.isActive ?? true,
         } as Omit<IProject, "id">);
-        setMessage("Project added successfully.");
+        setMessage(strings.ProjectAdded);
         setIsError(false);
       }
       setDrawerOpen(false);
       load();
     } catch {
-      setMessage("Failed to save project.");
+      setMessage(strings.ProjectSaveFailed);
       setIsError(true);
     } finally {
       setSaving(false);
@@ -111,12 +122,12 @@ const ProjectsTab: React.FC = () => {
   return (
     <div className={styles.tabContent}>
       <div className={styles.toolbar}>
-        <span className={styles.sectionLabel}>Projects</span>
+        <span className={styles.sectionLabel}>{strings.ProjectsTab}</span>
         <button className={styles.addBtn} onClick={openAdd}>
           <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
             <path d="M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" />
           </svg>
-          Add Project
+          {strings.AddProject}
         </button>
       </div>
 
@@ -131,19 +142,19 @@ const ProjectsTab: React.FC = () => {
       {loading ? (
         <div className={styles.loading}>
           <div className={styles.spinner} />
-          <span>Loading projects…</span>
+          <span>{strings.LoadingProjects}</span>
         </div>
       ) : (
         <div className={styles.tableWrap}>
           <table className={styles.table}>
             <thead className={styles.thead}>
               <tr>
-                <th className={styles.th}>Code</th>
-                <th className={styles.th}>Project Name</th>
-                <th className={styles.th}>Client</th>
-                <th className={styles.th}>Status</th>
-                <th className={styles.th} style={{ width: 90 }}>
-                  Actions
+                <th className={styles.th}>{strings.Code}</th>
+                <th className={styles.th}>{strings.ProjectName}</th>
+                <th className={styles.th}>{strings.ClientName}</th>
+                <th className={styles.th}>{strings.Status}</th>
+                <th className={styles.th} style={{ width: 130 }}>
+                  {strings.Actions}
                 </th>
               </tr>
             </thead>
@@ -151,7 +162,7 @@ const ProjectsTab: React.FC = () => {
               {projects.length === 0 ? (
                 <tr>
                   <td colSpan={5} className={styles.empty}>
-                    No projects found.
+                    {strings.NoProjects}
                   </td>
                 </tr>
               ) : (
@@ -167,7 +178,7 @@ const ProjectsTab: React.FC = () => {
                         className={`${styles.badge} ${p.isActive ? styles.badgeActive : styles.badgeInactive}`}
                       >
                         <span className={styles.badgeDot} />
-                        {p.isActive ? "Active" : "Inactive"}
+                        {p.isActive ? strings.Active : strings.Inactive}
                       </span>
                     </td>
                     <td className={styles.td}>
@@ -186,6 +197,31 @@ const ProjectsTab: React.FC = () => {
                             <path d="M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" />
                           </svg>
                         </button>
+                        {confirmDeleteId === p.id ? (
+                          <>
+                            <span style={{ fontSize: 11, color: '#6f6f6f' }}>Delete?</span>
+                            <button
+                              className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
+                              title="Confirm delete"
+                              onClick={() => deleteProject(p.id).then(() => { setConfirmDeleteId(null); load(); }).catch(() => { setMessage(strings.ProjectSaveFailed); setIsError(true); setConfirmDeleteId(null); })}
+                            >✓</button>
+                            <button
+                              className={styles.iconBtn}
+                              title="Cancel"
+                              onClick={() => setConfirmDeleteId(null)}
+                            >✕</button>
+                          </>
+                        ) : (
+                          <button
+                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
+                            title="Delete"
+                            onClick={() => setConfirmDeleteId(p.id)}
+                          >
+                            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+                              <path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+                            </svg>
+                          </button>
+                        )}
                         {p.isActive ? (
                           <button
                             className={`${styles.iconBtn} ${styles.iconBtnSuccess}`}
@@ -253,7 +289,7 @@ const ProjectsTab: React.FC = () => {
       >
         <div className={styles.drawerHeader}>
           <h3 className={styles.drawerTitle}>
-            {editProject.id ? "Edit Project" : "Add Project"}
+            {editProject.id ? strings.EditProject : strings.AddProjectModal}
           </h3>
           <button className={styles.drawerClose} onClick={closeDrawer}>
             ×
@@ -262,38 +298,41 @@ const ProjectsTab: React.FC = () => {
         <div className={styles.drawerBody}>
           <div className={styles.field}>
             <label className={styles.fieldLabel}>
-              Project Name <span className={styles.required}>*</span>
+              {strings.ProjectName} <span className={styles.required}>*</span>
             </label>
             <input
               className={styles.fieldInput}
-              placeholder="Enter project name"
+              style={formErrors.title ? { borderColor: '#da1e28' } : {}}
+              placeholder={strings.ProjectNamePlaceholder}
               value={editProject.title ?? ""}
-              onChange={(e) =>
-                setEditProject((p) => ({ ...p, title: e.target.value }))
-              }
+              onChange={(e) => {
+                setEditProject((p) => ({ ...p, title: e.target.value }));
+                if (formErrors.title) setFormErrors((prev) => ({ ...prev, title: undefined }));
+              }}
             />
+            {formErrors.title && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.title}</span>}
           </div>
           <div className={styles.field}>
             <label className={styles.fieldLabel}>
-              Project Code <span className={styles.required}>*</span>
+              {strings.ProjectCode} <span className={styles.required}>*</span>
             </label>
             <input
               className={styles.fieldInput}
-              placeholder="e.g. PROJ-001"
+              style={formErrors.projectCode ? { borderColor: '#da1e28' } : {}}
+              placeholder={strings.ProjectCodePlaceholder}
               value={editProject.projectCode ?? ""}
-              onChange={(e) =>
-                setEditProject((p) => ({
-                  ...p,
-                  projectCode: e.target.value,
-                }))
-              }
+              onChange={(e) => {
+                setEditProject((p) => ({ ...p, projectCode: e.target.value }));
+                if (formErrors.projectCode) setFormErrors((prev) => ({ ...prev, projectCode: undefined }));
+              }}
             />
+            {formErrors.projectCode && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.projectCode}</span>}
           </div>
           <div className={styles.field}>
-            <label className={styles.fieldLabel}>Client Name</label>
+            <label className={styles.fieldLabel}>{strings.ClientName}</label>
             <input
               className={styles.fieldInput}
-              placeholder="Enter client name"
+              placeholder={strings.ClientNamePlaceholder}
               value={editProject.clientName ?? ""}
               onChange={(e) =>
                 setEditProject((p) => ({
@@ -304,10 +343,10 @@ const ProjectsTab: React.FC = () => {
             />
           </div>
           <div className={styles.field}>
-            <label className={styles.fieldLabel}>Description</label>
+            <label className={styles.fieldLabel}>{strings.Description}</label>
             <textarea
               className={`${styles.fieldInput} ${styles.fieldTextarea}`}
-              placeholder="Optional description"
+              placeholder={strings.OptionalDescription}
               value={editProject.description ?? ""}
               onChange={(e) =>
                 setEditProject((p) => ({
@@ -318,7 +357,7 @@ const ProjectsTab: React.FC = () => {
             />
           </div>
           <div className={styles.toggleRow}>
-            <span className={styles.toggleLabel}>Active</span>
+            <span className={styles.toggleLabel}>{strings.Active}</span>
             <label className={styles.toggle}>
               <input
                 type="checkbox"
@@ -349,13 +388,13 @@ const ProjectsTab: React.FC = () => {
             disabled={saving}
           >
             {saving
-              ? "Saving…"
+              ? strings.Saving
               : editProject.id
-                ? "Update Project"
-                : "Add Project"}
+                ? strings.UpdateProject
+                : strings.AddProjectModal}
           </button>
           <button className={styles.cancelBtn} onClick={closeDrawer}>
-            Cancel
+            {strings.Cancel}
           </button>
         </div>
       </Modal>
@@ -373,6 +412,8 @@ const CategoriesTab: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editCat, setEditCat] = useState<Partial<IActivityCategory>>({});
   const [saving, setSaving] = useState(false);
+  const [formErrors, setFormErrors] = useState<{ title?: string }>({});
+  const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
 
   const load = (): void => {
     setLoading(true);
@@ -382,7 +423,7 @@ const CategoriesTab: React.FC = () => {
         setLoading(false);
       })
       .catch(() => {
-        setMessage("Failed to load categories.");
+        setMessage(strings.LoadCategoriesFailed);
         setIsError(true);
         setLoading(false);
       });
@@ -394,40 +435,43 @@ const CategoriesTab: React.FC = () => {
 
   const openAdd = (): void => {
     setEditCat({ isActive: true, sortOrder: 0 });
+    setFormErrors({});
     setDrawerOpen(true);
   };
   const openEdit = (c: IActivityCategory): void => {
     setEditCat({ ...c });
+    setFormErrors({});
     setDrawerOpen(true);
   };
   const closeDrawer = (): void => {
+    setFormErrors({});
     setDrawerOpen(false);
   };
 
   const handleSave = async (): Promise<void> => {
-    if (!editCat.title) {
-      setMessage("Category Name is required.");
-      setIsError(true);
+    if (!editCat.title || !editCat.title.trim()) {
+      setFormErrors({ title: 'Category Name is required.' });
       return;
     }
+    setFormErrors({});
     setSaving(true);
     try {
       if (editCat.id) {
         await updateCategory(editCat.id, editCat);
-        setMessage("Category updated.");
+        setMessage(strings.CategoryUpdated);
         setIsError(false);
       } else {
         await addCategory({
           ...editCat,
           isActive: editCat.isActive ?? true,
         } as Omit<IActivityCategory, "id">);
-        setMessage("Category added.");
+        setMessage(strings.CategoryAdded);
         setIsError(false);
       }
       setDrawerOpen(false);
       load();
     } catch {
-      setMessage("Failed to save category.");
+      setMessage(strings.CategorySaveFailed);
       setIsError(true);
     } finally {
       setSaving(false);
@@ -437,12 +481,12 @@ const CategoriesTab: React.FC = () => {
   return (
     <div className={styles.tabContent}>
       <div className={styles.toolbar}>
-        <span className={styles.sectionLabel}>Activity Categories</span>
+        <span className={styles.sectionLabel}>{strings.CategoriesTab}</span>
         <button className={styles.addBtn} onClick={openAdd}>
           <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
             <path d="M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" />
           </svg>
-          Add Category
+          {strings.AddCategory}
         </button>
       </div>
 
@@ -457,21 +501,21 @@ const CategoriesTab: React.FC = () => {
       {loading ? (
         <div className={styles.loading}>
           <div className={styles.spinner} />
-          <span>Loading categories…</span>
+          <span>{strings.LoadingCategories}</span>
         </div>
       ) : (
         <div className={styles.tableWrap}>
           <table className={styles.table}>
             <thead className={styles.thead}>
               <tr>
-                <th className={styles.th}>Category Name</th>
-                <th className={styles.th}>Description</th>
+                <th className={styles.th}>{strings.Category}</th>
+                <th className={styles.th}>{strings.Description}</th>
                 <th className={styles.th} style={{ width: 70 }}>
-                  Sort
+                  {strings.SortOrder}
                 </th>
-                <th className={styles.th}>Status</th>
-                <th className={styles.th} style={{ width: 90 }}>
-                  Actions
+                <th className={styles.th}>{strings.Status}</th>
+                <th className={styles.th} style={{ width: 130 }}>
+                  {strings.Actions}
                 </th>
               </tr>
             </thead>
@@ -479,7 +523,7 @@ const CategoriesTab: React.FC = () => {
               {categories.length === 0 ? (
                 <tr>
                   <td colSpan={5} className={styles.empty}>
-                    No categories found.
+                    {strings.NoCategories}
                   </td>
                 </tr>
               ) : (
@@ -493,7 +537,7 @@ const CategoriesTab: React.FC = () => {
                         className={`${styles.badge} ${c.isActive ? styles.badgeActive : styles.badgeInactive}`}
                       >
                         <span className={styles.badgeDot} />
-                        {c.isActive ? "Active" : "Inactive"}
+                        {c.isActive ? strings.Active : strings.Inactive}
                       </span>
                     </td>
                     <td className={styles.td}>
@@ -512,6 +556,31 @@ const CategoriesTab: React.FC = () => {
                             <path d="M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" />
                           </svg>
                         </button>
+                        {confirmDeleteId === c.id ? (
+                          <>
+                            <span style={{ fontSize: 11, color: '#6f6f6f' }}>Delete?</span>
+                            <button
+                              className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
+                              title="Confirm delete"
+                              onClick={() => deleteCategory(c.id).then(() => { setConfirmDeleteId(null); load(); }).catch(() => { setMessage(strings.CategorySaveFailed); setIsError(true); setConfirmDeleteId(null); })}
+                            >✓</button>
+                            <button
+                              className={styles.iconBtn}
+                              title="Cancel"
+                              onClick={() => setConfirmDeleteId(null)}
+                            >✕</button>
+                          </>
+                        ) : (
+                          <button
+                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
+                            title="Delete"
+                            onClick={() => setConfirmDeleteId(c.id)}
+                          >
+                            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+                              <path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+                            </svg>
+                          </button>
+                        )}
                         {c.isActive ? (
                           <button
                             className={`${styles.iconBtn} ${styles.iconBtnSuccess}`}
@@ -579,7 +648,7 @@ const CategoriesTab: React.FC = () => {
       >
         <div className={styles.drawerHeader}>
           <h3 className={styles.drawerTitle}>
-            {editCat.id ? "Edit Category" : "Add Category"}
+            {editCat.id ? strings.EditCategory : strings.AddCategoryModal}
           </h3>
           <button className={styles.drawerClose} onClick={closeDrawer}>
             ×
@@ -588,22 +657,25 @@ const CategoriesTab: React.FC = () => {
         <div className={styles.drawerBody}>
           <div className={styles.field}>
             <label className={styles.fieldLabel}>
-              Category Name <span className={styles.required}>*</span>
+              {strings.Category} <span className={styles.required}>*</span>
             </label>
             <input
               className={styles.fieldInput}
-              placeholder="Enter category name"
+              style={formErrors.title ? { borderColor: '#da1e28' } : {}}
+              placeholder={strings.CategoryNamePlaceholder}
               value={editCat.title ?? ""}
-              onChange={(e) =>
-                setEditCat((c) => ({ ...c, title: e.target.value }))
-              }
+              onChange={(e) => {
+                setEditCat((c) => ({ ...c, title: e.target.value }));
+                if (formErrors.title) setFormErrors({});
+              }}
             />
+            {formErrors.title && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.title}</span>}
           </div>
           <div className={styles.field}>
-            <label className={styles.fieldLabel}>Description</label>
+            <label className={styles.fieldLabel}>{strings.Description}</label>
             <textarea
               className={`${styles.fieldInput} ${styles.fieldTextarea}`}
-              placeholder="Optional description"
+              placeholder={strings.OptionalDescription}
               value={editCat.description ?? ""}
               onChange={(e) =>
                 setEditCat((c) => ({ ...c, description: e.target.value }))
@@ -611,7 +683,7 @@ const CategoriesTab: React.FC = () => {
             />
           </div>
           <div className={styles.field}>
-            <label className={styles.fieldLabel}>Sort Order</label>
+            <label className={styles.fieldLabel}>{strings.SortOrder}</label>
             <input
               type="number"
               className={styles.fieldInput}
@@ -627,7 +699,7 @@ const CategoriesTab: React.FC = () => {
             />
           </div>
           <div className={styles.toggleRow}>
-            <span className={styles.toggleLabel}>Active</span>
+            <span className={styles.toggleLabel}>{strings.Active}</span>
             <label className={styles.toggle}>
               <input
                 type="checkbox"
@@ -655,13 +727,13 @@ const CategoriesTab: React.FC = () => {
             disabled={saving}
           >
             {saving
-              ? "Saving…"
+              ? strings.Saving
               : editCat.id
-                ? "Update Category"
-                : "Add Category"}
+                ? strings.UpdateCategory
+                : strings.AddCategoryModal}
           </button>
           <button className={styles.cancelBtn} onClick={closeDrawer}>
-            Cancel
+            {strings.Cancel}
           </button>
         </div>
       </Modal>
@@ -693,10 +765,10 @@ const AdminPanel: React.FC = () => {
           </button>
           <div>
             <h2 className={styles.headerTitle}>
-              Manage Projects &amp; Categories
+              {strings.AdminTitle}
             </h2>
             <p className={styles.headerSubtitle}>
-              Configure projects and activity categories
+              {strings.AdminSubtitle}
             </p>
           </div>
         </div>
@@ -711,14 +783,14 @@ const AdminPanel: React.FC = () => {
             onClick={() => setActiveTab("projects")}
           >
             <span className={styles.tabIcon}>📁</span>
-            Projects
+            {strings.ProjectsTab}
           </button>
           <button
             className={`${styles.tab} ${activeTab === "categories" ? styles.tabActive : ""}`}
             onClick={() => setActiveTab("categories")}
           >
             <span className={styles.tabIcon}>🏷️</span>
-            Activity Categories
+            {strings.CategoriesTab}
           </button>
         </div>
 

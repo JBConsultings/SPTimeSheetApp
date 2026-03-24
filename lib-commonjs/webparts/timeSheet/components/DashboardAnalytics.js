@@ -6,6 +6,7 @@ var react_1 = require("react");
 var AppContext_1 = require("../context/AppContext");
 var AnalyticsService_1 = require("../services/AnalyticsService");
 var dateUtils_1 = require("../utils/dateUtils");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var SimpleChart_1 = tslib_1.__importDefault(require("./SimpleChart"));
 var DashboardAnalytics_module_scss_1 = tslib_1.__importDefault(require("./DashboardAnalytics.module.scss"));
 var Chart = function (_a) {
@@ -64,9 +65,9 @@ var RecentActivity = function (_a) {
         }
     };
     return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.recentActivity },
-        React.createElement("h3", { className: DashboardAnalytics_module_scss_1.default.activityTitle }, "Recent Activity"),
+        React.createElement("h3", { className: DashboardAnalytics_module_scss_1.default.activityTitle }, strings.RecentActivity),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.activityList }, activities.length === 0 ? (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.emptyActivity },
-            React.createElement("span", null, "No recent activity"))) : (activities.map(function (activity) { return (React.createElement("div", { key: activity.id, className: DashboardAnalytics_module_scss_1.default.activityItem },
+            React.createElement("span", null, strings.NoRecentActivity))) : (activities.map(function (activity) { return (React.createElement("div", { key: activity.id, className: DashboardAnalytics_module_scss_1.default.activityItem },
             React.createElement("div", { className: "".concat(DashboardAnalytics_module_scss_1.default.activityIcon, " ").concat((function () {
                     var color = getActivityColor(activity.type);
                     switch (color) {
@@ -103,7 +104,7 @@ var DashboardAnalytics = function () {
                         return [3 /*break*/, 4];
                     case 2:
                         err_1 = _a.sent();
-                        setError('Failed to load analytics data');
+                        setError(strings.AnalyticsFailed);
                         console.error('Analytics error:', err_1);
                         return [3 /*break*/, 4];
                     case 3:
@@ -118,7 +119,7 @@ var DashboardAnalytics = function () {
     if (loading) {
         return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.loadingContainer },
             React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.spinner }),
-            React.createElement("span", null, "Loading analytics...")));
+            React.createElement("span", null, strings.LoadingAnalytics)));
     }
     if (error) {
         return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.errorContainer },
@@ -128,30 +129,30 @@ var DashboardAnalytics = function () {
     }
     if (!analyticsData) {
         return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.emptyContainer },
-            React.createElement("span", null, "No analytics data available")));
+            React.createElement("span", null, strings.NoAnalyticsData)));
     }
     var last7Days = analyticsData.last7Days, monthlyHours = analyticsData.monthlyHours, weeklyDistribution = analyticsData.weeklyDistribution, quickStats = analyticsData.quickStats, recentActivity = analyticsData.recentActivity;
     return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.analyticsContainer },
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.analyticsHeader },
-            React.createElement("h2", { className: DashboardAnalytics_module_scss_1.default.analyticsTitle }, "Dashboard Analytics"),
-            React.createElement("p", { className: DashboardAnalytics_module_scss_1.default.analyticsSubtitle }, "Your timesheet insights and trends")),
+            React.createElement("h2", { className: DashboardAnalytics_module_scss_1.default.analyticsTitle }, strings.AnalyticsTitle),
+            React.createElement("p", { className: DashboardAnalytics_module_scss_1.default.analyticsSubtitle }, strings.AnalyticsSubtitle)),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.statsGrid },
-            React.createElement(StatsCard, { title: "Total Hours", value: quickStats.totalHours, subtitle: "This month", icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: strings.TotalHoursCard, value: quickStats.totalHours, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" })), color: "blue", trend: quickStats.hoursChange ? {
                     value: quickStats.hoursChange,
                     direction: quickStats.hoursChange > 0 ? 'up' : 'down'
                 } : undefined }),
-            React.createElement(StatsCard, { title: "Avg Daily", value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: "Last 7 days", icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: strings.AvgDaily, value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: strings.Last7Days, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" })), color: "green" }),
-            React.createElement(StatsCard, { title: "Submitted", value: quickStats.submittedEntries, subtitle: "This week", icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: strings.SubmittedCard, value: quickStats.submittedEntries, subtitle: strings.ThisWeek, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" })), color: "purple" }),
-            React.createElement(StatsCard, { title: "Approved", value: quickStats.approvedEntries, subtitle: "This month", icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: strings.ApprovedCard, value: quickStats.approvedEntries, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })), color: "orange" })),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsGrid },
-            React.createElement(Chart, { data: last7Days, type: "line", title: "Last 7 Days \u2014 Hours Trend", className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
+            React.createElement(Chart, { data: last7Days, type: "line", title: strings.Last7DaysChart, className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
             React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsRow },
-                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: "This Week's Distribution", className: DashboardAnalytics_module_scss_1.default.chartMedium }),
-                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: "Monthly Hours by Project", className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
+                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: strings.WeekDistribution, className: DashboardAnalytics_module_scss_1.default.chartMedium }),
+                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: strings.MonthlyByProject, className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
         React.createElement(RecentActivity, { activities: recentActivity })));
 };
 exports.default = DashboardAnalytics;

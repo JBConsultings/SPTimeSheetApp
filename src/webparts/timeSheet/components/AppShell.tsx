@@ -4,6 +4,7 @@ import { MessageBar, MessageBarType, Spinner, SpinnerSize } from '@fluentui/reac
 
 import { ICurrentUser, IAppNavigationState, AppView } from '../models/ITimesheetModels';
 import { AppContext } from '../context/AppContext';
+import * as strings from 'TimeSheetWebPartStrings';
 
 // ─── Lazy-loaded views ────────────────────────────────────────────────────────
 const HomePage           = React.lazy(() => import('../views/HomePage'));
@@ -85,7 +86,7 @@ const AppShell: React.FC<IAppShellProps> = ({ currentUser, error }) => {
           {error}
         </MessageBar>
       )}
-      <React.Suspense fallback={<Spinner size={SpinnerSize.medium} label="Loading..." />}>
+      <React.Suspense fallback={<Spinner size={SpinnerSize.medium} label={strings.LoadingEllipsis} />}>
         <Routes>
           <Route path="/"             element={<HomePage />} />
           <Route path="/daily-form"   element={<DailyTimesheetForm selectedDate={selectedDate ?? new Date()} />} />

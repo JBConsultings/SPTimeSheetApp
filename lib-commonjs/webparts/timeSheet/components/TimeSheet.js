@@ -5,6 +5,7 @@ var React = tslib_1.__importStar(require("react"));
 var react_router_dom_1 = require("react-router-dom");
 var react_1 = require("@fluentui/react");
 var UserService_1 = require("../services/UserService");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var AppShell_1 = tslib_1.__importDefault(require("./AppShell"));
 var TimeSheet = /** @class */ (function (_super) {
     tslib_1.__extends(TimeSheet, _super);
@@ -29,7 +30,7 @@ var TimeSheet = /** @class */ (function (_super) {
                         _a = _b.sent();
                         this.setState({
                             loading: false,
-                            error: 'Failed to load user profile. Defaulting to Employee role.',
+                            error: strings.UserProfileFailed,
                             currentUser: {
                                 id: 0,
                                 displayName: this.props.userDisplayName,
@@ -48,10 +49,10 @@ var TimeSheet = /** @class */ (function (_super) {
         var _a = this.state, loading = _a.loading, currentUser = _a.currentUser, error = _a.error;
         if (loading) {
             return (React.createElement("div", { style: { padding: 40, textAlign: 'center' } },
-                React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.large, label: "Loading Timesheet App..." })));
+                React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.large, label: strings.LoadingApp })));
         }
         if (!currentUser) {
-            return (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.error }, "Unable to load the application. Please refresh the page."));
+            return (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.error }, strings.LoadFailedApp));
         }
         // HashRouter keeps routing within the # fragment so SharePoint's URL is untouched.
         // The full URL for each view looks like:

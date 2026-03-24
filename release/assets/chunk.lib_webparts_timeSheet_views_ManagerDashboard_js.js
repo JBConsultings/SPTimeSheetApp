@@ -82,6 +82,28 @@ _node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_
 
 /***/ }),
 
+/***/ 27583:
+/*!*********************************************!*\
+  !*** ./lib/webparts/timeSheet/utils/fmt.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   fmt: () => (/* binding */ fmt)
+/* harmony export */ });
+/**
+ * Replace {key} tokens in a localised string template with runtime values.
+ * Example: fmt("Hello {name}, you have {n} tasks", { name: "Alice", n: 3 })
+ *          → "Hello Alice, you have 3 tasks"
+ */
+function fmt(template, values) {
+    return template.replace(/\{(\w+)\}/g, function (_, k) { var _a; return String((_a = values[k]) !== null && _a !== void 0 ? _a : "{".concat(k, "}")); });
+}
+
+
+/***/ }),
+
 /***/ 50734:
 /*!**********************************************************!*\
   !*** ./lib/webparts/timeSheet/views/ManagerDashboard.js ***!
@@ -92,20 +114,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 76702);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react */ 44533);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fluentui/react */ 67102);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 29425);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 80954);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 49885);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 5613);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fluentui/react */ 76702);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 44533);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 67102);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 29425);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 80954);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fluentui/react */ 49885);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fluentui/react */ 5613);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/TimesheetService */ 30264);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ManagerDashboard.module.scss */ 13102);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var _utils_fmt__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/fmt */ 27583);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ManagerDashboard.module.scss */ 13102);
+
+
 
 
 
@@ -115,21 +142,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-    { key: 'All', text: 'All Statuses' },
-];
+function getStatusOptions() {
+    return [
+        { key: 'Submitted', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusSubmitted },
+        { key: 'Approved', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusApproved },
+        { key: 'Rejected', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusRejected },
+        { key: 'All', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AllStatuses },
+    ];
+}
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === 'Approved')
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].approved;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].approved;
     if (status === 'Submitted')
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].submitted;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].submitted;
     if (status === 'Rejected')
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rejected;
-    return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].draft;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rejected;
+    return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].draft;
 }
 function toDateInputValue(d) {
     var y = d.getFullYear();
@@ -186,7 +215,7 @@ var IconUsers = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createE
 // ─── Component ────────────────────────────────────────────────────────────────
 var ManagerDashboard = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateHome = _a.navigateHome;
-    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.currentWeekRange)(), wStart = _b.start, wEnd = _b.end;
+    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.currentWeekRange)(), wStart = _b.start, wEnd = _b.end;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(wStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(wEnd), endDate = _d[0], setEndDate = _d[1];
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('Submitted'), statusFilter = _f[0], setStatusFilter = _f[1];
@@ -211,7 +240,7 @@ var ManagerDashboard = function () {
         };
         (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.getTeamEntries)(startDate, endDate, opts)
             .then(function (entries) { setRows(groupToTeamRows(entries)); setLoading(false); })
-            .catch(function () { setError('Failed to load team timesheets.'); setLoading(false); });
+            .catch(function () { setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadTeamFailed); setLoading(false); });
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () { loadData(); }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
     // ─── Modal helpers ────────────────────────────────────────────────────────
@@ -226,9 +255,9 @@ var ManagerDashboard = function () {
             return;
         setModalOpen(false);
     };
-    var handleAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
-        var ids, verb, _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_b) {
+    var handleAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
+        var ids, msg, _a;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     if (!reviewRow || !reviewAction)
@@ -242,13 +271,13 @@ var ManagerDashboard = function () {
                     return [4 /*yield*/, (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.approveDayEntries)(ids, currentUser.displayName)];
                 case 2:
                     _b.sent();
-                    setSuccessMessage("Approved timesheet for ".concat(reviewRow.employeeName, " on ").concat((0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(reviewRow.entryDate), "."));
+                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_7__.fmt)(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ApprovedMsg, { name: reviewRow.employeeName, date: (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(reviewRow.entryDate) }));
                     return [3 /*break*/, 5];
                 case 3: return [4 /*yield*/, (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.rejectDayEntries)(ids, currentUser.displayName, managerComment)];
                 case 4:
                     _b.sent();
-                    verb = reviewAction === 'resubmit' ? 'requested re-submission for' : 'rejected';
-                    setSuccessMessage("Successfully ".concat(verb, " timesheet for ").concat(reviewRow.employeeName, "."));
+                    msg = reviewAction === 'resubmit' ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ResubmitMsg : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RejectedMsg;
+                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_7__.fmt)(msg, { name: reviewRow.employeeName }));
                     _b.label = 5;
                 case 5:
                     setModalOpen(false);
@@ -265,106 +294,114 @@ var ManagerDashboard = function () {
             }
         });
     }); };
-    var modalTitle = reviewAction === 'approve' ? 'Approve Timesheet' :
-        reviewAction === 'resubmit' ? 'Request Re-submission' :
-            'Reject Timesheet';
-    var confirmBtnLabel = reviewAction === 'approve' ? 'Confirm Approve' :
-        reviewAction === 'resubmit' ? 'Send Re-submit Request' :
-            'Confirm Reject';
+    var modalTitle = reviewAction === 'approve' ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ApproveModal :
+        reviewAction === 'resubmit' ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RequestResubmitModal :
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RejectModal;
+    var confirmBtnLabel = reviewAction === 'approve' ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ConfirmApprove :
+        reviewAction === 'resubmit' ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.SendResubmit :
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ConfirmReject;
     var confirmDisabled = actionLoading || (reviewAction !== 'approve' && !managerComment.trim());
     // ─── Render ───────────────────────────────────────────────────────────────
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].header },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].homeBtn, title: "Home", onClick: navigateHome },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].homeBtn, title: "Home", onClick: navigateHome },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconHome, null)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].title }, "Team Timesheets")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterBar },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-from" }, "From"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-from", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-to" }, "To"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-to", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-status" }, "Status"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "mgr-status", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroupWide) },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-employee" }, "Employee Email"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-employee", type: "text", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: "Filter by email\u2026" }))),
-        successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].success) },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.TeamTimesheetsTitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterBar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.From),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-from", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.To),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-to", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Status),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "mgr-status", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroupWide) },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-employee" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.EmployeeEmail),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-employee", type: "text", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.FilterByEmail }))),
+        successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].success) },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconSuccess, null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, successMessage),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dismissBtn, onClick: function () { return setSuccessMessage(''); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dismissBtn, onClick: function () { return setSuccessMessage(''); } },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconClose, null)))),
-        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].error) },
+        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].error) },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error))),
-        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].loadingWrap },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading team timesheets\u2026"))) : rows.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyState },
+        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loadingWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingTeam))) : rows.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyState },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconUsers, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyTitle }, "No timesheets found"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptySubtitle }, "Try adjusting the date range, status, or employee filter."))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].list }, rows.map(function (row) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: "".concat(row.employeeEmail, "__").concat(row.entryDate.toISOString()), className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rowCard },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rowLeft },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rowName }, row.employeeName),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rowMeta },
-                    (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateLabel)(row.entryDate),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dot }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoTimesheetsFound),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoTimesheetsHint))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].list }, rows.map(function (row) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: "".concat(row.employeeEmail, "__").concat(row.entryDate.toISOString()), className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rowCard },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rowLeft },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rowName }, row.employeeName),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rowMeta },
+                    (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateLabel)(row.entryDate),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dot }),
                     row.entries.length,
                     " task",
                     row.entries.length !== 1 ? 's' : '',
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dot }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dot }),
                     row.totalHours.toFixed(2),
                     " hrs")),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rowRight },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].badge, " ").concat(badgeClass(row.status)) }, row.status),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rowRight },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(badgeClass(row.status)) }, row.status),
                 row.status === 'Submitted' && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnApprove), onClick: function () { return openModal(row, 'approve'); } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnApprove), onClick: function () { return openModal(row, 'approve'); } },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCheck, null),
-                        " Approve"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnReject), onClick: function () { return openModal(row, 'reject'); } },
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ApproveBtn),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnReject), onClick: function () { return openModal(row, 'reject'); } },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconReject, null),
-                        " Reject"))),
-                row.status === 'Approved' && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnResubmit), onClick: function () { return openModal(row, 'resubmit'); } },
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RejectBtn))),
+                row.status === 'Approved' && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnResubmit), onClick: function () { return openModal(row, 'resubmit'); } },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconRefresh, null),
-                    " Request Re-submit"))))); }))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalHeader },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalTitle }, modalTitle),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.IconButton, { iconProps: { iconName: 'Cancel' }, ariaLabel: "Close", onClick: closeModal, disabled: actionLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalCloseBtn })),
-            reviewRow && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalBody },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].panelMeta },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].panelMetaName }, reviewRow.employeeName),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].panelMetaDetail },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateLabel)(reviewRow.entryDate)),
+                    " ",
+                    TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RequestResubmitBtn))))); }))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalHeader },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalTitle }, modalTitle),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.IconButton, { iconProps: { iconName: 'Cancel' }, ariaLabel: "Close", onClick: closeModal, disabled: actionLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalCloseBtn })),
+            reviewRow && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalBody },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].panelMeta },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].panelMetaName }, reviewRow.employeeName),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].panelMetaDetail },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateLabel)(reviewRow.entryDate)),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null,
                             "Total: ",
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null,
                                 reviewRow.totalHours.toFixed(2),
                                 " hrs")))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].panelTableWrap },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].panelTable },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].panelTableWrap },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].panelTable },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Category"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Description"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].colHrs }, "Hrs"))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Project),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Category),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Description),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].colHrs }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Hrs))),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, reviewRow.entries.map(function (e) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: e.id },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.projectName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.activityCategoryName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.taskDescription),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tdCenter }, e.hoursSpent))); })))),
-                reviewAction !== 'approve' && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.TextField, { label: "Manager Comments", required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ''); }, placeholder: "Provide feedback for the employee\u2026", disabled: actionLoading })))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].modalFooter },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, className: reviewAction === 'approve' ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].fluentBtnApprove :
-                        reviewAction === 'reject' ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].fluentBtnReject :
-                            _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].fluentBtnResubmit }, actionLoading
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tdCenter }, e.hoursSpent))); })))),
+                reviewAction !== 'approve' && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ManagerCommentLabel, required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ''); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ManagerCommentPlaceholder, disabled: actionLoading }),
+                    !managerComment.trim() && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#a19f9d', fontSize: 12, display: 'block', marginTop: 4 } },
+                        "A comment is required before ",
+                        reviewAction === 'reject' ? 'rejecting' : 'requesting re-submission of',
+                        " this timesheet.")))))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].modalFooter },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, className: reviewAction === 'approve' ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fluentBtnApprove :
+                        reviewAction === 'reject' ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fluentBtnReject :
+                            _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].fluentBtnResubmit }, actionLoading
                     ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_11__.SpinnerSize.small }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { marginLeft: 6 } }, "Processing\u2026"))
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_13__.SpinnerSize.small }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { marginLeft: 6 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Processing))
                     : confirmBtnLabel),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.DefaultButton, { text: "Cancel", onClick: closeModal, disabled: actionLoading })))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Cancel, onClick: closeModal, disabled: actionLoading })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ManagerDashboard);
 

@@ -7,14 +7,18 @@ var react_2 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var dateUtils_1 = require("../utils/dateUtils");
+var fmt_1 = require("../utils/fmt");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var ManagerDashboard_module_scss_1 = tslib_1.__importDefault(require("./ManagerDashboard.module.scss"));
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-    { key: 'All', text: 'All Statuses' },
-];
+function getStatusOptions() {
+    return [
+        { key: 'Submitted', text: strings.StatusSubmitted },
+        { key: 'Approved', text: strings.StatusApproved },
+        { key: 'Rejected', text: strings.StatusRejected },
+        { key: 'All', text: strings.AllStatuses },
+    ];
+}
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === 'Approved')
@@ -105,7 +109,7 @@ var ManagerDashboard = function () {
         };
         (0, TimesheetService_1.getTeamEntries)(startDate, endDate, opts)
             .then(function (entries) { setRows(groupToTeamRows(entries)); setLoading(false); })
-            .catch(function () { setError('Failed to load team timesheets.'); setLoading(false); });
+            .catch(function () { setError(strings.LoadTeamFailed); setLoading(false); });
     };
     (0, react_1.useEffect)(function () { loadData(); }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
     // ─── Modal helpers ────────────────────────────────────────────────────────
@@ -121,7 +125,7 @@ var ManagerDashboard = function () {
         setModalOpen(false);
     };
     var handleAction = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-        var ids, verb, _a;
+        var ids, msg, _a;
         return tslib_1.__generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -136,13 +140,13 @@ var ManagerDashboard = function () {
                     return [4 /*yield*/, (0, TimesheetService_1.approveDayEntries)(ids, currentUser.displayName)];
                 case 2:
                     _b.sent();
-                    setSuccessMessage("Approved timesheet for ".concat(reviewRow.employeeName, " on ").concat((0, dateUtils_1.formatDateShort)(reviewRow.entryDate), "."));
+                    setSuccessMessage((0, fmt_1.fmt)(strings.ApprovedMsg, { name: reviewRow.employeeName, date: (0, dateUtils_1.formatDateShort)(reviewRow.entryDate) }));
                     return [3 /*break*/, 5];
                 case 3: return [4 /*yield*/, (0, TimesheetService_1.rejectDayEntries)(ids, currentUser.displayName, managerComment)];
                 case 4:
                     _b.sent();
-                    verb = reviewAction === 'resubmit' ? 'requested re-submission for' : 'rejected';
-                    setSuccessMessage("Successfully ".concat(verb, " timesheet for ").concat(reviewRow.employeeName, "."));
+                    msg = reviewAction === 'resubmit' ? strings.ResubmitMsg : strings.RejectedMsg;
+                    setSuccessMessage((0, fmt_1.fmt)(msg, { name: reviewRow.employeeName }));
                     _b.label = 5;
                 case 5:
                     setModalOpen(false);
@@ -159,32 +163,32 @@ var ManagerDashboard = function () {
             }
         });
     }); };
-    var modalTitle = reviewAction === 'approve' ? 'Approve Timesheet' :
-        reviewAction === 'resubmit' ? 'Request Re-submission' :
-            'Reject Timesheet';
-    var confirmBtnLabel = reviewAction === 'approve' ? 'Confirm Approve' :
-        reviewAction === 'resubmit' ? 'Send Re-submit Request' :
-            'Confirm Reject';
+    var modalTitle = reviewAction === 'approve' ? strings.ApproveModal :
+        reviewAction === 'resubmit' ? strings.RequestResubmitModal :
+            strings.RejectModal;
+    var confirmBtnLabel = reviewAction === 'approve' ? strings.ConfirmApprove :
+        reviewAction === 'resubmit' ? strings.SendResubmit :
+            strings.ConfirmReject;
     var confirmDisabled = actionLoading || (reviewAction !== 'approve' && !managerComment.trim());
     // ─── Render ───────────────────────────────────────────────────────────────
     return (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.container },
         React.createElement("div", { className: ManagerDashboard_module_scss_1.default.header },
             React.createElement("button", { className: ManagerDashboard_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
                 React.createElement(IconHome, null)),
-            React.createElement("h1", { className: ManagerDashboard_module_scss_1.default.title }, "Team Timesheets")),
+            React.createElement("h1", { className: ManagerDashboard_module_scss_1.default.title }, strings.TeamTimesheetsTitle)),
         React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterBar },
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-from" }, "From"),
+                React.createElement("label", { htmlFor: "mgr-from" }, strings.From),
                 React.createElement("input", { id: "mgr-from", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-to" }, "To"),
+                React.createElement("label", { htmlFor: "mgr-to" }, strings.To),
                 React.createElement("input", { id: "mgr-to", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-status" }, "Status"),
-                React.createElement("select", { id: "mgr-status", className: ManagerDashboard_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
+                React.createElement("label", { htmlFor: "mgr-status" }, strings.Status),
+                React.createElement("select", { id: "mgr-status", className: ManagerDashboard_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
             React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.filterGroup, " ").concat(ManagerDashboard_module_scss_1.default.filterGroupWide) },
-                React.createElement("label", { htmlFor: "mgr-employee" }, "Employee Email"),
-                React.createElement("input", { id: "mgr-employee", type: "text", className: ManagerDashboard_module_scss_1.default.filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: "Filter by email\u2026" }))),
+                React.createElement("label", { htmlFor: "mgr-employee" }, strings.EmployeeEmail),
+                React.createElement("input", { id: "mgr-employee", type: "text", className: ManagerDashboard_module_scss_1.default.filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: strings.FilterByEmail }))),
         successMessage && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.success) },
             React.createElement(IconSuccess, null),
             React.createElement("span", null, successMessage),
@@ -195,10 +199,10 @@ var ManagerDashboard = function () {
             React.createElement("span", null, error))),
         loading ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.loadingWrap },
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.spinner }),
-            React.createElement("span", null, "Loading team timesheets\u2026"))) : rows.length === 0 ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.emptyState },
+            React.createElement("span", null, strings.LoadingTeam))) : rows.length === 0 ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.emptyState },
             React.createElement(IconUsers, null),
-            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptyTitle }, "No timesheets found"),
-            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptySubtitle }, "Try adjusting the date range, status, or employee filter."))) : (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.list }, rows.map(function (row) { return (React.createElement("div", { key: "".concat(row.employeeEmail, "__").concat(row.entryDate.toISOString()), className: ManagerDashboard_module_scss_1.default.rowCard },
+            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptyTitle }, strings.NoTimesheetsFound),
+            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptySubtitle }, strings.NoTimesheetsHint))) : (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.list }, rows.map(function (row) { return (React.createElement("div", { key: "".concat(row.employeeEmail, "__").concat(row.entryDate.toISOString()), className: ManagerDashboard_module_scss_1.default.rowCard },
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowLeft },
                 React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowName }, row.employeeName),
                 React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowMeta },
@@ -215,13 +219,16 @@ var ManagerDashboard = function () {
                 row.status === 'Submitted' && (React.createElement(React.Fragment, null,
                     React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), onClick: function () { return openModal(row, 'approve'); } },
                         React.createElement(IconCheck, null),
-                        " Approve"),
+                        " ",
+                        strings.ApproveBtn),
                     React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), onClick: function () { return openModal(row, 'reject'); } },
                         React.createElement(IconReject, null),
-                        " Reject"))),
+                        " ",
+                        strings.RejectBtn))),
                 row.status === 'Approved' && (React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnResubmit), onClick: function () { return openModal(row, 'resubmit'); } },
                     React.createElement(IconRefresh, null),
-                    " Request Re-submit"))))); }))),
+                    " ",
+                    strings.RequestResubmitBtn))))); }))),
         React.createElement(react_2.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: ManagerDashboard_module_scss_1.default.modalContainer },
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.modalHeader },
                 React.createElement("h2", { className: ManagerDashboard_module_scss_1.default.modalTitle }, modalTitle),
@@ -240,25 +247,30 @@ var ManagerDashboard = function () {
                     React.createElement("table", { className: ManagerDashboard_module_scss_1.default.panelTable },
                         React.createElement("thead", null,
                             React.createElement("tr", null,
-                                React.createElement("th", null, "Project"),
-                                React.createElement("th", null, "Category"),
-                                React.createElement("th", null, "Description"),
-                                React.createElement("th", { className: ManagerDashboard_module_scss_1.default.colHrs }, "Hrs"))),
+                                React.createElement("th", null, strings.Project),
+                                React.createElement("th", null, strings.Category),
+                                React.createElement("th", null, strings.Description),
+                                React.createElement("th", { className: ManagerDashboard_module_scss_1.default.colHrs }, strings.Hrs))),
                         React.createElement("tbody", null, reviewRow.entries.map(function (e) { return (React.createElement("tr", { key: e.id },
                             React.createElement("td", null, e.projectName),
                             React.createElement("td", null, e.activityCategoryName),
                             React.createElement("td", null, e.taskDescription),
                             React.createElement("td", { className: ManagerDashboard_module_scss_1.default.tdCenter }, e.hoursSpent))); })))),
-                reviewAction !== 'approve' && (React.createElement(react_2.TextField, { label: "Manager Comments", required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ''); }, placeholder: "Provide feedback for the employee\u2026", disabled: actionLoading })))),
+                reviewAction !== 'approve' && (React.createElement(React.Fragment, null,
+                    React.createElement(react_2.TextField, { label: strings.ManagerCommentLabel, required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ''); }, placeholder: strings.ManagerCommentPlaceholder, disabled: actionLoading }),
+                    !managerComment.trim() && (React.createElement("span", { style: { color: '#a19f9d', fontSize: 12, display: 'block', marginTop: 4 } },
+                        "A comment is required before ",
+                        reviewAction === 'reject' ? 'rejecting' : 'requesting re-submission of',
+                        " this timesheet.")))))),
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.modalFooter },
                 React.createElement(react_2.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, className: reviewAction === 'approve' ? ManagerDashboard_module_scss_1.default.fluentBtnApprove :
                         reviewAction === 'reject' ? ManagerDashboard_module_scss_1.default.fluentBtnReject :
                             ManagerDashboard_module_scss_1.default.fluentBtnResubmit }, actionLoading
                     ? React.createElement(React.Fragment, null,
                         React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }),
-                        React.createElement("span", { style: { marginLeft: 6 } }, "Processing\u2026"))
+                        React.createElement("span", { style: { marginLeft: 6 } }, strings.Processing))
                     : confirmBtnLabel),
-                React.createElement(react_2.DefaultButton, { text: "Cancel", onClick: closeModal, disabled: actionLoading })))));
+                React.createElement(react_2.DefaultButton, { text: strings.Cancel, onClick: closeModal, disabled: actionLoading })))));
 };
 exports.default = ManagerDashboard;
 //# sourceMappingURL=ManagerDashboard.js.map

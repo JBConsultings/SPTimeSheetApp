@@ -102,3 +102,14 @@ export async function deactivateCategory(id: number): Promise<void> {
 export async function activateCategory(id: number): Promise<void> {
   await updateCategory(id, { isActive: true });
 }
+
+/**
+ * Permanently delete a category from the list.
+ */
+export async function deleteCategory(id: number): Promise<void> {
+  const sp = getSP();
+  await sp.web.lists
+    .getByTitle(LISTS.ACTIVITY_CATEGORIES)
+    .items.getById(id)
+    .delete();
+}

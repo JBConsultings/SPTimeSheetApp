@@ -2,32 +2,16 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var React = tslib_1.__importStar(require("react"));
+var react_router_dom_1 = require("react-router-dom");
 var react_1 = require("@fluentui/react");
-var AppContext_1 = require("../context/AppContext");
 var UserService_1 = require("../services/UserService");
-// ─── Views ────────────────────────────────────────────────────────────────────
-var HomePage = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/HomePage')); }); });
-var DailyTimesheetForm = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/DailyTimesheetForm')); }); });
-var MyTimesheetHistory = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/MyTimesheetHistory')); }); });
-var ManagerDashboard = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/ManagerDashboard')); }); });
-var AdminPanel = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/AdminPanel')); }); });
-var ExportPanel = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/ExportPanel')); }); });
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
+var AppShell_1 = tslib_1.__importDefault(require("./AppShell"));
 var TimeSheet = /** @class */ (function (_super) {
     tslib_1.__extends(TimeSheet, _super);
     function TimeSheet(props) {
         var _this = _super.call(this, props) || this;
-        _this.navigateTo = function (view, params) {
-            _this.setState(function (prev) { return ({
-                navState: tslib_1.__assign(tslib_1.__assign(tslib_1.__assign({}, prev.navState), { currentView: view }), params),
-            }); });
-        };
-        _this.navigateHome = function () {
-            _this.setState({ navState: { currentView: 'Home' } });
-        };
-        _this.state = {
-            navState: { currentView: 'Home' },
-            loading: true,
-        };
+        _this.state = { loading: true };
         return _this;
     }
     TimeSheet.prototype.componentDidMount = function () {
@@ -46,7 +30,7 @@ var TimeSheet = /** @class */ (function (_super) {
                         _a = _b.sent();
                         this.setState({
                             loading: false,
-                            error: 'Failed to load user profile. Defaulting to Employee role.',
+                            error: strings.UserProfileFailed,
                             currentUser: {
                                 id: 0,
                                 displayName: this.props.userDisplayName,
@@ -61,36 +45,21 @@ var TimeSheet = /** @class */ (function (_super) {
             });
         });
     };
-    TimeSheet.prototype.renderView = function () {
-        var _a;
-        var navState = this.state.navState;
-        switch (navState.currentView) {
-            case 'Home': return React.createElement(HomePage, null);
-            case 'DailyForm': return React.createElement(DailyTimesheetForm, { selectedDate: (_a = navState.selectedDate) !== null && _a !== void 0 ? _a : new Date() });
-            case 'MyHistory': return React.createElement(MyTimesheetHistory, null);
-            case 'ManagerDashboard': return React.createElement(ManagerDashboard, null);
-            case 'AdminPanel': return React.createElement(AdminPanel, null);
-            case 'ExportPanel': return React.createElement(ExportPanel, null);
-            default: return React.createElement(HomePage, null);
-        }
-    };
     TimeSheet.prototype.render = function () {
-        var _a = this.state, loading = _a.loading, error = _a.error, currentUser = _a.currentUser, navState = _a.navState;
+        var _a = this.state, loading = _a.loading, currentUser = _a.currentUser, error = _a.error;
         if (loading) {
             return (React.createElement("div", { style: { padding: 40, textAlign: 'center' } },
-                React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.large, label: "Loading Timesheet App..." })));
+                React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.large, label: strings.LoadingApp })));
         }
         if (!currentUser) {
-            return (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.error }, "Unable to load the application. Please refresh the page."));
+            return (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.error }, strings.LoadFailedApp));
         }
-        return (React.createElement(AppContext_1.AppContext.Provider, { value: {
-                currentUser: currentUser,
-                navState: navState,
-                navigateTo: this.navigateTo,
-                navigateHome: this.navigateHome,
-            } },
-            error && (React.createElement(react_1.MessageBar, { messageBarType: react_1.MessageBarType.warning, isMultiline: false }, error)),
-            React.createElement(React.Suspense, { fallback: React.createElement(react_1.Spinner, { size: react_1.SpinnerSize.medium, label: "Loading..." }) }, this.renderView())));
+        // HashRouter keeps routing within the # fragment so SharePoint's URL is untouched.
+        // The full URL for each view looks like:
+        //   https://tenant.sharepoint.com/sites/...#/daily-form?date=2026-03-23
+        // This survives page refresh and can be copied & shared.
+        return (React.createElement(react_router_dom_1.HashRouter, null,
+            React.createElement(AppShell_1.default, { currentUser: currentUser, error: error })));
     };
     return TimeSheet;
 }(React.Component));

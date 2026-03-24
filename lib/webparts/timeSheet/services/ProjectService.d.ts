@@ -25,4 +25,8 @@ export declare function deactivateProject(id: number): Promise<void>;
  * Re-activate a previously deactivated project.
  */
 export declare function activateProject(id: number): Promise<void>;
+/**
+ * Permanently delete a project from the list.
+ */
+export declare function deleteProject(id: number): Promise<void>;
 //# sourceMappingURL=ProjectService.d.ts.map

@@ -7,6 +7,7 @@
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "supportedLocales": ["en-us", "fr-fr", "de-de", "ar-sa"],
     "developer": {
       "name": "",
       "websiteUrl": "",

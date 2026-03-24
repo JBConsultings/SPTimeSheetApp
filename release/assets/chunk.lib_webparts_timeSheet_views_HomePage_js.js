@@ -161,14 +161,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_AnalyticsService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AnalyticsService */ 77164);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var _SimpleChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SimpleChart */ 65565);
-/* harmony import */ var _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./DashboardAnalytics.module.scss */ 78165);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _SimpleChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SimpleChart */ 65565);
+/* harmony import */ var _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DashboardAnalytics.module.scss */ 78165);
+
 
 
 
@@ -179,30 +182,30 @@ __webpack_require__.r(__webpack_exports__);
 
 var Chart = function (_a) {
     var data = _a.data, type = _a.type, title = _a.title, className = _a.className;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartContainer, " ").concat(className || '') },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartTitle }, title),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SimpleChart__WEBPACK_IMPORTED_MODULE_3__["default"], { data: data, type: type, title: title, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chart, height: 200, width: 400 })));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartContainer, " ").concat(className || '') },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartTitle }, title),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SimpleChart__WEBPACK_IMPORTED_MODULE_4__["default"], { data: data, type: type, title: title, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chart, height: 200, width: 400 })));
 };
 var StatsCard = function (_a) {
     var title = _a.title, value = _a.value, subtitle = _a.subtitle, icon = _a.icon, color = _a.color, trend = _a.trend;
     // Get color-specific class
     var getColorClass = function () {
         switch (color) {
-            case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['statsCardBlue'] || '';
-            case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['statsCardGreen'] || '';
-            case 'purple': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['statsCardPurple'] || '';
-            case 'orange': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['statsCardOrange'] || '';
+            case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardBlue'] || '';
+            case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardGreen'] || '';
+            case 'purple': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardPurple'] || '';
+            case 'orange': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardOrange'] || '';
             default: return '';
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsCard, " ").concat(getColorClass()) },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsIcon }, icon),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsContent },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsTitle }, title),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsValue }, value),
-            subtitle && react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsSubtitle }, subtitle),
-            trend && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsTrend, " ").concat(trend.direction === 'up' ? _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].trendUp : _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].trendDown) },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].trendIcon }, trend.direction === 'up' ? '↗' : '↘'),
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsCard, " ").concat(getColorClass()) },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsIcon }, icon),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsContent },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsTitle }, title),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsValue }, value),
+            subtitle && react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsSubtitle }, subtitle),
+            trend && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsTrend, " ").concat(trend.direction === 'up' ? _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendUp : _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendDown) },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendIcon }, trend.direction === 'up' ? '↗' : '↘'),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null,
                     Math.abs(trend.value),
                     "%"))))));
@@ -232,23 +235,23 @@ var RecentActivity = function (_a) {
             default: return 'gray';
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].recentActivity },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityTitle }, "Recent Activity"),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityList }, activities.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyActivity },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "No recent activity"))) : (activities.map(function (activity) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: activity.id, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityItem },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityIcon, " ").concat((function () {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].recentActivity },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RecentActivity),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityList }, activities.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyActivity },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoRecentActivity))) : (activities.map(function (activity) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: activity.id, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityItem },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityIcon, " ").concat((function () {
                     var color = getActivityColor(activity.type);
                     switch (color) {
-                        case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['activityBlue'];
-                        case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['activityGreen'];
-                        case 'red': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['activityRed'];
-                        case 'gray': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['activityGray'];
+                        case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityBlue'];
+                        case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityGreen'];
+                        case 'red': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityRed'];
+                        case 'gray': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityGray'];
                         default: return '';
                     }
                 })()) }, getActivityIcon(activity.type)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityContent },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityDescription }, activity.description),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].activityTime }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(activity.timestamp))))); })))));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityContent },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityDescription }, activity.description),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityTime }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateShort)(activity.timestamp))))); })))));
 };
 // Main Dashboard Analytics Component
 var DashboardAnalytics = function () {
@@ -257,9 +260,9 @@ var DashboardAnalytics = function () {
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _b[0], setLoading = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), error = _c[0], setError = _c[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var loadAnalytics = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
+        var loadAnalytics = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(void 0, void 0, void 0, function () {
             var data, err_1;
-            return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
+            return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, 3, 4]);
@@ -272,7 +275,7 @@ var DashboardAnalytics = function () {
                         return [3 /*break*/, 4];
                     case 2:
                         err_1 = _a.sent();
-                        setError('Failed to load analytics data');
+                        setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsFailed);
                         console.error('Analytics error:', err_1);
                         return [3 /*break*/, 4];
                     case 3:
@@ -285,42 +288,42 @@ var DashboardAnalytics = function () {
         void loadAnalytics();
     }, [currentUser.email]);
     if (loading) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loadingContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading analytics...")));
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loadingContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingAnalytics)));
     }
     if (error) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].errorContainer },
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].errorContainer },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" })),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error)));
     }
     if (!analyticsData) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "No analytics data available")));
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoAnalyticsData)));
     }
     var last7Days = analyticsData.last7Days, monthlyHours = analyticsData.monthlyHours, weeklyDistribution = analyticsData.weeklyDistribution, quickStats = analyticsData.quickStats, recentActivity = analyticsData.recentActivity;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].analyticsContainer },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].analyticsHeader },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].analyticsTitle }, "Dashboard Analytics"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].analyticsSubtitle }, "Your timesheet insights and trends")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].statsGrid },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: "Total Hours", value: quickStats.totalHours, subtitle: "This month", icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsContainer },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsHeader },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsTitle),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsSubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsSubtitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsGrid },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.TotalHoursCard, value: quickStats.totalHours, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" })), color: "blue", trend: quickStats.hoursChange ? {
                     value: quickStats.hoursChange,
                     direction: quickStats.hoursChange > 0 ? 'up' : 'down'
                 } : undefined }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: "Avg Daily", value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: "Last 7 days", icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AvgDaily, value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Last7Days, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" })), color: "green" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: "Submitted", value: quickStats.submittedEntries, subtitle: "This week", icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.SubmittedCard, value: quickStats.submittedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisWeek, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" })), color: "purple" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: "Approved", value: quickStats.approvedEntries, subtitle: "This month", icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ApprovedCard, value: quickStats.approvedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })), color: "orange" })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartsGrid },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: last7Days, type: "line", title: "Last 7 Days \u2014 Hours Trend", className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartFullWidth }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartsRow },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: weeklyDistribution, type: "bar", title: "This Week's Distribution", className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartMedium }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: monthlyHours, type: "doughnut", title: "Monthly Hours by Project", className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].chartMedium }))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartsGrid },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: last7Days, type: "line", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Last7DaysChart, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartFullWidth }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartsRow },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: weeklyDistribution, type: "bar", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.WeekDistribution, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartMedium }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: monthlyHours, type: "doughnut", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.MonthlyByProject, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartMedium }))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(RecentActivity, { activities: recentActivity })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DashboardAnalytics);
@@ -840,97 +843,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fluentui/react */ 11880);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react */ 57637);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 52394);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fluentui/react */ 11880);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fluentui/react */ 57637);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react */ 52394);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _components_DashboardAnalytics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/DashboardAnalytics */ 46695);
-/* harmony import */ var _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HomePage.module.scss */ 36033);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./HomePage.module.scss */ 36033);
 
 
 
 
 
 
-var NAV_CARDS = [
-    {
-        view: 'DailyForm',
-        iconName: 'CalendarDay',
-        value: "Today",
-        label: "My Timesheet",
-        subtitle: "Enter today's hours",
-        color: '#0078d4',
-        roles: ['Employee', 'Manager', 'Admin'],
-    },
-    {
-        view: 'MyHistory',
-        iconName: 'History',
-        value: "History",
-        label: "My Submissions",
-        subtitle: "Past timesheets",
-        color: '#107c41',
-        roles: ['Employee', 'Manager', 'Admin'],
-    },
-    {
-        view: 'ManagerDashboard',
-        iconName: 'People',
-        value: "Team",
-        label: "Team Timesheets",
-        subtitle: "Review & approve",
-        color: '#e8a600',
-        roles: ['Manager', 'Admin'],
-    },
-    {
-        view: 'ExportPanel',
-        iconName: 'ExcelDocument',
-        value: "Export",
-        label: "Export Report",
-        subtitle: "Excel or PDF",
-        color: '#107c41',
-        roles: ['Manager', 'Admin'],
-    },
-    {
-        view: 'AdminPanel',
-        iconName: 'Settings',
-        value: "Admin",
-        label: "Manage Projects",
-        subtitle: "Projects & categories",
-        color: '#c4314b',
-        roles: ['Manager', 'Admin'],
-    },
-];
+
+function getNavCards() {
+    return [
+        {
+            view: 'CalendarView',
+            iconName: 'Calendar',
+            value: "Calendar",
+            label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMyTimesheet,
+            subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMyTimesheetSub,
+            color: '#667eea',
+            roles: ['Employee', 'Manager', 'Admin'],
+        },
+        {
+            view: 'MyHistory',
+            iconName: 'History',
+            value: "History",
+            label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMySubmissions,
+            subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMySubmissionsSub,
+            color: '#107c41',
+            roles: ['Employee', 'Manager', 'Admin'],
+        },
+        {
+            view: 'ManagerDashboard',
+            iconName: 'People',
+            value: "Team",
+            label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavTeamTimesheets,
+            subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavTeamTimesheetsSub,
+            color: '#e8a600',
+            roles: ['Manager', 'Admin'],
+        },
+        {
+            view: 'ExportPanel',
+            iconName: 'ExcelDocument',
+            value: "Export",
+            label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavExportReport,
+            subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavExportReportSub,
+            color: '#107c41',
+            roles: ['Manager', 'Admin'],
+        },
+        {
+            view: 'AdminPanel',
+            iconName: 'Settings',
+            value: "Admin",
+            label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavManageProjects,
+            subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavManageProjectsSub,
+            color: '#c4314b',
+            roles: ['Manager', 'Admin'],
+        },
+    ];
+}
 var HomePage = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo;
+    var NAV_CARDS = getNavCards();
     var visibleCards = NAV_CARDS.filter(function (c) { return c.roles.indexOf(currentUser.role) !== -1; });
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['webpart-container'] },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['dashboard-root'] },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['dashboard-header'] },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['header-content'] },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['dashboard-page-title'] }, "TimeSheet Dashboard"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['dashboard-section-title'] },
-                        "Welcome, ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, currentUser.displayName),
-                        " \u00B7 ",
-                        currentUser.role))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['quick-access-section'] },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['section-header'] },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['section-title'] }, "Quick Access"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['section-subtitle'] }, "Choose an action to get started")),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['navigation-grid'] }, visibleCards.map(function (card, index) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_4__.TooltipHost, { key: card.view, content: card.subtitle, delay: _fluentui_react__WEBPACK_IMPORTED_MODULE_5__.TooltipDelay.medium, styles: { root: { flex: '1 1 0', minWidth: 0 } } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card']).concat(index === 0 ? " ".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-primary']) : ''), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['webpart-container'] },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-root'] },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-header'] },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['header-content'] },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-page-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.DashboardTitle),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-section-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.WelcomeMessage.replace('{name}', currentUser.displayName).replace('{role}', currentUser.role)))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['quick-access-section'] },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-header'] },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccess),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-subtitle'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccessSubtitle)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['navigation-grid'] }, visibleCards.map(function (card, index) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.TooltipHost, { key: card.view, content: card.subtitle, delay: _fluentui_react__WEBPACK_IMPORTED_MODULE_6__.TooltipDelay.medium, styles: { root: { flex: '1 1 0', minWidth: 0 } } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card']).concat(index === 0 ? " ".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-primary']) : ''), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();
                                 navigateTo(card.view);
                             }
                         }, style: { '--accent-color': card.color } },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-icon-wrap'] },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Icon, { iconName: card.iconName, styles: { root: { fontSize: 20, color: card.color } } })),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-info'] },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-title'] }, card.label),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-description'] }, card.subtitle)),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-footer'] },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['nav-card-tag'] }, card.value),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_6__.Icon, { iconName: "ChevronRight", className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"]['action-icon'] }))))); }))),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-icon-wrap'] },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Icon, { iconName: card.iconName, styles: { root: { fontSize: 20, color: card.color } } })),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-info'] },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-title'] }, card.label),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-description'] }, card.subtitle)),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-footer'] },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-tag'] }, card.value),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Icon, { iconName: "ChevronRight", className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['action-icon'] }))))); }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DashboardAnalytics__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);

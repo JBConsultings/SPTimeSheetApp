@@ -114,3 +114,14 @@ export async function deactivateProject(id: number): Promise<void> {
 export async function activateProject(id: number): Promise<void> {
   await updateProject(id, { isActive: true });
 }
+
+/**
+ * Permanently delete a project from the list.
+ */
+export async function deleteProject(id: number): Promise<void> {
+  const sp = getSP();
+  await sp.web.lists
+    .getByTitle(LISTS.PROJECTS)
+    .items.getById(id)
+    .delete();
+}

@@ -6,6 +6,7 @@ exports.addProject = addProject;
 exports.updateProject = updateProject;
 exports.deactivateProject = deactivateProject;
 exports.activateProject = activateProject;
+exports.deleteProject = deleteProject;
 var tslib_1 = require("tslib");
 var PnPSetup_1 = require("./PnPSetup");
 var constants_1 = require("../utils/constants");
@@ -171,6 +172,27 @@ function activateProject(id) {
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, updateProject(id, { isActive: true })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Permanently delete a project from the list.
+ */
+function deleteProject(id) {
+    return tslib_1.__awaiter(this, void 0, void 0, function () {
+        var sp;
+        return tslib_1.__generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    sp = (0, PnPSetup_1.getSP)();
+                    return [4 /*yield*/, sp.web.lists
+                            .getByTitle(constants_1.LISTS.PROJECTS)
+                            .items.getById(id)
+                            .delete()];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];

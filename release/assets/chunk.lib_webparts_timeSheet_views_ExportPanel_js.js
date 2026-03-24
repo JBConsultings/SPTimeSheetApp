@@ -284,14 +284,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/TimesheetService */ 30264);
-/* harmony import */ var _services_ExportService__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/ExportService */ 22666);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ExportPanel.module.scss */ 98529);
+/* harmony import */ var _services_ExportService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../services/ExportService */ 22666);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ExportPanel.module.scss */ 98529);
+
 
 
 
@@ -301,13 +304,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: '', text: 'All Statuses' },
-    { key: 'Draft', text: 'Draft' },
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-];
+function getStatusOptions() {
+    return [
+        { key: '', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AllStatuses },
+        { key: 'Draft', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusDraft },
+        { key: 'Submitted', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusSubmitted },
+        { key: 'Approved', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusApproved },
+        { key: 'Rejected', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusRejected },
+    ];
+}
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function toDateInputValue(d) {
     var y = d.getFullYear();
@@ -323,12 +328,12 @@ function fromDateInputValue(v) {
 }
 function badgeClass(status) {
     if (status === 'Approved')
-        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].approved;
+        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].approved;
     if (status === 'Submitted')
-        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].submitted;
+        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].submitted;
     if (status === 'Rejected')
-        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].rejected;
-    return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].draft;
+        return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rejected;
+    return _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].draft;
 }
 // ─── SVG Icons ────────────────────────────────────────────────────────────────
 var IconHome = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
@@ -360,7 +365,7 @@ var IconNoData = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.create
 var ExportPanel = function () {
     var _a;
     var navigateHome = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext).navigateHome;
-    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
+    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultEnd), endDate = _d[0], setEndDate = _d[1];
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), employeeEmail = _e[0], setEmployeeEmail = _e[1];
@@ -378,11 +383,15 @@ var ExportPanel = function () {
         status: statusFilter || undefined,
     }); };
     // ─── Handlers ───────────────────────────────────────────────────────────────
-    var handlePreview = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
+    var handlePreview = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
         var filter, entries, _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    if (endDate < startDate) {
+                        setError('End date must be on or after the start date.');
+                        return [2 /*return*/];
+                    }
                     setLoading(true);
                     setError('');
                     setSuccessMessage('');
@@ -397,7 +406,7 @@ var ExportPanel = function () {
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setError('Failed to load data. Please try again.');
+                    setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadExportFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setLoading(false);
@@ -406,9 +415,9 @@ var ExportPanel = function () {
             }
         });
     }); };
-    var handleExcelExport = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
+    var handleExcelExport = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
         var _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     if (!previewData)
@@ -418,14 +427,14 @@ var ExportPanel = function () {
                     _b.label = 1;
                 case 1:
                     _b.trys.push([1, 3, 4, 5]);
-                    return [4 /*yield*/, (0,_services_ExportService__WEBPACK_IMPORTED_MODULE_6__.exportToExcel)(previewData, buildFilter())];
+                    return [4 /*yield*/, (0,_services_ExportService__WEBPACK_IMPORTED_MODULE_7__.exportToExcel)(previewData, buildFilter())];
                 case 2:
                     _b.sent();
-                    setSuccessMessage('Excel file downloaded successfully.');
+                    setSuccessMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ExcelSuccess);
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setError('Excel export failed. Please try again.');
+                    setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ExcelFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setExporting(false);
@@ -434,9 +443,9 @@ var ExportPanel = function () {
             }
         });
     }); };
-    var handlePdfExport = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(void 0, void 0, void 0, function () {
+    var handlePdfExport = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
         var err_1;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__generator)(this, function (_a) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     if (!previewData)
@@ -446,15 +455,15 @@ var ExportPanel = function () {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, 4, 5]);
-                    return [4 /*yield*/, (0,_services_ExportService__WEBPACK_IMPORTED_MODULE_6__.exportToPDF)(previewData, buildFilter())];
+                    return [4 /*yield*/, (0,_services_ExportService__WEBPACK_IMPORTED_MODULE_7__.exportToPDF)(previewData, buildFilter())];
                 case 2:
                     _a.sent();
-                    setSuccessMessage('PDF file downloaded successfully.');
+                    setSuccessMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.PdfSuccess);
                     return [3 /*break*/, 5];
                 case 3:
                     err_1 = _a.sent();
                     console.error('PDF export error:', err_1);
-                    setError(err_1 instanceof Error ? err_1.message : 'PDF export failed. Please try again.');
+                    setError(err_1 instanceof Error ? err_1.message : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.PdfFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setExporting(false);
@@ -469,112 +478,129 @@ var ExportPanel = function () {
         ? new Set(previewData.map(function (e) { return e.employeeEmail; })).size
         : 0;
     // ─── Render ─────────────────────────────────────────────────────────────────
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].header },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].homeBtn, title: "Home", onClick: navigateHome },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].homeBtn, title: "Home", onClick: navigateHome },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconHome, null)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].title }, "Export Timesheet Report")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterCard },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterTitle }, "Filter Options"),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterRow },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ExportTitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterCard },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.FilterOptions),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterRow },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "exp-from" },
-                        "From ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.From,
+                        " ",
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28' } }, "*")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-from", type: "date", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-from", type: "date", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { if (e.target.value) {
+                            setStartDate(fromDateInputValue(e.target.value));
+                            setError('');
+                        } } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "exp-to" },
-                        "To ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.To,
+                        " ",
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28' } }, "*")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-to", type: "date", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } }))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterRow },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-to", type: "date", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, style: endDate < startDate ? { borderColor: '#da1e28' } : {}, value: toDateInputValue(endDate), onChange: function (e) { if (e.target.value) {
+                            setEndDate(fromDateInputValue(e.target.value));
+                            setError('');
+                        } } }),
+                    endDate < startDate && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, "Must be on or after the start date")))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterRow },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "exp-email" },
-                        "Employee Email ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].optional }, "(optional)")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-email", type: "text", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterInput, value: employeeEmail, onChange: function (e) { return setEmployeeEmail(e.target.value); }, placeholder: "e.g. john@company.com" })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterGroup },
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.EmployeeEmail,
+                        " ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].optional }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Optional)),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "exp-email", type: "text", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: employeeEmail, onChange: function (e) { return setEmployeeEmail(e.target.value); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.EmailPlaceholder })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "exp-status" },
-                        "Status ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].optional }, "(optional)")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "exp-status", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnDefault), onClick: handlePreview, disabled: loading }, loading
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Status,
+                        " ",
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].optional }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Optional)),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "exp-status", className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnDefault), onClick: handlePreview, disabled: loading }, loading
                 ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinnerSmDark }),
-                    " Loading\u2026")
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinnerSmDark }),
+                    " ",
+                    TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingData)
                 : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconSearch, null),
-                    " Preview Data"))),
-        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].messageBar, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].error) },
+                    " ",
+                    TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.PreviewData))),
+        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageBar, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].error) },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dismissBtn, onClick: function () { return setError(''); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dismissBtn, onClick: function () { return setError(''); } },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconClose, null)))),
-        successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].messageBar, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].success) },
+        successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].messageBar, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].success) },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconSuccess, null),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, successMessage),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].dismissBtn, onClick: function () { return setSuccessMessage(''); } },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dismissBtn, onClick: function () { return setSuccessMessage(''); } },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconClose, null)))),
-        loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].loadingWrap },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading data\u2026"))),
-        previewData !== null && !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].resultsSection },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryStrip },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryItem },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryLabel }, "Records"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryValue }, previewData.length)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryItem },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryLabel }, "Total Hours"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryValue }, totalHours.toFixed(2))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryItem },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryLabel }, "Employees"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryValue }, uniqueEmployees)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryItem },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryLabel }, "Period"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].summaryValueSm },
-                        (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(startDate),
+        loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loadingWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingData))),
+        previewData !== null && !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].resultsSection },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryStrip },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryItem },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Records),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryValue }, previewData.length)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryItem },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.TotalHours),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryValue }, totalHours.toFixed(2))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryItem },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Employees),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryValue }, uniqueEmployees)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryItem },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Period),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryValueSm },
+                        (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(startDate),
                         " \u2013 ",
-                        (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(endDate)))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].exportBar },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnExcel), onClick: handleExcelExport, disabled: exporting || previewData.length === 0 }, exporting
+                        (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(endDate)))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].exportBar },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnExcel), onClick: handleExcelExport, disabled: exporting || previewData.length === 0 }, exporting
                     ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinnerSm }),
-                        " Exporting\u2026")
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinnerSm }),
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Exporting)
                     : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconExcel, null),
-                        " Export to Excel")),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].btnPdf), onClick: handlePdfExport, disabled: exporting || previewData.length === 0 }, exporting
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ExportExcel)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btn, " ").concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].btnPdf), onClick: handlePdfExport, disabled: exporting || previewData.length === 0 }, exporting
                     ? react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].spinnerSm }),
-                        " Exporting\u2026")
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinnerSm }),
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Exporting)
                     : react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconPdf, null),
-                        " Export to PDF"))),
-            previewData.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyState },
+                        " ",
+                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ExportPdf))),
+            previewData.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyState },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconNoData, null),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptyTitle }, "No data found"),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].emptySubtitle }, "Try adjusting your filters and previewing again."))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tableCard },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tableWrap },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].previewTable },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoDataFound),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoDataHint))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tableCard },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tableWrap },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].previewTable },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Employee"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].colDate }, "Date"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Project"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Category"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, "Description"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].colHours }, "Hours"),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].colStatus }, "Status"))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Employee),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].colDate }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Date),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Project),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Category),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Description),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].colHours }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Hours),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].colStatus }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Status))),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, previewData.map(function (e) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: e.id },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.employeeName),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_4__.formatDateShort)(e.entryDate)),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(e.entryDate)),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.projectName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.activityCategoryName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.taskDescription),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tdHours }, e.hoursSpent),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tdStatus },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].badge, " ").concat(badgeClass(e.status)) }, e.status)))); })))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_3__["default"].tableFooter },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tdHours }, e.hoursSpent),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tdStatus },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(badgeClass(e.status)) }, e.status)))); })))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ExportPanel_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].tableFooter },
                     previewData.length,
                     " record",
                     previewData.length !== 1 ? 's' : '')))))));

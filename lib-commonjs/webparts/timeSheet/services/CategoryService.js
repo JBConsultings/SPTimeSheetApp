@@ -6,6 +6,7 @@ exports.addCategory = addCategory;
 exports.updateCategory = updateCategory;
 exports.deactivateCategory = deactivateCategory;
 exports.activateCategory = activateCategory;
+exports.deleteCategory = deleteCategory;
 var tslib_1 = require("tslib");
 var PnPSetup_1 = require("./PnPSetup");
 var constants_1 = require("../utils/constants");
@@ -155,6 +156,27 @@ function activateCategory(id) {
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0: return [4 /*yield*/, updateCategory(id, { isActive: true })];
+                case 1:
+                    _a.sent();
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+/**
+ * Permanently delete a category from the list.
+ */
+function deleteCategory(id) {
+    return tslib_1.__awaiter(this, void 0, void 0, function () {
+        var sp;
+        return tslib_1.__generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    sp = (0, PnPSetup_1.getSP)();
+                    return [4 /*yield*/, sp.web.lists
+                            .getByTitle(constants_1.LISTS.ACTIVITY_CATEGORIES)
+                            .items.getById(id)
+                            .delete()];
                 case 1:
                     _a.sent();
                     return [2 /*return*/];

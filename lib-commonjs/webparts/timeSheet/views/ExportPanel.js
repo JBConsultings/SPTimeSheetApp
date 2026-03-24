@@ -7,15 +7,18 @@ var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var ExportService_1 = require("../services/ExportService");
 var dateUtils_1 = require("../utils/dateUtils");
+var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var ExportPanel_module_scss_1 = tslib_1.__importDefault(require("./ExportPanel.module.scss"));
 // ─── Constants ────────────────────────────────────────────────────────────────
-var STATUS_OPTIONS = [
-    { key: '', text: 'All Statuses' },
-    { key: 'Draft', text: 'Draft' },
-    { key: 'Submitted', text: 'Submitted' },
-    { key: 'Approved', text: 'Approved' },
-    { key: 'Rejected', text: 'Rejected' },
-];
+function getStatusOptions() {
+    return [
+        { key: '', text: strings.AllStatuses },
+        { key: 'Draft', text: strings.StatusDraft },
+        { key: 'Submitted', text: strings.StatusSubmitted },
+        { key: 'Approved', text: strings.StatusApproved },
+        { key: 'Rejected', text: strings.StatusRejected },
+    ];
+}
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 function toDateInputValue(d) {
     var y = d.getFullYear();
@@ -91,6 +94,10 @@ var ExportPanel = function () {
         return tslib_1.__generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
+                    if (endDate < startDate) {
+                        setError('End date must be on or after the start date.');
+                        return [2 /*return*/];
+                    }
                     setLoading(true);
                     setError('');
                     setSuccessMessage('');
@@ -105,7 +112,7 @@ var ExportPanel = function () {
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setError('Failed to load data. Please try again.');
+                    setError(strings.LoadExportFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setLoading(false);
@@ -129,11 +136,11 @@ var ExportPanel = function () {
                     return [4 /*yield*/, (0, ExportService_1.exportToExcel)(previewData, buildFilter())];
                 case 2:
                     _b.sent();
-                    setSuccessMessage('Excel file downloaded successfully.');
+                    setSuccessMessage(strings.ExcelSuccess);
                     return [3 /*break*/, 5];
                 case 3:
                     _a = _b.sent();
-                    setError('Excel export failed. Please try again.');
+                    setError(strings.ExcelFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setExporting(false);
@@ -157,12 +164,12 @@ var ExportPanel = function () {
                     return [4 /*yield*/, (0, ExportService_1.exportToPDF)(previewData, buildFilter())];
                 case 2:
                     _a.sent();
-                    setSuccessMessage('PDF file downloaded successfully.');
+                    setSuccessMessage(strings.PdfSuccess);
                     return [3 /*break*/, 5];
                 case 3:
                     err_1 = _a.sent();
                     console.error('PDF export error:', err_1);
-                    setError(err_1 instanceof Error ? err_1.message : 'PDF export failed. Please try again.');
+                    setError(err_1 instanceof Error ? err_1.message : strings.PdfFailed);
                     return [3 /*break*/, 5];
                 case 4:
                     setExporting(false);
@@ -181,38 +188,51 @@ var ExportPanel = function () {
         React.createElement("div", { className: ExportPanel_module_scss_1.default.header },
             React.createElement("button", { className: ExportPanel_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
                 React.createElement(IconHome, null)),
-            React.createElement("h1", { className: ExportPanel_module_scss_1.default.title }, "Export Timesheet Report")),
+            React.createElement("h1", { className: ExportPanel_module_scss_1.default.title }, strings.ExportTitle)),
         React.createElement("div", { className: ExportPanel_module_scss_1.default.filterCard },
-            React.createElement("p", { className: ExportPanel_module_scss_1.default.filterTitle }, "Filter Options"),
+            React.createElement("p", { className: ExportPanel_module_scss_1.default.filterTitle }, strings.FilterOptions),
             React.createElement("div", { className: ExportPanel_module_scss_1.default.filterRow },
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.filterGroup },
                     React.createElement("label", { htmlFor: "exp-from" },
-                        "From ",
+                        strings.From,
+                        " ",
                         React.createElement("span", { style: { color: '#da1e28' } }, "*")),
-                    React.createElement("input", { id: "exp-from", type: "date", className: ExportPanel_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
+                    React.createElement("input", { id: "exp-from", type: "date", className: ExportPanel_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) { if (e.target.value) {
+                            setStartDate(fromDateInputValue(e.target.value));
+                            setError('');
+                        } } })),
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.filterGroup },
                     React.createElement("label", { htmlFor: "exp-to" },
-                        "To ",
+                        strings.To,
+                        " ",
                         React.createElement("span", { style: { color: '#da1e28' } }, "*")),
-                    React.createElement("input", { id: "exp-to", type: "date", className: ExportPanel_module_scss_1.default.filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } }))),
+                    React.createElement("input", { id: "exp-to", type: "date", className: ExportPanel_module_scss_1.default.filterInput, style: endDate < startDate ? { borderColor: '#da1e28' } : {}, value: toDateInputValue(endDate), onChange: function (e) { if (e.target.value) {
+                            setEndDate(fromDateInputValue(e.target.value));
+                            setError('');
+                        } } }),
+                    endDate < startDate && (React.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, "Must be on or after the start date")))),
             React.createElement("div", { className: ExportPanel_module_scss_1.default.filterRow },
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.filterGroup },
                     React.createElement("label", { htmlFor: "exp-email" },
-                        "Employee Email ",
-                        React.createElement("span", { className: ExportPanel_module_scss_1.default.optional }, "(optional)")),
-                    React.createElement("input", { id: "exp-email", type: "text", className: ExportPanel_module_scss_1.default.filterInput, value: employeeEmail, onChange: function (e) { return setEmployeeEmail(e.target.value); }, placeholder: "e.g. john@company.com" })),
+                        strings.EmployeeEmail,
+                        " ",
+                        React.createElement("span", { className: ExportPanel_module_scss_1.default.optional }, strings.Optional)),
+                    React.createElement("input", { id: "exp-email", type: "text", className: ExportPanel_module_scss_1.default.filterInput, value: employeeEmail, onChange: function (e) { return setEmployeeEmail(e.target.value); }, placeholder: strings.EmailPlaceholder })),
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.filterGroup },
                     React.createElement("label", { htmlFor: "exp-status" },
-                        "Status ",
-                        React.createElement("span", { className: ExportPanel_module_scss_1.default.optional }, "(optional)")),
-                    React.createElement("select", { id: "exp-status", className: ExportPanel_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, STATUS_OPTIONS.map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
+                        strings.Status,
+                        " ",
+                        React.createElement("span", { className: ExportPanel_module_scss_1.default.optional }, strings.Optional)),
+                    React.createElement("select", { id: "exp-status", className: ExportPanel_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
             React.createElement("button", { className: "".concat(ExportPanel_module_scss_1.default.btn, " ").concat(ExportPanel_module_scss_1.default.btnDefault), onClick: handlePreview, disabled: loading }, loading
                 ? React.createElement(React.Fragment, null,
                     React.createElement("div", { className: ExportPanel_module_scss_1.default.spinnerSmDark }),
-                    " Loading\u2026")
+                    " ",
+                    strings.LoadingData)
                 : React.createElement(React.Fragment, null,
                     React.createElement(IconSearch, null),
-                    " Preview Data"))),
+                    " ",
+                    strings.PreviewData))),
         error && (React.createElement("div", { className: "".concat(ExportPanel_module_scss_1.default.messageBar, " ").concat(ExportPanel_module_scss_1.default.error) },
             React.createElement(IconError, null),
             React.createElement("span", null, error),
@@ -225,20 +245,20 @@ var ExportPanel = function () {
                 React.createElement(IconClose, null)))),
         loading && (React.createElement("div", { className: ExportPanel_module_scss_1.default.loadingWrap },
             React.createElement("div", { className: ExportPanel_module_scss_1.default.spinner }),
-            React.createElement("span", null, "Loading data\u2026"))),
+            React.createElement("span", null, strings.LoadingData))),
         previewData !== null && !loading && (React.createElement("div", { className: ExportPanel_module_scss_1.default.resultsSection },
             React.createElement("div", { className: ExportPanel_module_scss_1.default.summaryStrip },
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.summaryItem },
-                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, "Records"),
+                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, strings.Records),
                     React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryValue }, previewData.length)),
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.summaryItem },
-                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, "Total Hours"),
+                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, strings.TotalHours),
                     React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryValue }, totalHours.toFixed(2))),
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.summaryItem },
-                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, "Employees"),
+                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, strings.Employees),
                     React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryValue }, uniqueEmployees)),
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.summaryItem },
-                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, "Period"),
+                    React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryLabel }, strings.Period),
                     React.createElement("span", { className: ExportPanel_module_scss_1.default.summaryValueSm },
                         (0, dateUtils_1.formatDateShort)(startDate),
                         " \u2013 ",
@@ -247,32 +267,36 @@ var ExportPanel = function () {
                 React.createElement("button", { className: "".concat(ExportPanel_module_scss_1.default.btn, " ").concat(ExportPanel_module_scss_1.default.btnExcel), onClick: handleExcelExport, disabled: exporting || previewData.length === 0 }, exporting
                     ? React.createElement(React.Fragment, null,
                         React.createElement("div", { className: ExportPanel_module_scss_1.default.spinnerSm }),
-                        " Exporting\u2026")
+                        " ",
+                        strings.Exporting)
                     : React.createElement(React.Fragment, null,
                         React.createElement(IconExcel, null),
-                        " Export to Excel")),
+                        " ",
+                        strings.ExportExcel)),
                 React.createElement("button", { className: "".concat(ExportPanel_module_scss_1.default.btn, " ").concat(ExportPanel_module_scss_1.default.btnPdf), onClick: handlePdfExport, disabled: exporting || previewData.length === 0 }, exporting
                     ? React.createElement(React.Fragment, null,
                         React.createElement("div", { className: ExportPanel_module_scss_1.default.spinnerSm }),
-                        " Exporting\u2026")
+                        " ",
+                        strings.Exporting)
                     : React.createElement(React.Fragment, null,
                         React.createElement(IconPdf, null),
-                        " Export to PDF"))),
+                        " ",
+                        strings.ExportPdf))),
             previewData.length === 0 ? (React.createElement("div", { className: ExportPanel_module_scss_1.default.emptyState },
                 React.createElement(IconNoData, null),
-                React.createElement("span", { className: ExportPanel_module_scss_1.default.emptyTitle }, "No data found"),
-                React.createElement("span", { className: ExportPanel_module_scss_1.default.emptySubtitle }, "Try adjusting your filters and previewing again."))) : (React.createElement("div", { className: ExportPanel_module_scss_1.default.tableCard },
+                React.createElement("span", { className: ExportPanel_module_scss_1.default.emptyTitle }, strings.NoDataFound),
+                React.createElement("span", { className: ExportPanel_module_scss_1.default.emptySubtitle }, strings.NoDataHint))) : (React.createElement("div", { className: ExportPanel_module_scss_1.default.tableCard },
                 React.createElement("div", { className: ExportPanel_module_scss_1.default.tableWrap },
                     React.createElement("table", { className: ExportPanel_module_scss_1.default.previewTable },
                         React.createElement("thead", null,
                             React.createElement("tr", null,
-                                React.createElement("th", null, "Employee"),
-                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colDate }, "Date"),
-                                React.createElement("th", null, "Project"),
-                                React.createElement("th", null, "Category"),
-                                React.createElement("th", null, "Description"),
-                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colHours }, "Hours"),
-                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colStatus }, "Status"))),
+                                React.createElement("th", null, strings.Employee),
+                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colDate }, strings.Date),
+                                React.createElement("th", null, strings.Project),
+                                React.createElement("th", null, strings.Category),
+                                React.createElement("th", null, strings.Description),
+                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colHours }, strings.Hours),
+                                React.createElement("th", { className: ExportPanel_module_scss_1.default.colStatus }, strings.Status))),
                         React.createElement("tbody", null, previewData.map(function (e) { return (React.createElement("tr", { key: e.id },
                             React.createElement("td", null, e.employeeName),
                             React.createElement("td", null, (0, dateUtils_1.formatDateShort)(e.entryDate)),

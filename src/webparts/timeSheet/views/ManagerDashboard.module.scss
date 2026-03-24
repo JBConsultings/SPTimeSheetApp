@@ -247,6 +247,89 @@ $status-draft:      #b28600;
   .emptySubtitle { font-size: 13px; }
 }
 
+// ─── Bulk Action Bar ──────────────────────────────────────────────────────────
+.bulkBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+  transition: background $transition, border-color $transition, box-shadow $transition;
+
+  &.bulkBarActive {
+    background: rgba(102,126,234,0.06);
+    border-color: rgba(102,126,234,0.35);
+    box-shadow: 0 2px 8px rgba(102,126,234,0.12);
+  }
+}
+
+.bulkSelectAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: $text-secondary;
+  user-select: none;
+
+  &:hover { color: $text-primary; }
+}
+
+.bulkCheckbox {
+  width: 16px;
+  height: 16px;
+  accent-color: $primary;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.bulkActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.bulkCount {
+  font-size: 12px;
+  font-weight: 700;
+  color: $primary;
+  background: rgba(102,126,234,0.1);
+  border: 1px solid rgba(102,126,234,0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+// ─── Overtime Badge ───────────────────────────────────────────────────────────
+.otBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  background: #fff3e0;
+  border: 1.5px solid #ff9800;
+  color: #e65100;
+  flex-shrink: 0;
+}
+
+.rowNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 // ─── Row Cards ────────────────────────────────────────────────────────────────
 .list {
   display: flex;
@@ -264,12 +347,38 @@ $status-draft:      #b28600;
   border: 1px solid $border;
   border-radius: $radius-md;
   box-shadow: $shadow-sm;
-  transition: box-shadow $transition, border-color $transition;
+  transition: box-shadow $transition, border-color $transition, background $transition;
 
   &:hover {
     box-shadow: $shadow-md;
     border-color: #c6c6c6;
   }
+
+  &.rowCardSelected {
+    background: rgba(102,126,234,0.05);
+    border-color: rgba(102,126,234,0.4);
+    box-shadow: 0 0 0 2px rgba(102,126,234,0.12), $shadow-sm;
+  }
+}
+
+.rowCheckWrap {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.rowCheckbox {
+  width: 16px;
+  height: 16px;
+  accent-color: $primary;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.rowCheckPlaceholder {
+  width: 16px;
+  flex-shrink: 0;
 }
 
 .rowLeft {

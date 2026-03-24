@@ -4,6 +4,7 @@ import { AppContext } from '../context/AppContext';
 import { ITimesheetEntry, IDailySummary, TimesheetStatus } from '../models/ITimesheetModels';
 import { getEntriesForDateRange, deleteEntry } from '../services/TimesheetService';
 import { formatDateLabel, currentMonthRange, formatDateShort } from '../utils/dateUtils';
+import { REGULAR_HOURS_PER_DAY } from '../utils/constants';
 import * as strings from 'TimeSheetWebPartStrings';
 import styles from './MyTimesheetHistory.module.scss';
 
@@ -257,7 +258,14 @@ const MyTimesheetHistory: React.FC = () => {
                 onKeyDown={(e) => !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date })}
               >
                 <div className={styles.cardLeft}>
-                  <span className={styles.cardDate}>{formatDateLabel(summary.date)}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span className={styles.cardDate}>{formatDateLabel(summary.date)}</span>
+                    {summary.totalHours > REGULAR_HOURS_PER_DAY && (
+                      <span className={styles.otBadge} title={`${(summary.totalHours - REGULAR_HOURS_PER_DAY).toFixed(2)} hrs overtime`}>
+                        OT +{(summary.totalHours - REGULAR_HOURS_PER_DAY).toFixed(2)}h
+                      </span>
+                    )}
+                  </div>
                   <span className={styles.cardMeta}>
                     {summary.entries.length} task{summary.entries.length !== 1 ? 's' : ''}
                     <span className={styles.dot} />

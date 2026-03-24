@@ -1,6 +1,21 @@
 import * as React from "react";
 import { useContext, useState, useEffect } from "react";
-import { Modal } from "@fluentui/react";
+import {
+  Modal,
+  IconButton,
+  PrimaryButton,
+  DefaultButton,
+  TextField,
+  Toggle,
+  SpinButton,
+  Spinner,
+  SpinnerSize,
+  MessageBar,
+  MessageBarType,
+  IButtonStyles,
+  IIconProps,
+  TooltipHost,
+} from "@fluentui/react";
 import { AppContext } from "../context/AppContext";
 import { IProject, IActivityCategory } from "../models/ITimesheetModels";
 import {
@@ -19,29 +34,90 @@ import {
   activateCategory,
   deleteCategory,
 } from "../services/CategoryService";
-import * as strings from 'TimeSheetWebPartStrings';
+import * as strings from "TimeSheetWebPartStrings";
 import styles from "./AdminPanel.module.scss";
 
-// ─── Shared helpers ────────────────────────────────────────────────────────────
+// ─── Shared button styles (theme colour) ─────────────────────────────────────
+const primaryBtnStyles: IButtonStyles = {
+  root: { backgroundColor: "#667eea", borderColor: "#667eea", borderRadius: 6 },
+  rootHovered: { backgroundColor: "#5a6fd6", borderColor: "#5a6fd6" },
+  rootPressed: { backgroundColor: "#4d5fbc", borderColor: "#4d5fbc" },
+  rootDisabled: { backgroundColor: "#c5cbf8", borderColor: "#c5cbf8" },
+};
 
-interface IMessageProps {
-  text: string;
-  isError: boolean;
-  onDismiss: () => void;
-}
-const MessageBar: React.FC<IMessageProps> = ({ text, isError, onDismiss }) => (
-  <div
-    className={`${styles.message} ${isError ? styles.messageError : styles.messageSuccess}`}
-  >
-    <span>{text}</span>
-    <button className={styles.messageDismiss} onClick={onDismiss}>
-      ×
-    </button>
-  </div>
-);
+const defaultBtnStyles: IButtonStyles = {
+  root: { borderRadius: 6 },
+  rootHovered: { borderColor: "#667eea", color: "#667eea" },
+  rootPressed: { borderColor: "#5a6fd6", color: "#5a6fd6" },
+};
+
+const dangerBtnStyles: IButtonStyles = {
+  root: { borderRadius: 6, borderColor: "#da1e28", color: "#da1e28" },
+  rootHovered: {
+    borderColor: "#ba1b23",
+    color: "#ba1b23",
+    backgroundColor: "#fff1f1",
+  },
+  rootPressed: { borderColor: "#a2191f", color: "#a2191f" },
+};
+
+const iconBtnThemeStyles: IButtonStyles = {
+  root: { borderRadius: 6, color: "#667eea" },
+  rootHovered: { backgroundColor: "rgba(102,126,234,0.08)", color: "#5a6fd6" },
+};
+
+const homeBtnStyles: IButtonStyles = {
+  root: {
+    borderRadius: 6,
+    color: "white",
+    border: "1px solid rgba(255,255,255,0.3)",
+    backgroundColor: "rgba(255,255,255,0.15)",
+    width: 36,
+    height: 36,
+  },
+  rootHovered: { backgroundColor: "rgba(255,255,255,0.25)", color: "white" },
+  rootPressed: { backgroundColor: "rgba(255,255,255,0.35)", color: "white" },
+  icon: { color: "white" },
+};
+
+
+
+const iconBtnDangerStyles: IButtonStyles = {
+  root: { borderRadius: 6, color: "#da1e28" },
+  rootHovered: { backgroundColor: "#fff1f1", color: "#ba1b23" },
+};
+
+const iconBtnSuccessStyles: IButtonStyles = {
+  root: { borderRadius: 6, color: "#198038" },
+  rootHovered: { backgroundColor: "#defbe6", color: "#0e6027" },
+};
+
+const addIcon: IIconProps = { iconName: "Add" };
+const editIcon: IIconProps = { iconName: "Edit" };
+const deleteIcon: IIconProps = { iconName: "Delete" };
+const viewIcon: IIconProps = { iconName: "View" };
+const hideIcon: IIconProps = { iconName: "Hide" };
+const checkIcon: IIconProps = { iconName: "CheckMark" };
+const cancelIcon: IIconProps = { iconName: "Cancel" };
+
+const modalStyles = {
+  main: {
+    width: 540,
+    maxWidth: "96vw",
+    borderRadius: 16,
+    overflow: "hidden" as const,
+    display: "flex",
+    flexDirection: "column" as const,
+    maxHeight: "92vh",
+  },
+  scrollableContent: {
+    display: "flex",
+    flexDirection: "column" as const,
+    maxHeight: "92vh",
+  },
+};
 
 // ─── Projects Tab ──────────────────────────────────────────────────────────────
-
 const ProjectsTab: React.FC = () => {
   const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState(true);
@@ -50,7 +126,10 @@ const ProjectsTab: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [editProject, setEditProject] = useState<Partial<IProject>>({});
   const [saving, setSaving] = useState(false);
-  const [formErrors, setFormErrors] = useState<{ title?: string; projectCode?: string }>({});
+  const [formErrors, setFormErrors] = useState<{
+    title?: string;
+    projectCode?: string;
+  }>({});
   const [confirmDeleteId, setConfirmDeleteId] = useState<number | null>(null);
 
   const load = (): void => {
@@ -88,8 +167,10 @@ const ProjectsTab: React.FC = () => {
 
   const handleSave = async (): Promise<void> => {
     const errors: { title?: string; projectCode?: string } = {};
-    if (!editProject.title || !editProject.title.trim()) errors.title = 'Project Name is required.';
-    if (!editProject.projectCode || !editProject.projectCode.trim()) errors.projectCode = 'Project Code is required.';
+    if (!editProject.title || !editProject.title.trim())
+      errors.title = "Project Name is required.";
+    if (!editProject.projectCode || !editProject.projectCode.trim())
+      errors.projectCode = "Project Code is required.";
     if (errors.title || errors.projectCode) {
       setFormErrors(errors);
       return;
@@ -121,28 +202,36 @@ const ProjectsTab: React.FC = () => {
 
   return (
     <div className={styles.tabContent}>
+      {/* Toolbar */}
       <div className={styles.toolbar}>
         <span className={styles.sectionLabel}>{strings.ProjectsTab}</span>
-        <button className={styles.addBtn} onClick={openAdd}>
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
-            <path d="M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" />
-          </svg>
-          {strings.AddProject}
-        </button>
+        <PrimaryButton
+          text={strings.AddProject}
+          iconProps={addIcon}
+          styles={primaryBtnStyles}
+          onClick={openAdd}
+        />
       </div>
 
+      {/* Message */}
       {message && (
         <MessageBar
-          text={message}
-          isError={isError}
+          messageBarType={
+            isError ? MessageBarType.error : MessageBarType.success
+          }
+          isMultiline={false}
           onDismiss={() => setMessage("")}
-        />
+          dismissButtonAriaLabel="Close"
+          styles={{ root: { borderRadius: 6, marginBottom: 12 } }}
+        >
+          {message}
+        </MessageBar>
       )}
 
+      {/* List */}
       {loading ? (
         <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <span>{strings.LoadingProjects}</span>
+          <Spinner size={SpinnerSize.medium} label={strings.LoadingProjects} />
         </div>
       ) : (
         <div className={styles.tableWrap}>
@@ -153,7 +242,7 @@ const ProjectsTab: React.FC = () => {
                 <th className={styles.th}>{strings.ProjectName}</th>
                 <th className={styles.th}>{strings.ClientName}</th>
                 <th className={styles.th}>{strings.Status}</th>
-                <th className={styles.th} style={{ width: 130 }}>
+                <th className={styles.th} style={{ width: 150 }}>
                   {strings.Actions}
                 </th>
               </tr>
@@ -183,79 +272,81 @@ const ProjectsTab: React.FC = () => {
                     </td>
                     <td className={styles.td}>
                       <div className={styles.actions}>
-                        <button
-                          className={styles.iconBtn}
-                          title="Edit"
-                          onClick={() => openEdit(p)}
-                        >
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                          >
-                            <path d="M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" />
-                          </svg>
-                        </button>
+                        <TooltipHost content="Edit">
+                          <IconButton
+                            iconProps={editIcon}
+                            styles={iconBtnThemeStyles}
+                            onClick={() => openEdit(p)}
+                          />
+                        </TooltipHost>
+
                         {confirmDeleteId === p.id ? (
                           <>
-                            <span style={{ fontSize: 11, color: '#6f6f6f' }}>Delete?</span>
-                            <button
-                              className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                              title="Confirm delete"
-                              onClick={() => deleteProject(p.id).then(() => { setConfirmDeleteId(null); load(); }).catch(() => { setMessage(strings.ProjectSaveFailed); setIsError(true); setConfirmDeleteId(null); })}
-                            >✓</button>
-                            <button
-                              className={styles.iconBtn}
-                              title="Cancel"
-                              onClick={() => setConfirmDeleteId(null)}
-                            >✕</button>
+                            <span
+                              style={{
+                                fontSize: 11,
+                                color: "#6f6f6f",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              Delete?
+                            </span>
+                            <TooltipHost content="Confirm delete">
+                              <IconButton
+                                iconProps={checkIcon}
+                                styles={iconBtnDangerStyles}
+                                onClick={() =>
+                                  deleteProject(p.id)
+                                    .then(() => {
+                                      setConfirmDeleteId(null);
+                                      load();
+                                    })
+                                    .catch(() => {
+                                      setMessage(strings.ProjectSaveFailed);
+                                      setIsError(true);
+                                      setConfirmDeleteId(null);
+                                    })
+                                }
+                              />
+                            </TooltipHost>
+                            <TooltipHost content="Cancel">
+                              <IconButton
+                                iconProps={cancelIcon}
+                                styles={iconBtnThemeStyles}
+                                onClick={() => setConfirmDeleteId(null)}
+                              />
+                            </TooltipHost>
                           </>
                         ) : (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                            title="Delete"
-                            onClick={() => setConfirmDeleteId(p.id)}
-                          >
-                            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
-                              <path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-                            </svg>
-                          </button>
+                          <TooltipHost content="Delete">
+                            <IconButton
+                              iconProps={deleteIcon}
+                              styles={iconBtnDangerStyles}
+                              onClick={() => setConfirmDeleteId(p.id)}
+                            />
+                          </TooltipHost>
                         )}
-                        {p.isActive ? (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnSuccess}`}
-                            title="Activate"
-                            onClick={() => deactivateProject(p.id).then(load)}
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                            >
-                              <path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />
-                            </svg>
-                          </button>
-                        ) : (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                            title="Deactivate"
-                            onClick={() => activateProject(p.id).then(load)}
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                            >
-                              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                              <path d="M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" />
-                              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" />
-                            </svg>
-                          </button>
-                        )}
+
+                        <TooltipHost
+                          content={
+                            p.isActive ? strings.Deactivate : strings.Activate
+                          }
+                        >
+                          <IconButton
+                            iconProps={p.isActive ? hideIcon : viewIcon}
+                            styles={
+                              p.isActive
+                                ? iconBtnDangerStyles
+                                : iconBtnSuccessStyles
+                            }
+                            onClick={() =>
+                              (p.isActive
+                                ? deactivateProject(p.id)
+                                : activateProject(p.id)
+                              ).then(load)
+                            }
+                          />
+                        </TooltipHost>
                       </div>
                     </td>
                   </tr>
@@ -266,136 +357,121 @@ const ProjectsTab: React.FC = () => {
         </div>
       )}
 
+      {/* Add/Edit Modal */}
       <Modal
         isOpen={drawerOpen}
         onDismiss={closeDrawer}
         isBlocking={false}
-        styles={{
-          main: {
-            width: 540,
-            maxWidth: "96vw",
-            borderRadius: 16,
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            maxHeight: "92vh",
-          },
-          scrollableContent: {
-            display: "flex",
-            flexDirection: "column",
-            maxHeight: "92vh",
-          },
-        }}
+        styles={modalStyles}
       >
         <div className={styles.drawerHeader}>
           <h3 className={styles.drawerTitle}>
             {editProject.id ? strings.EditProject : strings.AddProjectModal}
           </h3>
-          <button className={styles.drawerClose} onClick={closeDrawer}>
-            ×
-          </button>
+          <IconButton
+            iconProps={cancelIcon}
+            ariaLabel="Close"
+            onClick={closeDrawer}
+            styles={iconBtnThemeStyles}
+          />
         </div>
         <div className={styles.drawerBody}>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>
-              {strings.ProjectName} <span className={styles.required}>*</span>
-            </label>
-            <input
-              className={styles.fieldInput}
-              style={formErrors.title ? { borderColor: '#da1e28' } : {}}
-              placeholder={strings.ProjectNamePlaceholder}
-              value={editProject.title ?? ""}
-              onChange={(e) => {
-                setEditProject((p) => ({ ...p, title: e.target.value }));
-                if (formErrors.title) setFormErrors((prev) => ({ ...prev, title: undefined }));
-              }}
-            />
-            {formErrors.title && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.title}</span>}
-          </div>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>
-              {strings.ProjectCode} <span className={styles.required}>*</span>
-            </label>
-            <input
-              className={styles.fieldInput}
-              style={formErrors.projectCode ? { borderColor: '#da1e28' } : {}}
+          <TextField
+            label={strings.ProjectName}
+            required
+            placeholder={strings.ProjectNamePlaceholder}
+            value={editProject.title ?? ""}
+            errorMessage={formErrors.title}
+            onChange={(_e, val) => {
+              setEditProject((p) => ({ ...p, title: val || "" }));
+              if (formErrors.title)
+                setFormErrors((prev) => ({ ...prev, title: undefined }));
+            }}
+            styles={{ fieldGroup: { borderRadius: 6 } }}
+          />
+          <div style={{ marginTop: 14 }}>
+            <TextField
+              label={strings.ProjectCode}
+              required
               placeholder={strings.ProjectCodePlaceholder}
               value={editProject.projectCode ?? ""}
-              onChange={(e) => {
-                setEditProject((p) => ({ ...p, projectCode: e.target.value }));
-                if (formErrors.projectCode) setFormErrors((prev) => ({ ...prev, projectCode: undefined }));
+              errorMessage={formErrors.projectCode}
+              onChange={(_e, val) => {
+                setEditProject((p) => ({ ...p, projectCode: val || "" }));
+                if (formErrors.projectCode)
+                  setFormErrors((prev) => ({
+                    ...prev,
+                    projectCode: undefined,
+                  }));
               }}
+              styles={{ fieldGroup: { borderRadius: 6 } }}
             />
-            {formErrors.projectCode && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.projectCode}</span>}
           </div>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>{strings.ClientName}</label>
-            <input
-              className={styles.fieldInput}
+          <div style={{ marginTop: 14 }}>
+            <TextField
+              label={strings.ClientName}
               placeholder={strings.ClientNamePlaceholder}
               value={editProject.clientName ?? ""}
-              onChange={(e) =>
-                setEditProject((p) => ({
-                  ...p,
-                  clientName: e.target.value,
-                }))
+              onChange={(_e, val) =>
+                setEditProject((p) => ({ ...p, clientName: val || "" }))
               }
+              styles={{ fieldGroup: { borderRadius: 6 } }}
             />
           </div>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>{strings.Description}</label>
-            <textarea
-              className={`${styles.fieldInput} ${styles.fieldTextarea}`}
+          <div style={{ marginTop: 14 }}>
+            <TextField
+              label={strings.Description}
+              multiline
+              rows={3}
               placeholder={strings.OptionalDescription}
               value={editProject.description ?? ""}
-              onChange={(e) =>
-                setEditProject((p) => ({
-                  ...p,
-                  description: e.target.value,
-                }))
+              onChange={(_e, val) =>
+                setEditProject((p) => ({ ...p, description: val || "" }))
               }
+              styles={{ fieldGroup: { borderRadius: 6 } }}
             />
           </div>
-          <div className={styles.toggleRow}>
-            <span className={styles.toggleLabel}>{strings.Active}</span>
-            <label className={styles.toggle}>
-              <input
-                type="checkbox"
-                checked={editProject.isActive ?? true}
-                onChange={(e) =>
-                  setEditProject((p) => ({
-                    ...p,
-                    isActive: e.target.checked,
-                  }))
-                }
-              />
-              <span className={styles.track} />
-              <span className={styles.thumb} />
-            </label>
-          </div>
-          {message && (
-            <MessageBar
-              text={message}
-              isError={isError}
-              onDismiss={() => setMessage("")}
+          <div style={{ marginTop: 16 }}>
+            <Toggle
+              label={strings.Active}
+              checked={editProject.isActive ?? true}
+              onChange={(_e, checked) =>
+                setEditProject((p) => ({ ...p, isActive: checked }))
+              }
+              styles={{
+                thumb: {
+                  backgroundColor: editProject.isActive ? "#667eea" : undefined,
+                },
+                pill: {
+                  backgroundColor: editProject.isActive
+                    ? "rgba(102,126,234,0.3)"
+                    : undefined,
+                },
+              }}
             />
-          )}
+          </div>
         </div>
         <div className={styles.drawerFooter}>
-          <button
-            className={styles.saveBtn}
-            onClick={handleSave}
+          <PrimaryButton
+            text={
+              saving
+                ? strings.Saving
+                : editProject.id
+                  ? strings.UpdateProject
+                  : strings.AddProjectModal
+            }
             disabled={saving}
-          >
-            {saving
-              ? strings.Saving
-              : editProject.id
-                ? strings.UpdateProject
-                : strings.AddProjectModal}
-          </button>
-          <button className={styles.cancelBtn} onClick={closeDrawer}>
-            {strings.Cancel}
-          </button>
+            styles={primaryBtnStyles}
+            onRenderIcon={
+              saving ? () => <Spinner size={SpinnerSize.small} /> : undefined
+            }
+            onClick={handleSave}
+          />
+          <DefaultButton
+            text={strings.Cancel}
+            styles={defaultBtnStyles}
+            onClick={closeDrawer}
+          />
         </div>
       </Modal>
     </div>
@@ -403,7 +479,6 @@ const ProjectsTab: React.FC = () => {
 };
 
 // ─── Categories Tab ────────────────────────────────────────────────────────────
-
 const CategoriesTab: React.FC = () => {
   const [categories, setCategories] = useState<IActivityCategory[]>([]);
   const [loading, setLoading] = useState(true);
@@ -450,7 +525,7 @@ const CategoriesTab: React.FC = () => {
 
   const handleSave = async (): Promise<void> => {
     if (!editCat.title || !editCat.title.trim()) {
-      setFormErrors({ title: 'Category Name is required.' });
+      setFormErrors({ title: "Category Name is required." });
       return;
     }
     setFormErrors({});
@@ -480,28 +555,39 @@ const CategoriesTab: React.FC = () => {
 
   return (
     <div className={styles.tabContent}>
+      {/* Toolbar */}
       <div className={styles.toolbar}>
         <span className={styles.sectionLabel}>{strings.CategoriesTab}</span>
-        <button className={styles.addBtn} onClick={openAdd}>
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
-            <path d="M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" />
-          </svg>
-          {strings.AddCategory}
-        </button>
+        <PrimaryButton
+          text={strings.AddCategory}
+          iconProps={addIcon}
+          styles={primaryBtnStyles}
+          onClick={openAdd}
+        />
       </div>
 
+      {/* Message */}
       {message && (
         <MessageBar
-          text={message}
-          isError={isError}
+          messageBarType={
+            isError ? MessageBarType.error : MessageBarType.success
+          }
+          isMultiline={false}
           onDismiss={() => setMessage("")}
-        />
+          dismissButtonAriaLabel="Close"
+          styles={{ root: { borderRadius: 6, marginBottom: 12 } }}
+        >
+          {message}
+        </MessageBar>
       )}
 
+      {/* List */}
       {loading ? (
         <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <span>{strings.LoadingCategories}</span>
+          <Spinner
+            size={SpinnerSize.medium}
+            label={strings.LoadingCategories}
+          />
         </div>
       ) : (
         <div className={styles.tableWrap}>
@@ -514,7 +600,7 @@ const CategoriesTab: React.FC = () => {
                   {strings.SortOrder}
                 </th>
                 <th className={styles.th}>{strings.Status}</th>
-                <th className={styles.th} style={{ width: 130 }}>
+                <th className={styles.th} style={{ width: 150 }}>
                   {strings.Actions}
                 </th>
               </tr>
@@ -542,79 +628,81 @@ const CategoriesTab: React.FC = () => {
                     </td>
                     <td className={styles.td}>
                       <div className={styles.actions}>
-                        <button
-                          className={styles.iconBtn}
-                          title="Edit"
-                          onClick={() => openEdit(c)}
-                        >
-                          <svg
-                            width="14"
-                            height="14"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                          >
-                            <path d="M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" />
-                          </svg>
-                        </button>
+                        <TooltipHost content="Edit">
+                          <IconButton
+                            iconProps={editIcon}
+                            styles={iconBtnThemeStyles}
+                            onClick={() => openEdit(c)}
+                          />
+                        </TooltipHost>
+
                         {confirmDeleteId === c.id ? (
                           <>
-                            <span style={{ fontSize: 11, color: '#6f6f6f' }}>Delete?</span>
-                            <button
-                              className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                              title="Confirm delete"
-                              onClick={() => deleteCategory(c.id).then(() => { setConfirmDeleteId(null); load(); }).catch(() => { setMessage(strings.CategorySaveFailed); setIsError(true); setConfirmDeleteId(null); })}
-                            >✓</button>
-                            <button
-                              className={styles.iconBtn}
-                              title="Cancel"
-                              onClick={() => setConfirmDeleteId(null)}
-                            >✕</button>
+                            <span
+                              style={{
+                                fontSize: 11,
+                                color: "#6f6f6f",
+                                whiteSpace: "nowrap",
+                              }}
+                            >
+                              Delete?
+                            </span>
+                            <TooltipHost content="Confirm delete">
+                              <IconButton
+                                iconProps={checkIcon}
+                                styles={iconBtnDangerStyles}
+                                onClick={() =>
+                                  deleteCategory(c.id)
+                                    .then(() => {
+                                      setConfirmDeleteId(null);
+                                      load();
+                                    })
+                                    .catch(() => {
+                                      setMessage(strings.CategorySaveFailed);
+                                      setIsError(true);
+                                      setConfirmDeleteId(null);
+                                    })
+                                }
+                              />
+                            </TooltipHost>
+                            <TooltipHost content="Cancel">
+                              <IconButton
+                                iconProps={cancelIcon}
+                                styles={iconBtnThemeStyles}
+                                onClick={() => setConfirmDeleteId(null)}
+                              />
+                            </TooltipHost>
                           </>
                         ) : (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                            title="Delete"
-                            onClick={() => setConfirmDeleteId(c.id)}
-                          >
-                            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
-                              <path d="M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8" stroke="currentColor" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-                            </svg>
-                          </button>
+                          <TooltipHost content="Delete">
+                            <IconButton
+                              iconProps={deleteIcon}
+                              styles={iconBtnDangerStyles}
+                              onClick={() => setConfirmDeleteId(c.id)}
+                            />
+                          </TooltipHost>
                         )}
-                        {c.isActive ? (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnSuccess}`}
-                            title="Activate"
-                            onClick={() => deactivateCategory(c.id).then(load)}
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                            >
-                              <path d="M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                              <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" />
-                            </svg>
-                          </button>
-                        ) : (
-                          <button
-                            className={`${styles.iconBtn} ${styles.iconBtnDanger}`}
-                            title="Deactivate"
-                            onClick={() => activateCategory(c.id).then(load)}
-                          >
-                            <svg
-                              width="14"
-                              height="14"
-                              viewBox="0 0 16 16"
-                              fill="currentColor"
-                            >
-                              <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
-                              <path d="M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" />
-                              <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" />
-                            </svg>
-                          </button>
-                        )}
+
+                        <TooltipHost
+                          content={
+                            c.isActive ? strings.Deactivate : strings.Activate
+                          }
+                        >
+                          <IconButton
+                            iconProps={c.isActive ? hideIcon : viewIcon}
+                            styles={
+                              c.isActive
+                                ? iconBtnDangerStyles
+                                : iconBtnSuccessStyles
+                            }
+                            onClick={() =>
+                              (c.isActive
+                                ? deactivateCategory(c.id)
+                                : activateCategory(c.id)
+                              ).then(load)
+                            }
+                          />
+                        </TooltipHost>
                       </div>
                     </td>
                   </tr>
@@ -625,116 +713,123 @@ const CategoriesTab: React.FC = () => {
         </div>
       )}
 
+      {/* Add/Edit Modal */}
       <Modal
         isOpen={drawerOpen}
         onDismiss={closeDrawer}
         isBlocking={false}
-        styles={{
-          main: {
-            width: 540,
-            maxWidth: "96vw",
-            borderRadius: 16,
-            overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
-            maxHeight: "92vh",
-          },
-          scrollableContent: {
-            display: "flex",
-            flexDirection: "column",
-            maxHeight: "92vh",
-          },
-        }}
+        styles={modalStyles}
       >
         <div className={styles.drawerHeader}>
           <h3 className={styles.drawerTitle}>
             {editCat.id ? strings.EditCategory : strings.AddCategoryModal}
           </h3>
-          <button className={styles.drawerClose} onClick={closeDrawer}>
-            ×
-          </button>
+          <IconButton
+            iconProps={cancelIcon}
+            ariaLabel="Close"
+            onClick={closeDrawer}
+            styles={iconBtnThemeStyles}
+          />
         </div>
         <div className={styles.drawerBody}>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>
-              {strings.Category} <span className={styles.required}>*</span>
-            </label>
-            <input
-              className={styles.fieldInput}
-              style={formErrors.title ? { borderColor: '#da1e28' } : {}}
-              placeholder={strings.CategoryNamePlaceholder}
-              value={editCat.title ?? ""}
-              onChange={(e) => {
-                setEditCat((c) => ({ ...c, title: e.target.value }));
-                if (formErrors.title) setFormErrors({});
-              }}
-            />
-            {formErrors.title && <span style={{ color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 }}>{formErrors.title}</span>}
-          </div>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>{strings.Description}</label>
-            <textarea
-              className={`${styles.fieldInput} ${styles.fieldTextarea}`}
+          <TextField
+            label={strings.Category}
+            required
+            placeholder={strings.CategoryNamePlaceholder}
+            value={editCat.title ?? ""}
+            errorMessage={formErrors.title}
+            onChange={(_e, val) => {
+              setEditCat((c) => ({ ...c, title: val || "" }));
+              if (formErrors.title) setFormErrors({});
+            }}
+            styles={{ fieldGroup: { borderRadius: 6 } }}
+          />
+          <div style={{ marginTop: 14 }}>
+            <TextField
+              label={strings.Description}
+              multiline
+              rows={3}
               placeholder={strings.OptionalDescription}
               value={editCat.description ?? ""}
-              onChange={(e) =>
-                setEditCat((c) => ({ ...c, description: e.target.value }))
+              onChange={(_e, val) =>
+                setEditCat((c) => ({ ...c, description: val || "" }))
               }
+              styles={{ fieldGroup: { borderRadius: 6 } }}
             />
           </div>
-          <div className={styles.field}>
-            <label className={styles.fieldLabel}>{strings.SortOrder}</label>
-            <input
-              type="number"
-              className={styles.fieldInput}
+          <div style={{ marginTop: 14 }}>
+            <SpinButton
+              label={strings.SortOrder}
               min={0}
               max={9999}
-              value={editCat.sortOrder ?? 0}
-              onChange={(e) =>
+              step={1}
+              value={String(editCat.sortOrder ?? 0)}
+              onIncrement={(val) => {
                 setEditCat((c) => ({
                   ...c,
-                  sortOrder: parseInt(e.target.value, 10) || 0,
-                }))
+                  sortOrder: Math.min((parseInt(val, 10) || 0) + 1, 9999),
+                }));
+              }}
+              onDecrement={(val) => {
+                setEditCat((c) => ({
+                  ...c,
+                  sortOrder: Math.max((parseInt(val, 10) || 0) - 1, 0),
+                }));
+              }}
+              onValidate={(val) => {
+                setEditCat((c) => ({
+                  ...c,
+                  sortOrder: parseInt(val, 10) || 0,
+                }));
+                return val;
+              }}
+              styles={{
+                spinButtonWrapper: { borderRadius: 6 },
+                root: { maxWidth: 120 },
+              }}
+            />
+          </div>
+          <div style={{ marginTop: 16 }}>
+            <Toggle
+              label={strings.Active}
+              checked={editCat.isActive ?? true}
+              onChange={(_e, checked) =>
+                setEditCat((c) => ({ ...c, isActive: checked }))
               }
+              styles={{
+                thumb: {
+                  backgroundColor: editCat.isActive ? "#667eea" : undefined,
+                },
+                pill: {
+                  backgroundColor: editCat.isActive
+                    ? "rgba(102,126,234,0.3)"
+                    : undefined,
+                },
+              }}
             />
           </div>
-          <div className={styles.toggleRow}>
-            <span className={styles.toggleLabel}>{strings.Active}</span>
-            <label className={styles.toggle}>
-              <input
-                type="checkbox"
-                checked={editCat.isActive ?? true}
-                onChange={(e) =>
-                  setEditCat((c) => ({ ...c, isActive: e.target.checked }))
-                }
-              />
-              <span className={styles.track} />
-              <span className={styles.thumb} />
-            </label>
-          </div>
-          {message && (
-            <MessageBar
-              text={message}
-              isError={isError}
-              onDismiss={() => setMessage("")}
-            />
-          )}
         </div>
         <div className={styles.drawerFooter}>
-          <button
-            className={styles.saveBtn}
-            onClick={handleSave}
+          <PrimaryButton
+            text={
+              saving
+                ? strings.Saving
+                : editCat.id
+                  ? strings.UpdateCategory
+                  : strings.AddCategoryModal
+            }
             disabled={saving}
-          >
-            {saving
-              ? strings.Saving
-              : editCat.id
-                ? strings.UpdateCategory
-                : strings.AddCategoryModal}
-          </button>
-          <button className={styles.cancelBtn} onClick={closeDrawer}>
-            {strings.Cancel}
-          </button>
+            styles={primaryBtnStyles}
+            onRenderIcon={
+              saving ? () => <Spinner size={SpinnerSize.small} /> : undefined
+            }
+            onClick={handleSave}
+          />
+          <DefaultButton
+            text={strings.Cancel}
+            styles={defaultBtnStyles}
+            onClick={closeDrawer}
+          />
         </div>
       </Modal>
     </div>
@@ -742,7 +837,6 @@ const CategoriesTab: React.FC = () => {
 };
 
 // ─── Main Admin Panel ──────────────────────────────────────────────────────────
-
 type TTab = "projects" | "categories";
 
 const AdminPanel: React.FC = () => {
@@ -754,22 +848,15 @@ const AdminPanel: React.FC = () => {
       {/* Header */}
       <div className={styles.header}>
         <div className={styles.headerContent}>
-          <button
-            className={styles.homeBtn}
+          <IconButton
+            iconProps={{ iconName: "Home" }}
             title="Back to Home"
+            styles={homeBtnStyles}
             onClick={navigateHome}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-              <path d="M8.354 1.146a.5.5 0 00-.708 0l-6 6A.5.5 0 002 7.5v7a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4h2v4a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-7a.5.5 0 00-.146-.354L13 5.793V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5v1.293L8.354 1.146z" />
-            </svg>
-          </button>
+          />
           <div>
-            <h2 className={styles.headerTitle}>
-              {strings.AdminTitle}
-            </h2>
-            <p className={styles.headerSubtitle}>
-              {strings.AdminSubtitle}
-            </p>
+            <h2 className={styles.headerTitle}>{strings.AdminTitle}</h2>
+            <p className={styles.headerSubtitle}>{strings.AdminSubtitle}</p>
           </div>
         </div>
       </div>

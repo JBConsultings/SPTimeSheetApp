@@ -47,6 +47,8 @@ export interface IExportStyles {
 
   'loadingWrap': string;
 
+  'otBadge': string;
+
   'rejected': string;
 
   'spin': string;

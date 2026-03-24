@@ -19,6 +19,7 @@ import { getActiveCategories } from '../services/CategoryService';
 import { IProject, IActivityCategory } from '../models/ITimesheetModels';
 import { formatDateLabel, isFutureDate } from '../utils/dateUtils';
 import { validateTaskRows } from '../utils/validationUtils';
+import { REGULAR_HOURS_PER_DAY } from '../utils/constants';
 import { fmt } from '../utils/fmt';
 import * as strings from 'TimeSheetWebPartStrings';
 import styles from './DailyTimesheetForm.module.scss';
@@ -88,6 +89,20 @@ function statusLabel(status: TimesheetStatus): string {
   if (status === 'Rejected')  return strings.StatusRejected;
   return strings.StatusDraft;
 }
+
+// ─── Shared Fluent UI button styles (theme colour) ────────────────────────────
+const primaryBtnStyles = {
+  root:         { backgroundColor: '#667eea', borderColor: '#667eea', borderRadius: 6 },
+  rootHovered:  { backgroundColor: '#5a6fd6', borderColor: '#5a6fd6' },
+  rootPressed:  { backgroundColor: '#4d5fbc', borderColor: '#4d5fbc' },
+  rootDisabled: { backgroundColor: '#c5cbf8', borderColor: '#c5cbf8' },
+};
+
+const defaultBtnStyles = {
+  root:        { borderRadius: 6 },
+  rootHovered: { borderColor: '#667eea', color: '#667eea' },
+  rootPressed: { borderColor: '#5a6fd6', color: '#5a6fd6' },
+};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }) => {
@@ -323,6 +338,11 @@ const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }
             <span className={styles.hoursPillLabel}>{strings.Hrs}</span>
             {totalHours > 24 && <span className={styles.hoursPillExceeds}>!</span>}
           </span>
+          {totalHours > REGULAR_HOURS_PER_DAY && (
+            <span className={styles.otPill} title={`${(totalHours - REGULAR_HOURS_PER_DAY).toFixed(2)} hrs overtime`}>
+              OT +{(totalHours - REGULAR_HOURS_PER_DAY).toFixed(2)}h
+            </span>
+          )}
           {dayStatus && (
             <span className={`${styles.statusPill} ${styles[`status${dayStatus}`]}`}>
               {statusLabel(dayStatus)}
@@ -534,7 +554,7 @@ const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }
                   iconProps={{ iconName: 'Save' }}
                   disabled={saving || totalHours > 24}
                   onClick={handleSaveDraft}
-                  styles={{ root: { borderRadius: 6 } }}
+                  styles={defaultBtnStyles}
                 />
                 <PrimaryButton
                   text={saving ? strings.Saving : strings.Submit}
@@ -559,7 +579,7 @@ const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }
                     setValidationErrors([]);
                     setSubmitConfirm(true);
                   }}
-                  styles={{ root: { borderRadius: 6 } }}
+                  styles={primaryBtnStyles}
                 />
               </>
             ) : (
@@ -572,13 +592,13 @@ const DailyTimesheetForm: React.FC<IDailyTimesheetFormProps> = ({ selectedDate }
                   iconProps={{ iconName: 'CheckMark' }}
                   disabled={saving}
                   onClick={handleSubmit}
-                  styles={{ root: { borderRadius: 6 } }}
+                  styles={primaryBtnStyles}
                 />
                 <DefaultButton
                   text={strings.Cancel}
                   disabled={saving}
                   onClick={() => setSubmitConfirm(false)}
-                  styles={{ root: { borderRadius: 6 } }}
+                  styles={defaultBtnStyles}
                 />
               </div>
             )}

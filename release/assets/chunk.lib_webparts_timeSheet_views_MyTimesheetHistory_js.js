@@ -15,7 +15,7 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 
-_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(".container_858a5a51{animation:fadeIn_858a5a51 .25s ease both;color:#161616;font-family:IBM Plex Sans,Segoe UI,sans-serif;padding:32px}@keyframes fadeIn_858a5a51{0%{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.header_858a5a51{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;gap:12px;margin:-32px -32px 28px;overflow:hidden;padding:24px 32px;position:relative}.header_858a5a51:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);content:\"\";inset:0;pointer-events:none;position:absolute}.header_858a5a51 .homeBtn_858a5a51{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;flex-shrink:0;height:36px;justify-content:center;position:relative;transition:background .15s cubic-bezier(.4,0,.2,1);width:36px;z-index:1}.header_858a5a51 .homeBtn_858a5a51:hover{background:hsla(0,0%,100%,.28)}.header_858a5a51 .title_858a5a51{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.1);z-index:1}.filterBar_858a5a51{align-items:flex-end;background:#fff;border:1px solid #e0e0e0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px;padding:16px 20px}.filterGroup_858a5a51{display:flex;flex:1;flex-direction:column;gap:5px;min-width:155px}.filterGroup_858a5a51 label{color:#525252;font-size:11.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase}.filterInput_858a5a51,.filterSelect_858a5a51{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;height:36px;outline:none;padding:0 10px;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.filterInput_858a5a51:focus,.filterSelect_858a5a51:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.filterSelect_858a5a51{appearance:none;background-color:#f4f4f4;background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23525252' d='m1 1 5 5 5-5'/%3E%3C/svg%3E\");background-position:right 10px center;background-repeat:no-repeat;cursor:pointer;padding-right:28px}.errorBar_858a5a51{align-items:center;background:#fff1f1;border:1px solid #ffd7d9;border-radius:8px;color:#750e13;display:flex;font-size:13.5px;gap:10px;margin-bottom:16px;padding:10px 16px}.loadingWrap_858a5a51{align-items:center;color:#525252;display:flex;flex-direction:column;font-size:14px;gap:14px;justify-content:center;min-height:180px}.spinner_858a5a51{animation:spin_858a5a51 .7s linear infinite;border:3px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;height:32px;width:32px}@keyframes spin_858a5a51{to{transform:rotate(1turn)}}.emptyState_858a5a51{align-items:center;color:#8d8d8d;display:flex;flex-direction:column;gap:10px;justify-content:center;padding:52px 24px;text-align:center}.emptyState_858a5a51 .emptyIcon_858a5a51{height:48px;margin-bottom:4px;opacity:.35;width:48px}.emptyState_858a5a51 .emptyTitle_858a5a51{color:#525252;font-size:15px;font-weight:600}.emptyState_858a5a51 .emptySubtitle_858a5a51{font-size:13px}.list_858a5a51{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}.summaryCard_858a5a51{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer;display:flex;gap:12px;justify-content:space-between;padding:14px 18px;text-decoration:none;transition:box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.4,0,.2,1)}.summaryCard_858a5a51:hover{border-color:#c6c6c6;box-shadow:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);transform:translateY(-1px)}.summaryCard_858a5a51:active{box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);transform:translateY(0)}.cardLeft_858a5a51{display:flex;flex-direction:column;gap:4px;min-width:0}.cardDate_858a5a51{color:#161616;font-size:15px;font-weight:600;white-space:nowrap}.cardMeta_858a5a51{align-items:center;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px}.cardMeta_858a5a51 .dot_858a5a51{background:#8d8d8d;border-radius:50%;flex-shrink:0;height:3px;width:3px}.badge_858a5a51{align-items:center;border-radius:20px;display:inline-flex;flex-shrink:0;font-size:11.5px;font-weight:700;gap:5px;letter-spacing:.3px;padding:4px 12px;white-space:nowrap}.badge_858a5a51:before{background:currentColor;border-radius:50%;content:\"\";flex-shrink:0;height:6px;opacity:.7;width:6px}.badge_858a5a51.approved_858a5a51{background:#defbe6;color:#24a148}.badge_858a5a51.submitted_858a5a51{background:rgba(102,126,234,.08);color:#0f62fe}.badge_858a5a51.rejected_858a5a51{background:#fff1f1;color:#da1e28}.badge_858a5a51.draft_858a5a51{background:#fdf6d8;color:#b28600}.footer_858a5a51{align-items:center;border-top:1px solid #e0e0e0;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px;margin-top:8px;padding-top:4px}.footer_858a5a51 strong{color:#525252;font-weight:600}", true);
+_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(".container_858a5a51{animation:fadeIn_858a5a51 .25s ease both;color:#161616;font-family:IBM Plex Sans,Segoe UI,sans-serif;padding:32px}@keyframes fadeIn_858a5a51{0%{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.header_858a5a51{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;gap:12px;margin:-32px -32px 28px;overflow:hidden;padding:24px 32px;position:relative}.header_858a5a51:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);content:\"\";inset:0;pointer-events:none;position:absolute}.header_858a5a51 .homeBtn_858a5a51{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;flex-shrink:0;height:36px;justify-content:center;position:relative;transition:background .15s cubic-bezier(.4,0,.2,1);width:36px;z-index:1}.header_858a5a51 .homeBtn_858a5a51:hover{background:hsla(0,0%,100%,.28)}.header_858a5a51 .title_858a5a51{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.1);z-index:1}.filterBar_858a5a51{align-items:flex-end;background:#fff;border:1px solid #e0e0e0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px;padding:16px 20px}.filterGroup_858a5a51{display:flex;flex:1;flex-direction:column;gap:5px;min-width:155px}.filterGroup_858a5a51 label{color:#525252;font-size:11.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase}.filterInput_858a5a51,.filterSelect_858a5a51{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;height:36px;outline:none;padding:0 10px;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.filterInput_858a5a51:focus,.filterSelect_858a5a51:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.filterSelect_858a5a51{appearance:none;background-color:#f4f4f4;background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23525252' d='m1 1 5 5 5-5'/%3E%3C/svg%3E\");background-position:right 10px center;background-repeat:no-repeat;cursor:pointer;padding-right:28px}.errorBar_858a5a51{align-items:center;background:#fff1f1;border:1px solid #ffd7d9;border-radius:8px;color:#750e13;display:flex;font-size:13.5px;gap:10px;margin-bottom:16px;padding:10px 16px}.loadingWrap_858a5a51{align-items:center;color:#525252;display:flex;flex-direction:column;font-size:14px;gap:14px;justify-content:center;min-height:180px}.spinner_858a5a51{animation:spin_858a5a51 .7s linear infinite;border:3px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;height:32px;width:32px}@keyframes spin_858a5a51{to{transform:rotate(1turn)}}.emptyState_858a5a51{align-items:center;color:#8d8d8d;display:flex;flex-direction:column;gap:10px;justify-content:center;padding:52px 24px;text-align:center}.emptyState_858a5a51 .emptyIcon_858a5a51{height:48px;margin-bottom:4px;opacity:.35;width:48px}.emptyState_858a5a51 .emptyTitle_858a5a51{color:#525252;font-size:15px;font-weight:600}.emptyState_858a5a51 .emptySubtitle_858a5a51{font-size:13px}.list_858a5a51{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}.summaryCard_858a5a51{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer;display:flex;gap:12px;justify-content:space-between;padding:14px 18px;text-decoration:none;transition:box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.4,0,.2,1)}.summaryCard_858a5a51:hover{border-color:#c6c6c6;box-shadow:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);transform:translateY(-1px)}.summaryCard_858a5a51:active{box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);transform:translateY(0)}.cardLeft_858a5a51{display:flex;flex-direction:column;gap:4px;min-width:0}.cardDate_858a5a51{color:#161616;font-size:15px;font-weight:600;white-space:nowrap}.cardMeta_858a5a51{align-items:center;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px}.cardMeta_858a5a51 .dot_858a5a51{background:#8d8d8d;border-radius:50%;flex-shrink:0;height:3px;width:3px}.badge_858a5a51{align-items:center;border-radius:20px;display:inline-flex;flex-shrink:0;font-size:11.5px;font-weight:700;gap:5px;letter-spacing:.3px;padding:4px 12px;white-space:nowrap}.badge_858a5a51:before{background:currentColor;border-radius:50%;content:\"\";flex-shrink:0;height:6px;opacity:.7;width:6px}.badge_858a5a51.approved_858a5a51{background:#defbe6;color:#24a148}.badge_858a5a51.submitted_858a5a51{background:rgba(102,126,234,.08);color:#0f62fe}.badge_858a5a51.rejected_858a5a51{background:#fff1f1;color:#da1e28}.badge_858a5a51.draft_858a5a51{background:#fdf6d8;color:#b28600}.otBadge_858a5a51{align-items:center;background:#fff3e0;border:1.5px solid #ff9800;border-radius:20px;color:#e65100;display:inline-flex;flex-shrink:0;font-size:11px;font-weight:700;letter-spacing:.3px;padding:2px 8px;white-space:nowrap}.footer_858a5a51{align-items:center;border-top:1px solid #e0e0e0;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px;margin-top:8px;padding-top:4px}.footer_858a5a51 strong{color:#525252;font-weight:600}", true);
 
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -46,6 +46,7 @@ _node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_
   submitted: "submitted_858a5a51",
   rejected: "rejected_858a5a51",
   draft: "draft_858a5a51",
+  otBadge: "otBadge_858a5a51",
   footer: "footer_858a5a51",
   container: "container_858a5a51"
 });
@@ -63,15 +64,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/TimesheetService */ 30264);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MyTimesheetHistory.module.scss */ 55595);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var _utils_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/constants */ 47293);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./MyTimesheetHistory.module.scss */ 55595);
+
 
 
 
@@ -83,22 +86,22 @@ __webpack_require__.r(__webpack_exports__);
 // ─── Constants ────────────────────────────────────────────────────────────────
 function getStatusOptions() {
     return [
-        { key: 'All', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AllStatuses },
-        { key: 'Draft', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusDraft },
-        { key: 'Submitted', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusSubmitted },
-        { key: 'Approved', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusApproved },
-        { key: 'Rejected', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.StatusRejected },
+        { key: 'All', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AllStatuses },
+        { key: 'Draft', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusDraft },
+        { key: 'Submitted', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusSubmitted },
+        { key: 'Approved', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusApproved },
+        { key: 'Rejected', text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusRejected },
     ];
 }
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === 'Approved')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].approved;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].approved;
     if (status === 'Submitted')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].submitted;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].submitted;
     if (status === 'Rejected')
-        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].rejected;
-    return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].draft;
+        return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rejected;
+    return _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].draft;
 }
 function toDateInputValue(d) {
     // Returns yyyy-mm-dd for <input type="date">
@@ -160,7 +163,7 @@ var IconTrash = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createE
 // ─── Component ────────────────────────────────────────────────────────────────
 var MyTimesheetHistory = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo, navigateHome = _a.navigateHome;
-    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
+    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.currentMonthRange)(), defaultStart = _b.start, defaultEnd = _b.end;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(defaultEnd), endDate = _d[0], setEndDate = _d[1];
     var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('All'), statusFilter = _e[0], setStatusFilter = _e[1];
@@ -183,7 +186,7 @@ var MyTimesheetHistory = function () {
         })
             .catch(function () {
             if (!cancelled) {
-                setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadHistoryFailed);
+                setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadHistoryFailed);
                 setLoading(false);
             }
         });
@@ -196,9 +199,9 @@ var MyTimesheetHistory = function () {
         setDeleting(false);
         setConfirmDeleteKey(key);
     };
-    var confirmDelete = function (summary, e) { return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(void 0, void 0, void 0, function () {
+    var confirmDelete = function (summary, e) { return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(void 0, void 0, void 0, function () {
         var _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__generator)(this, function (_b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     e.stopPropagation();
@@ -235,44 +238,49 @@ var MyTimesheetHistory = function () {
         ? summaries
         : summaries.filter(function (s) { return s.status === statusFilter; });
     // ─── Render ─────────────────────────────────────────────────────────────────
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].header },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].homeBtn, title: "Home", onClick: navigateHome },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].homeBtn, title: "Home", onClick: navigateHome },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconHome, null)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.HistoryTitle)),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterBar },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.From),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-from", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.To),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-to", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Status),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "filter-status", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
-        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].errorBar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.HistoryTitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterBar },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.From),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-from", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) { return e.target.value && setStartDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.To),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "filter-to", type: "date", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) { return e.target.value && setEndDate(fromDateInputValue(e.target.value)); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "filter-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Status),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "filter-status", className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); })))),
+        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].errorBar },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
             error)),
-        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].loadingWrap },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingHistory))) : filtered.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyState },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCalendar, { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyIcon }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoEntriesFound),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoEntriesHintHistory))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].list }, filtered.map(function (summary) {
+        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loadingWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingHistory))) : filtered.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyState },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCalendar, { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyIcon }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoEntriesFound),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoEntriesHintHistory))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].list }, filtered.map(function (summary) {
             var key = summary.date.toISOString();
             var isPendingDelete = confirmDeleteKey === key;
-            return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: key, className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].summaryCard, onClick: function () { return !isPendingDelete && navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardLeft },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardDate }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateLabel)(summary.date)),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].cardMeta },
+            return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: key, className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].summaryCard, onClick: function () { return !isPendingDelete && navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].cardLeft },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].cardDate }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateLabel)(summary.date)),
+                        summary.totalHours > _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].otBadge, title: "".concat((summary.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
+                            "OT +",
+                            (summary.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY).toFixed(2),
+                            "h"))),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].cardMeta },
                         summary.entries.length,
                         " task",
                         summary.entries.length !== 1 ? 's' : '',
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].dot }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].dot }),
                         summary.totalHours.toFixed(2),
                         " hrs")),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 10 } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].badge, " ").concat(badgeClass(summary.status)) }, summary.status),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].badge, " ").concat(badgeClass(summary.status)) }, summary.status),
                     summary.status === 'Draft' && !isPendingDelete && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { style: {
                             background: 'none', border: '1px solid #da1e28', borderRadius: 6,
                             color: '#da1e28', cursor: 'pointer', padding: '4px 8px',
@@ -292,16 +300,16 @@ var MyTimesheetHistory = function () {
                             }, disabled: deleting, onClick: cancelDelete }, "No"))),
                     !isPendingDelete && react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconChevronRight, null))));
         }))),
-        !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"].footer },
-            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Showing,
+        !loading && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _MyTimesheetHistory_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].footer },
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Showing,
             " ",
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null, filtered.length),
             " ",
-            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Days,
+            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Days,
             "\u00A0\u00B7\u00A0",
-            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(startDate),
+            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateShort)(startDate),
             " \u2013 ",
-            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_5__.formatDateShort)(endDate)))));
+            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateShort)(endDate)))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MyTimesheetHistory);
 

@@ -112,7 +112,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react */ 76702);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fluentui/react */ 29425);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fluentui/react */ 63208);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 46643);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 80954);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 49885);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 11880);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fluentui/react */ 44533);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fluentui/react */ 76702);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @fluentui/react */ 67102);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @fluentui/react */ 264);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @fluentui/react */ 5613);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @fluentui/react */ 64);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_ProjectService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/ProjectService */ 15607);
 /* harmony import */ var _services_CategoryService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/CategoryService */ 64268);
@@ -128,24 +139,87 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MessageBar = function (_a) {
-    var text = _a.text, isError = _a.isError, onDismiss = _a.onDismiss;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].message, " ").concat(isError ? _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].messageError : _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].messageSuccess) },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, text),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].messageDismiss, onClick: onDismiss }, "\u00D7")));
+// ─── Shared button styles (theme colour) ─────────────────────────────────────
+var primaryBtnStyles = {
+    root: { backgroundColor: "#667eea", borderColor: "#667eea", borderRadius: 6 },
+    rootHovered: { backgroundColor: "#5a6fd6", borderColor: "#5a6fd6" },
+    rootPressed: { backgroundColor: "#4d5fbc", borderColor: "#4d5fbc" },
+    rootDisabled: { backgroundColor: "#c5cbf8", borderColor: "#c5cbf8" },
+};
+var defaultBtnStyles = {
+    root: { borderRadius: 6 },
+    rootHovered: { borderColor: "#667eea", color: "#667eea" },
+    rootPressed: { borderColor: "#5a6fd6", color: "#5a6fd6" },
+};
+var dangerBtnStyles = {
+    root: { borderRadius: 6, borderColor: "#da1e28", color: "#da1e28" },
+    rootHovered: {
+        borderColor: "#ba1b23",
+        color: "#ba1b23",
+        backgroundColor: "#fff1f1",
+    },
+    rootPressed: { borderColor: "#a2191f", color: "#a2191f" },
+};
+var iconBtnThemeStyles = {
+    root: { borderRadius: 6, color: "#667eea" },
+    rootHovered: { backgroundColor: "rgba(102,126,234,0.08)", color: "#5a6fd6" },
+};
+var homeBtnStyles = {
+    root: {
+        borderRadius: 6,
+        color: "white",
+        border: "1px solid rgba(255,255,255,0.3)",
+        backgroundColor: "rgba(255,255,255,0.15)",
+        width: 36,
+        height: 36,
+    },
+    rootHovered: { backgroundColor: "rgba(255,255,255,0.25)", color: "white" },
+    rootPressed: { backgroundColor: "rgba(255,255,255,0.35)", color: "white" },
+    icon: { color: "white" },
+};
+var iconBtnDangerStyles = {
+    root: { borderRadius: 6, color: "#da1e28" },
+    rootHovered: { backgroundColor: "#fff1f1", color: "#ba1b23" },
+};
+var iconBtnSuccessStyles = {
+    root: { borderRadius: 6, color: "#198038" },
+    rootHovered: { backgroundColor: "#defbe6", color: "#0e6027" },
+};
+var addIcon = { iconName: "Add" };
+var editIcon = { iconName: "Edit" };
+var deleteIcon = { iconName: "Delete" };
+var viewIcon = { iconName: "View" };
+var hideIcon = { iconName: "Hide" };
+var checkIcon = { iconName: "CheckMark" };
+var cancelIcon = { iconName: "Cancel" };
+var modalStyles = {
+    main: {
+        width: 540,
+        maxWidth: "96vw",
+        borderRadius: 16,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "92vh",
+    },
+    scrollableContent: {
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "92vh",
+    },
 };
 // ─── Projects Tab ──────────────────────────────────────────────────────────────
 var ProjectsTab = function () {
-    var _a, _b, _c, _d, _e;
-    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), projects = _f[0], setProjects = _f[1];
-    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _g[0], setLoading = _g[1];
-    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _h[0], setMessage = _h[1];
-    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _j[0], setIsError = _j[1];
-    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _k[0], setDrawerOpen = _k[1];
-    var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editProject = _l[0], setEditProject = _l[1];
-    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _m[0], setSaving = _m[1];
-    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), formErrors = _o[0], setFormErrors = _o[1];
-    var _p = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), confirmDeleteId = _p[0], setConfirmDeleteId = _p[1];
+    var _a, _b, _c, _d, _f;
+    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), projects = _g[0], setProjects = _g[1];
+    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _h[0], setLoading = _h[1];
+    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _j[0], setMessage = _j[1];
+    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _k[0], setIsError = _k[1];
+    var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _l[0], setDrawerOpen = _l[1];
+    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editProject = _m[0], setEditProject = _m[1];
+    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _o[0], setSaving = _o[1];
+    var _p = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), formErrors = _p[0], setFormErrors = _p[1];
+    var _q = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), confirmDeleteId = _q[0], setConfirmDeleteId = _q[1];
     var load = function () {
         setLoading(true);
         (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.getAllProjects)()
@@ -184,9 +258,9 @@ var ProjectsTab = function () {
                 case 0:
                     errors = {};
                     if (!editProject.title || !editProject.title.trim())
-                        errors.title = 'Project Name is required.';
+                        errors.title = "Project Name is required.";
                     if (!editProject.projectCode || !editProject.projectCode.trim())
-                        errors.projectCode = 'Project Code is required.';
+                        errors.projectCode = "Project Code is required.";
                     if (errors.title || errors.projectCode) {
                         setFormErrors(errors);
                         return [2 /*return*/];
@@ -228,14 +302,10 @@ var ProjectsTab = function () {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tabContent },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toolbar },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].sectionLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectsTab),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].addBtn, onClick: openAdd },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
-                TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddProject)),
-        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddProject, iconProps: addIcon, styles: primaryBtnStyles, onClick: openAdd })),
+        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBar, { messageBarType: isError ? _fluentui_react__WEBPACK_IMPORTED_MODULE_9__.MessageBarType.error : _fluentui_react__WEBPACK_IMPORTED_MODULE_9__.MessageBarType.success, isMultiline: false, onDismiss: function () { return setMessage(""); }, dismissButtonAriaLabel: "Close", styles: { root: { borderRadius: 6, marginBottom: 12 } } }, message)),
         loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loading },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingProjects))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tableWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_11__.SpinnerSize.medium, label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingProjects }))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tableWrap },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].table },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].thead },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
@@ -243,7 +313,7 @@ var ProjectsTab = function () {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectName),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ClientName),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Status),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th, style: { width: 130 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Actions))),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th, style: { width: 150 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Actions))),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, projects.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { colSpan: 5, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].empty }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoProjects))) : (projects.map(function (p) {
                     var _a;
@@ -258,105 +328,96 @@ var ProjectsTab = function () {
                                 p.isActive ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Inactive)),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].td },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].actions },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, title: "Edit", onClick: function () { return openEdit(p); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Edit" },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: editIcon, styles: iconBtnThemeStyles, onClick: function () { return openEdit(p); } })),
                                 confirmDeleteId === p.id ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { fontSize: 11, color: '#6f6f6f' } }, "Delete?"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Confirm delete", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deleteProject)(p.id).then(function () { setConfirmDeleteId(null); load(); }).catch(function () { setMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectSaveFailed); setIsError(true); setConfirmDeleteId(null); }); } }, "\u2713"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, title: "Cancel", onClick: function () { return setConfirmDeleteId(null); } }, "\u2715"))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Delete", onClick: function () { return setConfirmDeleteId(p.id); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 14 14", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" })))),
-                                p.isActive ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnSuccess), title: "Activate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deactivateProject)(p.id).then(load); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Deactivate", onClick: function () { return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.activateProject)(p.id).then(load); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: {
+                                            fontSize: 11,
+                                            color: "#6f6f6f",
+                                            whiteSpace: "nowrap",
+                                        } }, "Delete?"),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Confirm delete" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: checkIcon, styles: iconBtnDangerStyles, onClick: function () {
+                                                return (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deleteProject)(p.id)
+                                                    .then(function () {
+                                                    setConfirmDeleteId(null);
+                                                    load();
+                                                })
+                                                    .catch(function () {
+                                                    setMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectSaveFailed);
+                                                    setIsError(true);
+                                                    setConfirmDeleteId(null);
+                                                });
+                                            } })),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Cancel" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: cancelIcon, styles: iconBtnThemeStyles, onClick: function () { return setConfirmDeleteId(null); } })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Delete" },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: deleteIcon, styles: iconBtnDangerStyles, onClick: function () { return setConfirmDeleteId(p.id); } }))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: p.isActive ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Deactivate : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Activate },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: p.isActive ? hideIcon : viewIcon, styles: p.isActive
+                                            ? iconBtnDangerStyles
+                                            : iconBtnSuccessStyles, onClick: function () {
+                                            return (p.isActive
+                                                ? (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.deactivateProject)(p.id)
+                                                : (0,_services_ProjectService__WEBPACK_IMPORTED_MODULE_2__.activateProject)(p.id)).then(load);
+                                        } }))))));
                 })))))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
-                main: {
-                    width: 540,
-                    maxWidth: "96vw",
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-                scrollableContent: {
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-            } },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: modalStyles },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerHeader },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerTitle }, editProject.id ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.EditProject : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddProjectModal),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerClose, onClick: closeDrawer }, "\u00D7")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: cancelIcon, ariaLabel: "Close", onClick: closeDrawer, styles: iconBtnThemeStyles })),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerBody },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel },
-                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectName,
-                        " ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].required }, "*")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, style: formErrors.title ? { borderColor: '#da1e28' } : {}, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectNamePlaceholder, value: (_a = editProject.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
-                            setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { title: e.target.value })); });
-                            if (formErrors.title)
-                                setFormErrors(function (prev) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, prev), { title: undefined })); });
-                        } }),
-                    formErrors.title && react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.title)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel },
-                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectCode,
-                        " ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].required }, "*")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, style: formErrors.projectCode ? { borderColor: '#da1e28' } : {}, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectCodePlaceholder, value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
-                            setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { projectCode: e.target.value })); });
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectName, required: true, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectNamePlaceholder, value: (_a = editProject.title) !== null && _a !== void 0 ? _a : "", errorMessage: formErrors.title, onChange: function (_e, val) {
+                        setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { title: val || "" })); });
+                        if (formErrors.title)
+                            setFormErrors(function (prev) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, prev), { title: undefined })); });
+                    }, styles: { fieldGroup: { borderRadius: 6 } } }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 14 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectCode, required: true, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ProjectCodePlaceholder, value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : "", errorMessage: formErrors.projectCode, onChange: function (_e, val) {
+                            setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { projectCode: val || "" })); });
                             if (formErrors.projectCode)
                                 setFormErrors(function (prev) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, prev), { projectCode: undefined })); });
-                        } }),
-                    formErrors.projectCode && react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.projectCode)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ClientName),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ClientNamePlaceholder, value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : "", onChange: function (e) {
-                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { clientName: e.target.value })); });
-                        } })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldTextarea), placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.OptionalDescription, value: (_d = editProject.description) !== null && _d !== void 0 ? _d : "", onChange: function (e) {
-                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { description: e.target.value })); });
-                        } })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggleRow },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggleLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", checked: (_e = editProject.isActive) !== null && _e !== void 0 ? _e : true, onChange: function (e) {
-                                return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { isActive: e.target.checked })); });
-                            } }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].track }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].thumb }))),
-                message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 14 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ClientName, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ClientNamePlaceholder, value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : "", onChange: function (_e, val) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { clientName: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 14 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description, multiline: true, rows: 3, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.OptionalDescription, value: (_d = editProject.description) !== null && _d !== void 0 ? _d : "", onChange: function (_e, val) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { description: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 16 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.Toggle, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active, checked: (_f = editProject.isActive) !== null && _f !== void 0 ? _f : true, onChange: function (_e, checked) {
+                            return setEditProject(function (p) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, p), { isActive: checked })); });
+                        }, styles: {
+                            thumb: {
+                                backgroundColor: editProject.isActive ? "#667eea" : undefined,
+                            },
+                            pill: {
+                                backgroundColor: editProject.isActive
+                                    ? "rgba(102,126,234,0.3)"
+                                    : undefined,
+                            },
+                        } }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerFooter },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].saveBtn, onClick: handleSave, disabled: saving }, saving
-                    ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Saving
-                    : editProject.id
-                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.UpdateProject
-                        : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddProjectModal),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].cancelBtn, onClick: closeDrawer }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel)))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, { text: saving
+                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Saving
+                        : editProject.id
+                            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.UpdateProject
+                            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddProjectModal, disabled: saving, styles: primaryBtnStyles, onRenderIcon: saving ? function () { return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_11__.SpinnerSize.small }); } : undefined, onClick: handleSave }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_17__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel, styles: defaultBtnStyles, onClick: closeDrawer })))));
 };
 // ─── Categories Tab ────────────────────────────────────────────────────────────
 var CategoriesTab = function () {
     var _a, _b, _c, _d;
-    var _e = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), categories = _e[0], setCategories = _e[1];
-    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _f[0], setLoading = _f[1];
-    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _g[0], setMessage = _g[1];
-    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _h[0], setIsError = _h[1];
-    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _j[0], setDrawerOpen = _j[1];
-    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editCat = _k[0], setEditCat = _k[1];
-    var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _l[0], setSaving = _l[1];
-    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), formErrors = _m[0], setFormErrors = _m[1];
-    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), confirmDeleteId = _o[0], setConfirmDeleteId = _o[1];
+    var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), categories = _f[0], setCategories = _f[1];
+    var _g = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _g[0], setLoading = _g[1];
+    var _h = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), message = _h[0], setMessage = _h[1];
+    var _j = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isError = _j[0], setIsError = _j[1];
+    var _k = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), drawerOpen = _k[0], setDrawerOpen = _k[1];
+    var _l = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), editCat = _l[0], setEditCat = _l[1];
+    var _m = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), saving = _m[0], setSaving = _m[1];
+    var _o = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}), formErrors = _o[0], setFormErrors = _o[1];
+    var _p = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), confirmDeleteId = _p[0], setConfirmDeleteId = _p[1];
     var load = function () {
         setLoading(true);
         (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.getAllCategories)()
@@ -394,7 +455,7 @@ var CategoriesTab = function () {
             switch (_c.label) {
                 case 0:
                     if (!editCat.title || !editCat.title.trim()) {
-                        setFormErrors({ title: 'Category Name is required.' });
+                        setFormErrors({ title: "Category Name is required." });
                         return [2 /*return*/];
                     }
                     setFormErrors({});
@@ -434,14 +495,10 @@ var CategoriesTab = function () {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tabContent },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toolbar },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].sectionLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.CategoriesTab),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].addBtn, onClick: openAdd },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
-                TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddCategory)),
-        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddCategory, iconProps: addIcon, styles: primaryBtnStyles, onClick: openAdd })),
+        message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_8__.MessageBar, { messageBarType: isError ? _fluentui_react__WEBPACK_IMPORTED_MODULE_9__.MessageBarType.error : _fluentui_react__WEBPACK_IMPORTED_MODULE_9__.MessageBarType.success, isMultiline: false, onDismiss: function () { return setMessage(""); }, dismissButtonAriaLabel: "Close", styles: { root: { borderRadius: 6, marginBottom: 12 } } }, message)),
         loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loading },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingCategories))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tableWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_11__.SpinnerSize.medium, label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingCategories }))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tableWrap },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].table },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].thead },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
@@ -449,7 +506,7 @@ var CategoriesTab = function () {
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th, style: { width: 70 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.SortOrder),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Status),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th, style: { width: 130 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Actions))),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].th, style: { width: 150 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Actions))),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, categories.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { colSpan: 5, className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].empty }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoCategories))) : (categories.map(function (c) {
                     var _a, _b;
@@ -463,81 +520,85 @@ var CategoriesTab = function () {
                                 c.isActive ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Inactive)),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].td },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].actions },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, title: "Edit", onClick: function () { return openEdit(c); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Edit" },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: editIcon, styles: iconBtnThemeStyles, onClick: function () { return openEdit(c); } })),
                                 confirmDeleteId === c.id ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { fontSize: 11, color: '#6f6f6f' } }, "Delete?"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Confirm delete", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deleteCategory)(c.id).then(function () { setConfirmDeleteId(null); load(); }).catch(function () { setMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.CategorySaveFailed); setIsError(true); setConfirmDeleteId(null); }); } }, "\u2713"),
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, title: "Cancel", onClick: function () { return setConfirmDeleteId(null); } }, "\u2715"))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Delete", onClick: function () { return setConfirmDeleteId(c.id); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "13", height: "13", viewBox: "0 0 14 14", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" })))),
-                                c.isActive ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnSuccess), title: "Activate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deactivateCategory)(c.id).then(load); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtn, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].iconBtnDanger), title: "Deactivate", onClick: function () { return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.activateCategory)(c.id).then(load); } },
-                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
-                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: {
+                                            fontSize: 11,
+                                            color: "#6f6f6f",
+                                            whiteSpace: "nowrap",
+                                        } }, "Delete?"),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Confirm delete" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: checkIcon, styles: iconBtnDangerStyles, onClick: function () {
+                                                return (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deleteCategory)(c.id)
+                                                    .then(function () {
+                                                    setConfirmDeleteId(null);
+                                                    load();
+                                                })
+                                                    .catch(function () {
+                                                    setMessage(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.CategorySaveFailed);
+                                                    setIsError(true);
+                                                    setConfirmDeleteId(null);
+                                                });
+                                            } })),
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Cancel" },
+                                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: cancelIcon, styles: iconBtnThemeStyles, onClick: function () { return setConfirmDeleteId(null); } })))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: "Delete" },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: deleteIcon, styles: iconBtnDangerStyles, onClick: function () { return setConfirmDeleteId(c.id); } }))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TooltipHost, { content: c.isActive ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Deactivate : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Activate },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: c.isActive ? hideIcon : viewIcon, styles: c.isActive
+                                            ? iconBtnDangerStyles
+                                            : iconBtnSuccessStyles, onClick: function () {
+                                            return (c.isActive
+                                                ? (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.deactivateCategory)(c.id)
+                                                : (0,_services_CategoryService__WEBPACK_IMPORTED_MODULE_3__.activateCategory)(c.id)).then(load);
+                                        } }))))));
                 })))))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
-                main: {
-                    width: 540,
-                    maxWidth: "96vw",
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-                scrollableContent: {
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-            } },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: modalStyles },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerHeader },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerTitle }, editCat.id ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.EditCategory : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddCategoryModal),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerClose, onClick: closeDrawer }, "\u00D7")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: cancelIcon, ariaLabel: "Close", onClick: closeDrawer, styles: iconBtnThemeStyles })),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerBody },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel },
-                        TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Category,
-                        " ",
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].required }, "*")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, style: formErrors.title ? { borderColor: '#da1e28' } : {}, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.CategoryNamePlaceholder, value: (_a = editCat.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
-                            setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { title: e.target.value })); });
-                            if (formErrors.title)
-                                setFormErrors({});
-                        } }),
-                    formErrors.title && react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.title)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("textarea", { className: "".concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, " ").concat(_AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldTextarea), placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.OptionalDescription, value: (_b = editCat.description) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
-                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { description: e.target.value })); });
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Category, required: true, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.CategoryNamePlaceholder, value: (_a = editCat.title) !== null && _a !== void 0 ? _a : "", errorMessage: formErrors.title, onChange: function (_e, val) {
+                        setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { title: val || "" })); });
+                        if (formErrors.title)
+                            setFormErrors({});
+                    }, styles: { fieldGroup: { borderRadius: 6 } } }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 14 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description, multiline: true, rows: 3, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.OptionalDescription, value: (_b = editCat.description) !== null && _b !== void 0 ? _b : "", onChange: function (_e, val) {
+                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { description: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 14 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_18__.SpinButton, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.SortOrder, min: 0, max: 9999, step: 1, value: String((_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0), onIncrement: function (val) {
+                            setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { sortOrder: Math.min((parseInt(val, 10) || 0) + 1, 9999) })); });
+                        }, onDecrement: function (val) {
+                            setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { sortOrder: Math.max((parseInt(val, 10) || 0) - 1, 0) })); });
+                        }, onValidate: function (val) {
+                            setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { sortOrder: parseInt(val, 10) || 0 })); });
+                            return val;
+                        }, styles: {
+                            spinButtonWrapper: { borderRadius: 6 },
+                            root: { maxWidth: 120 },
                         } })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].field },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.SortOrder),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "number", className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fieldInput, min: 0, max: 9999, value: (_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0, onChange: function (e) {
-                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { sortOrder: parseInt(e.target.value, 10) || 0 })); });
-                        } })),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggleRow },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggleLabel }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].toggle },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (e) {
-                                return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { isActive: e.target.checked })); });
-                            } }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].track }),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].thumb }))),
-                message && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { style: { marginTop: 16 } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.Toggle, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Active, checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (_e, checked) {
+                            return setEditCat(function (c) { return ((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)((0,tslib__WEBPACK_IMPORTED_MODULE_6__.__assign)({}, c), { isActive: checked })); });
+                        }, styles: {
+                            thumb: {
+                                backgroundColor: editCat.isActive ? "#667eea" : undefined,
+                            },
+                            pill: {
+                                backgroundColor: editCat.isActive
+                                    ? "rgba(102,126,234,0.3)"
+                                    : undefined,
+                            },
+                        } }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].drawerFooter },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].saveBtn, onClick: handleSave, disabled: saving }, saving
-                    ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Saving
-                    : editCat.id
-                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.UpdateCategory
-                        : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddCategoryModal),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].cancelBtn, onClick: closeDrawer }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel)))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.PrimaryButton, { text: saving
+                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Saving
+                        : editCat.id
+                            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.UpdateCategory
+                            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AddCategoryModal, disabled: saving, styles: primaryBtnStyles, onRenderIcon: saving ? function () { return react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_11__.SpinnerSize.small }); } : undefined, onClick: handleSave }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_17__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel, styles: defaultBtnStyles, onClick: closeDrawer })))));
 };
 var AdminPanel = function () {
     var navigateHome = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext).navigateHome;
@@ -545,9 +606,7 @@ var AdminPanel = function () {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].container },
         react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].header },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].headerContent },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].homeBtn, title: "Back to Home", onClick: navigateHome },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M8.354 1.146a.5.5 0 00-.708 0l-6 6A.5.5 0 002 7.5v7a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4h2v4a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-7a.5.5 0 00-.146-.354L13 5.793V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5v1.293L8.354 1.146z" }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.IconButton, { iconProps: { iconName: "Home" }, title: "Back to Home", styles: homeBtnStyles, onClick: navigateHome }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null,
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].headerTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AdminTitle),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _AdminPanel_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].headerSubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AdminSubtitle)))),

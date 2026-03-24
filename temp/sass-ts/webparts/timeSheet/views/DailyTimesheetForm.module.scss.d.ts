@@ -87,6 +87,8 @@ export interface IExportStyles {
 
   'navArrow': string;
 
+  'otPill': string;
+
   'page': string;
 
   'spin': string;

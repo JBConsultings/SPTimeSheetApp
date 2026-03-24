@@ -17,6 +17,18 @@ export interface IExportStyles {
 
   'btnResubmit': string;
 
+  'bulkActions': string;
+
+  'bulkBar': string;
+
+  'bulkBarActive': string;
+
+  'bulkCheckbox': string;
+
+  'bulkCount': string;
+
+  'bulkSelectAll': string;
+
   'colHrs': string;
 
   'commentField': string;
@@ -77,6 +89,8 @@ export interface IExportStyles {
 
   'modalTitle': string;
 
+  'otBadge': string;
+
   'panelFooter': string;
 
   'panelMeta': string;
@@ -95,11 +109,21 @@ export interface IExportStyles {
 
   'rowCard': string;
 
+  'rowCardSelected': string;
+
+  'rowCheckPlaceholder': string;
+
+  'rowCheckWrap': string;
+
+  'rowCheckbox': string;
+
   'rowLeft': string;
 
   'rowMeta': string;
 
   'rowName': string;
+
+  'rowNameRow': string;
 
   'rowRight': string;
 

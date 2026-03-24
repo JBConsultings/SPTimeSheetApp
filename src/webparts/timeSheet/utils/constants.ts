@@ -59,3 +59,4 @@ export const STATUS = {
 // ─── Validation limits ────────────────────────────────────────────────────────
 export const MAX_HOURS_PER_DAY = 24;
 export const MIN_HOURS_PER_TASK = 0.25;
+export const REGULAR_HOURS_PER_DAY = 8;

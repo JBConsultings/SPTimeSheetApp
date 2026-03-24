@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MIN_HOURS_PER_TASK = exports.MAX_HOURS_PER_DAY = exports.STATUS = exports.CATEGORY_COLS = exports.PROJECT_COLS = exports.TIMESHEET_COLS = exports.GROUPS = exports.LISTS = void 0;
+exports.REGULAR_HOURS_PER_DAY = exports.MIN_HOURS_PER_TASK = exports.MAX_HOURS_PER_DAY = exports.STATUS = exports.CATEGORY_COLS = exports.PROJECT_COLS = exports.TIMESHEET_COLS = exports.GROUPS = exports.LISTS = void 0;
 // ─── SharePoint List names ────────────────────────────────────────────────────
 exports.LISTS = {
     TIMESHEET_ENTRIES: 'TimesheetEntries',
@@ -56,4 +56,5 @@ exports.STATUS = {
 // ─── Validation limits ────────────────────────────────────────────────────────
 exports.MAX_HOURS_PER_DAY = 24;
 exports.MIN_HOURS_PER_TASK = 0.25;
+exports.REGULAR_HOURS_PER_DAY = 8;
 //# sourceMappingURL=constants.js.map

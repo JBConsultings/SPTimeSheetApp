@@ -9,24 +9,87 @@ var ProjectService_1 = require("../services/ProjectService");
 var CategoryService_1 = require("../services/CategoryService");
 var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var AdminPanel_module_scss_1 = tslib_1.__importDefault(require("./AdminPanel.module.scss"));
-var MessageBar = function (_a) {
-    var text = _a.text, isError = _a.isError, onDismiss = _a.onDismiss;
-    return (React.createElement("div", { className: "".concat(AdminPanel_module_scss_1.default.message, " ").concat(isError ? AdminPanel_module_scss_1.default.messageError : AdminPanel_module_scss_1.default.messageSuccess) },
-        React.createElement("span", null, text),
-        React.createElement("button", { className: AdminPanel_module_scss_1.default.messageDismiss, onClick: onDismiss }, "\u00D7")));
+// ─── Shared button styles (theme colour) ─────────────────────────────────────
+var primaryBtnStyles = {
+    root: { backgroundColor: "#667eea", borderColor: "#667eea", borderRadius: 6 },
+    rootHovered: { backgroundColor: "#5a6fd6", borderColor: "#5a6fd6" },
+    rootPressed: { backgroundColor: "#4d5fbc", borderColor: "#4d5fbc" },
+    rootDisabled: { backgroundColor: "#c5cbf8", borderColor: "#c5cbf8" },
+};
+var defaultBtnStyles = {
+    root: { borderRadius: 6 },
+    rootHovered: { borderColor: "#667eea", color: "#667eea" },
+    rootPressed: { borderColor: "#5a6fd6", color: "#5a6fd6" },
+};
+var dangerBtnStyles = {
+    root: { borderRadius: 6, borderColor: "#da1e28", color: "#da1e28" },
+    rootHovered: {
+        borderColor: "#ba1b23",
+        color: "#ba1b23",
+        backgroundColor: "#fff1f1",
+    },
+    rootPressed: { borderColor: "#a2191f", color: "#a2191f" },
+};
+var iconBtnThemeStyles = {
+    root: { borderRadius: 6, color: "#667eea" },
+    rootHovered: { backgroundColor: "rgba(102,126,234,0.08)", color: "#5a6fd6" },
+};
+var homeBtnStyles = {
+    root: {
+        borderRadius: 6,
+        color: "white",
+        border: "1px solid rgba(255,255,255,0.3)",
+        backgroundColor: "rgba(255,255,255,0.15)",
+        width: 36,
+        height: 36,
+    },
+    rootHovered: { backgroundColor: "rgba(255,255,255,0.25)", color: "white" },
+    rootPressed: { backgroundColor: "rgba(255,255,255,0.35)", color: "white" },
+    icon: { color: "white" },
+};
+var iconBtnDangerStyles = {
+    root: { borderRadius: 6, color: "#da1e28" },
+    rootHovered: { backgroundColor: "#fff1f1", color: "#ba1b23" },
+};
+var iconBtnSuccessStyles = {
+    root: { borderRadius: 6, color: "#198038" },
+    rootHovered: { backgroundColor: "#defbe6", color: "#0e6027" },
+};
+var addIcon = { iconName: "Add" };
+var editIcon = { iconName: "Edit" };
+var deleteIcon = { iconName: "Delete" };
+var viewIcon = { iconName: "View" };
+var hideIcon = { iconName: "Hide" };
+var checkIcon = { iconName: "CheckMark" };
+var cancelIcon = { iconName: "Cancel" };
+var modalStyles = {
+    main: {
+        width: 540,
+        maxWidth: "96vw",
+        borderRadius: 16,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "92vh",
+    },
+    scrollableContent: {
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "92vh",
+    },
 };
 // ─── Projects Tab ──────────────────────────────────────────────────────────────
 var ProjectsTab = function () {
-    var _a, _b, _c, _d, _e;
-    var _f = (0, react_1.useState)([]), projects = _f[0], setProjects = _f[1];
-    var _g = (0, react_1.useState)(true), loading = _g[0], setLoading = _g[1];
-    var _h = (0, react_1.useState)(""), message = _h[0], setMessage = _h[1];
-    var _j = (0, react_1.useState)(false), isError = _j[0], setIsError = _j[1];
-    var _k = (0, react_1.useState)(false), drawerOpen = _k[0], setDrawerOpen = _k[1];
-    var _l = (0, react_1.useState)({}), editProject = _l[0], setEditProject = _l[1];
-    var _m = (0, react_1.useState)(false), saving = _m[0], setSaving = _m[1];
-    var _o = (0, react_1.useState)({}), formErrors = _o[0], setFormErrors = _o[1];
-    var _p = (0, react_1.useState)(null), confirmDeleteId = _p[0], setConfirmDeleteId = _p[1];
+    var _a, _b, _c, _d, _f;
+    var _g = (0, react_1.useState)([]), projects = _g[0], setProjects = _g[1];
+    var _h = (0, react_1.useState)(true), loading = _h[0], setLoading = _h[1];
+    var _j = (0, react_1.useState)(""), message = _j[0], setMessage = _j[1];
+    var _k = (0, react_1.useState)(false), isError = _k[0], setIsError = _k[1];
+    var _l = (0, react_1.useState)(false), drawerOpen = _l[0], setDrawerOpen = _l[1];
+    var _m = (0, react_1.useState)({}), editProject = _m[0], setEditProject = _m[1];
+    var _o = (0, react_1.useState)(false), saving = _o[0], setSaving = _o[1];
+    var _p = (0, react_1.useState)({}), formErrors = _p[0], setFormErrors = _p[1];
+    var _q = (0, react_1.useState)(null), confirmDeleteId = _q[0], setConfirmDeleteId = _q[1];
     var load = function () {
         setLoading(true);
         (0, ProjectService_1.getAllProjects)()
@@ -65,9 +128,9 @@ var ProjectsTab = function () {
                 case 0:
                     errors = {};
                     if (!editProject.title || !editProject.title.trim())
-                        errors.title = 'Project Name is required.';
+                        errors.title = "Project Name is required.";
                     if (!editProject.projectCode || !editProject.projectCode.trim())
-                        errors.projectCode = 'Project Code is required.';
+                        errors.projectCode = "Project Code is required.";
                     if (errors.title || errors.projectCode) {
                         setFormErrors(errors);
                         return [2 /*return*/];
@@ -109,14 +172,10 @@ var ProjectsTab = function () {
     return (React.createElement("div", { className: AdminPanel_module_scss_1.default.tabContent },
         React.createElement("div", { className: AdminPanel_module_scss_1.default.toolbar },
             React.createElement("span", { className: AdminPanel_module_scss_1.default.sectionLabel }, strings.ProjectsTab),
-            React.createElement("button", { className: AdminPanel_module_scss_1.default.addBtn, onClick: openAdd },
-                React.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
-                    React.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
-                strings.AddProject)),
-        message && (React.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+            React.createElement(react_2.PrimaryButton, { text: strings.AddProject, iconProps: addIcon, styles: primaryBtnStyles, onClick: openAdd })),
+        message && (React.createElement(react_2.MessageBar, { messageBarType: isError ? react_2.MessageBarType.error : react_2.MessageBarType.success, isMultiline: false, onDismiss: function () { return setMessage(""); }, dismissButtonAriaLabel: "Close", styles: { root: { borderRadius: 6, marginBottom: 12 } } }, message)),
         loading ? (React.createElement("div", { className: AdminPanel_module_scss_1.default.loading },
-            React.createElement("div", { className: AdminPanel_module_scss_1.default.spinner }),
-            React.createElement("span", null, strings.LoadingProjects))) : (React.createElement("div", { className: AdminPanel_module_scss_1.default.tableWrap },
+            React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.medium, label: strings.LoadingProjects }))) : (React.createElement("div", { className: AdminPanel_module_scss_1.default.tableWrap },
             React.createElement("table", { className: AdminPanel_module_scss_1.default.table },
                 React.createElement("thead", { className: AdminPanel_module_scss_1.default.thead },
                     React.createElement("tr", null,
@@ -124,7 +183,7 @@ var ProjectsTab = function () {
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th }, strings.ProjectName),
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th }, strings.ClientName),
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th }, strings.Status),
-                        React.createElement("th", { className: AdminPanel_module_scss_1.default.th, style: { width: 130 } }, strings.Actions))),
+                        React.createElement("th", { className: AdminPanel_module_scss_1.default.th, style: { width: 150 } }, strings.Actions))),
                 React.createElement("tbody", null, projects.length === 0 ? (React.createElement("tr", null,
                     React.createElement("td", { colSpan: 5, className: AdminPanel_module_scss_1.default.empty }, strings.NoProjects))) : (projects.map(function (p) {
                     var _a;
@@ -139,105 +198,96 @@ var ProjectsTab = function () {
                                 p.isActive ? strings.Active : strings.Inactive)),
                         React.createElement("td", { className: AdminPanel_module_scss_1.default.td },
                             React.createElement("div", { className: AdminPanel_module_scss_1.default.actions },
-                                React.createElement("button", { className: AdminPanel_module_scss_1.default.iconBtn, title: "Edit", onClick: function () { return openEdit(p); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                React.createElement(react_2.TooltipHost, { content: "Edit" },
+                                    React.createElement(react_2.IconButton, { iconProps: editIcon, styles: iconBtnThemeStyles, onClick: function () { return openEdit(p); } })),
                                 confirmDeleteId === p.id ? (React.createElement(React.Fragment, null,
-                                    React.createElement("span", { style: { fontSize: 11, color: '#6f6f6f' } }, "Delete?"),
-                                    React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Confirm delete", onClick: function () { return (0, ProjectService_1.deleteProject)(p.id).then(function () { setConfirmDeleteId(null); load(); }).catch(function () { setMessage(strings.ProjectSaveFailed); setIsError(true); setConfirmDeleteId(null); }); } }, "\u2713"),
-                                    React.createElement("button", { className: AdminPanel_module_scss_1.default.iconBtn, title: "Cancel", onClick: function () { return setConfirmDeleteId(null); } }, "\u2715"))) : (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Delete", onClick: function () { return setConfirmDeleteId(p.id); } },
-                                    React.createElement("svg", { width: "13", height: "13", viewBox: "0 0 14 14", fill: "currentColor" },
-                                        React.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" })))),
-                                p.isActive ? (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnSuccess), title: "Activate", onClick: function () { return (0, ProjectService_1.deactivateProject)(p.id).then(load); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
-                                        React.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Deactivate", onClick: function () { return (0, ProjectService_1.activateProject)(p.id).then(load); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
-                                        React.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
-                                        React.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                                    React.createElement("span", { style: {
+                                            fontSize: 11,
+                                            color: "#6f6f6f",
+                                            whiteSpace: "nowrap",
+                                        } }, "Delete?"),
+                                    React.createElement(react_2.TooltipHost, { content: "Confirm delete" },
+                                        React.createElement(react_2.IconButton, { iconProps: checkIcon, styles: iconBtnDangerStyles, onClick: function () {
+                                                return (0, ProjectService_1.deleteProject)(p.id)
+                                                    .then(function () {
+                                                    setConfirmDeleteId(null);
+                                                    load();
+                                                })
+                                                    .catch(function () {
+                                                    setMessage(strings.ProjectSaveFailed);
+                                                    setIsError(true);
+                                                    setConfirmDeleteId(null);
+                                                });
+                                            } })),
+                                    React.createElement(react_2.TooltipHost, { content: "Cancel" },
+                                        React.createElement(react_2.IconButton, { iconProps: cancelIcon, styles: iconBtnThemeStyles, onClick: function () { return setConfirmDeleteId(null); } })))) : (React.createElement(react_2.TooltipHost, { content: "Delete" },
+                                    React.createElement(react_2.IconButton, { iconProps: deleteIcon, styles: iconBtnDangerStyles, onClick: function () { return setConfirmDeleteId(p.id); } }))),
+                                React.createElement(react_2.TooltipHost, { content: p.isActive ? strings.Deactivate : strings.Activate },
+                                    React.createElement(react_2.IconButton, { iconProps: p.isActive ? hideIcon : viewIcon, styles: p.isActive
+                                            ? iconBtnDangerStyles
+                                            : iconBtnSuccessStyles, onClick: function () {
+                                            return (p.isActive
+                                                ? (0, ProjectService_1.deactivateProject)(p.id)
+                                                : (0, ProjectService_1.activateProject)(p.id)).then(load);
+                                        } }))))));
                 })))))),
-        React.createElement(react_2.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
-                main: {
-                    width: 540,
-                    maxWidth: "96vw",
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-                scrollableContent: {
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-            } },
+        React.createElement(react_2.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: modalStyles },
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerHeader },
                 React.createElement("h3", { className: AdminPanel_module_scss_1.default.drawerTitle }, editProject.id ? strings.EditProject : strings.AddProjectModal),
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.drawerClose, onClick: closeDrawer }, "\u00D7")),
+                React.createElement(react_2.IconButton, { iconProps: cancelIcon, ariaLabel: "Close", onClick: closeDrawer, styles: iconBtnThemeStyles })),
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerBody },
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel },
-                        strings.ProjectName,
-                        " ",
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.required }, "*")),
-                    React.createElement("input", { className: AdminPanel_module_scss_1.default.fieldInput, style: formErrors.title ? { borderColor: '#da1e28' } : {}, placeholder: strings.ProjectNamePlaceholder, value: (_a = editProject.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
-                            setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { title: e.target.value })); });
-                            if (formErrors.title)
-                                setFormErrors(function (prev) { return (tslib_1.__assign(tslib_1.__assign({}, prev), { title: undefined })); });
-                        } }),
-                    formErrors.title && React.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.title)),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel },
-                        strings.ProjectCode,
-                        " ",
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.required }, "*")),
-                    React.createElement("input", { className: AdminPanel_module_scss_1.default.fieldInput, style: formErrors.projectCode ? { borderColor: '#da1e28' } : {}, placeholder: strings.ProjectCodePlaceholder, value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
-                            setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { projectCode: e.target.value })); });
+                React.createElement(react_2.TextField, { label: strings.ProjectName, required: true, placeholder: strings.ProjectNamePlaceholder, value: (_a = editProject.title) !== null && _a !== void 0 ? _a : "", errorMessage: formErrors.title, onChange: function (_e, val) {
+                        setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { title: val || "" })); });
+                        if (formErrors.title)
+                            setFormErrors(function (prev) { return (tslib_1.__assign(tslib_1.__assign({}, prev), { title: undefined })); });
+                    }, styles: { fieldGroup: { borderRadius: 6 } } }),
+                React.createElement("div", { style: { marginTop: 14 } },
+                    React.createElement(react_2.TextField, { label: strings.ProjectCode, required: true, placeholder: strings.ProjectCodePlaceholder, value: (_b = editProject.projectCode) !== null && _b !== void 0 ? _b : "", errorMessage: formErrors.projectCode, onChange: function (_e, val) {
+                            setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { projectCode: val || "" })); });
                             if (formErrors.projectCode)
                                 setFormErrors(function (prev) { return (tslib_1.__assign(tslib_1.__assign({}, prev), { projectCode: undefined })); });
-                        } }),
-                    formErrors.projectCode && React.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.projectCode)),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel }, strings.ClientName),
-                    React.createElement("input", { className: AdminPanel_module_scss_1.default.fieldInput, placeholder: strings.ClientNamePlaceholder, value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : "", onChange: function (e) {
-                            return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { clientName: e.target.value })); });
-                        } })),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel }, strings.Description),
-                    React.createElement("textarea", { className: "".concat(AdminPanel_module_scss_1.default.fieldInput, " ").concat(AdminPanel_module_scss_1.default.fieldTextarea), placeholder: strings.OptionalDescription, value: (_d = editProject.description) !== null && _d !== void 0 ? _d : "", onChange: function (e) {
-                            return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { description: e.target.value })); });
-                        } })),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.toggleRow },
-                    React.createElement("span", { className: AdminPanel_module_scss_1.default.toggleLabel }, strings.Active),
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.toggle },
-                        React.createElement("input", { type: "checkbox", checked: (_e = editProject.isActive) !== null && _e !== void 0 ? _e : true, onChange: function (e) {
-                                return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { isActive: e.target.checked })); });
-                            } }),
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.track }),
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.thumb }))),
-                message && (React.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                React.createElement("div", { style: { marginTop: 14 } },
+                    React.createElement(react_2.TextField, { label: strings.ClientName, placeholder: strings.ClientNamePlaceholder, value: (_c = editProject.clientName) !== null && _c !== void 0 ? _c : "", onChange: function (_e, val) {
+                            return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { clientName: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                React.createElement("div", { style: { marginTop: 14 } },
+                    React.createElement(react_2.TextField, { label: strings.Description, multiline: true, rows: 3, placeholder: strings.OptionalDescription, value: (_d = editProject.description) !== null && _d !== void 0 ? _d : "", onChange: function (_e, val) {
+                            return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { description: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                React.createElement("div", { style: { marginTop: 16 } },
+                    React.createElement(react_2.Toggle, { label: strings.Active, checked: (_f = editProject.isActive) !== null && _f !== void 0 ? _f : true, onChange: function (_e, checked) {
+                            return setEditProject(function (p) { return (tslib_1.__assign(tslib_1.__assign({}, p), { isActive: checked })); });
+                        }, styles: {
+                            thumb: {
+                                backgroundColor: editProject.isActive ? "#667eea" : undefined,
+                            },
+                            pill: {
+                                backgroundColor: editProject.isActive
+                                    ? "rgba(102,126,234,0.3)"
+                                    : undefined,
+                            },
+                        } }))),
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerFooter },
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.saveBtn, onClick: handleSave, disabled: saving }, saving
-                    ? strings.Saving
-                    : editProject.id
-                        ? strings.UpdateProject
-                        : strings.AddProjectModal),
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.cancelBtn, onClick: closeDrawer }, strings.Cancel)))));
+                React.createElement(react_2.PrimaryButton, { text: saving
+                        ? strings.Saving
+                        : editProject.id
+                            ? strings.UpdateProject
+                            : strings.AddProjectModal, disabled: saving, styles: primaryBtnStyles, onRenderIcon: saving ? function () { return React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }); } : undefined, onClick: handleSave }),
+                React.createElement(react_2.DefaultButton, { text: strings.Cancel, styles: defaultBtnStyles, onClick: closeDrawer })))));
 };
 // ─── Categories Tab ────────────────────────────────────────────────────────────
 var CategoriesTab = function () {
     var _a, _b, _c, _d;
-    var _e = (0, react_1.useState)([]), categories = _e[0], setCategories = _e[1];
-    var _f = (0, react_1.useState)(true), loading = _f[0], setLoading = _f[1];
-    var _g = (0, react_1.useState)(""), message = _g[0], setMessage = _g[1];
-    var _h = (0, react_1.useState)(false), isError = _h[0], setIsError = _h[1];
-    var _j = (0, react_1.useState)(false), drawerOpen = _j[0], setDrawerOpen = _j[1];
-    var _k = (0, react_1.useState)({}), editCat = _k[0], setEditCat = _k[1];
-    var _l = (0, react_1.useState)(false), saving = _l[0], setSaving = _l[1];
-    var _m = (0, react_1.useState)({}), formErrors = _m[0], setFormErrors = _m[1];
-    var _o = (0, react_1.useState)(null), confirmDeleteId = _o[0], setConfirmDeleteId = _o[1];
+    var _f = (0, react_1.useState)([]), categories = _f[0], setCategories = _f[1];
+    var _g = (0, react_1.useState)(true), loading = _g[0], setLoading = _g[1];
+    var _h = (0, react_1.useState)(""), message = _h[0], setMessage = _h[1];
+    var _j = (0, react_1.useState)(false), isError = _j[0], setIsError = _j[1];
+    var _k = (0, react_1.useState)(false), drawerOpen = _k[0], setDrawerOpen = _k[1];
+    var _l = (0, react_1.useState)({}), editCat = _l[0], setEditCat = _l[1];
+    var _m = (0, react_1.useState)(false), saving = _m[0], setSaving = _m[1];
+    var _o = (0, react_1.useState)({}), formErrors = _o[0], setFormErrors = _o[1];
+    var _p = (0, react_1.useState)(null), confirmDeleteId = _p[0], setConfirmDeleteId = _p[1];
     var load = function () {
         setLoading(true);
         (0, CategoryService_1.getAllCategories)()
@@ -275,7 +325,7 @@ var CategoriesTab = function () {
             switch (_c.label) {
                 case 0:
                     if (!editCat.title || !editCat.title.trim()) {
-                        setFormErrors({ title: 'Category Name is required.' });
+                        setFormErrors({ title: "Category Name is required." });
                         return [2 /*return*/];
                     }
                     setFormErrors({});
@@ -315,14 +365,10 @@ var CategoriesTab = function () {
     return (React.createElement("div", { className: AdminPanel_module_scss_1.default.tabContent },
         React.createElement("div", { className: AdminPanel_module_scss_1.default.toolbar },
             React.createElement("span", { className: AdminPanel_module_scss_1.default.sectionLabel }, strings.CategoriesTab),
-            React.createElement("button", { className: AdminPanel_module_scss_1.default.addBtn, onClick: openAdd },
-                React.createElement("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "currentColor" },
-                    React.createElement("path", { d: "M6.5 1a.75.75 0 01.75.75v4h4a.75.75 0 010 1.5h-4v4a.75.75 0 01-1.5 0v-4h-4a.75.75 0 010-1.5h4v-4A.75.75 0 016.5 1z" })),
-                strings.AddCategory)),
-        message && (React.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } })),
+            React.createElement(react_2.PrimaryButton, { text: strings.AddCategory, iconProps: addIcon, styles: primaryBtnStyles, onClick: openAdd })),
+        message && (React.createElement(react_2.MessageBar, { messageBarType: isError ? react_2.MessageBarType.error : react_2.MessageBarType.success, isMultiline: false, onDismiss: function () { return setMessage(""); }, dismissButtonAriaLabel: "Close", styles: { root: { borderRadius: 6, marginBottom: 12 } } }, message)),
         loading ? (React.createElement("div", { className: AdminPanel_module_scss_1.default.loading },
-            React.createElement("div", { className: AdminPanel_module_scss_1.default.spinner }),
-            React.createElement("span", null, strings.LoadingCategories))) : (React.createElement("div", { className: AdminPanel_module_scss_1.default.tableWrap },
+            React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.medium, label: strings.LoadingCategories }))) : (React.createElement("div", { className: AdminPanel_module_scss_1.default.tableWrap },
             React.createElement("table", { className: AdminPanel_module_scss_1.default.table },
                 React.createElement("thead", { className: AdminPanel_module_scss_1.default.thead },
                     React.createElement("tr", null,
@@ -330,7 +376,7 @@ var CategoriesTab = function () {
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th }, strings.Description),
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th, style: { width: 70 } }, strings.SortOrder),
                         React.createElement("th", { className: AdminPanel_module_scss_1.default.th }, strings.Status),
-                        React.createElement("th", { className: AdminPanel_module_scss_1.default.th, style: { width: 130 } }, strings.Actions))),
+                        React.createElement("th", { className: AdminPanel_module_scss_1.default.th, style: { width: 150 } }, strings.Actions))),
                 React.createElement("tbody", null, categories.length === 0 ? (React.createElement("tr", null,
                     React.createElement("td", { colSpan: 5, className: AdminPanel_module_scss_1.default.empty }, strings.NoCategories))) : (categories.map(function (c) {
                     var _a, _b;
@@ -344,81 +390,85 @@ var CategoriesTab = function () {
                                 c.isActive ? strings.Active : strings.Inactive)),
                         React.createElement("td", { className: AdminPanel_module_scss_1.default.td },
                             React.createElement("div", { className: AdminPanel_module_scss_1.default.actions },
-                                React.createElement("button", { className: AdminPanel_module_scss_1.default.iconBtn, title: "Edit", onClick: function () { return openEdit(c); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M12.146.146a.5.5 0 01.708 0l3 3a.5.5 0 010 .708l-10 10a.5.5 0 01-.168.11l-5 2a.5.5 0 01-.65-.65l2-5a.5.5 0 01.11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 01.5.5v.5h.5a.5.5 0 01.5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 015 12.5V12h-.5a.5.5 0 01-.5-.5V11h-.5a.5.5 0 01-.468-.325z" }))),
+                                React.createElement(react_2.TooltipHost, { content: "Edit" },
+                                    React.createElement(react_2.IconButton, { iconProps: editIcon, styles: iconBtnThemeStyles, onClick: function () { return openEdit(c); } })),
                                 confirmDeleteId === c.id ? (React.createElement(React.Fragment, null,
-                                    React.createElement("span", { style: { fontSize: 11, color: '#6f6f6f' } }, "Delete?"),
-                                    React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Confirm delete", onClick: function () { return (0, CategoryService_1.deleteCategory)(c.id).then(function () { setConfirmDeleteId(null); load(); }).catch(function () { setMessage(strings.CategorySaveFailed); setIsError(true); setConfirmDeleteId(null); }); } }, "\u2713"),
-                                    React.createElement("button", { className: AdminPanel_module_scss_1.default.iconBtn, title: "Cancel", onClick: function () { return setConfirmDeleteId(null); } }, "\u2715"))) : (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Delete", onClick: function () { return setConfirmDeleteId(c.id); } },
-                                    React.createElement("svg", { width: "13", height: "13", viewBox: "0 0 14 14", fill: "currentColor" },
-                                        React.createElement("path", { d: "M2 4h10M5 4V2h4v2M6 6v5M8 6v5M3 4l1 8h6l1-8", stroke: "currentColor", strokeWidth: "1.3", fill: "none", strokeLinecap: "round" })))),
-                                c.isActive ? (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnSuccess), title: "Activate", onClick: function () { return (0, CategoryService_1.deactivateCategory)(c.id).then(load); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M10.5 8a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" }),
-                                        React.createElement("path", { d: "M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 100-7 3.5 3.5 0 000 7z" })))) : (React.createElement("button", { className: "".concat(AdminPanel_module_scss_1.default.iconBtn, " ").concat(AdminPanel_module_scss_1.default.iconBtnDanger), title: "Deactivate", onClick: function () { return (0, CategoryService_1.activateCategory)(c.id).then(load); } },
-                                    React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "currentColor" },
-                                        React.createElement("path", { d: "M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" }),
-                                        React.createElement("path", { d: "M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z" }),
-                                        React.createElement("path", { d: "M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884l-12-12 .708-.708 12 12-.708.708z" }))))))));
+                                    React.createElement("span", { style: {
+                                            fontSize: 11,
+                                            color: "#6f6f6f",
+                                            whiteSpace: "nowrap",
+                                        } }, "Delete?"),
+                                    React.createElement(react_2.TooltipHost, { content: "Confirm delete" },
+                                        React.createElement(react_2.IconButton, { iconProps: checkIcon, styles: iconBtnDangerStyles, onClick: function () {
+                                                return (0, CategoryService_1.deleteCategory)(c.id)
+                                                    .then(function () {
+                                                    setConfirmDeleteId(null);
+                                                    load();
+                                                })
+                                                    .catch(function () {
+                                                    setMessage(strings.CategorySaveFailed);
+                                                    setIsError(true);
+                                                    setConfirmDeleteId(null);
+                                                });
+                                            } })),
+                                    React.createElement(react_2.TooltipHost, { content: "Cancel" },
+                                        React.createElement(react_2.IconButton, { iconProps: cancelIcon, styles: iconBtnThemeStyles, onClick: function () { return setConfirmDeleteId(null); } })))) : (React.createElement(react_2.TooltipHost, { content: "Delete" },
+                                    React.createElement(react_2.IconButton, { iconProps: deleteIcon, styles: iconBtnDangerStyles, onClick: function () { return setConfirmDeleteId(c.id); } }))),
+                                React.createElement(react_2.TooltipHost, { content: c.isActive ? strings.Deactivate : strings.Activate },
+                                    React.createElement(react_2.IconButton, { iconProps: c.isActive ? hideIcon : viewIcon, styles: c.isActive
+                                            ? iconBtnDangerStyles
+                                            : iconBtnSuccessStyles, onClick: function () {
+                                            return (c.isActive
+                                                ? (0, CategoryService_1.deactivateCategory)(c.id)
+                                                : (0, CategoryService_1.activateCategory)(c.id)).then(load);
+                                        } }))))));
                 })))))),
-        React.createElement(react_2.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: {
-                main: {
-                    width: 540,
-                    maxWidth: "96vw",
-                    borderRadius: 16,
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-                scrollableContent: {
-                    display: "flex",
-                    flexDirection: "column",
-                    maxHeight: "92vh",
-                },
-            } },
+        React.createElement(react_2.Modal, { isOpen: drawerOpen, onDismiss: closeDrawer, isBlocking: false, styles: modalStyles },
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerHeader },
                 React.createElement("h3", { className: AdminPanel_module_scss_1.default.drawerTitle }, editCat.id ? strings.EditCategory : strings.AddCategoryModal),
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.drawerClose, onClick: closeDrawer }, "\u00D7")),
+                React.createElement(react_2.IconButton, { iconProps: cancelIcon, ariaLabel: "Close", onClick: closeDrawer, styles: iconBtnThemeStyles })),
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerBody },
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel },
-                        strings.Category,
-                        " ",
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.required }, "*")),
-                    React.createElement("input", { className: AdminPanel_module_scss_1.default.fieldInput, style: formErrors.title ? { borderColor: '#da1e28' } : {}, placeholder: strings.CategoryNamePlaceholder, value: (_a = editCat.title) !== null && _a !== void 0 ? _a : "", onChange: function (e) {
-                            setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { title: e.target.value })); });
-                            if (formErrors.title)
-                                setFormErrors({});
-                        } }),
-                    formErrors.title && React.createElement("span", { style: { color: '#da1e28', fontSize: 12, display: 'block', marginTop: 2 } }, formErrors.title)),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel }, strings.Description),
-                    React.createElement("textarea", { className: "".concat(AdminPanel_module_scss_1.default.fieldInput, " ").concat(AdminPanel_module_scss_1.default.fieldTextarea), placeholder: strings.OptionalDescription, value: (_b = editCat.description) !== null && _b !== void 0 ? _b : "", onChange: function (e) {
-                            return setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { description: e.target.value })); });
+                React.createElement(react_2.TextField, { label: strings.Category, required: true, placeholder: strings.CategoryNamePlaceholder, value: (_a = editCat.title) !== null && _a !== void 0 ? _a : "", errorMessage: formErrors.title, onChange: function (_e, val) {
+                        setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { title: val || "" })); });
+                        if (formErrors.title)
+                            setFormErrors({});
+                    }, styles: { fieldGroup: { borderRadius: 6 } } }),
+                React.createElement("div", { style: { marginTop: 14 } },
+                    React.createElement(react_2.TextField, { label: strings.Description, multiline: true, rows: 3, placeholder: strings.OptionalDescription, value: (_b = editCat.description) !== null && _b !== void 0 ? _b : "", onChange: function (_e, val) {
+                            return setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { description: val || "" })); });
+                        }, styles: { fieldGroup: { borderRadius: 6 } } })),
+                React.createElement("div", { style: { marginTop: 14 } },
+                    React.createElement(react_2.SpinButton, { label: strings.SortOrder, min: 0, max: 9999, step: 1, value: String((_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0), onIncrement: function (val) {
+                            setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { sortOrder: Math.min((parseInt(val, 10) || 0) + 1, 9999) })); });
+                        }, onDecrement: function (val) {
+                            setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { sortOrder: Math.max((parseInt(val, 10) || 0) - 1, 0) })); });
+                        }, onValidate: function (val) {
+                            setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { sortOrder: parseInt(val, 10) || 0 })); });
+                            return val;
+                        }, styles: {
+                            spinButtonWrapper: { borderRadius: 6 },
+                            root: { maxWidth: 120 },
                         } })),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.field },
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.fieldLabel }, strings.SortOrder),
-                    React.createElement("input", { type: "number", className: AdminPanel_module_scss_1.default.fieldInput, min: 0, max: 9999, value: (_c = editCat.sortOrder) !== null && _c !== void 0 ? _c : 0, onChange: function (e) {
-                            return setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { sortOrder: parseInt(e.target.value, 10) || 0 })); });
-                        } })),
-                React.createElement("div", { className: AdminPanel_module_scss_1.default.toggleRow },
-                    React.createElement("span", { className: AdminPanel_module_scss_1.default.toggleLabel }, strings.Active),
-                    React.createElement("label", { className: AdminPanel_module_scss_1.default.toggle },
-                        React.createElement("input", { type: "checkbox", checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (e) {
-                                return setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { isActive: e.target.checked })); });
-                            } }),
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.track }),
-                        React.createElement("span", { className: AdminPanel_module_scss_1.default.thumb }))),
-                message && (React.createElement(MessageBar, { text: message, isError: isError, onDismiss: function () { return setMessage(""); } }))),
+                React.createElement("div", { style: { marginTop: 16 } },
+                    React.createElement(react_2.Toggle, { label: strings.Active, checked: (_d = editCat.isActive) !== null && _d !== void 0 ? _d : true, onChange: function (_e, checked) {
+                            return setEditCat(function (c) { return (tslib_1.__assign(tslib_1.__assign({}, c), { isActive: checked })); });
+                        }, styles: {
+                            thumb: {
+                                backgroundColor: editCat.isActive ? "#667eea" : undefined,
+                            },
+                            pill: {
+                                backgroundColor: editCat.isActive
+                                    ? "rgba(102,126,234,0.3)"
+                                    : undefined,
+                            },
+                        } }))),
             React.createElement("div", { className: AdminPanel_module_scss_1.default.drawerFooter },
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.saveBtn, onClick: handleSave, disabled: saving }, saving
-                    ? strings.Saving
-                    : editCat.id
-                        ? strings.UpdateCategory
-                        : strings.AddCategoryModal),
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.cancelBtn, onClick: closeDrawer }, strings.Cancel)))));
+                React.createElement(react_2.PrimaryButton, { text: saving
+                        ? strings.Saving
+                        : editCat.id
+                            ? strings.UpdateCategory
+                            : strings.AddCategoryModal, disabled: saving, styles: primaryBtnStyles, onRenderIcon: saving ? function () { return React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }); } : undefined, onClick: handleSave }),
+                React.createElement(react_2.DefaultButton, { text: strings.Cancel, styles: defaultBtnStyles, onClick: closeDrawer })))));
 };
 var AdminPanel = function () {
     var navigateHome = (0, react_1.useContext)(AppContext_1.AppContext).navigateHome;
@@ -426,9 +476,7 @@ var AdminPanel = function () {
     return (React.createElement("div", { className: AdminPanel_module_scss_1.default.container },
         React.createElement("div", { className: AdminPanel_module_scss_1.default.header },
             React.createElement("div", { className: AdminPanel_module_scss_1.default.headerContent },
-                React.createElement("button", { className: AdminPanel_module_scss_1.default.homeBtn, title: "Back to Home", onClick: navigateHome },
-                    React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "currentColor" },
-                        React.createElement("path", { d: "M8.354 1.146a.5.5 0 00-.708 0l-6 6A.5.5 0 002 7.5v7a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-4h2v4a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-7a.5.5 0 00-.146-.354L13 5.793V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5v1.293L8.354 1.146z" }))),
+                React.createElement(react_2.IconButton, { iconProps: { iconName: "Home" }, title: "Back to Home", styles: homeBtnStyles, onClick: navigateHome }),
                 React.createElement("div", null,
                     React.createElement("h2", { className: AdminPanel_module_scss_1.default.headerTitle }, strings.AdminTitle),
                     React.createElement("p", { className: AdminPanel_module_scss_1.default.headerSubtitle }, strings.AdminSubtitle)))),

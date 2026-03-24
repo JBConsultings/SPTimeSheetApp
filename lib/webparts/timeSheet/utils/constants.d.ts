@@ -46,4 +46,5 @@ export declare const STATUS: {
 };
 export declare const MAX_HOURS_PER_DAY = 24;
 export declare const MIN_HOURS_PER_TASK = 0.25;
+export declare const REGULAR_HOURS_PER_DAY = 8;
 //# sourceMappingURL=constants.d.ts.map

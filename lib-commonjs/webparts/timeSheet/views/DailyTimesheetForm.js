@@ -10,6 +10,7 @@ var ProjectService_1 = require("../services/ProjectService");
 var CategoryService_1 = require("../services/CategoryService");
 var dateUtils_1 = require("../utils/dateUtils");
 var validationUtils_1 = require("../utils/validationUtils");
+var constants_1 = require("../utils/constants");
 var fmt_1 = require("../utils/fmt");
 var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var DailyTimesheetForm_module_scss_1 = tslib_1.__importDefault(require("./DailyTimesheetForm.module.scss"));
@@ -59,6 +60,18 @@ function statusLabel(status) {
         return strings.StatusRejected;
     return strings.StatusDraft;
 }
+// ─── Shared Fluent UI button styles (theme colour) ────────────────────────────
+var primaryBtnStyles = {
+    root: { backgroundColor: '#667eea', borderColor: '#667eea', borderRadius: 6 },
+    rootHovered: { backgroundColor: '#5a6fd6', borderColor: '#5a6fd6' },
+    rootPressed: { backgroundColor: '#4d5fbc', borderColor: '#4d5fbc' },
+    rootDisabled: { backgroundColor: '#c5cbf8', borderColor: '#c5cbf8' },
+};
+var defaultBtnStyles = {
+    root: { borderRadius: 6 },
+    rootHovered: { borderColor: '#667eea', color: '#667eea' },
+    rootPressed: { borderColor: '#5a6fd6', color: '#5a6fd6' },
+};
 // ─── Component ────────────────────────────────────────────────────────────────
 var DailyTimesheetForm = function (_a) {
     var selectedDate = _a.selectedDate;
@@ -319,6 +332,10 @@ var DailyTimesheetForm = function (_a) {
                     React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillNum }, totalHours.toFixed(2)),
                     React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillLabel }, strings.Hrs),
                     totalHours > 24 && React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.hoursPillExceeds }, "!")),
+                totalHours > constants_1.REGULAR_HOURS_PER_DAY && (React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.otPill, title: "".concat((totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
+                    "OT +",
+                    (totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2),
+                    "h")),
                 dayStatus && (React.createElement("span", { className: "".concat(DailyTimesheetForm_module_scss_1.default.statusPill, " ").concat(DailyTimesheetForm_module_scss_1.default["status".concat(dayStatus)]) }, statusLabel(dayStatus))))),
         React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.dateNav },
             React.createElement("button", { className: DailyTimesheetForm_module_scss_1.default.navArrow, title: strings.PreviousDay, onClick: function () { return changeDate(-1); } },
@@ -393,7 +410,7 @@ var DailyTimesheetForm = function (_a) {
                     React.createElement(IconPlus, null)),
                 React.createElement("span", null, strings.AddTask)))),
         React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.footerBar }, !isReadOnly && (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.footerActions }, !submitConfirm ? (React.createElement(React.Fragment, null,
-            React.createElement(react_2.DefaultButton, { text: strings.SaveDraft, iconProps: { iconName: 'Save' }, disabled: saving || totalHours > 24, onClick: handleSaveDraft, styles: { root: { borderRadius: 6 } } }),
+            React.createElement(react_2.DefaultButton, { text: strings.SaveDraft, iconProps: { iconName: 'Save' }, disabled: saving || totalHours > 24, onClick: handleSaveDraft, styles: defaultBtnStyles }),
             React.createElement(react_2.PrimaryButton, { text: saving ? strings.Saving : strings.Submit, iconProps: { iconName: 'Send' }, disabled: saving || totalHours > 24, onRenderIcon: saving ? function () { return React.createElement(react_2.Spinner, { size: react_2.SpinnerSize.small }); } : undefined, onClick: function () {
                     var result = (0, validationUtils_1.validateTaskRows)(rows);
                     if (!result.valid) {
@@ -413,10 +430,10 @@ var DailyTimesheetForm = function (_a) {
                     setRowErrors({});
                     setValidationErrors([]);
                     setSubmitConfirm(true);
-                }, styles: { root: { borderRadius: 6 } } }))) : (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.confirmBar },
+                }, styles: primaryBtnStyles }))) : (React.createElement("div", { className: DailyTimesheetForm_module_scss_1.default.confirmBar },
             React.createElement("span", { className: DailyTimesheetForm_module_scss_1.default.confirmText }, (0, fmt_1.fmt)(strings.ConfirmSubmitDate, { date: (0, dateUtils_1.formatDateLabel)(currentDate) })),
-            React.createElement(react_2.PrimaryButton, { text: saving ? strings.Saving : strings.Confirm, iconProps: { iconName: 'CheckMark' }, disabled: saving, onClick: handleSubmit, styles: { root: { borderRadius: 6 } } }),
-            React.createElement(react_2.DefaultButton, { text: strings.Cancel, disabled: saving, onClick: function () { return setSubmitConfirm(false); }, styles: { root: { borderRadius: 6 } } }))))))));
+            React.createElement(react_2.PrimaryButton, { text: saving ? strings.Saving : strings.Confirm, iconProps: { iconName: 'CheckMark' }, disabled: saving, onClick: handleSubmit, styles: primaryBtnStyles }),
+            React.createElement(react_2.DefaultButton, { text: strings.Cancel, disabled: saving, onClick: function () { return setSubmitConfirm(false); }, styles: defaultBtnStyles }))))))));
 };
 exports.default = DailyTimesheetForm;
 //# sourceMappingURL=DailyTimesheetForm.js.map

@@ -6,6 +6,7 @@ var react_1 = require("react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
 var dateUtils_1 = require("../utils/dateUtils");
+var constants_1 = require("../utils/constants");
 var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var MyTimesheetHistory_module_scss_1 = tslib_1.__importDefault(require("./MyTimesheetHistory.module.scss"));
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -191,7 +192,12 @@ var MyTimesheetHistory = function () {
             var isPendingDelete = confirmDeleteKey === key;
             return (React.createElement("div", { key: key, className: MyTimesheetHistory_module_scss_1.default.summaryCard, onClick: function () { return !isPendingDelete && navigateTo('DailyForm', { selectedDate: summary.date }); }, role: "button", tabIndex: 0, onKeyDown: function (e) { return !isPendingDelete && e.key === 'Enter' && navigateTo('DailyForm', { selectedDate: summary.date }); } },
                 React.createElement("div", { className: MyTimesheetHistory_module_scss_1.default.cardLeft },
-                    React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardDate }, (0, dateUtils_1.formatDateLabel)(summary.date)),
+                    React.createElement("div", { style: { display: 'flex', alignItems: 'center', gap: 8 } },
+                        React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardDate }, (0, dateUtils_1.formatDateLabel)(summary.date)),
+                        summary.totalHours > constants_1.REGULAR_HOURS_PER_DAY && (React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.otBadge, title: "".concat((summary.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
+                            "OT +",
+                            (summary.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2),
+                            "h"))),
                     React.createElement("span", { className: MyTimesheetHistory_module_scss_1.default.cardMeta },
                         summary.entries.length,
                         " task",

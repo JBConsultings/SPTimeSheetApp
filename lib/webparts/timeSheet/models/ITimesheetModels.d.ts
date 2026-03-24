@@ -1,6 +1,6 @@
 export type UserRole = 'Employee' | 'Manager' | 'Admin';
 export type TimesheetStatus = 'Draft' | 'Submitted' | 'Approved' | 'Rejected';
-export type AppView = 'Home' | 'DailyForm' | 'MyHistory' | 'ManagerDashboard' | 'AdminPanel' | 'ExportPanel';
+export type AppView = 'Home' | 'DailyForm' | 'CalendarView' | 'MyHistory' | 'ManagerDashboard' | 'AdminPanel' | 'ExportPanel';
 export interface ICurrentUser {
     id: number;
     displayName: string;

@@ -854,12 +854,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var NAV_CARDS = [
     {
-        view: 'DailyForm',
-        iconName: 'CalendarDay',
-        value: "Today",
+        view: 'CalendarView',
+        iconName: 'Calendar',
+        value: "Calendar",
         label: "My Timesheet",
-        subtitle: "Enter today's hours",
-        color: '#0078d4',
+        subtitle: "Calendar · Add entries by date",
+        color: '#667eea',
         roles: ['Employee', 'Manager', 'Admin'],
     },
     {

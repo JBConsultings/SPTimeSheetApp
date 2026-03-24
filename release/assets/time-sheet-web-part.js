@@ -120,14 +120,16 @@ __webpack_require__.r(__webpack_exports__);
 // ─── Lazy-loaded views ────────────────────────────────────────────────────────
 var HomePage = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Tooltip_TooltipHost_js-node_modules_react--1fe858"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_HomePage_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/HomePage */ 50831)); });
 var DailyTimesheetForm = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_DailyTimesheetForm_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/DailyTimesheetForm */ 51566)); });
+var CalendarView = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_CalendarView_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/CalendarView */ 248)); });
 var MyTimesheetHistory = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_MyTimesheetHistory_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/MyTimesheetHistory */ 34205)); });
-var ManagerDashboard = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-a0310e"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ManagerDashboard_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ManagerDashboard */ 50734)); });
+var ManagerDashboard = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_TextField_TextField_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ManagerDashboard_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ManagerDashboard */ 50734)); });
 var AdminPanel = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_AdminPanel_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/AdminPanel */ 14408)); });
 var ExportPanel = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ExportPanel_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ExportPanel */ 10695)); });
 // ─── Route maps ───────────────────────────────────────────────────────────────
 var VIEW_TO_PATH = {
     Home: '/',
     DailyForm: '/daily-form',
+    CalendarView: '/calendar',
     MyHistory: '/my-history',
     ManagerDashboard: '/manager',
     AdminPanel: '/admin',
@@ -136,6 +138,7 @@ var VIEW_TO_PATH = {
 var PATH_TO_VIEW = {
     '/': 'Home',
     '/daily-form': 'DailyForm',
+    '/calendar': 'CalendarView',
     '/my-history': 'MyHistory',
     '/manager': 'ManagerDashboard',
     '/admin': 'AdminPanel',
@@ -183,6 +186,7 @@ var AppShell = function (_a) {
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Routes, null,
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(HomePage, null) }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/daily-form", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(DailyTimesheetForm, { selectedDate: selectedDate !== null && selectedDate !== void 0 ? selectedDate : new Date() }) }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/calendar", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(CalendarView, null) }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/my-history", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(MyTimesheetHistory, null) }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/manager", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(ManagerDashboard, null) }),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Route, { path: "/admin", element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(AdminPanel, null) }),
@@ -39682,7 +39686,7 @@ const Web = (0,_spqueryable_js__WEBPACK_IMPORTED_MODULE_1__.spInvokableFactory)(
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("380e97272b749d9b54bb")
+/******/ 		__webpack_require__.h = () => ("0a1f0a0063c2afd2b98f")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

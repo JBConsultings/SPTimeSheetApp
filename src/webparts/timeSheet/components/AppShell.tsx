@@ -8,6 +8,7 @@ import { AppContext } from '../context/AppContext';
 // ─── Lazy-loaded views ────────────────────────────────────────────────────────
 const HomePage           = React.lazy(() => import('../views/HomePage'));
 const DailyTimesheetForm = React.lazy(() => import('../views/DailyTimesheetForm'));
+const CalendarView       = React.lazy(() => import('../views/CalendarView'));
 const MyTimesheetHistory = React.lazy(() => import('../views/MyTimesheetHistory'));
 const ManagerDashboard   = React.lazy(() => import('../views/ManagerDashboard'));
 const AdminPanel         = React.lazy(() => import('../views/AdminPanel'));
@@ -17,6 +18,7 @@ const ExportPanel        = React.lazy(() => import('../views/ExportPanel'));
 const VIEW_TO_PATH: Record<AppView, string> = {
   Home:             '/',
   DailyForm:        '/daily-form',
+  CalendarView:     '/calendar',
   MyHistory:        '/my-history',
   ManagerDashboard: '/manager',
   AdminPanel:       '/admin',
@@ -26,6 +28,7 @@ const VIEW_TO_PATH: Record<AppView, string> = {
 const PATH_TO_VIEW: { [key: string]: AppView } = {
   '/':              'Home',
   '/daily-form':    'DailyForm',
+  '/calendar':      'CalendarView',
   '/my-history':    'MyHistory',
   '/manager':       'ManagerDashboard',
   '/admin':         'AdminPanel',
@@ -86,6 +89,7 @@ const AppShell: React.FC<IAppShellProps> = ({ currentUser, error }) => {
         <Routes>
           <Route path="/"             element={<HomePage />} />
           <Route path="/daily-form"   element={<DailyTimesheetForm selectedDate={selectedDate ?? new Date()} />} />
+          <Route path="/calendar"     element={<CalendarView />} />
           <Route path="/my-history"   element={<MyTimesheetHistory />} />
           <Route path="/manager"      element={<ManagerDashboard />} />
           <Route path="/admin"        element={<AdminPanel />} />

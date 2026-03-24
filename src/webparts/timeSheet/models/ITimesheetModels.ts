@@ -8,6 +8,7 @@ export type TimesheetStatus = 'Draft' | 'Submitted' | 'Approved' | 'Rejected';
 export type AppView =
   | 'Home'
   | 'DailyForm'
+  | 'CalendarView'
   | 'MyHistory'
   | 'ManagerDashboard'
   | 'AdminPanel'

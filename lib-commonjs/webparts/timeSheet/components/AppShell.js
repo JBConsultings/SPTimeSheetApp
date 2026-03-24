@@ -8,6 +8,7 @@ var AppContext_1 = require("../context/AppContext");
 // ─── Lazy-loaded views ────────────────────────────────────────────────────────
 var HomePage = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/HomePage')); }); });
 var DailyTimesheetForm = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/DailyTimesheetForm')); }); });
+var CalendarView = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/CalendarView')); }); });
 var MyTimesheetHistory = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/MyTimesheetHistory')); }); });
 var ManagerDashboard = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/ManagerDashboard')); }); });
 var AdminPanel = React.lazy(function () { return Promise.resolve().then(function () { return tslib_1.__importStar(require('../views/AdminPanel')); }); });
@@ -16,6 +17,7 @@ var ExportPanel = React.lazy(function () { return Promise.resolve().then(functio
 var VIEW_TO_PATH = {
     Home: '/',
     DailyForm: '/daily-form',
+    CalendarView: '/calendar',
     MyHistory: '/my-history',
     ManagerDashboard: '/manager',
     AdminPanel: '/admin',
@@ -24,6 +26,7 @@ var VIEW_TO_PATH = {
 var PATH_TO_VIEW = {
     '/': 'Home',
     '/daily-form': 'DailyForm',
+    '/calendar': 'CalendarView',
     '/my-history': 'MyHistory',
     '/manager': 'ManagerDashboard',
     '/admin': 'AdminPanel',
@@ -71,6 +74,7 @@ var AppShell = function (_a) {
             React.createElement(react_router_dom_1.Routes, null,
                 React.createElement(react_router_dom_1.Route, { path: "/", element: React.createElement(HomePage, null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/daily-form", element: React.createElement(DailyTimesheetForm, { selectedDate: selectedDate !== null && selectedDate !== void 0 ? selectedDate : new Date() }) }),
+                React.createElement(react_router_dom_1.Route, { path: "/calendar", element: React.createElement(CalendarView, null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/my-history", element: React.createElement(MyTimesheetHistory, null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/manager", element: React.createElement(ManagerDashboard, null) }),
                 React.createElement(react_router_dom_1.Route, { path: "/admin", element: React.createElement(AdminPanel, null) }),

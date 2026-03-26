@@ -213,6 +213,19 @@ define([], function () {
     "AnalyticsFailed": "Échec du chargement des données analytiques",
     "NoAnalyticsData": "Aucune donnée analytique disponible",
 
+    // Team DashboardAnalytics
+    "TeamAnalyticsTitle": "Analytique équipe",
+    "TeamAnalyticsSubtitle": "Tous les employés · Ce mois",
+    "MyAnalyticsToggle": "Mes analytiques",
+    "TeamAnalyticsToggle": "Vue équipe",
+    "TotalTeamHoursCard": "Heures totales équipe",
+    "ActiveEmployeesCard": "Employés actifs",
+    "PendingApprovalsCard": "Approbations en attente",
+    "ApprovedThisMonthCard": "Approuvé ce mois",
+    "HoursByEmployee": "Heures par employé",
+    "TeamWeekDistribution": "Distribution hebdomadaire équipe",
+    "TeamLast7DaysChart": "Heures équipe — 7 derniers jours",
+
     // App shell
     "LoadingApp": "Chargement de l'application Feuille de temps...",
     "LoadFailedApp": "Impossible de charger l'application. Veuillez actualiser la page.",

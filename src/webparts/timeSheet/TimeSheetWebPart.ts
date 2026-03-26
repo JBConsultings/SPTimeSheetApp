@@ -1,22 +1,19 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
-import {
-  type IPropertyPaneConfiguration,
-} from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
+import { type IPropertyPaneConfiguration } from "@microsoft/sp-property-pane";
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IReadonlyTheme } from "@microsoft/sp-component-base";
 
-import { initPnP } from './services/PnPSetup';
-import TimeSheet from './components/TimeSheet';
-import { ITimeSheetProps } from './components/ITimeSheetProps';
+import { initPnP } from "./services/PnPSetup";
+import TimeSheet from "./components/TimeSheet";
+import { ITimeSheetProps } from "./components/ITimeSheetProps";
 
 export interface ITimeSheetWebPartProps {
   description: string;
 }
 
 export default class TimeSheetWebPart extends BaseClientSideWebPart<ITimeSheetWebPartProps> {
-
   private _isDarkTheme: boolean = false;
 
   public render(): void {
@@ -27,7 +24,7 @@ export default class TimeSheetWebPart extends BaseClientSideWebPart<ITimeSheetWe
         isDarkTheme: this._isDarkTheme,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
-      }
+      },
     );
 
     ReactDom.render(element, this.domElement);
@@ -37,6 +34,10 @@ export default class TimeSheetWebPart extends BaseClientSideWebPart<ITimeSheetWe
     // Initialise PnPjs once with the web part context
     initPnP(this.context);
     await super.onInit();
+    console.log(
+      "Locale:-=-=-=-=-=-=-",
+      this.context.pageContext.cultureInfo.currentUICultureName,
+    );
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
@@ -48,9 +49,15 @@ export default class TimeSheetWebPart extends BaseClientSideWebPart<ITimeSheetWe
     const { semanticColors } = currentTheme;
 
     if (semanticColors) {
-      this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-      this.domElement.style.setProperty('--link', semanticColors.link || null);
-      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+      this.domElement.style.setProperty(
+        "--bodyText",
+        semanticColors.bodyText || null,
+      );
+      this.domElement.style.setProperty("--link", semanticColors.link || null);
+      this.domElement.style.setProperty(
+        "--linkHovered",
+        semanticColors.linkHovered || null,
+      );
     }
   }
 
@@ -59,7 +66,7 @@ export default class TimeSheetWebPart extends BaseClientSideWebPart<ITimeSheetWe
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {

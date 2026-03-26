@@ -15,73 +15,77 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 
-_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(":root{--color-primary-50:#eff6ff;--color-primary-100:#dbeafe;--color-primary-200:#bfdbfe;--color-primary-300:#93c5fd;--color-primary-400:#60a5fa;--color-primary-500:#3b82f6;--color-primary-600:#2563eb;--color-primary-700:#1d4ed8;--color-primary-800:#1e40af;--color-primary-900:#1e3a8a;--color-secondary-50:#f8fafc;--color-secondary-100:#f1f5f9;--color-secondary-200:#e2e8f0;--color-secondary-300:#cbd5e1;--color-secondary-400:#94a3b8;--color-secondary-500:#64748b;--color-secondary-600:#475569;--color-secondary-700:#334155;--color-secondary-800:#1e293b;--color-secondary-900:#0f172a;--color-success-50:#f0fdf4;--color-success-100:#dcfce7;--color-success-500:#22c55e;--color-success-600:#16a34a;--color-success-700:#15803d;--color-warning-50:#fffbeb;--color-warning-100:#fef3c7;--color-warning-500:#f59e0b;--color-warning-600:#d97706;--color-error-50:#fef2f2;--color-error-100:#fee2e2;--color-error-500:#ef4444;--color-error-600:#dc2626;--gradient-primary:linear-gradient(135deg,#667eea,#764ba2);--gradient-success:linear-gradient(135deg,#84fab0,#8fd3f4);--gradient-warning:linear-gradient(135deg,#ffecd2,#fcb69f);--gradient-purple:linear-gradient(135deg,#a8edea,#fed6e3);--gradient-blue:linear-gradient(135deg,#667eea,#764ba2);--gradient-ocean:linear-gradient(135deg,#667db6,#0082c8 35%,#0082c8);--glass-bg:hsla(0,0%,100%,.25);--glass-border:hsla(0,0%,100%,.18);--glass-shadow:0 8px 32px 0 rgba(31,38,135,.37);--glass-backdrop:blur(8px);--shadow-xs:0 1px 2px 0 rgba(0,0,0,.05);--shadow-sm:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-primary:0 10px 25px rgba(59,130,246,.15);--shadow-success:0 10px 25px rgba(34,197,94,.15);--shadow-warning:0 10px 25px rgba(245,158,11,.15);--shadow-error:0 10px 25px rgba(239,68,68,.15);--font-family:\"Segoe UI\",\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:1.875rem;--font-size-4xl:2.25rem;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--line-height-tight:1.25;--line-height-snug:1.375;--line-height-normal:1.5;--line-height-relaxed:1.625;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--radius-sm:0.125rem;--radius-base:0.25rem;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-full:9999px;--z-dropdown:1000;--z-sticky:1020;--z-fixed:1030;--z-modal-backdrop:1040;--z-modal:1050;--z-popover:1060;--z-tooltip:1070;--transition-fast:all 150ms ease;--transition-base:all 200ms ease;--transition-slow:all 300ms ease;--transition-bounce:all 200ms cubic-bezier(0.68,-0.55,0.265,1.55)}.modern-card_d3aefc37{backdrop-filter:var(--glass-backdrop);background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;position:relative;transition:var(--transition-base)}.modern-card_d3aefc37:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.4),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.modern-card_d3aefc37:hover{border-color:hsla(0,0%,100%,.3);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.card-gradient-primary_d3aefc37{background:var(--gradient-primary);color:#fff}.card-gradient-success_d3aefc37{background:var(--gradient-success);color:var(--color-secondary-800)}.card-gradient-warning_d3aefc37{background:var(--gradient-warning);color:var(--color-secondary-800)}.card-gradient-purple_d3aefc37{background:var(--gradient-purple);color:var(--color-secondary-800)}.text-gradient-primary_d3aefc37{-webkit-text-fill-color:transparent;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;font-weight:var(--font-weight-bold)}.animate-fade-in_d3aefc37{animation:fadeIn_d3aefc37 .6s ease-out}.animate-slide-up_d3aefc37{animation:slideUp_d3aefc37 .5s ease-out}.animate-scale-in_d3aefc37{animation:scaleIn_d3aefc37 .3s ease-out}@keyframes fadeIn_d3aefc37{0%{opacity:0}to{opacity:1}}@keyframes slideUp_d3aefc37{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes scaleIn_d3aefc37{0%{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}.hover-lift_d3aefc37{transition:var(--transition-base)}.hover-lift_d3aefc37:hover{box-shadow:var(--shadow-xl);transform:translateY(-4px)}.hover-glow_d3aefc37{transition:var(--transition-base)}.hover-glow_d3aefc37:hover{box-shadow:0 0 20px rgba(59,130,246,.4)}.flex-center_d3aefc37,.flex-col-center_d3aefc37{align-items:center;display:flex;justify-content:center}.flex-col-center_d3aefc37{flex-direction:column}.bg-gradient-modern_d3aefc37{background:linear-gradient(135deg,#f5f7fa,#c3cfe2)}.bg-gradient-warm_d3aefc37{background:linear-gradient(135deg,#ffecd2,#fcb69f)}.bg-gradient-cool_d3aefc37{background:linear-gradient(135deg,#667eea,#764ba2)}.analyticsContainer_d3aefc37{animation:fadeIn_d3aefc37 .8s ease-out;padding:var(--space-6) 0}.analyticsHeader_d3aefc37{align-items:baseline;border-bottom:1px solid rgba(226,232,240,.8);display:flex;flex-direction:column;gap:12px;margin-bottom:var(--space-6);padding-bottom:16px}.analyticsTitle_d3aefc37{color:#1e293b;font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:0}.analyticsSubtitle_d3aefc37{color:#94a3b8;font-size:13px;font-weight:400;margin:0}.statsGrid_d3aefc37{display:grid;gap:var(--space-5);grid-template-columns:repeat(4,1fr);margin-bottom:var(--space-8)}.statsCard_d3aefc37{align-items:flex-start;backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);display:flex;gap:var(--space-4);overflow:hidden;padding:var(--space-6);position:relative;transition:var(--transition-base)}.statsCard_d3aefc37:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.statsCard_d3aefc37:hover{border-color:hsla(0,0%,100%,.4);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.statsCardBlue_d3aefc37{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(147,197,253,.1));border-color:rgba(59,130,246,.2)}.statsCardBlue_d3aefc37:hover{box-shadow:var(--shadow-primary)}.statsCardGreen_d3aefc37{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(134,239,172,.1));border-color:rgba(34,197,94,.2)}.statsCardGreen_d3aefc37:hover{box-shadow:var(--shadow-success)}.statsCardPurple_d3aefc37{background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(196,181,253,.1));border-color:rgba(139,92,246,.2)}.statsCardOrange_d3aefc37{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(251,191,36,.1));border-color:rgba(245,158,11,.2)}.statsCardOrange_d3aefc37:hover{box-shadow:var(--shadow-warning)}.statsIcon_d3aefc37{backdrop-filter:blur(10px);background:hsla(0,0%,100%,.5);border-radius:var(--radius-lg);color:var(--color-primary-600);flex-shrink:0;padding:var(--space-3);transition:var(--transition-base)}.statsCard_d3aefc37:hover .statsIcon_d3aefc37{background:hsla(0,0%,100%,.8);transform:scale(1.1)}.statsContent_d3aefc37{flex:1;min-width:0}.statsTitle_d3aefc37{color:var(--color-secondary-600);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);letter-spacing:.05em;margin:0 0 var(--space-1) 0;text-transform:uppercase}.statsValue_d3aefc37{color:var(--color-secondary-900);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight);margin-bottom:var(--space-1)}.statsSubtitle_d3aefc37{color:var(--color-secondary-500);font-size:var(--font-size-xs);margin:0}.statsTrend_d3aefc37{align-items:center;display:flex;font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);gap:var(--space-1);margin-top:var(--space-2)}.trendUp_d3aefc37{color:var(--color-success-600)}.trendDown_d3aefc37{color:var(--color-error-600)}.trendIcon_d3aefc37{font-size:var(--font-size-sm)}.chartsGrid_d3aefc37{display:flex;flex-direction:column;gap:var(--space-8);margin-bottom:var(--space-10);width:100%}.chartFullWidth_d3aefc37{grid-column:1/-1;width:100%}.chartsRow_d3aefc37{display:grid;gap:3%;grid-template-columns:repeat(2,1fr);width:100%}@media (max-width:1024px){.chartsRow_d3aefc37{gap:var(--space-6);grid-template-columns:1fr}}@media (max-width:768px){.chartsGrid_d3aefc37{gap:var(--space-6)}.chartsRow_d3aefc37{gap:var(--space-4);grid-template-columns:1fr}.chartContainer_d3aefc37{min-height:280px;padding:var(--space-6)}.chart_d3aefc37{height:240px}.chartFullWidth_d3aefc37 .chart_d3aefc37{height:260px}.chartMedium_d3aefc37 .chart_d3aefc37{height:240px}.chartTitle_d3aefc37{font-size:var(--font-size-lg);margin:0 0 var(--space-4) 0}}@media (max-width:480px){.chartContainer_d3aefc37{min-height:240px;padding:var(--space-4)}.chart_d3aefc37{height:200px}.chartFullWidth_d3aefc37 .chart_d3aefc37{height:220px}.chartMedium_d3aefc37 .chart_d3aefc37{height:200px}.chartTitle_d3aefc37{font-size:var(--font-size-base);margin:0 0 var(--space-3) 0}}.chartContainer_d3aefc37{background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:var(--radius-2xl);box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);overflow:hidden;padding:10px;position:relative;transition:var(--transition-base);width:100%}.chartContainer_d3aefc37:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.chartContainer_d3aefc37:hover{border-color:hsla(0,0%,100%,.4);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.chartTitle_d3aefc37{align-items:center;color:#475569;display:flex;font-size:13px;font-weight:600;gap:8px;letter-spacing:.06em;margin:0 0 16px;text-transform:uppercase}.chartTitle_d3aefc37:before{background:linear-gradient(180deg,#6366f1,#8b5cf6);border-radius:2px;content:\"\";display:inline-block;flex-shrink:0;height:14px;width:3px}.chart_d3aefc37{height:240px;width:100%}.chartMedium_d3aefc37{width:100%}.chartFullWidth_d3aefc37 .chart_d3aefc37,.chartMedium_d3aefc37 .chart_d3aefc37{height:240px}.recentActivity_d3aefc37{backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);overflow:hidden;padding:var(--space-6);position:relative}.recentActivity_d3aefc37:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.activityTitle_d3aefc37{color:var(--color-secondary-800);font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);margin:0 0 var(--space-6) 0}.activityList_d3aefc37{display:flex;flex-direction:column;gap:var(--space-4)}.activityItem_d3aefc37{align-items:flex-start;background:hsla(0,0%,100%,.5);border-radius:var(--radius-lg);display:flex;gap:var(--space-3);padding:var(--space-3);transition:var(--transition-base)}.activityItem_d3aefc37:hover{background:hsla(0,0%,100%,.8);transform:translateX(4px)}.activityIcon_d3aefc37{align-items:center;border-radius:var(--radius-lg);display:flex;flex-shrink:0;font-size:var(--font-size-sm);height:32px;justify-content:center;width:32px}.activityBlue_d3aefc37{background:rgba(59,130,246,.1);color:var(--color-primary-600)}.activityGreen_d3aefc37{background:rgba(34,197,94,.1);color:var(--color-success-600)}.activityRed_d3aefc37{background:rgba(239,68,68,.1);color:var(--color-error-600)}.activityGray_d3aefc37{background:hsla(220,9%,46%,.1);color:var(--color-secondary-600)}.activityContent_d3aefc37{flex:1;min-width:0}.activityDescription_d3aefc37{color:var(--color-secondary-800);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:var(--line-height-snug);margin:0 0 var(--space-1) 0}.activityTime_d3aefc37{color:var(--color-secondary-500);font-size:var(--font-size-xs)}.emptyActivity_d3aefc37{color:var(--color-secondary-500);font-style:italic;padding:var(--space-8);text-align:center}.emptyContainer_d3aefc37,.errorContainer_d3aefc37,.loadingContainer_d3aefc37{align-items:center;backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);color:var(--color-secondary-600);display:flex;flex-direction:column;gap:var(--space-4);justify-content:center;padding:var(--space-12)}.spinner_d3aefc37{animation:spin_d3aefc37 1s linear infinite;border:3px solid rgba(59,130,246,.2);border-radius:50%;border-top:3px solid var(--color-primary-600);height:32px;width:32px}@keyframes spin_d3aefc37{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.errorContainer_d3aefc37{color:var(--color-error-600)}@media (max-width:900px){.statsGrid_d3aefc37{gap:var(--space-4);grid-template-columns:repeat(2,1fr)}.chartsRow_d3aefc37{grid-template-columns:1fr}}@media (max-width:600px){.analyticsContainer_d3aefc37{padding:var(--space-4) 0}.statsGrid_d3aefc37{gap:var(--space-3);grid-template-columns:repeat(2,1fr);margin-bottom:var(--space-5)}.statsCard_d3aefc37{padding:var(--space-4)}.statsValue_d3aefc37{font-size:var(--font-size-xl)}.chartContainer_d3aefc37{padding:16px}.chartFullWidth_d3aefc37 .chart_d3aefc37,.chartMedium_d3aefc37 .chart_d3aefc37,.chart_d3aefc37{height:200px}.recentActivity_d3aefc37{padding:var(--space-4)}}.statsCard_d3aefc37:first-child{animation:slideUp_d3aefc37 .6s ease-out .1s both}.statsCard_d3aefc37:nth-child(2){animation:slideUp_d3aefc37 .6s ease-out .2s both}.statsCard_d3aefc37:nth-child(3){animation:slideUp_d3aefc37 .6s ease-out .3s both}.statsCard_d3aefc37:nth-child(4){animation:slideUp_d3aefc37 .6s ease-out .4s both}.chartContainer_d3aefc37:first-child{animation:scaleIn_d3aefc37 .6s ease-out .5s both}.chartContainer_d3aefc37:nth-child(2){animation:scaleIn_d3aefc37 .6s ease-out .6s both}.chartContainer_d3aefc37:nth-child(3){animation:scaleIn_d3aefc37 .6s ease-out .7s both}.recentActivity_d3aefc37{animation:fadeIn_d3aefc37 .6s ease-out .8s both}", true);
+_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(":root{--color-primary-50:#eff6ff;--color-primary-100:#dbeafe;--color-primary-200:#bfdbfe;--color-primary-300:#93c5fd;--color-primary-400:#60a5fa;--color-primary-500:#3b82f6;--color-primary-600:#2563eb;--color-primary-700:#1d4ed8;--color-primary-800:#1e40af;--color-primary-900:#1e3a8a;--color-secondary-50:#f8fafc;--color-secondary-100:#f1f5f9;--color-secondary-200:#e2e8f0;--color-secondary-300:#cbd5e1;--color-secondary-400:#94a3b8;--color-secondary-500:#64748b;--color-secondary-600:#475569;--color-secondary-700:#334155;--color-secondary-800:#1e293b;--color-secondary-900:#0f172a;--color-success-50:#f0fdf4;--color-success-100:#dcfce7;--color-success-500:#22c55e;--color-success-600:#16a34a;--color-success-700:#15803d;--color-warning-50:#fffbeb;--color-warning-100:#fef3c7;--color-warning-500:#f59e0b;--color-warning-600:#d97706;--color-error-50:#fef2f2;--color-error-100:#fee2e2;--color-error-500:#ef4444;--color-error-600:#dc2626;--gradient-primary:linear-gradient(135deg,#667eea,#764ba2);--gradient-success:linear-gradient(135deg,#84fab0,#8fd3f4);--gradient-warning:linear-gradient(135deg,#ffecd2,#fcb69f);--gradient-purple:linear-gradient(135deg,#a8edea,#fed6e3);--gradient-blue:linear-gradient(135deg,#667eea,#764ba2);--gradient-ocean:linear-gradient(135deg,#667db6,#0082c8 35%,#0082c8);--glass-bg:hsla(0,0%,100%,.25);--glass-border:hsla(0,0%,100%,.18);--glass-shadow:0 8px 32px 0 rgba(31,38,135,.37);--glass-backdrop:blur(8px);--shadow-xs:0 1px 2px 0 rgba(0,0,0,.05);--shadow-sm:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--shadow-md:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--shadow-lg:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--shadow-xl:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--shadow-2xl:0 25px 50px -12px rgba(0,0,0,.25);--shadow-primary:0 10px 25px rgba(59,130,246,.15);--shadow-success:0 10px 25px rgba(34,197,94,.15);--shadow-warning:0 10px 25px rgba(245,158,11,.15);--shadow-error:0 10px 25px rgba(239,68,68,.15);--font-family:\"Segoe UI\",\"Inter\",-apple-system,BlinkMacSystemFont,sans-serif;--font-size-xs:0.75rem;--font-size-sm:0.875rem;--font-size-base:1rem;--font-size-lg:1.125rem;--font-size-xl:1.25rem;--font-size-2xl:1.5rem;--font-size-3xl:1.875rem;--font-size-4xl:2.25rem;--font-weight-light:300;--font-weight-normal:400;--font-weight-medium:500;--font-weight-semibold:600;--font-weight-bold:700;--font-weight-extrabold:800;--line-height-tight:1.25;--line-height-snug:1.375;--line-height-normal:1.5;--line-height-relaxed:1.625;--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--radius-sm:0.125rem;--radius-base:0.25rem;--radius-md:0.375rem;--radius-lg:0.5rem;--radius-xl:0.75rem;--radius-2xl:1rem;--radius-3xl:1.5rem;--radius-full:9999px;--z-dropdown:1000;--z-sticky:1020;--z-fixed:1030;--z-modal-backdrop:1040;--z-modal:1050;--z-popover:1060;--z-tooltip:1070;--transition-fast:all 150ms ease;--transition-base:all 200ms ease;--transition-slow:all 300ms ease;--transition-bounce:all 200ms cubic-bezier(0.68,-0.55,0.265,1.55)}.modern-card_5626104b{backdrop-filter:var(--glass-backdrop);background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);overflow:hidden;position:relative;transition:var(--transition-base)}.modern-card_5626104b:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.4),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.modern-card_5626104b:hover{border-color:hsla(0,0%,100%,.3);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.card-gradient-primary_5626104b{background:var(--gradient-primary);color:#fff}.card-gradient-success_5626104b{background:var(--gradient-success);color:var(--color-secondary-800)}.card-gradient-warning_5626104b{background:var(--gradient-warning);color:var(--color-secondary-800)}.card-gradient-purple_5626104b{background:var(--gradient-purple);color:var(--color-secondary-800)}.text-gradient-primary_5626104b{-webkit-text-fill-color:transparent;background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;font-weight:var(--font-weight-bold)}.animate-fade-in_5626104b{animation:fadeIn_5626104b .6s ease-out}.animate-slide-up_5626104b{animation:slideUp_5626104b .5s ease-out}.animate-scale-in_5626104b{animation:scaleIn_5626104b .3s ease-out}@keyframes fadeIn_5626104b{0%{opacity:0}to{opacity:1}}@keyframes slideUp_5626104b{0%{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes scaleIn_5626104b{0%{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}.hover-lift_5626104b{transition:var(--transition-base)}.hover-lift_5626104b:hover{box-shadow:var(--shadow-xl);transform:translateY(-4px)}.hover-glow_5626104b{transition:var(--transition-base)}.hover-glow_5626104b:hover{box-shadow:0 0 20px rgba(59,130,246,.4)}.flex-center_5626104b,.flex-col-center_5626104b{align-items:center;display:flex;justify-content:center}.flex-col-center_5626104b{flex-direction:column}.bg-gradient-modern_5626104b{background:linear-gradient(135deg,#f5f7fa,#c3cfe2)}.bg-gradient-warm_5626104b{background:linear-gradient(135deg,#ffecd2,#fcb69f)}.bg-gradient-cool_5626104b{background:linear-gradient(135deg,#667eea,#764ba2)}.analyticsContainer_5626104b{animation:fadeIn_5626104b .8s ease-out;padding:var(--space-6) 0}.analyticsHeader_5626104b{align-items:center;border-bottom:1px solid rgba(226,232,240,.8);display:flex;flex-direction:row;flex-wrap:wrap;gap:12px;justify-content:space-between;margin-bottom:var(--space-6);padding-bottom:16px}.analyticsHeaderLeft_5626104b{display:flex;flex-direction:column;gap:4px}.viewToggle_5626104b{align-items:center;background:#f1f5f9;border-radius:10px;display:flex;flex-shrink:0;gap:2px;padding:3px}.toggleBtn_5626104b{align-items:center;background:transparent;border:none;border-radius:8px;color:#64748b;cursor:pointer;display:flex;font-size:12px;font-weight:500;gap:6px;padding:6px 14px;transition:all .18s ease;white-space:nowrap}.toggleBtn_5626104b svg{flex-shrink:0;opacity:.7}.toggleBtn_5626104b:hover:not(.toggleBtnActive_5626104b){background:hsla(0,0%,100%,.6);color:#334155}.toggleBtnActive_5626104b{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.1),0 0 0 1px rgba(102,126,234,.15);color:#667eea;font-weight:600}.toggleBtnActive_5626104b svg{opacity:1}.analyticsTitle_5626104b{color:#1e293b;font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin:0}.analyticsSubtitle_5626104b{color:#94a3b8;font-size:13px;font-weight:400;margin:0}.statsGrid_5626104b{display:grid;gap:var(--space-5);grid-template-columns:repeat(4,1fr);margin-bottom:var(--space-8)}.statsCard_5626104b{align-items:flex-start;backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);display:flex;gap:var(--space-4);overflow:hidden;padding:var(--space-6);position:relative;transition:var(--transition-base)}.statsCard_5626104b:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.statsCard_5626104b:hover{border-color:hsla(0,0%,100%,.4);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.statsCardBlue_5626104b{background:linear-gradient(135deg,rgba(59,130,246,.1),rgba(147,197,253,.1));border-color:rgba(59,130,246,.2)}.statsCardBlue_5626104b:hover{box-shadow:var(--shadow-primary)}.statsCardGreen_5626104b{background:linear-gradient(135deg,rgba(34,197,94,.1),rgba(134,239,172,.1));border-color:rgba(34,197,94,.2)}.statsCardGreen_5626104b:hover{box-shadow:var(--shadow-success)}.statsCardPurple_5626104b{background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(196,181,253,.1));border-color:rgba(139,92,246,.2)}.statsCardOrange_5626104b{background:linear-gradient(135deg,rgba(245,158,11,.1),rgba(251,191,36,.1));border-color:rgba(245,158,11,.2)}.statsCardOrange_5626104b:hover{box-shadow:var(--shadow-warning)}.statsIcon_5626104b{backdrop-filter:blur(10px);background:hsla(0,0%,100%,.5);border-radius:var(--radius-lg);color:var(--color-primary-600);flex-shrink:0;padding:var(--space-3);transition:var(--transition-base)}.statsCard_5626104b:hover .statsIcon_5626104b{background:hsla(0,0%,100%,.8);transform:scale(1.1)}.statsContent_5626104b{flex:1;min-width:0}.statsTitle_5626104b{color:var(--color-secondary-600);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);letter-spacing:.05em;margin:0 0 var(--space-1) 0;text-transform:uppercase}.statsValue_5626104b{color:var(--color-secondary-900);font-size:var(--font-size-2xl);font-weight:var(--font-weight-bold);line-height:var(--line-height-tight);margin-bottom:var(--space-1)}.statsSubtitle_5626104b{color:var(--color-secondary-500);font-size:var(--font-size-xs);margin:0}.statsTrend_5626104b{align-items:center;display:flex;font-size:var(--font-size-xs);font-weight:var(--font-weight-semibold);gap:var(--space-1);margin-top:var(--space-2)}.trendUp_5626104b{color:var(--color-success-600)}.trendDown_5626104b{color:var(--color-error-600)}.trendIcon_5626104b{font-size:var(--font-size-sm)}.chartsGrid_5626104b{display:flex;flex-direction:column;gap:var(--space-8);margin-bottom:var(--space-10);width:100%}.chartFullWidth_5626104b{grid-column:1/-1;width:100%}.chartsRow_5626104b{display:grid;gap:3%;grid-template-columns:repeat(2,1fr);width:100%}@media (max-width:1024px){.chartsRow_5626104b{gap:var(--space-6);grid-template-columns:1fr}}@media (max-width:768px){.chartsGrid_5626104b{gap:var(--space-6)}.chartsRow_5626104b{gap:var(--space-4);grid-template-columns:1fr}.chartContainer_5626104b{min-height:280px;padding:var(--space-6)}.chart_5626104b{height:240px}.chartFullWidth_5626104b .chart_5626104b{height:260px}.chartMedium_5626104b .chart_5626104b{height:240px}.chartTitle_5626104b{font-size:var(--font-size-lg);margin:0 0 var(--space-4) 0}}@media (max-width:480px){.chartContainer_5626104b{min-height:240px;padding:var(--space-4)}.chart_5626104b{height:200px}.chartFullWidth_5626104b .chart_5626104b{height:220px}.chartMedium_5626104b .chart_5626104b{height:200px}.chartTitle_5626104b{font-size:var(--font-size-base);margin:0 0 var(--space-3) 0}}.chartContainer_5626104b{background:#fff;border:1px solid rgba(226,232,240,.8);border-radius:var(--radius-2xl);box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);overflow:hidden;padding:10px;position:relative;transition:var(--transition-base);width:100%}.chartContainer_5626104b:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.chartContainer_5626104b:hover{border-color:hsla(0,0%,100%,.4);box-shadow:var(--shadow-xl);transform:translateY(-2px)}.chartTitle_5626104b{align-items:center;color:#475569;display:flex;font-size:13px;font-weight:600;gap:8px;letter-spacing:.06em;margin:0 0 16px;text-transform:uppercase}.chartTitle_5626104b:before{background:linear-gradient(180deg,#6366f1,#8b5cf6);border-radius:2px;content:\"\";display:inline-block;flex-shrink:0;height:14px;width:3px}.chart_5626104b{height:240px;width:100%}.chartMedium_5626104b{width:100%}.chartFullWidth_5626104b .chart_5626104b,.chartMedium_5626104b .chart_5626104b{height:240px}.recentActivity_5626104b{backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);overflow:hidden;padding:var(--space-6);position:relative}.recentActivity_5626104b:before{background:linear-gradient(90deg,transparent,hsla(0,0%,100%,.6),transparent);content:\"\";height:1px;left:0;pointer-events:none;position:absolute;right:0;top:0}.activityTitle_5626104b{color:var(--color-secondary-800);font-size:var(--font-size-xl);font-weight:var(--font-weight-semibold);margin:0 0 var(--space-6) 0}.activityList_5626104b{display:flex;flex-direction:column;gap:var(--space-4)}.activityItem_5626104b{align-items:flex-start;background:hsla(0,0%,100%,.5);border-radius:var(--radius-lg);display:flex;gap:var(--space-3);padding:var(--space-3);transition:var(--transition-base)}.activityItem_5626104b:hover{background:hsla(0,0%,100%,.8);transform:translateX(4px)}.activityIcon_5626104b{align-items:center;border-radius:var(--radius-lg);display:flex;flex-shrink:0;font-size:var(--font-size-sm);height:32px;justify-content:center;width:32px}.activityBlue_5626104b{background:rgba(59,130,246,.1);color:var(--color-primary-600)}.activityGreen_5626104b{background:rgba(34,197,94,.1);color:var(--color-success-600)}.activityRed_5626104b{background:rgba(239,68,68,.1);color:var(--color-error-600)}.activityGray_5626104b{background:hsla(220,9%,46%,.1);color:var(--color-secondary-600)}.activityContent_5626104b{flex:1;min-width:0}.activityDescription_5626104b{color:var(--color-secondary-800);font-size:var(--font-size-sm);font-weight:var(--font-weight-medium);line-height:var(--line-height-snug);margin:0 0 var(--space-1) 0}.activityTime_5626104b{color:var(--color-secondary-500);font-size:var(--font-size-xs)}.emptyActivity_5626104b{color:var(--color-secondary-500);font-style:italic;padding:var(--space-8);text-align:center}.emptyContainer_5626104b,.errorContainer_5626104b,.loadingContainer_5626104b{align-items:center;backdrop-filter:blur(20px);background:hsla(0,0%,100%,.9);border:1px solid hsla(0,0%,100%,.2);border-radius:var(--radius-2xl);box-shadow:var(--shadow-lg);color:var(--color-secondary-600);display:flex;flex-direction:column;gap:var(--space-4);justify-content:center;padding:var(--space-12)}.spinner_5626104b{animation:spin_5626104b 1s linear infinite;border:3px solid rgba(59,130,246,.2);border-radius:50%;border-top:3px solid var(--color-primary-600);height:32px;width:32px}@keyframes spin_5626104b{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}.errorContainer_5626104b{color:var(--color-error-600)}@media (max-width:900px){.statsGrid_5626104b{gap:var(--space-4);grid-template-columns:repeat(2,1fr)}.chartsRow_5626104b{grid-template-columns:1fr}}@media (max-width:600px){.analyticsContainer_5626104b{padding:var(--space-4) 0}.statsGrid_5626104b{gap:var(--space-3);grid-template-columns:repeat(2,1fr);margin-bottom:var(--space-5)}.statsCard_5626104b{padding:var(--space-4)}.statsValue_5626104b{font-size:var(--font-size-xl)}.chartContainer_5626104b{padding:16px}.chartFullWidth_5626104b .chart_5626104b,.chartMedium_5626104b .chart_5626104b,.chart_5626104b{height:200px}.recentActivity_5626104b{padding:var(--space-4)}}.statsCard_5626104b:first-child{animation:slideUp_5626104b .6s ease-out .1s both}.statsCard_5626104b:nth-child(2){animation:slideUp_5626104b .6s ease-out .2s both}.statsCard_5626104b:nth-child(3){animation:slideUp_5626104b .6s ease-out .3s both}.statsCard_5626104b:nth-child(4){animation:slideUp_5626104b .6s ease-out .4s both}.chartContainer_5626104b:first-child{animation:scaleIn_5626104b .6s ease-out .5s both}.chartContainer_5626104b:nth-child(2){animation:scaleIn_5626104b .6s ease-out .6s both}.chartContainer_5626104b:nth-child(3){animation:scaleIn_5626104b .6s ease-out .7s both}.recentActivity_5626104b{animation:fadeIn_5626104b .6s ease-out .8s both}", true);
 
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  "modern-card": "modern-card_d3aefc37",
-  "card-gradient-primary": "card-gradient-primary_d3aefc37",
-  "card-gradient-success": "card-gradient-success_d3aefc37",
-  "card-gradient-warning": "card-gradient-warning_d3aefc37",
-  "card-gradient-purple": "card-gradient-purple_d3aefc37",
-  "text-gradient-primary": "text-gradient-primary_d3aefc37",
-  "animate-fade-in": "animate-fade-in_d3aefc37",
-  fadeIn: "fadeIn_d3aefc37",
-  "animate-slide-up": "animate-slide-up_d3aefc37",
-  slideUp: "slideUp_d3aefc37",
-  "animate-scale-in": "animate-scale-in_d3aefc37",
-  scaleIn: "scaleIn_d3aefc37",
-  "hover-lift": "hover-lift_d3aefc37",
-  "hover-glow": "hover-glow_d3aefc37",
-  "flex-center": "flex-center_d3aefc37",
-  "flex-col-center": "flex-col-center_d3aefc37",
-  "bg-gradient-modern": "bg-gradient-modern_d3aefc37",
-  "bg-gradient-warm": "bg-gradient-warm_d3aefc37",
-  "bg-gradient-cool": "bg-gradient-cool_d3aefc37",
-  analyticsContainer: "analyticsContainer_d3aefc37",
-  analyticsHeader: "analyticsHeader_d3aefc37",
-  analyticsTitle: "analyticsTitle_d3aefc37",
-  analyticsSubtitle: "analyticsSubtitle_d3aefc37",
-  statsGrid: "statsGrid_d3aefc37",
-  statsCard: "statsCard_d3aefc37",
-  statsCardBlue: "statsCardBlue_d3aefc37",
-  statsCardGreen: "statsCardGreen_d3aefc37",
-  statsCardPurple: "statsCardPurple_d3aefc37",
-  statsCardOrange: "statsCardOrange_d3aefc37",
-  statsIcon: "statsIcon_d3aefc37",
-  statsContent: "statsContent_d3aefc37",
-  statsTitle: "statsTitle_d3aefc37",
-  statsValue: "statsValue_d3aefc37",
-  statsSubtitle: "statsSubtitle_d3aefc37",
-  statsTrend: "statsTrend_d3aefc37",
-  trendUp: "trendUp_d3aefc37",
-  trendDown: "trendDown_d3aefc37",
-  trendIcon: "trendIcon_d3aefc37",
-  chartsGrid: "chartsGrid_d3aefc37",
-  chartFullWidth: "chartFullWidth_d3aefc37",
-  chartsRow: "chartsRow_d3aefc37",
-  chartContainer: "chartContainer_d3aefc37",
-  chart: "chart_d3aefc37",
-  chartMedium: "chartMedium_d3aefc37",
-  chartTitle: "chartTitle_d3aefc37",
-  recentActivity: "recentActivity_d3aefc37",
-  activityTitle: "activityTitle_d3aefc37",
-  activityList: "activityList_d3aefc37",
-  activityItem: "activityItem_d3aefc37",
-  activityIcon: "activityIcon_d3aefc37",
-  activityBlue: "activityBlue_d3aefc37",
-  activityGreen: "activityGreen_d3aefc37",
-  activityRed: "activityRed_d3aefc37",
-  activityGray: "activityGray_d3aefc37",
-  activityContent: "activityContent_d3aefc37",
-  activityDescription: "activityDescription_d3aefc37",
-  activityTime: "activityTime_d3aefc37",
-  emptyActivity: "emptyActivity_d3aefc37",
-  loadingContainer: "loadingContainer_d3aefc37",
-  errorContainer: "errorContainer_d3aefc37",
-  emptyContainer: "emptyContainer_d3aefc37",
-  spinner: "spinner_d3aefc37",
-  spin: "spin_d3aefc37"
+  "modern-card": "modern-card_5626104b",
+  "card-gradient-primary": "card-gradient-primary_5626104b",
+  "card-gradient-success": "card-gradient-success_5626104b",
+  "card-gradient-warning": "card-gradient-warning_5626104b",
+  "card-gradient-purple": "card-gradient-purple_5626104b",
+  "text-gradient-primary": "text-gradient-primary_5626104b",
+  "animate-fade-in": "animate-fade-in_5626104b",
+  fadeIn: "fadeIn_5626104b",
+  "animate-slide-up": "animate-slide-up_5626104b",
+  slideUp: "slideUp_5626104b",
+  "animate-scale-in": "animate-scale-in_5626104b",
+  scaleIn: "scaleIn_5626104b",
+  "hover-lift": "hover-lift_5626104b",
+  "hover-glow": "hover-glow_5626104b",
+  "flex-center": "flex-center_5626104b",
+  "flex-col-center": "flex-col-center_5626104b",
+  "bg-gradient-modern": "bg-gradient-modern_5626104b",
+  "bg-gradient-warm": "bg-gradient-warm_5626104b",
+  "bg-gradient-cool": "bg-gradient-cool_5626104b",
+  analyticsContainer: "analyticsContainer_5626104b",
+  analyticsHeader: "analyticsHeader_5626104b",
+  analyticsHeaderLeft: "analyticsHeaderLeft_5626104b",
+  viewToggle: "viewToggle_5626104b",
+  toggleBtn: "toggleBtn_5626104b",
+  toggleBtnActive: "toggleBtnActive_5626104b",
+  analyticsTitle: "analyticsTitle_5626104b",
+  analyticsSubtitle: "analyticsSubtitle_5626104b",
+  statsGrid: "statsGrid_5626104b",
+  statsCard: "statsCard_5626104b",
+  statsCardBlue: "statsCardBlue_5626104b",
+  statsCardGreen: "statsCardGreen_5626104b",
+  statsCardPurple: "statsCardPurple_5626104b",
+  statsCardOrange: "statsCardOrange_5626104b",
+  statsIcon: "statsIcon_5626104b",
+  statsContent: "statsContent_5626104b",
+  statsTitle: "statsTitle_5626104b",
+  statsValue: "statsValue_5626104b",
+  statsSubtitle: "statsSubtitle_5626104b",
+  statsTrend: "statsTrend_5626104b",
+  trendUp: "trendUp_5626104b",
+  trendDown: "trendDown_5626104b",
+  trendIcon: "trendIcon_5626104b",
+  chartsGrid: "chartsGrid_5626104b",
+  chartFullWidth: "chartFullWidth_5626104b",
+  chartsRow: "chartsRow_5626104b",
+  chartContainer: "chartContainer_5626104b",
+  chart: "chart_5626104b",
+  chartMedium: "chartMedium_5626104b",
+  chartTitle: "chartTitle_5626104b",
+  recentActivity: "recentActivity_5626104b",
+  activityTitle: "activityTitle_5626104b",
+  activityList: "activityList_5626104b",
+  activityItem: "activityItem_5626104b",
+  activityIcon: "activityIcon_5626104b",
+  activityBlue: "activityBlue_5626104b",
+  activityGreen: "activityGreen_5626104b",
+  activityRed: "activityRed_5626104b",
+  activityGray: "activityGray_5626104b",
+  activityContent: "activityContent_5626104b",
+  activityDescription: "activityDescription_5626104b",
+  activityTime: "activityTime_5626104b",
+  emptyActivity: "emptyActivity_5626104b",
+  loadingContainer: "loadingContainer_5626104b",
+  errorContainer: "errorContainer_5626104b",
+  emptyContainer: "emptyContainer_5626104b",
+  spinner: "spinner_5626104b",
+  spin: "spin_5626104b"
 });
 
 
@@ -161,16 +165,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 5613);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_AnalyticsService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/AnalyticsService */ 77164);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _SimpleChart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SimpleChart */ 65565);
-/* harmony import */ var _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./DashboardAnalytics.module.scss */ 78165);
+/* harmony import */ var _services_TeamAnalyticsService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/TeamAnalyticsService */ 4033);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _SimpleChart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SimpleChart */ 65565);
+/* harmony import */ var _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./DashboardAnalytics.module.scss */ 78165);
+
+
 
 
 
@@ -182,34 +190,72 @@ __webpack_require__.r(__webpack_exports__);
 
 var Chart = function (_a) {
     var data = _a.data, type = _a.type, title = _a.title, className = _a.className;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartContainer, " ").concat(className || '') },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartTitle }, title),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SimpleChart__WEBPACK_IMPORTED_MODULE_4__["default"], { data: data, type: type, title: title, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chart, height: 200, width: 400 })));
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartContainer, " ").concat(className || '') },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartTitle }, title),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_SimpleChart__WEBPACK_IMPORTED_MODULE_5__["default"], { data: data, type: type, title: title, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chart, height: 200, width: 400 })));
 };
 var StatsCard = function (_a) {
     var title = _a.title, value = _a.value, subtitle = _a.subtitle, icon = _a.icon, color = _a.color, trend = _a.trend;
     // Get color-specific class
     var getColorClass = function () {
         switch (color) {
-            case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardBlue'] || '';
-            case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardGreen'] || '';
-            case 'purple': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardPurple'] || '';
-            case 'orange': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['statsCardOrange'] || '';
+            case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['statsCardBlue'] || '';
+            case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['statsCardGreen'] || '';
+            case 'purple': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['statsCardPurple'] || '';
+            case 'orange': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['statsCardOrange'] || '';
             default: return '';
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsCard, " ").concat(getColorClass()) },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsIcon }, icon),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsContent },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsTitle }, title),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsValue }, value),
-            subtitle && react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsSubtitle }, subtitle),
-            trend && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsTrend, " ").concat(trend.direction === 'up' ? _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendUp : _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendDown) },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].trendIcon }, trend.direction === 'up' ? '↗' : '↘'),
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsCard, " ").concat(getColorClass()) },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsIcon }, icon),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsContent },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h4", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsTitle }, title),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsValue }, value),
+            subtitle && react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsSubtitle }, subtitle),
+            trend && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsTrend, " ").concat(trend.direction === 'up' ? _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].trendUp : _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].trendDown) },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].trendIcon }, trend.direction === 'up' ? '↗' : '↘'),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null,
                     Math.abs(trend.value),
                     "%"))))));
 };
+// Toggle button styles — active uses the project theme purple, inactive is transparent
+var toggleButtonStyles = function (isActive) { return ({
+    root: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        padding: '6px 14px',
+        border: 'none',
+        borderRadius: 8,
+        fontSize: 12,
+        fontWeight: isActive ? 600 : 500,
+        color: isActive ? '#667eea' : '#64748b',
+        background: isActive ? '#ffffff' : 'transparent',
+        boxShadow: isActive ? '0 1px 4px rgba(0,0,0,0.1), 0 0 0 1px rgba(102,126,234,0.15)' : 'none',
+        minWidth: 'auto',
+        height: 'auto',
+        whiteSpace: 'nowrap',
+    },
+    rootHovered: {
+        background: isActive ? '#ffffff' : 'rgba(255,255,255,0.6)',
+        color: isActive ? '#667eea' : '#334155',
+        border: 'none',
+    },
+    rootPressed: {
+        background: '#ffffff',
+        color: '#667eea',
+        border: 'none',
+    },
+    label: {
+        fontSize: 12,
+        fontWeight: isActive ? 600 : 500,
+        color: isActive ? '#667eea' : '#64748b',
+    },
+    icon: {
+        fontSize: 14,
+        color: isActive ? '#667eea' : '#94a3b8',
+    },
+}); };
 var RecentActivity = function (_a) {
     var activities = _a.activities;
     var getActivityIcon = function (type) {
@@ -235,23 +281,23 @@ var RecentActivity = function (_a) {
             default: return 'gray';
         }
     };
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].recentActivity },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.RecentActivity),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityList }, activities.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyActivity },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoRecentActivity))) : (activities.map(function (activity) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: activity.id, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityItem },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityIcon, " ").concat((function () {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].recentActivity },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RecentActivity),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityList }, activities.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyActivity },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoRecentActivity))) : (activities.map(function (activity) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: activity.id, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityItem },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityIcon, " ").concat((function () {
                     var color = getActivityColor(activity.type);
                     switch (color) {
-                        case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityBlue'];
-                        case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityGreen'];
-                        case 'red': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityRed'];
-                        case 'gray': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"]['activityGray'];
+                        case 'blue': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['activityBlue'];
+                        case 'green': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['activityGreen'];
+                        case 'red': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['activityRed'];
+                        case 'gray': return _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]['activityGray'];
                         default: return '';
                     }
                 })()) }, getActivityIcon(activity.type)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityContent },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityDescription }, activity.description),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].activityTime }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateShort)(activity.timestamp))))); })))));
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityContent },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityDescription }, activity.description),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].activityTime }, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__.formatDateShort)(activity.timestamp))))); })))));
 };
 // Main Dashboard Analytics Component
 var DashboardAnalytics = function () {
@@ -259,71 +305,87 @@ var DashboardAnalytics = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), analyticsData = _a[0], setAnalyticsData = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true), loading = _b[0], setLoading = _b[1];
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''), error = _c[0], setError = _c[1];
+    var isManagerOrAdmin = currentUser.role === 'Manager' || currentUser.role === 'Admin';
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), isTeamView = _d[0], setIsTeamView = _d[1];
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-        var loadAnalytics = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(void 0, void 0, void 0, function () {
-            var data, err_1;
-            return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_a) {
-                switch (_a.label) {
+        var loadAnalytics = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(void 0, void 0, void 0, function () {
+            var data, _a, err_1;
+            return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 2, 3, 4]);
+                        _b.trys.push([0, 5, 6, 7]);
                         setLoading(true);
                         setError('');
-                        return [4 /*yield*/, (0,_services_AnalyticsService__WEBPACK_IMPORTED_MODULE_2__.getAnalyticsData)(currentUser.email)];
+                        if (!isTeamView) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0,_services_TeamAnalyticsService__WEBPACK_IMPORTED_MODULE_3__.getTeamAnalyticsData)()];
                     case 1:
-                        data = _a.sent();
-                        setAnalyticsData(data);
+                        _a = _b.sent();
                         return [3 /*break*/, 4];
-                    case 2:
-                        err_1 = _a.sent();
-                        setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsFailed);
-                        console.error('Analytics error:', err_1);
-                        return [3 /*break*/, 4];
+                    case 2: return [4 /*yield*/, (0,_services_AnalyticsService__WEBPACK_IMPORTED_MODULE_2__.getAnalyticsData)(currentUser.email)];
                     case 3:
+                        _a = _b.sent();
+                        _b.label = 4;
+                    case 4:
+                        data = _a;
+                        setAnalyticsData(data);
+                        return [3 /*break*/, 7];
+                    case 5:
+                        err_1 = _b.sent();
+                        setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AnalyticsFailed);
+                        console.error('Analytics error:', err_1);
+                        return [3 /*break*/, 7];
+                    case 6:
                         setLoading(false);
                         return [7 /*endfinally*/];
-                    case 4: return [2 /*return*/];
+                    case 7: return [2 /*return*/];
                 }
             });
         }); };
         void loadAnalytics();
-    }, [currentUser.email]);
+    }, [currentUser.email, isTeamView]);
     if (loading) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loadingContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.LoadingAnalytics)));
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].loadingContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingAnalytics)));
     }
     if (error) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].errorContainer },
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].errorContainer },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" })),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error)));
     }
     if (!analyticsData) {
-        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NoAnalyticsData)));
+        return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoAnalyticsData)));
     }
     var last7Days = analyticsData.last7Days, monthlyHours = analyticsData.monthlyHours, weeklyDistribution = analyticsData.weeklyDistribution, quickStats = analyticsData.quickStats, recentActivity = analyticsData.recentActivity;
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsContainer },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsHeader },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsTitle),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].analyticsSubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AnalyticsSubtitle)),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].statsGrid },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.TotalHoursCard, value: quickStats.totalHours, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].analyticsContainer },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].analyticsHeader },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].analyticsHeaderLeft },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].analyticsTitle }, isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamAnalyticsTitle : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AnalyticsTitle),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].analyticsSubtitle }, isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamAnalyticsSubtitle : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AnalyticsSubtitle)),
+            isManagerOrAdmin && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].viewToggle, role: "group", "aria-label": "Dashboard view" },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.MyAnalyticsToggle, iconProps: { iconName: 'Contact' }, onClick: function () { return setIsTeamView(false); }, "aria-pressed": !isTeamView, styles: toggleButtonStyles(!isTeamView) }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamAnalyticsToggle, iconProps: { iconName: 'Group' }, onClick: function () { return setIsTeamView(true); }, "aria-pressed": isTeamView, styles: toggleButtonStyles(isTeamView) })))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].statsGrid },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TotalTeamHoursCard : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TotalHoursCard, value: quickStats.totalHours, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" })), color: "blue", trend: quickStats.hoursChange ? {
                     value: quickStats.hoursChange,
                     direction: quickStats.hoursChange > 0 ? 'up' : 'down'
                 } : undefined }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.AvgDaily, value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Last7Days, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" })), color: "green" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.SubmittedCard, value: quickStats.submittedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisWeek, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" })), color: "purple" }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ApprovedCard, value: quickStats.approvedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ActiveEmployeesCard : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AvgDaily, value: isTeamView ? quickStats.avgDaily : "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ThisMonth : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Last7Days, icon: isTeamView ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" }))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" }))), color: "green" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.PendingApprovalsCard : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.SubmittedCard, value: quickStats.submittedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ThisWeek, icon: isTeamView ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" }))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" }))), color: "purple" }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(StatsCard, { title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ApprovedThisMonthCard : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ApprovedCard, value: quickStats.approvedEntries, subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ThisMonth, icon: react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })), color: "orange" })),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartsGrid },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: last7Days, type: "line", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.Last7DaysChart, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartFullWidth }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartsRow },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: weeklyDistribution, type: "bar", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.WeekDistribution, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartMedium }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: monthlyHours, type: "doughnut", title: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.MonthlyByProject, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].chartMedium }))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartsGrid },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: last7Days, type: "line", title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamLast7DaysChart : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Last7DaysChart, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartFullWidth }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartsRow },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: weeklyDistribution, type: "bar", title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamWeekDistribution : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.WeekDistribution, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartMedium }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(Chart, { data: monthlyHours, type: "doughnut", title: isTeamView ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.HoursByEmployee : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.MonthlyByProject, className: _DashboardAnalytics_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].chartMedium }))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(RecentActivity, { activities: recentActivity })));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DashboardAnalytics);
@@ -831,6 +893,201 @@ function getAnalyticsData(employeeEmail) {
 
 /***/ }),
 
+/***/ 4033:
+/*!*****************************************************************!*\
+  !*** ./lib/webparts/timeSheet/services/TeamAnalyticsService.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getTeamAnalyticsData: () => (/* binding */ getTeamAnalyticsData)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var _TimesheetService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TimesheetService */ 30264);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var _AnalyticsService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnalyticsService */ 77164);
+
+
+
+
+// ─── Date helpers (private) ────────────────────────────────────────────────────
+function getPreviousMonth() {
+    var now = new Date();
+    var start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    var end = new Date(now.getFullYear(), now.getMonth(), 0);
+    end.setHours(23, 59, 59, 999);
+    return { start: start, end: end };
+}
+function getWeekdayName(date) {
+    var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return days[date.getDay()];
+}
+function groupEntriesByEmployee(entries) {
+    var grouped = new Map();
+    entries.forEach(function (entry) {
+        var name = entry.employeeName || entry.employeeEmail;
+        grouped.set(name, (grouped.get(name) || 0) + entry.hoursSpent);
+    });
+    return grouped;
+}
+// ─── Main function ─────────────────────────────────────────────────────────────
+function getTeamAnalyticsData() {
+    return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__awaiter)(this, void 0, void 0, function () {
+        var _a, currentMonthStart, currentMonthEnd, _b, previousMonthStart, previousMonthEnd, _c, currentWeekStart, currentWeekEnd, last7DaysStart, _d, currentMonthEntries, previousMonthEntries, currentWeekEntries, last7DaysEntries, totalHours, previousTotal, activeEmployees, pendingApprovals, approvedThisMonth, hoursChange, dates, grouped7Days, last7Data, last7DaysChart, byEmployee, topEmployees, monthlyHoursChart, weekStart, weekDates, i, d, groupedWeek, weekData, weeklyDistributionChart, recentActivity;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__generator)(this, function (_e) {
+            switch (_e.label) {
+                case 0:
+                    _a = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.getCurrentMonth)(), currentMonthStart = _a.start, currentMonthEnd = _a.end;
+                    _b = getPreviousMonth(), previousMonthStart = _b.start, previousMonthEnd = _b.end;
+                    _c = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.getCurrentWeek)(), currentWeekStart = _c.start, currentWeekEnd = _c.end;
+                    last7DaysStart = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.getLast7Days)()[0];
+                    return [4 /*yield*/, Promise.all([
+                            (0,_TimesheetService__WEBPACK_IMPORTED_MODULE_0__.getTeamEntries)(currentMonthStart, currentMonthEnd),
+                            (0,_TimesheetService__WEBPACK_IMPORTED_MODULE_0__.getTeamEntries)(previousMonthStart, previousMonthEnd),
+                            (0,_TimesheetService__WEBPACK_IMPORTED_MODULE_0__.getTeamEntries)(currentWeekStart, currentWeekEnd),
+                            (0,_TimesheetService__WEBPACK_IMPORTED_MODULE_0__.getTeamEntries)(last7DaysStart, new Date()),
+                        ])];
+                case 1:
+                    _d = _e.sent(), currentMonthEntries = _d[0], previousMonthEntries = _d[1], currentWeekEntries = _d[2], last7DaysEntries = _d[3];
+                    totalHours = currentMonthEntries.reduce(function (s, e) { return s + e.hoursSpent; }, 0);
+                    previousTotal = previousMonthEntries.reduce(function (s, e) { return s + e.hoursSpent; }, 0);
+                    activeEmployees = new Set(currentMonthEntries.map(function (e) { return e.employeeEmail; })).size;
+                    pendingApprovals = currentWeekEntries.filter(function (e) { return e.status === 'Submitted'; }).length;
+                    approvedThisMonth = currentMonthEntries.filter(function (e) { return e.status === 'Approved'; }).length;
+                    // Fallback sample data when no real entries exist
+                    if (totalHours === 0) {
+                        totalHours = 624;
+                        activeEmployees = 8;
+                        pendingApprovals = 5;
+                        approvedThisMonth = 32;
+                    }
+                    hoursChange = previousTotal > 0
+                        ? Math.round(((totalHours - previousTotal) / previousTotal) * 100)
+                        : undefined;
+                    dates = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.getLast7Days)();
+                    grouped7Days = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.groupEntriesByDate)(last7DaysEntries);
+                    last7Data = dates.map(function (d) { return grouped7Days.get(d.toISOString().split('T')[0]) || 0; });
+                    if (last7Data.every(function (v) { return v === 0; })) {
+                        last7Data = [42, 38, 45, 40, 35, 12, 8];
+                    }
+                    last7DaysChart = {
+                        labels: dates.map(getWeekdayName),
+                        datasets: [{
+                                label: 'Team Hours',
+                                data: last7Data,
+                                backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                                borderColor: '#10b981',
+                                borderWidth: 3,
+                                fill: true,
+                            }],
+                    };
+                    byEmployee = groupEntriesByEmployee(currentMonthEntries);
+                    topEmployees = Array.from(byEmployee.entries())
+                        .sort(function (_a, _b) {
+                        var a = _a[1];
+                        var b = _b[1];
+                        return b - a;
+                    })
+                        .slice(0, 6);
+                    if (topEmployees.length === 0) {
+                        topEmployees = [
+                            ['Alice Martin', 120],
+                            ['Bob Chen', 98],
+                            ['Carol Davis', 85],
+                            ['Dave Kumar', 72],
+                            ['Eve Johnson', 65],
+                        ];
+                    }
+                    monthlyHoursChart = {
+                        labels: topEmployees.map(function (_a) {
+                            var name = _a[0];
+                            return name;
+                        }),
+                        datasets: [{
+                                label: 'Hours',
+                                data: topEmployees.map(function (_a) {
+                                    var h = _a[1];
+                                    return h;
+                                }),
+                                backgroundColor: ['#667eea', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'],
+                                borderWidth: 0,
+                            }],
+                    };
+                    weekStart = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_3__.getWeekStart)(new Date());
+                    weekDates = [];
+                    for (i = 0; i < 7; i++) {
+                        d = new Date(weekStart);
+                        d.setDate(d.getDate() + i);
+                        weekDates.push(d);
+                    }
+                    groupedWeek = (0,_AnalyticsService__WEBPACK_IMPORTED_MODULE_1__.groupEntriesByDate)(currentWeekEntries);
+                    weekData = weekDates.map(function (d) { return groupedWeek.get(d.toISOString().split('T')[0]) || 0; });
+                    if (weekData.every(function (v) { return v === 0; })) {
+                        weekData = [56, 48, 62, 55, 44, 0, 0];
+                    }
+                    weeklyDistributionChart = {
+                        labels: weekDates.map(getWeekdayName),
+                        datasets: [{
+                                label: 'Team Hours',
+                                data: weekData,
+                                backgroundColor: '#10b981',
+                                borderColor: '#059669',
+                                borderWidth: 1,
+                            }],
+                    };
+                    recentActivity = currentMonthEntries
+                        .filter(function (e) { return e.submittedOn || e.reviewedOn; })
+                        .sort(function (a, b) {
+                        var aTime = (a.reviewedOn || a.submittedOn || new Date(0)).getTime();
+                        var bTime = (b.reviewedOn || b.submittedOn || new Date(0)).getTime();
+                        return bTime - aTime;
+                    })
+                        .slice(0, 10)
+                        .map(function (entry) {
+                        var _a;
+                        var timestamp = entry.reviewedOn || entry.submittedOn || new Date();
+                        var type = 'submitted';
+                        var description = '';
+                        if (entry.status === 'Approved') {
+                            type = 'approved';
+                            description = "".concat(entry.employeeName, ": Approved for ").concat((0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_3__.formatDateShort)(entry.entryDate), " \u2014 ").concat(entry.projectName);
+                        }
+                        else if (entry.status === 'Rejected') {
+                            type = 'rejected';
+                            description = "".concat(entry.employeeName, ": Rejected for ").concat((0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_3__.formatDateShort)(entry.entryDate));
+                        }
+                        else {
+                            description = "".concat(entry.employeeName, ": Submitted for ").concat((0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_3__.formatDateShort)(entry.entryDate), " \u2014 ").concat(entry.projectName);
+                        }
+                        return {
+                            id: ((_a = entry.id) === null || _a === void 0 ? void 0 : _a.toString()) || "".concat(entry.entryDate.getTime(), "-").concat(entry.employeeEmail),
+                            type: type,
+                            description: description,
+                            timestamp: timestamp,
+                        };
+                    });
+                    return [2 /*return*/, {
+                            last7Days: last7DaysChart,
+                            monthlyHours: monthlyHoursChart,
+                            weeklyDistribution: weeklyDistributionChart,
+                            quickStats: {
+                                totalHours: Math.round(totalHours * 100) / 100,
+                                avgDaily: activeEmployees, // repurposed: active employee count
+                                submittedEntries: pendingApprovals,
+                                approvedEntries: approvedThisMonth,
+                                hoursChange: hoursChange,
+                            },
+                            recentActivity: recentActivity,
+                        }];
+            }
+        });
+    });
+}
+
+
+/***/ }),
+
 /***/ 50831:
 /*!**************************************************!*\
   !*** ./lib/webparts/timeSheet/views/HomePage.js ***!
@@ -861,49 +1118,49 @@ __webpack_require__.r(__webpack_exports__);
 function getNavCards() {
     return [
         {
-            view: 'CalendarView',
-            iconName: 'Calendar',
+            view: "CalendarView",
+            iconName: "Calendar",
             value: "Calendar",
             label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMyTimesheet,
             subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMyTimesheetSub,
-            color: '#667eea',
-            roles: ['Employee', 'Manager', 'Admin'],
+            color: "#667eea",
+            roles: ["Employee", "Manager", "Admin"],
         },
         {
-            view: 'MyHistory',
-            iconName: 'History',
+            view: "MyHistory",
+            iconName: "History",
             value: "History",
             label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMySubmissions,
             subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavMySubmissionsSub,
-            color: '#107c41',
-            roles: ['Employee', 'Manager', 'Admin'],
+            color: "#107c41",
+            roles: ["Employee", "Manager", "Admin"],
         },
         {
-            view: 'ManagerDashboard',
-            iconName: 'People',
+            view: "ManagerDashboard",
+            iconName: "People",
             value: "Team",
             label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavTeamTimesheets,
             subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavTeamTimesheetsSub,
-            color: '#e8a600',
-            roles: ['Manager', 'Admin'],
+            color: "#e8a600",
+            roles: ["Manager", "Admin"],
         },
         {
-            view: 'ExportPanel',
-            iconName: 'ExcelDocument',
+            view: "ExportPanel",
+            iconName: "ExcelDocument",
             value: "Export",
             label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavExportReport,
             subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavExportReportSub,
-            color: '#107c41',
-            roles: ['Manager', 'Admin'],
+            color: "#107c41",
+            roles: ["Manager", "Admin"],
         },
         {
-            view: 'AdminPanel',
-            iconName: 'Settings',
+            view: "AdminPanel",
+            iconName: "Settings",
             value: "Admin",
             label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavManageProjects,
             subtitle: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.NavManageProjectsSub,
-            color: '#c4314b',
-            roles: ['Manager', 'Admin'],
+            color: "#c4314b",
+            roles: ["Manager", "Admin"],
         },
     ];
 }
@@ -911,31 +1168,31 @@ var HomePage = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateTo = _a.navigateTo;
     var NAV_CARDS = getNavCards();
     var visibleCards = NAV_CARDS.filter(function (c) { return c.roles.indexOf(currentUser.role) !== -1; });
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['webpart-container'] },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-root'] },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-header'] },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['header-content'] },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-page-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.DashboardTitle),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['dashboard-section-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.WelcomeMessage.replace('{name}', currentUser.displayName).replace('{role}', currentUser.role)))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['quick-access-section'] },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-header'] },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-title'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccess),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['section-subtitle'] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccessSubtitle)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['navigation-grid'] }, visibleCards.map(function (card, index) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.TooltipHost, { key: card.view, content: card.subtitle, delay: _fluentui_react__WEBPACK_IMPORTED_MODULE_6__.TooltipDelay.medium, styles: { root: { flex: '1 1 0', minWidth: 0 } } },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card']).concat(index === 0 ? " ".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-primary']) : ''), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
-                            if (e.key === 'Enter' || e.key === ' ') {
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["webpart-container"] },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["dashboard-root"] },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["dashboard-header"] },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["header-content"] },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["dashboard-page-title"] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.DashboardTitle),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["dashboard-section-title"] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.WelcomeMessage.replace("{name}", currentUser.displayName).replace("{role}", currentUser.role)))),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["quick-access-section"] },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["section-header"] },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["section-title"] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccess),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["section-subtitle"] }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_3__.QuickAccessSubtitle)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["navigation-grid"] }, visibleCards.map(function (card, index) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_5__.TooltipHost, { key: card.view, content: card.subtitle, delay: _fluentui_react__WEBPACK_IMPORTED_MODULE_6__.TooltipDelay.medium, styles: { root: { flex: "1 1 0", minWidth: 0 } } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card"]).concat(index === 0 ? " ".concat(_HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-primary"]) : ""), onClick: function () { return navigateTo(card.view); }, role: "button", tabIndex: 0, "aria-label": "".concat(card.label, " - ").concat(card.subtitle), onKeyDown: function (e) {
+                            if (e.key === "Enter" || e.key === " ") {
                                 e.preventDefault();
                                 navigateTo(card.view);
                             }
-                        }, style: { '--accent-color': card.color } },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-icon-wrap'] },
+                        }, style: { "--accent-color": card.color } },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-icon-wrap"] },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Icon, { iconName: card.iconName, styles: { root: { fontSize: 20, color: card.color } } })),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-info'] },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-title'] }, card.label),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-description'] }, card.subtitle)),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-footer'] },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['nav-card-tag'] }, card.value),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Icon, { iconName: "ChevronRight", className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]['action-icon'] }))))); }))),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-info"] },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-title"] }, card.label),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-description"] }, card.subtitle)),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-footer"] },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["nav-card-tag"] }, card.value),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_7__.Icon, { iconName: "ChevronRight", className: _HomePage_module_scss__WEBPACK_IMPORTED_MODULE_4__["default"]["action-icon"] }))))); }))),
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_DashboardAnalytics__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);

@@ -213,6 +213,19 @@ define([], function () {
     "AnalyticsFailed": "Analytikdaten konnten nicht geladen werden",
     "NoAnalyticsData": "Keine Analytikdaten verfügbar",
 
+    // Team DashboardAnalytics
+    "TeamAnalyticsTitle": "Team-Analytik",
+    "TeamAnalyticsSubtitle": "Alle Mitarbeiter · Diesen Monat",
+    "MyAnalyticsToggle": "Meine Analytik",
+    "TeamAnalyticsToggle": "Team-Übersicht",
+    "TotalTeamHoursCard": "Team-Gesamtstunden",
+    "ActiveEmployeesCard": "Aktive Mitarbeiter",
+    "PendingApprovalsCard": "Ausstehende Genehmigungen",
+    "ApprovedThisMonthCard": "Diesen Monat genehmigt",
+    "HoursByEmployee": "Stunden nach Mitarbeiter",
+    "TeamWeekDistribution": "Team-Wochenverteilung",
+    "TeamLast7DaysChart": "Team-Stunden — Letzte 7 Tage",
+
     // App shell
     "LoadingApp": "Zeiterfassungsanwendung wird geladen...",
     "LoadFailedApp": "Anwendung konnte nicht geladen werden. Bitte die Seite aktualisieren.",

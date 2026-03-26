@@ -212,6 +212,19 @@ declare interface ITimeSheetWebPartStrings {
   AnalyticsFailed: string;
   NoAnalyticsData: string;
 
+  // ── Team DashboardAnalytics ───────────────────────────────────────────────
+  TeamAnalyticsTitle: string;
+  TeamAnalyticsSubtitle: string;
+  MyAnalyticsToggle: string;
+  TeamAnalyticsToggle: string;
+  TotalTeamHoursCard: string;
+  ActiveEmployeesCard: string;
+  PendingApprovalsCard: string;
+  ApprovedThisMonthCard: string;
+  HoursByEmployee: string;
+  TeamWeekDistribution: string;
+  TeamLast7DaysChart: string;
+
   // ── App shell ─────────────────────────────────────────────────────────────
   LoadingApp: string;
   LoadFailedApp: string;

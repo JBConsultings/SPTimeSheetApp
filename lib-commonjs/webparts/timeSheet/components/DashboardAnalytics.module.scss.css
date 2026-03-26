@@ -281,11 +281,64 @@
 .analyticsHeader {
   margin-bottom: var(--space-6);
   display: flex;
-  flex-direction: column;
-  align-items: baseline;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   gap: 12px;
   border-bottom: 1px solid rgba(226, 232, 240, 0.8);
   padding-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.analyticsHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ─── View Toggle ────────────────────────────────────────────────────────────── */
+.viewToggle {
+  display: flex;
+  align-items: center;
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.toggleBtn svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+.toggleBtn:hover:not(.toggleBtnActive) {
+  background: rgba(255, 255, 255, 0.6);
+  color: #334155;
+}
+
+.toggleBtnActive {
+  background: #ffffff;
+  color: #667eea;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(102, 126, 234, 0.15);
+  font-weight: 600;
+}
+.toggleBtnActive svg {
+  opacity: 1;
 }
 
 .analyticsTitle {

@@ -3,8 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var React = tslib_1.__importStar(require("react"));
 var react_1 = require("react");
+var react_2 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
 var AnalyticsService_1 = require("../services/AnalyticsService");
+var TeamAnalyticsService_1 = require("../services/TeamAnalyticsService");
 var dateUtils_1 = require("../utils/dateUtils");
 var strings = tslib_1.__importStar(require("TimeSheetWebPartStrings"));
 var SimpleChart_1 = tslib_1.__importDefault(require("./SimpleChart"));
@@ -39,6 +41,44 @@ var StatsCard = function (_a) {
                     Math.abs(trend.value),
                     "%"))))));
 };
+// Toggle button styles — active uses the project theme purple, inactive is transparent
+var toggleButtonStyles = function (isActive) { return ({
+    root: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 6,
+        padding: '6px 14px',
+        border: 'none',
+        borderRadius: 8,
+        fontSize: 12,
+        fontWeight: isActive ? 600 : 500,
+        color: isActive ? '#667eea' : '#64748b',
+        background: isActive ? '#ffffff' : 'transparent',
+        boxShadow: isActive ? '0 1px 4px rgba(0,0,0,0.1), 0 0 0 1px rgba(102,126,234,0.15)' : 'none',
+        minWidth: 'auto',
+        height: 'auto',
+        whiteSpace: 'nowrap',
+    },
+    rootHovered: {
+        background: isActive ? '#ffffff' : 'rgba(255,255,255,0.6)',
+        color: isActive ? '#667eea' : '#334155',
+        border: 'none',
+    },
+    rootPressed: {
+        background: '#ffffff',
+        color: '#667eea',
+        border: 'none',
+    },
+    label: {
+        fontSize: 12,
+        fontWeight: isActive ? 600 : 500,
+        color: isActive ? '#667eea' : '#64748b',
+    },
+    icon: {
+        fontSize: 14,
+        color: isActive ? '#667eea' : '#94a3b8',
+    },
+}); };
 var RecentActivity = function (_a) {
     var activities = _a.activities;
     var getActivityIcon = function (type) {
@@ -88,34 +128,44 @@ var DashboardAnalytics = function () {
     var _a = (0, react_1.useState)(null), analyticsData = _a[0], setAnalyticsData = _a[1];
     var _b = (0, react_1.useState)(true), loading = _b[0], setLoading = _b[1];
     var _c = (0, react_1.useState)(''), error = _c[0], setError = _c[1];
+    var isManagerOrAdmin = currentUser.role === 'Manager' || currentUser.role === 'Admin';
+    var _d = (0, react_1.useState)(false), isTeamView = _d[0], setIsTeamView = _d[1];
     (0, react_1.useEffect)(function () {
         var loadAnalytics = function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
-            var data, err_1;
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
+            var data, _a, err_1;
+            return tslib_1.__generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        _a.trys.push([0, 2, 3, 4]);
+                        _b.trys.push([0, 5, 6, 7]);
                         setLoading(true);
                         setError('');
-                        return [4 /*yield*/, (0, AnalyticsService_1.getAnalyticsData)(currentUser.email)];
+                        if (!isTeamView) return [3 /*break*/, 2];
+                        return [4 /*yield*/, (0, TeamAnalyticsService_1.getTeamAnalyticsData)()];
                     case 1:
-                        data = _a.sent();
-                        setAnalyticsData(data);
+                        _a = _b.sent();
                         return [3 /*break*/, 4];
-                    case 2:
-                        err_1 = _a.sent();
+                    case 2: return [4 /*yield*/, (0, AnalyticsService_1.getAnalyticsData)(currentUser.email)];
+                    case 3:
+                        _a = _b.sent();
+                        _b.label = 4;
+                    case 4:
+                        data = _a;
+                        setAnalyticsData(data);
+                        return [3 /*break*/, 7];
+                    case 5:
+                        err_1 = _b.sent();
                         setError(strings.AnalyticsFailed);
                         console.error('Analytics error:', err_1);
-                        return [3 /*break*/, 4];
-                    case 3:
+                        return [3 /*break*/, 7];
+                    case 6:
                         setLoading(false);
                         return [7 /*endfinally*/];
-                    case 4: return [2 /*return*/];
+                    case 7: return [2 /*return*/];
                 }
             });
         }); };
         void loadAnalytics();
-    }, [currentUser.email]);
+    }, [currentUser.email, isTeamView]);
     if (loading) {
         return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.loadingContainer },
             React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.spinner }),
@@ -134,25 +184,31 @@ var DashboardAnalytics = function () {
     var last7Days = analyticsData.last7Days, monthlyHours = analyticsData.monthlyHours, weeklyDistribution = analyticsData.weeklyDistribution, quickStats = analyticsData.quickStats, recentActivity = analyticsData.recentActivity;
     return (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.analyticsContainer },
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.analyticsHeader },
-            React.createElement("h2", { className: DashboardAnalytics_module_scss_1.default.analyticsTitle }, strings.AnalyticsTitle),
-            React.createElement("p", { className: DashboardAnalytics_module_scss_1.default.analyticsSubtitle }, strings.AnalyticsSubtitle)),
+            React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.analyticsHeaderLeft },
+                React.createElement("h2", { className: DashboardAnalytics_module_scss_1.default.analyticsTitle }, isTeamView ? strings.TeamAnalyticsTitle : strings.AnalyticsTitle),
+                React.createElement("p", { className: DashboardAnalytics_module_scss_1.default.analyticsSubtitle }, isTeamView ? strings.TeamAnalyticsSubtitle : strings.AnalyticsSubtitle)),
+            isManagerOrAdmin && (React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.viewToggle, role: "group", "aria-label": "Dashboard view" },
+                React.createElement(react_2.DefaultButton, { text: strings.MyAnalyticsToggle, iconProps: { iconName: 'Contact' }, onClick: function () { return setIsTeamView(false); }, "aria-pressed": !isTeamView, styles: toggleButtonStyles(!isTeamView) }),
+                React.createElement(react_2.DefaultButton, { text: strings.TeamAnalyticsToggle, iconProps: { iconName: 'Group' }, onClick: function () { return setIsTeamView(true); }, "aria-pressed": isTeamView, styles: toggleButtonStyles(isTeamView) })))),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.statsGrid },
-            React.createElement(StatsCard, { title: strings.TotalHoursCard, value: quickStats.totalHours, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: isTeamView ? strings.TotalTeamHoursCard : strings.TotalHoursCard, value: quickStats.totalHours, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" })), color: "blue", trend: quickStats.hoursChange ? {
                     value: quickStats.hoursChange,
                     direction: quickStats.hoursChange > 0 ? 'up' : 'down'
                 } : undefined }),
-            React.createElement(StatsCard, { title: strings.AvgDaily, value: "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: strings.Last7Days, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
-                    React.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" })), color: "green" }),
-            React.createElement(StatsCard, { title: strings.SubmittedCard, value: quickStats.submittedEntries, subtitle: strings.ThisWeek, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
-                    React.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" })), color: "purple" }),
-            React.createElement(StatsCard, { title: strings.ApprovedCard, value: quickStats.approvedEntries, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+            React.createElement(StatsCard, { title: isTeamView ? strings.ActiveEmployeesCard : strings.AvgDaily, value: isTeamView ? quickStats.avgDaily : "".concat(quickStats.avgDaily.toFixed(1), "h"), subtitle: isTeamView ? strings.ThisMonth : strings.Last7Days, icon: isTeamView ? (React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    React.createElement("path", { d: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" }))) : (React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    React.createElement("path", { d: "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" }))), color: "green" }),
+            React.createElement(StatsCard, { title: isTeamView ? strings.PendingApprovalsCard : strings.SubmittedCard, value: quickStats.submittedEntries, subtitle: strings.ThisWeek, icon: isTeamView ? (React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    React.createElement("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" }))) : (React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
+                    React.createElement("path", { d: "M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" }))), color: "purple" }),
+            React.createElement(StatsCard, { title: isTeamView ? strings.ApprovedThisMonthCard : strings.ApprovedCard, value: quickStats.approvedEntries, subtitle: strings.ThisMonth, icon: React.createElement("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor" },
                     React.createElement("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })), color: "orange" })),
         React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsGrid },
-            React.createElement(Chart, { data: last7Days, type: "line", title: strings.Last7DaysChart, className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
+            React.createElement(Chart, { data: last7Days, type: "line", title: isTeamView ? strings.TeamLast7DaysChart : strings.Last7DaysChart, className: DashboardAnalytics_module_scss_1.default.chartFullWidth }),
             React.createElement("div", { className: DashboardAnalytics_module_scss_1.default.chartsRow },
-                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: strings.WeekDistribution, className: DashboardAnalytics_module_scss_1.default.chartMedium }),
-                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: strings.MonthlyByProject, className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
+                React.createElement(Chart, { data: weeklyDistribution, type: "bar", title: isTeamView ? strings.TeamWeekDistribution : strings.WeekDistribution, className: DashboardAnalytics_module_scss_1.default.chartMedium }),
+                React.createElement(Chart, { data: monthlyHours, type: "doughnut", title: isTeamView ? strings.HoursByEmployee : strings.MonthlyByProject, className: DashboardAnalytics_module_scss_1.default.chartMedium }))),
         React.createElement(RecentActivity, { activities: recentActivity })));
 };
 exports.default = DashboardAnalytics;

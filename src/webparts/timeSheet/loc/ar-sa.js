@@ -213,6 +213,19 @@ define([], function () {
     "AnalyticsFailed": "فشل تحميل بيانات التحليلات",
     "NoAnalyticsData": "لا تتوفر بيانات تحليلات",
 
+    // Team DashboardAnalytics
+    "TeamAnalyticsTitle": "تحليلات الفريق",
+    "TeamAnalyticsSubtitle": "جميع الموظفين · هذا الشهر",
+    "MyAnalyticsToggle": "تحليلاتي",
+    "TeamAnalyticsToggle": "نظرة عامة على الفريق",
+    "TotalTeamHoursCard": "إجمالي ساعات الفريق",
+    "ActiveEmployeesCard": "الموظفون النشطون",
+    "PendingApprovalsCard": "الموافقات المعلقة",
+    "ApprovedThisMonthCard": "معتمد هذا الشهر",
+    "HoursByEmployee": "الساعات حسب الموظف",
+    "TeamWeekDistribution": "التوزيع الأسبوعي للفريق",
+    "TeamLast7DaysChart": "ساعات الفريق — آخر 7 أيام",
+
     // App shell
     "LoadingApp": "جارٍ تحميل تطبيق جدول الوقت...",
     "LoadFailedApp": "تعذّر تحميل التطبيق. يرجى تحديث الصفحة.",

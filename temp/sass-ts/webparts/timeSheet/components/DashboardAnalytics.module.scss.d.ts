@@ -27,6 +27,8 @@ export interface IExportStyles {
 
   'analyticsHeader': string;
 
+  'analyticsHeaderLeft': string;
+
   'analyticsSubtitle': string;
 
   'analyticsTitle': string;
@@ -121,11 +123,17 @@ export interface IExportStyles {
 
   'text-gradient-primary': string;
 
+  'toggleBtn': string;
+
+  'toggleBtnActive': string;
+
   'trendDown': string;
 
   'trendIcon': string;
 
   'trendUp': string;
+
+  'viewToggle': string;
 
 }
 

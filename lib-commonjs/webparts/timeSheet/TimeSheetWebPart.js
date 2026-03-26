@@ -33,6 +33,7 @@ var TimeSheetWebPart = /** @class */ (function (_super) {
                         return [4 /*yield*/, _super.prototype.onInit.call(this)];
                     case 1:
                         _a.sent();
+                        console.log("Locale:-=-=-=-=-=-=-", this.context.pageContext.cultureInfo.currentUICultureName);
                         return [2 /*return*/];
                 }
             });
@@ -45,9 +46,9 @@ var TimeSheetWebPart = /** @class */ (function (_super) {
         this._isDarkTheme = !!currentTheme.isInverted;
         var semanticColors = currentTheme.semanticColors;
         if (semanticColors) {
-            this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-            this.domElement.style.setProperty('--link', semanticColors.link || null);
-            this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
+            this.domElement.style.setProperty("--bodyText", semanticColors.bodyText || null);
+            this.domElement.style.setProperty("--link", semanticColors.link || null);
+            this.domElement.style.setProperty("--linkHovered", semanticColors.linkHovered || null);
         }
     };
     TimeSheetWebPart.prototype.onDispose = function () {
@@ -55,7 +56,7 @@ var TimeSheetWebPart = /** @class */ (function (_super) {
     };
     Object.defineProperty(TimeSheetWebPart.prototype, "dataVersion", {
         get: function () {
-            return sp_core_library_1.Version.parse('1.0');
+            return sp_core_library_1.Version.parse("1.0");
         },
         enumerable: false,
         configurable: true

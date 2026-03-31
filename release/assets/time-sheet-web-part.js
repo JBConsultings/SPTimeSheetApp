@@ -126,7 +126,7 @@ var HomePage = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Prom
 var DailyTimesheetForm = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_DefaultButton_DefaultButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-458724"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_TextField_TextField_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Dropdown_Dropdown_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_DailyTimesheetForm_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/DailyTimesheetForm */ 51566)); });
 var CalendarView = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_DefaultButton_DefaultButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-458724"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_CalendarView_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/CalendarView */ 3248)); });
 var MyTimesheetHistory = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_MyTimesheetHistory_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/MyTimesheetHistory */ 34205)); });
-var ManagerDashboard = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_DefaultButton_DefaultButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-458724"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_TextField_TextField_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ManagerDashboard_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ManagerDashboard */ 50734)); });
+var ManagerDashboard = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_DefaultButton_DefaultButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-458724"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_TextField_TextField_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("vendors-node_modules_pnp_graph_users_index_js"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ManagerDashboard_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ManagerDashboard */ 50734)); });
 var AdminPanel = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_DefaultButton_DefaultButton_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Button_PrimaryButton_PrimaryButton_js-node-458724"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_TextField_TextField_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Modal_Modal_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_Tooltip_TooltipHost_js"), __webpack_require__.e("vendors-node_modules_fluentui_react_lib_components_SpinButton_SpinButton_js-node_modules_flue-5e2b54"), __webpack_require__.e("lib_webparts_timeSheet_services_CategoryService_js-lib_webparts_timeSheet_services_ProjectSer-73eed3"), __webpack_require__.e("lib_webparts_timeSheet_views_AdminPanel_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/AdminPanel */ 14408)); });
 var ExportPanel = react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () { return Promise.all(/*! import() */[__webpack_require__.e("vendors-node_modules_microsoft_sp-css-loader_node_modules_microsoft_load-themed-styles_lib-es-29a805"), __webpack_require__.e("lib_webparts_timeSheet_services_TimesheetService_js"), __webpack_require__.e("lib_webparts_timeSheet_views_ExportPanel_js")]).then(__webpack_require__.bind(__webpack_require__, /*! ../views/ExportPanel */ 10695)); });
 // ─── Route maps ───────────────────────────────────────────────────────────────
@@ -321,18 +321,23 @@ var AppContext = react__WEBPACK_IMPORTED_MODULE_0__.createContext({});
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getGraph: () => (/* binding */ getGraph),
 /* harmony export */   getSP: () => (/* binding */ getSP),
 /* harmony export */   initPnP: () => (/* binding */ initPnP)
 /* harmony export */ });
 /* harmony import */ var _pnp_sp__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/sp */ 2011);
 /* harmony import */ var _pnp_sp_behaviors_spfx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/sp/behaviors/spfx */ 89754);
-/* harmony import */ var _pnp_sp_webs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pnp/sp/webs */ 47339);
-/* harmony import */ var _pnp_sp_lists__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pnp/sp/lists */ 52185);
-/* harmony import */ var _pnp_sp_items__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pnp/sp/items */ 95324);
-/* harmony import */ var _pnp_sp_site_users_web__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @pnp/sp/site-users/web */ 43500);
-/* harmony import */ var _pnp_sp_site_groups_web__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @pnp/sp/site-groups/web */ 49036);
-/* harmony import */ var _pnp_sp_fields__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @pnp/sp/fields */ 75621);
-/* harmony import */ var _pnp_sp_batching__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @pnp/sp/batching */ 82815);
+/* harmony import */ var _pnp_graph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @pnp/graph */ 80);
+/* harmony import */ var _pnp_graph_behaviors_spfx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @pnp/graph/behaviors/spfx */ 587);
+/* harmony import */ var _pnp_sp_webs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @pnp/sp/webs */ 47339);
+/* harmony import */ var _pnp_sp_lists__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @pnp/sp/lists */ 52185);
+/* harmony import */ var _pnp_sp_items__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @pnp/sp/items */ 95324);
+/* harmony import */ var _pnp_sp_site_users_web__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @pnp/sp/site-users/web */ 43500);
+/* harmony import */ var _pnp_sp_site_groups_web__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @pnp/sp/site-groups/web */ 49036);
+/* harmony import */ var _pnp_sp_fields__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @pnp/sp/fields */ 75621);
+/* harmony import */ var _pnp_sp_batching__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @pnp/sp/batching */ 82815);
+
+
 
 
 // Import all PnPjs sub-modules we use across services
@@ -344,12 +349,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _sp;
+var _graph;
 /**
- * Initialise PnPjs with the SPFx web part context.
+ * Initialise PnPjs (SP + Graph) with the SPFx web part context.
  * Call this once from TimeSheetWebPart.onInit().
  */
 function initPnP(context) {
     _sp = (0,_pnp_sp__WEBPACK_IMPORTED_MODULE_0__.spfi)().using((0,_pnp_sp_behaviors_spfx__WEBPACK_IMPORTED_MODULE_1__.SPFx)(context));
+    _graph = (0,_pnp_graph__WEBPACK_IMPORTED_MODULE_2__.graphfi)().using((0,_pnp_graph_behaviors_spfx__WEBPACK_IMPORTED_MODULE_3__.SPFx)(context));
 }
 /**
  * Return the configured SPFI instance.
@@ -360,6 +367,16 @@ function getSP() {
         throw new Error('PnPjs has not been initialised. Call initPnP(context) first.');
     }
     return _sp;
+}
+/**
+ * Return the configured GraphFI instance.
+ * Throws if initPnP() has not been called yet.
+ */
+function getGraph() {
+    if (!_graph) {
+        throw new Error('PnPjs has not been initialised. Call initPnP(context) first.');
+    }
+    return _graph;
 }
 
 
@@ -34465,6 +34482,639 @@ function delay(ms) {
 
 /***/ }),
 
+/***/ 293:
+/*!*************************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/advanced-query.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AdvancedQuery: () => (/* binding */ AdvancedQuery)
+/* harmony export */ });
+/* harmony import */ var _pnp_graph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/graph */ 80);
+
+function AdvancedQuery() {
+    return (instance) => {
+        instance.using((0,_pnp_graph__WEBPACK_IMPORTED_MODULE_0__.ConsistencyLevel)());
+        instance.query.set("$count", "true");
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 655:
+/*!****************************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/consistency-level.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   ConsistencyLevel: () => (/* binding */ ConsistencyLevel)
+/* harmony export */ });
+function ConsistencyLevel(level = "eventual") {
+    return (instance) => {
+        instance.on.pre(async function (url, init, result) {
+            init.headers = { ...init.headers, "ConsistencyLevel": level };
+            return [url, init, result];
+        });
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 56:
+/*!*******************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/defaults.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   DefaultHeaders: () => (/* binding */ DefaultHeaders),
+/* harmony export */   DefaultInit: () => (/* binding */ DefaultInit)
+/* harmony export */ });
+/* harmony import */ var _pnp_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/core */ 49671);
+/* harmony import */ var _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/queryable */ 2464);
+/* harmony import */ var _telemetry_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./telemetry.js */ 451);
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index.js */ 80);
+
+
+
+
+function DefaultInit(graphUrl = _index_js__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_GRAPH_URL) {
+    if (!(0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.isUrlAbsolute)(graphUrl)) {
+        throw Error("Graph baseUrl must be absolute.");
+    }
+    return (instance) => {
+        instance.using((0,_telemetry_js__WEBPACK_IMPORTED_MODULE_3__.Telemetry)(), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.RejectOnError)(), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.ResolveOnData)());
+        instance.on.pre(async (url, init, result) => {
+            init.cache = "default";
+            init.credentials = "same-origin";
+            if (!(0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.isUrlAbsolute)(url)) {
+                url = (0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.combine)(graphUrl, url);
+            }
+            return [url, init, result];
+        });
+        return instance;
+    };
+}
+function DefaultHeaders() {
+    return (instance) => {
+        instance
+            .using((0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.InjectHeaders)({
+            "Content-Type": "application/json",
+        }));
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 543:
+/*!*******************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/endpoint.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Endpoint: () => (/* binding */ Endpoint)
+/* harmony export */ });
+function Endpoint(endpoint) {
+    return (instance) => {
+        instance.on.pre(async function (url, init, result) {
+            const all = ["beta", "v1.0"];
+            let regex = new RegExp(endpoint, "i");
+            const replaces = all.filter(s => !regex.test(s)).map(s => s.replace(".", "\\."));
+            regex = new RegExp(`/?(${replaces.join("|")})/?`, "ig");
+            url = url.replace(regex, `/${endpoint}/`);
+            return [url, init, result];
+        });
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 90:
+/*!***********************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/graphbrowser.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GraphBrowser: () => (/* binding */ GraphBrowser)
+/* harmony export */ });
+/* harmony import */ var _pnp_queryable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/queryable */ 2464);
+/* harmony import */ var _defaults_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaults.js */ 56);
+/* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../index.js */ 80);
+
+
+
+function GraphBrowser(props) {
+    const { baseUrl } = {
+        baseUrl: _index_js__WEBPACK_IMPORTED_MODULE_2__.DEFAULT_GRAPH_URL,
+        ...props,
+    };
+    return (instance) => {
+        instance.using((0,_defaults_js__WEBPACK_IMPORTED_MODULE_1__.DefaultHeaders)(), (0,_defaults_js__WEBPACK_IMPORTED_MODULE_1__.DefaultInit)(baseUrl), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_0__.BrowserFetchWithRetry)(), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_0__.DefaultParse)());
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 637:
+/*!****************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/paged.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Count: () => (/* binding */ Count),
+/* harmony export */   Paged: () => (/* binding */ Paged)
+/* harmony export */ });
+/* harmony import */ var _pnp_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/core */ 49671);
+/* harmony import */ var _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/queryable */ 2464);
+/* harmony import */ var _graphqueryable_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../graphqueryable.js */ 670);
+/* harmony import */ var _consistency_level_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./consistency-level.js */ 655);
+
+
+
+
+/**
+ * A function that will take a collection defining IGraphCollection and return the count of items
+ * in that collection. Not all Graph collections support Count.
+ *
+ * @param col The collection to count
+ * @returns number representing the count
+ */
+async function Count(col) {
+    const q = (0,_graphqueryable_js__WEBPACK_IMPORTED_MODULE_2__.GraphCollection)(col).using(Paged(), (0,_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__.ConsistencyLevel)());
+    q.query.set("$count", "true");
+    q.top(1);
+    const y = await q();
+    return y.count;
+}
+/**
+ * Behavior that converts results to pages when used with a collection (exposed through the paged method of GraphCollection)
+ *
+ * @returns A TimelinePipe used to configure the queryable
+ */
+function Paged(supportsCount = false) {
+    return (instance) => {
+        instance.on.parse.replace(_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.errorCheck);
+        instance.on.parse(async (url, response, result) => {
+            const txt = await response.text();
+            const json = txt.replace(/\s/ig, "").length > 0 ? JSON.parse(txt) : {};
+            const nextLink = json["@odata.nextLink"];
+            const deltaLink = json["@odata.deltaLink"];
+            const count = supportsCount && (0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.hOP)(json, "@odata.count") ? parseInt(json["@odata.count"], 10) : 0;
+            const hasNext = !(0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.stringIsNullOrEmpty)(nextLink);
+            const hasDelta = !(0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.stringIsNullOrEmpty)(deltaLink);
+            result = {
+                count,
+                hasNext,
+                nextLink: hasNext ? nextLink : null,
+                deltaLink: hasDelta ? deltaLink : null,
+                value: (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.parseODataJSON)(json),
+            };
+            return [url, response, result];
+        });
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 587:
+/*!***************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/spfx.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SPFx: () => (/* binding */ SPFx),
+/* harmony export */   SPFxToken: () => (/* binding */ SPFxToken)
+/* harmony export */ });
+/* harmony import */ var _pnp_queryable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/queryable */ 2464);
+/* harmony import */ var _defaults_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./defaults.js */ 56);
+
+
+class SPFxTokenNullOrUndefinedError extends Error {
+    constructor(behaviorName) {
+        super(`SPFx Context supplied to ${behaviorName} Behavior is null or undefined.`);
+    }
+    static check(behaviorName, context) {
+        if (typeof context === "undefined" || context === null) {
+            throw new SPFxTokenNullOrUndefinedError(behaviorName);
+        }
+    }
+}
+function SPFxToken(context) {
+    SPFxTokenNullOrUndefinedError.check("SPFxToken", context);
+    return (instance) => {
+        instance.on.auth.replace(async function (url, init) {
+            const provider = await context.aadTokenProviderFactory.getTokenProvider();
+            const token = await provider.getToken(`${url.protocol}//${url.hostname}`);
+            // eslint-disable-next-line @typescript-eslint/dot-notation
+            init.headers["Authorization"] = `Bearer ${token}`;
+            return [url, init];
+        });
+        return instance;
+    };
+}
+function SPFx(context) {
+    SPFxTokenNullOrUndefinedError.check("SPFx", context);
+    return (instance) => {
+        instance.using((0,_defaults_js__WEBPACK_IMPORTED_MODULE_1__.DefaultHeaders)(), (0,_defaults_js__WEBPACK_IMPORTED_MODULE_1__.DefaultInit)(), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_0__.BrowserFetchWithRetry)(), (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_0__.DefaultParse)(), SPFxToken(context));
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 451:
+/*!********************************************************!*\
+  !*** ./node_modules/@pnp/graph/behaviors/telemetry.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Telemetry: () => (/* binding */ Telemetry)
+/* harmony export */ });
+function Telemetry() {
+    return (instance) => {
+        instance.on.pre(async function (url, init, result) {
+            init.headers = { ...init.headers, SdkVersion: "PnPCoreJS/4.18.0" };
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/dot-notation
+            this.log(`Request Tag: ${init.headers["SdkVersion"]}`, 0);
+            return [url, init, result];
+        });
+        return instance;
+    };
+}
+
+
+/***/ }),
+
+/***/ 439:
+/*!***************************************!*\
+  !*** ./node_modules/@pnp/graph/fi.js ***!
+  \***************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GraphFI: () => (/* binding */ GraphFI),
+/* harmony export */   graphfi: () => (/* binding */ graphfi)
+/* harmony export */ });
+/* harmony import */ var _graphqueryable_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./graphqueryable.js */ 670);
+
+class GraphFI {
+    /**
+     * Creates a new instance of the GraphFI class
+     *
+     * @param root Establishes a root url/configuration
+     */
+    constructor(root = "") {
+        this._root = (0,_graphqueryable_js__WEBPACK_IMPORTED_MODULE_0__.GraphQueryable)(root);
+    }
+    /**
+     * Applies one or more behaviors which will be inherited by all instances chained from this root
+     *
+     */
+    using(...behaviors) {
+        this._root.using(...behaviors);
+        return this;
+    }
+    /**
+     * Used by extending classes to create new objects directly from the root
+     *
+     * @param factory The factory for the type of object to create
+     * @returns A configured instance of that object
+     */
+    create(factory, path) {
+        return factory(this._root, path);
+    }
+}
+function graphfi(root = "") {
+    if (typeof root === "object" && !Reflect.has(root, "length")) {
+        root = root._root;
+    }
+    return new GraphFI(root);
+}
+
+
+/***/ }),
+
+/***/ 670:
+/*!***************************************************!*\
+  !*** ./node_modules/@pnp/graph/graphqueryable.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GraphCollection: () => (/* binding */ GraphCollection),
+/* harmony export */   GraphInstance: () => (/* binding */ GraphInstance),
+/* harmony export */   GraphQueryable: () => (/* binding */ GraphQueryable),
+/* harmony export */   _GraphCollection: () => (/* binding */ _GraphCollection),
+/* harmony export */   _GraphInstance: () => (/* binding */ _GraphInstance),
+/* harmony export */   _GraphQueryable: () => (/* binding */ _GraphQueryable),
+/* harmony export */   graphDelete: () => (/* binding */ graphDelete),
+/* harmony export */   graphGet: () => (/* binding */ graphGet),
+/* harmony export */   graphInvokableFactory: () => (/* binding */ graphInvokableFactory),
+/* harmony export */   graphPatch: () => (/* binding */ graphPatch),
+/* harmony export */   graphPost: () => (/* binding */ graphPost),
+/* harmony export */   graphPut: () => (/* binding */ graphPut)
+/* harmony export */ });
+/* harmony import */ var _pnp_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @pnp/core */ 49671);
+/* harmony import */ var _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/queryable */ 2464);
+/* harmony import */ var _behaviors_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./behaviors/consistency-level.js */ 655);
+/* harmony import */ var _behaviors_paged_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./behaviors/paged.js */ 637);
+
+
+
+
+const graphInvokableFactory = (f) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.queryableFactory)(f);
+};
+/**
+ * Queryable Base Class
+ *
+ */
+class _GraphQueryable extends _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.Queryable {
+    /**
+     * Creates a new instance of the Queryable class
+     *
+     * @constructor
+     * @param base A string or Queryable that should form the base part of the url
+     *
+     */
+    constructor(base, path) {
+        super(base, path);
+        // we need to use the graph implementation to handle our special encoding
+        this._query = new GraphQueryParams();
+        if (typeof base === "string") {
+            this.parentUrl = base;
+        }
+        else if ((0,_pnp_core__WEBPACK_IMPORTED_MODULE_0__.isArray)(base)) {
+            this.parentUrl = base[0].toUrl();
+        }
+        else {
+            this.parentUrl = base.toUrl();
+        }
+    }
+    /**
+     * Choose which fields to return
+     *
+     * @param selects One or more fields to return
+     */
+    select(...selects) {
+        if (selects.length > 0) {
+            this.query.set("$select", selects.join(","));
+        }
+        return this;
+    }
+    /**
+     * Expands fields such as lookups to get additional data
+     *
+     * @param expands The Fields for which to expand the values
+     */
+    expand(...expands) {
+        if (expands.length > 0) {
+            this.query.set("$expand", expands.join(","));
+        }
+        return this;
+    }
+    /**
+     * Gets a parent for this instance as specified
+     *
+     * @param factory The contructor for the class to create
+     */
+    getParent(factory, path, base = this.parentUrl) {
+        return factory([this, base], path);
+    }
+}
+const GraphQueryable = graphInvokableFactory(_GraphQueryable);
+/**
+ * Represents a REST collection which can be filtered, paged, and selected
+ *
+ */
+class _GraphCollection extends _GraphQueryable {
+    /**
+     *
+     * @param filter The string representing the filter query
+     */
+    filter(filter) {
+        this.query.set("$filter", filter);
+        return this;
+    }
+    /**
+     * Orders based on the supplied fields
+     *
+     * @param orderby The name of the field on which to sort
+     * @param ascending If false DESC is appended, otherwise ASC (default)
+     */
+    orderBy(orderBy, ascending = true) {
+        var _a;
+        const o = "$orderby";
+        const query = ((_a = this.query.get(o)) === null || _a === void 0 ? void 0 : _a.split(",")) || [];
+        query.push(`${orderBy} ${ascending ? "asc" : "desc"}`);
+        this.query.set(o, query.join(","));
+        return this;
+    }
+    /**
+     * Limits the query to only return the specified number of items
+     *
+     * @param top The query row limit
+     */
+    top(top) {
+        this.query.set("$top", top.toString());
+        return this;
+    }
+    /**
+     * Skips a set number of items in the return set
+     *
+     * @param num Number of items to skip
+     */
+    skip(num) {
+        this.query.set("$skip", num.toString());
+        return this;
+    }
+    /**
+     * Skips a set number of items in the return set
+     *
+     * @param num Number of items to skip
+     */
+    search(query) {
+        this.using((0,_behaviors_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__.ConsistencyLevel)());
+        this.query.set("$search", query);
+        return this;
+    }
+    /**
+     * 	To request second and subsequent pages of Graph data
+     */
+    skipToken(token) {
+        this.query.set("$skiptoken", token);
+        return this;
+    }
+    [Symbol.asyncIterator]() {
+        const q = GraphCollection(this).using((0,_behaviors_paged_js__WEBPACK_IMPORTED_MODULE_2__.Paged)(), (0,_behaviors_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__.ConsistencyLevel)());
+        // Issue #3136, some APIs take other query params that need to persist through the paging, so we just include everything
+        for (const [key, value] of this.query) {
+            q.query.set(key, value);
+        }
+        return {
+            _next: q,
+            async next() {
+                if (this._next === null) {
+                    return { done: true, value: undefined };
+                }
+                const result = await this._next();
+                if (result.hasNext) {
+                    this._next = GraphCollection([this._next, result.nextLink]);
+                    return { done: false, value: result.value };
+                }
+                else {
+                    this._next = null;
+                    return { done: false, value: result.value };
+                }
+            },
+        };
+    }
+}
+const GraphCollection = graphInvokableFactory(_GraphCollection);
+/**
+ * Represents an instance that can be selected
+ *
+ */
+class _GraphInstance extends _GraphQueryable {
+}
+const GraphInstance = graphInvokableFactory(_GraphInstance);
+const graphGet = (o, init) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.op)(o, _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.get, init);
+};
+const graphPost = (o, init) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.op)(o, _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.post, init);
+};
+const graphDelete = (o, init) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.op)(o, _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.del, init);
+};
+const graphPatch = (o, init) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.op)(o, _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.patch, init);
+};
+const graphPut = (o, init) => {
+    return (0,_pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.op)(o, _pnp_queryable__WEBPACK_IMPORTED_MODULE_1__.put, init);
+};
+class GraphQueryParams extends Map {
+    toString() {
+        const params = new URLSearchParams();
+        const literals = [];
+        for (const item of this) {
+            // and here is where we add some "enhanced" parsing as we get issues.
+            if (/\/any\(.*?\)/i.test(item[1])) {
+                literals.push(`${item[0]}=${item[1]}`);
+            }
+            else {
+                params.append(item[0], item[1]);
+            }
+        }
+        literals.push(params.toString());
+        return literals.join("&");
+    }
+}
+
+
+/***/ }),
+
+/***/ 80:
+/*!******************************************!*\
+  !*** ./node_modules/@pnp/graph/index.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AdvancedQuery: () => (/* reexport safe */ _behaviors_advanced_query_js__WEBPACK_IMPORTED_MODULE_2__.AdvancedQuery),
+/* harmony export */   ConsistencyLevel: () => (/* reexport safe */ _behaviors_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__.ConsistencyLevel),
+/* harmony export */   Count: () => (/* reexport safe */ _behaviors_paged_js__WEBPACK_IMPORTED_MODULE_7__.Count),
+/* harmony export */   DEFAULT_GRAPH_URL: () => (/* binding */ DEFAULT_GRAPH_URL),
+/* harmony export */   DefaultHeaders: () => (/* reexport safe */ _behaviors_defaults_js__WEBPACK_IMPORTED_MODULE_4__.DefaultHeaders),
+/* harmony export */   DefaultInit: () => (/* reexport safe */ _behaviors_defaults_js__WEBPACK_IMPORTED_MODULE_4__.DefaultInit),
+/* harmony export */   Endpoint: () => (/* reexport safe */ _behaviors_endpoint_js__WEBPACK_IMPORTED_MODULE_5__.Endpoint),
+/* harmony export */   GraphBrowser: () => (/* reexport safe */ _behaviors_graphbrowser_js__WEBPACK_IMPORTED_MODULE_6__.GraphBrowser),
+/* harmony export */   GraphCollection: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.GraphCollection),
+/* harmony export */   GraphFI: () => (/* reexport safe */ _fi_js__WEBPACK_IMPORTED_MODULE_0__.GraphFI),
+/* harmony export */   GraphInstance: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.GraphInstance),
+/* harmony export */   GraphQueryable: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.GraphQueryable),
+/* harmony export */   Paged: () => (/* reexport safe */ _behaviors_paged_js__WEBPACK_IMPORTED_MODULE_7__.Paged),
+/* harmony export */   SPFx: () => (/* reexport safe */ _behaviors_spfx_js__WEBPACK_IMPORTED_MODULE_9__.SPFx),
+/* harmony export */   SPFxToken: () => (/* reexport safe */ _behaviors_spfx_js__WEBPACK_IMPORTED_MODULE_9__.SPFxToken),
+/* harmony export */   Telemetry: () => (/* reexport safe */ _behaviors_telemetry_js__WEBPACK_IMPORTED_MODULE_8__.Telemetry),
+/* harmony export */   _GraphCollection: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__._GraphCollection),
+/* harmony export */   _GraphInstance: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__._GraphInstance),
+/* harmony export */   _GraphQueryable: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__._GraphQueryable),
+/* harmony export */   graphDelete: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphDelete),
+/* harmony export */   graphGet: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphGet),
+/* harmony export */   graphInvokableFactory: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphInvokableFactory),
+/* harmony export */   graphPatch: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphPatch),
+/* harmony export */   graphPost: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphPost),
+/* harmony export */   graphPut: () => (/* reexport safe */ _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__.graphPut),
+/* harmony export */   graphfi: () => (/* reexport safe */ _fi_js__WEBPACK_IMPORTED_MODULE_0__.graphfi)
+/* harmony export */ });
+/* harmony import */ var _fi_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fi.js */ 439);
+/* harmony import */ var _graphqueryable_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./graphqueryable.js */ 670);
+/* harmony import */ var _behaviors_advanced_query_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./behaviors/advanced-query.js */ 293);
+/* harmony import */ var _behaviors_consistency_level_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./behaviors/consistency-level.js */ 655);
+/* harmony import */ var _behaviors_defaults_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./behaviors/defaults.js */ 56);
+/* harmony import */ var _behaviors_endpoint_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./behaviors/endpoint.js */ 543);
+/* harmony import */ var _behaviors_graphbrowser_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./behaviors/graphbrowser.js */ 90);
+/* harmony import */ var _behaviors_paged_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./behaviors/paged.js */ 637);
+/* harmony import */ var _behaviors_telemetry_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./behaviors/telemetry.js */ 451);
+/* harmony import */ var _behaviors_spfx_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./behaviors/spfx.js */ 587);
+
+
+
+
+
+
+
+
+
+
+const DEFAULT_GRAPH_URL = "https://graph.microsoft.com/v1.0";
+
+
+/***/ }),
+
 /***/ 62191:
 /*!***************************************************************!*\
   !*** ./node_modules/@pnp/queryable/behaviors/bearer-token.js ***!
@@ -39706,7 +40356,7 @@ const Web = (0,_spqueryable_js__WEBPACK_IMPORTED_MODULE_1__.spInvokableFactory)(
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("bba1ad82d81ed579d2dc")
+/******/ 		__webpack_require__.h = () => ("3ac4329712294991ec3c")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */

@@ -1,1 +1,1 @@
-{"version":3,"file":"ManagerDashboard.d.ts","sourceRoot":"","sources":["../../../../src/webparts/timeSheet/views/ManagerDashboard.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AA8N/B,QAAA,MAAM,gBAAgB,EAAE,KAAK,CAAC,EA8pB7B,CAAC;AAEF,eAAe,gBAAgB,CAAC"}
+{"version":3,"file":"ManagerDashboard.d.ts","sourceRoot":"","sources":["../../../../src/webparts/timeSheet/views/ManagerDashboard.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAsP/B,QAAA,MAAM,gBAAgB,EAAE,KAAK,CAAC,EAiwB7B,CAAC;AAEF,eAAe,gBAAgB,CAAC"}

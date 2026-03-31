@@ -105,6 +105,18 @@ export interface IExportStyles {
 
   'rejected': string;
 
+  'reportAvatar': string;
+
+  'reportCard': string;
+
+  'reportEmail': string;
+
+  'reportInfo': string;
+
+  'reportName': string;
+
+  'reportTitle': string;
+
   'required': string;
 
   'rowCard': string;
@@ -137,7 +149,15 @@ export interface IExportStyles {
 
   'success': string;
 
+  'tabBtn': string;
+
+  'tabBtnActive': string;
+
+  'tabToggle': string;
+
   'tdCenter': string;
+
+  'teamGrid': string;
 
   'title': string;
 

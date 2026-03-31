@@ -20,6 +20,7 @@ import {
   approveDayEntries,
   rejectDayEntries,
 } from "../services/TimesheetService";
+import { getDirectReports, IDirectReport } from "../services/GraphService";
 import {
   formatDateLabel,
   currentMonthRange,
@@ -205,6 +206,29 @@ const IconUsers = () => (
   </svg>
 );
 
+const IconAnalytics = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const IconTeam = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <circle cx="6" cy="5" r="2.5" stroke="currentColor" strokeWidth="1.4" />
+    <circle cx="11.5" cy="5" r="2" stroke="currentColor" strokeWidth="1.4" />
+    <path d="M1 13c0-2.76 2.24-5 5-5h.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    <path d="M9.5 13c0-2.21 1.57-4 3.5-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>
+);
+
+const IconPersonLg = () => (
+  <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+    <circle cx="24" cy="16" r="9" stroke="currentColor" strokeWidth="2.5" />
+    <path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+  </svg>
+);
+
 // ─── Shared Fluent UI button styles (theme colour) ────────────────────────────
 const primaryBtnStyles = {
   root:         { backgroundColor: '#667eea', borderColor: '#667eea', borderRadius: 6 },
@@ -252,6 +276,14 @@ const ManagerDashboard: React.FC = () => {
   const [bulkComment, setBulkComment] = useState("");
   const [bulkLoading, setBulkLoading] = useState(false);
 
+  // Tab toggle state
+  const [activeTab, setActiveTab] = useState<"analytics" | "team">("analytics");
+
+  // Team Overview — direct reports from Graph API
+  const [directReports, setDirectReports] = useState<IDirectReport[]>([]);
+  const [teamLoading, setTeamLoading] = useState(false);
+  const [teamError, setTeamError] = useState("");
+
   // ─── Load data ────────────────────────────────────────────────────────────
   const loadData = (): void => {
     setLoading(true);
@@ -276,6 +308,22 @@ const ManagerDashboard: React.FC = () => {
   useEffect(() => {
     loadData();
   }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
+
+  useEffect(() => {
+    if (activeTab !== "team") return;
+    if (directReports.length > 0 || teamLoading) return;
+    setTeamLoading(true);
+    setTeamError("");
+    getDirectReports()
+      .then((reports) => {
+        setDirectReports(reports);
+        setTeamLoading(false);
+      })
+      .catch(() => {
+        setTeamError("Could not load direct reports. Please try again.");
+        setTeamLoading(false);
+      });
+  }, [activeTab]); // eslint-disable-line
 
   // ─── Bulk selection helpers ────────────────────────────────────────────────
   const submittedRows = rows.filter((r) => r.status === "Submitted");
@@ -410,6 +458,12 @@ const ManagerDashboard: React.FC = () => {
   const confirmDisabled =
     actionLoading || (reviewAction !== "approve" && !managerComment.trim());
 
+  const getInitials = (name: string): string => {
+    const parts = name.trim().split(" ");
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+  };
+
   // ─── Render ───────────────────────────────────────────────────────────────
   return (
     <div className={styles.container}>
@@ -421,6 +475,73 @@ const ManagerDashboard: React.FC = () => {
         <h1 className={styles.title}>{strings.TeamTimesheetsTitle}</h1>
       </div>
 
+      {/* Tab Toggle */}
+      <div className={styles.tabToggle}>
+        <button
+          className={`${styles.tabBtn} ${activeTab === "analytics" ? styles.tabBtnActive : ""}`}
+          onClick={() => setActiveTab("analytics")}
+        >
+          <IconAnalytics />
+          My Analytics
+        </button>
+        <button
+          className={`${styles.tabBtn} ${activeTab === "team" ? styles.tabBtnActive : ""}`}
+          onClick={() => setActiveTab("team")}
+        >
+          <IconTeam />
+          Team Overview
+        </button>
+      </div>
+
+      {/* ── Team Overview Tab ────────────────────────────────────────────────── */}
+      {activeTab === "team" && (
+        <>
+          {teamLoading ? (
+            <div className={styles.loadingWrap}>
+              <div className={styles.spinner} />
+              <span>Loading your direct reports…</span>
+            </div>
+          ) : teamError ? (
+            <div className={`${styles.messageBar} ${styles.error}`}>
+              <IconError />
+              <span>{teamError}</span>
+            </div>
+          ) : directReports.length === 0 ? (
+            <div className={styles.emptyState}>
+              <IconPersonLg />
+              <span className={styles.emptyTitle}>No direct reports found</span>
+              <span className={styles.emptySubtitle}>
+                You don&apos;t have any direct reports in the organisation directory.
+              </span>
+            </div>
+          ) : (
+            <div className={styles.teamGrid}>
+              {directReports.map((person) => (
+                <div key={person.id} className={styles.reportCard}>
+                  <div className={styles.reportAvatar}>
+                    {getInitials(person.displayName || "?")}
+                  </div>
+                  <div className={styles.reportInfo}>
+                    <span className={styles.reportName}>{person.displayName}</span>
+                    {(person.jobTitle || person.department) && (
+                      <span className={styles.reportTitle}>
+                        {[person.jobTitle, person.department].filter(Boolean).join(" · ")}
+                      </span>
+                    )}
+                    {person.mail && (
+                      <span className={styles.reportEmail}>{person.mail}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+
+      {/* ── My Analytics Tab ─────────────────────────────────────────────────── */}
+      {activeTab === "analytics" && (
+        <>
       {/* Filter bar */}
       <div className={styles.filterBar}>
         <div className={styles.filterGroup}>
@@ -649,6 +770,8 @@ const ManagerDashboard: React.FC = () => {
               );
             })}
           </div>
+        </>
+      )}
         </>
       )}
 

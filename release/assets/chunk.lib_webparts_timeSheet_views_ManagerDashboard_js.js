@@ -15,81 +15,119 @@ __webpack_require__.r(__webpack_exports__);
 // Imports
 
 
-_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(".container_16f795d1{animation:fadeIn_16f795d1 .25s ease both;color:#161616;font-family:IBM Plex Sans,Segoe UI,sans-serif;padding:32px}@keyframes fadeIn_16f795d1{0%{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.header_16f795d1{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;gap:12px;margin:-32px -32px 28px;overflow:hidden;padding:24px 32px;position:relative}.header_16f795d1:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);content:\"\";inset:0;pointer-events:none;position:absolute}.header_16f795d1 .homeBtn_16f795d1{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;flex-shrink:0;height:36px;justify-content:center;position:relative;transition:background .15s cubic-bezier(.4,0,.2,1);width:36px;z-index:1}.header_16f795d1 .homeBtn_16f795d1:hover{background:hsla(0,0%,100%,.28)}.header_16f795d1 .title_16f795d1{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.1);z-index:1}.filterBar_16f795d1{align-items:flex-end;background:#fff;border:1px solid #e0e0e0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px;padding:16px 20px}.filterGroup_16f795d1{display:flex;flex:1;flex-direction:column;gap:5px;min-width:150px}.filterGroup_16f795d1 label{color:#525252;font-size:11.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase}.filterGroupWide_16f795d1{flex:2;min-width:220px}.filterInput_16f795d1,.filterSelect_16f795d1{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;height:36px;outline:none;padding:0 10px;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.filterInput_16f795d1:focus,.filterSelect_16f795d1:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.filterInput_16f795d1:-ms-input-placeholder, .filterSelect_16f795d1:-ms-input-placeholder{color:#8d8d8d}.filterInput_16f795d1::placeholder,.filterSelect_16f795d1::placeholder{color:#8d8d8d}.filterSelect_16f795d1{appearance:none;background-color:#f4f4f4;background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23525252' d='m1 1 5 5 5-5'/%3E%3C/svg%3E\");background-position:right 10px center;background-repeat:no-repeat;cursor:pointer;padding-right:28px}.messageBar_16f795d1{align-items:center;border-radius:8px;border-style:solid;border-width:1px;display:flex;font-size:13.5px;gap:10px;margin-bottom:12px;padding:10px 16px}.messageBar_16f795d1.success_16f795d1{background:#defbe6;border-color:#a7f0ba;color:#044317}.messageBar_16f795d1.error_16f795d1{background:#fff1f1;border-color:#ffd7d9;color:#750e13}.messageBar_16f795d1 .dismissBtn_16f795d1{align-items:center;background:none;border:none;color:inherit;cursor:pointer;display:flex;margin-left:auto;opacity:.6;padding:2px 4px}.messageBar_16f795d1 .dismissBtn_16f795d1:hover{opacity:1}.loadingWrap_16f795d1{align-items:center;color:#525252;display:flex;flex-direction:column;font-size:14px;gap:14px;justify-content:center;min-height:180px}.spinner_16f795d1{border:3px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;height:32px;width:32px}.spinnerSm_16f795d1,.spinner_16f795d1{animation:spin_16f795d1 .7s linear infinite}.spinnerSm_16f795d1{border:2px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;flex-shrink:0;height:18px;width:18px}@keyframes spin_16f795d1{to{transform:rotate(1turn)}}.emptyState_16f795d1{align-items:center;color:#8d8d8d;display:flex;flex-direction:column;gap:10px;justify-content:center;padding:52px 24px;text-align:center}.emptyState_16f795d1 .emptyTitle_16f795d1{color:#525252;font-size:15px;font-weight:600}.emptyState_16f795d1 .emptySubtitle_16f795d1{font-size:13px}.bulkBar_16f795d1{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;padding:10px 16px;transition:background .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1)}.bulkBar_16f795d1.bulkBarActive_16f795d1{background:rgba(102,126,234,.06);border-color:rgba(102,126,234,.35);box-shadow:0 2px 8px rgba(102,126,234,.12)}.bulkSelectAll_16f795d1{align-items:center;color:#525252;cursor:pointer;display:inline-flex;font-size:13px;font-weight:500;gap:8px;-webkit-user-select:none;-ms-user-select:none;user-select:none}.bulkSelectAll_16f795d1:hover{color:#161616}.bulkCheckbox_16f795d1{accent-color:#667eea;cursor:pointer;flex-shrink:0;height:16px;width:16px}.bulkActions_16f795d1{align-items:center;display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}.bulkCount_16f795d1{background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.25);color:#667eea;font-size:12px;padding:3px 10px}.bulkCount_16f795d1,.otBadge_16f795d1{border-radius:20px;font-weight:700;white-space:nowrap}.otBadge_16f795d1{align-items:center;background:#fff3e0;border:1.5px solid #ff9800;color:#e65100;display:inline-flex;flex-shrink:0;font-size:11px;letter-spacing:.3px;padding:2px 8px}.rowNameRow_16f795d1{align-items:center;display:flex;gap:8px}.list_16f795d1{display:flex;flex-direction:column;gap:8px}.rowCard_16f795d1{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;gap:16px;justify-content:space-between;padding:14px 18px;transition:box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1)}.rowCard_16f795d1:hover{border-color:#c6c6c6;box-shadow:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06)}.rowCard_16f795d1.rowCardSelected_16f795d1{background:rgba(102,126,234,.05);border-color:rgba(102,126,234,.4);box-shadow:0 0 0 2px rgba(102,126,234,.12),0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.rowCheckWrap_16f795d1{align-items:center;cursor:pointer;display:flex;flex-shrink:0}.rowCheckbox_16f795d1{accent-color:#667eea;cursor:pointer;height:16px}.rowCheckPlaceholder_16f795d1,.rowCheckbox_16f795d1{flex-shrink:0;width:16px}.rowLeft_16f795d1{display:flex;flex-direction:column;gap:4px;min-width:0}.rowName_16f795d1{color:#161616;font-size:15px;font-weight:600}.rowMeta_16f795d1{align-items:center;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px}.rowMeta_16f795d1 .dot_16f795d1{background:currentColor;border-radius:50%;flex-shrink:0;height:3px;width:3px}.rowRight_16f795d1{align-items:center;display:flex;flex-shrink:0;gap:10px}.badge_16f795d1{align-items:center;border-radius:20px;display:inline-flex;font-size:11.5px;font-weight:700;gap:5px;letter-spacing:.3px;padding:4px 12px;white-space:nowrap}.badge_16f795d1:before{background:currentColor;border-radius:50%;content:\"\";flex-shrink:0;height:6px;opacity:.7;width:6px}.badge_16f795d1.approved_16f795d1{background:#defbe6;color:#24a148}.badge_16f795d1.submitted_16f795d1{background:rgba(102,126,234,.08);color:#667eea}.badge_16f795d1.rejected_16f795d1{background:#fff1f1;color:#da1e28}.badge_16f795d1.draft_16f795d1{background:#fdf6d8;color:#b28600}.btn_16f795d1{align-items:center;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer;display:inline-flex;font-family:inherit;font-size:13px;font-weight:500;gap:6px;outline:none;padding:7px 14px;transition:background .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1);white-space:nowrap}.btn_16f795d1:disabled{cursor:not-allowed;opacity:.4}.btn_16f795d1.btnDefault_16f795d1{background:#fff;color:#161616}.btn_16f795d1.btnDefault_16f795d1:hover:not(:disabled){background:#f4f4f4;border-color:#c6c6c6;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.btn_16f795d1.btnPrimary_16f795d1{background:#667eea;border-color:#667eea;color:#fff}.btn_16f795d1.btnPrimary_16f795d1:hover:not(:disabled){background:#5a6fd6;border-color:#5a6fd6;box-shadow:0 4px 12px rgba(15,98,254,.35)}.btn_16f795d1.btnApprove_16f795d1{background:#42be65;border-color:#42be65;color:#fff}.btn_16f795d1.btnApprove_16f795d1:hover:not(:disabled){background:#36a35a;border-color:#36a35a;box-shadow:0 4px 12px rgba(66,190,101,.3)}.btn_16f795d1.btnReject_16f795d1{background:#fff;border-color:#ffd7d9;color:#da1e28}.btn_16f795d1.btnReject_16f795d1:hover:not(:disabled){background:#fff1f1;border-color:#da1e28;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.btn_16f795d1.btnResubmit_16f795d1{background:#fff;border-color:#f5d73b;color:#b28600}.btn_16f795d1.btnResubmit_16f795d1:hover:not(:disabled){background:#fdf6d8;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.modalContainer_16f795d1{border-radius:12px!important;display:flex;flex-direction:column;max-width:calc(100vw - 32px)!important;overflow:hidden;width:580px}.modalHeader_16f795d1{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);border-bottom:1px solid #e0e0e0;display:flex;flex-shrink:0;justify-content:space-between;padding:18px 24px}.modalTitle_16f795d1{color:#fff;font-size:17px;font-weight:700;margin:0}.modalCloseBtn_16f795d1{background:hsla(0,0%,100%,.12)!important;border-radius:4px!important;color:hsla(0,0%,100%,.85)!important}.modalCloseBtn_16f795d1:hover{background:hsla(0,0%,100%,.25)!important;color:#fff!important}.modalBody_16f795d1{display:flex;flex-direction:column;gap:20px;max-height:calc(100vh - 220px);overflow-y:auto;padding:24px}.modalFooter_16f795d1{align-items:center;background:#fff;border-top:1px solid #e0e0e0;display:flex;flex-shrink:0;gap:10px;padding:16px 24px}.fluentBtnApprove_16f795d1{background-color:#42be65!important;border-color:#42be65!important}.fluentBtnApprove_16f795d1:hover:not(:disabled){background-color:#36a35a!important;border-color:#36a35a!important}.fluentBtnReject_16f795d1{background-color:#da1e28!important;border-color:#da1e28!important}.fluentBtnReject_16f795d1:hover:not(:disabled){background-color:#b81922!important;border-color:#b81922!important}.fluentBtnResubmit_16f795d1{background-color:#b28600!important;border-color:#b28600!important}.fluentBtnResubmit_16f795d1:hover:not(:disabled){background-color:#9a7400!important;border-color:#9a7400!important}.panelMeta_16f795d1{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:8px;display:flex;flex-direction:column;gap:4px;padding:14px 16px}.panelMeta_16f795d1 .panelMetaName_16f795d1{color:#161616;font-size:15px;font-weight:700}.panelMeta_16f795d1 .panelMetaDetail_16f795d1{color:#525252;display:flex;font-size:13px;gap:12px}.panelTableWrap_16f795d1{border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}.panelTable_16f795d1{border-collapse:collapse;width:100%}.panelTable_16f795d1 thead tr{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}.panelTable_16f795d1 thead tr th{font-size:11.5px;font-weight:600;letter-spacing:.5px;padding:10px 12px;text-align:left;text-transform:uppercase;white-space:nowrap}.panelTable_16f795d1 thead tr th.colHrs_16f795d1{text-align:center;width:56px}.panelTable_16f795d1 tbody tr{border-bottom:1px solid #e0e0e0;transition:background .15s cubic-bezier(.4,0,.2,1)}.panelTable_16f795d1 tbody tr:last-child{border-bottom:none}.panelTable_16f795d1 tbody tr:nth-child(2n){background:#f4f4f4}.panelTable_16f795d1 tbody tr td{color:#161616;font-size:13px;padding:8px 12px;vertical-align:top}.panelTable_16f795d1 tbody tr td.tdCenter_16f795d1{font-weight:600;text-align:center;vertical-align:middle}.commentField_16f795d1{display:flex;flex-direction:column;gap:6px}.commentField_16f795d1 label{color:#525252;font-size:12px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}.commentField_16f795d1 label .required_16f795d1{color:#da1e28;margin-left:2px}.commentField_16f795d1 textarea{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;line-height:1.5;min-height:96px;outline:none;padding:10px 12px;resize:vertical;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.commentField_16f795d1 textarea:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.commentField_16f795d1 textarea:-ms-input-placeholder{color:#8d8d8d}.commentField_16f795d1 textarea::placeholder{color:#8d8d8d}.panelFooter_16f795d1{align-items:center;background:#fff;border-top:1px solid #e0e0e0;display:flex;flex-shrink:0;gap:10px;padding:16px 24px}", true);
+_node_modules_microsoft_sp_css_loader_node_modules_microsoft_load_themed_styles_lib_es6_index_js__WEBPACK_IMPORTED_MODULE_0__.loadStyles(".container_c821321f{animation:fadeIn_c821321f .25s ease both;color:#161616;font-family:IBM Plex Sans,Segoe UI,sans-serif;padding:32px}@keyframes fadeIn_c821321f{0%{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.header_c821321f{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;gap:12px;margin:-32px -32px 28px;overflow:hidden;padding:24px 32px;position:relative}.header_c821321f:before{background:radial-gradient(circle at 20% 50%,hsla(0,0%,100%,.15) 0,transparent 50%),radial-gradient(circle at 80% 20%,hsla(0,0%,100%,.1) 0,transparent 50%);content:\"\";inset:0;pointer-events:none;position:absolute}.header_c821321f .homeBtn_c821321f{align-items:center;background:hsla(0,0%,100%,.15);border:1px solid hsla(0,0%,100%,.3);border-radius:8px;color:#fff;cursor:pointer;display:flex;flex-shrink:0;height:36px;justify-content:center;position:relative;transition:background .15s cubic-bezier(.4,0,.2,1);width:36px;z-index:1}.header_c821321f .homeBtn_c821321f:hover{background:hsla(0,0%,100%,.28)}.header_c821321f .title_c821321f{color:#fff;font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.1);z-index:1}.filterBar_c821321f{align-items:flex-end;background:#fff;border:1px solid #e0e0e0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px;padding:16px 20px}.filterGroup_c821321f{display:flex;flex:1;flex-direction:column;gap:5px;min-width:150px}.filterGroup_c821321f label{color:#525252;font-size:11.5px;font-weight:600;letter-spacing:.4px;text-transform:uppercase}.filterGroupWide_c821321f{flex:2;min-width:220px}.filterInput_c821321f,.filterSelect_c821321f{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;height:36px;outline:none;padding:0 10px;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.filterInput_c821321f:focus,.filterSelect_c821321f:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.filterInput_c821321f:-ms-input-placeholder, .filterSelect_c821321f:-ms-input-placeholder{color:#8d8d8d}.filterInput_c821321f::placeholder,.filterSelect_c821321f::placeholder{color:#8d8d8d}.filterSelect_c821321f{appearance:none;background-color:#f4f4f4;background-image:url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath fill='%23525252' d='m1 1 5 5 5-5'/%3E%3C/svg%3E\");background-position:right 10px center;background-repeat:no-repeat;cursor:pointer;padding-right:28px}.messageBar_c821321f{align-items:center;border-radius:8px;border-style:solid;border-width:1px;display:flex;font-size:13.5px;gap:10px;margin-bottom:12px;padding:10px 16px}.messageBar_c821321f.success_c821321f{background:#defbe6;border-color:#a7f0ba;color:#044317}.messageBar_c821321f.error_c821321f{background:#fff1f1;border-color:#ffd7d9;color:#750e13}.messageBar_c821321f .dismissBtn_c821321f{align-items:center;background:none;border:none;color:inherit;cursor:pointer;display:flex;margin-left:auto;opacity:.6;padding:2px 4px}.messageBar_c821321f .dismissBtn_c821321f:hover{opacity:1}.loadingWrap_c821321f{align-items:center;color:#525252;display:flex;flex-direction:column;font-size:14px;gap:14px;justify-content:center;min-height:180px}.spinner_c821321f{border:3px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;height:32px;width:32px}.spinnerSm_c821321f,.spinner_c821321f{animation:spin_c821321f .7s linear infinite}.spinnerSm_c821321f{border:2px solid #e0e0e0;border-radius:50%;border-top-color:#667eea;flex-shrink:0;height:18px;width:18px}@keyframes spin_c821321f{to{transform:rotate(1turn)}}.emptyState_c821321f{align-items:center;color:#8d8d8d;display:flex;flex-direction:column;gap:10px;justify-content:center;padding:52px 24px;text-align:center}.emptyState_c821321f .emptyTitle_c821321f{color:#525252;font-size:15px;font-weight:600}.emptyState_c821321f .emptySubtitle_c821321f{font-size:13px}.bulkBar_c821321f{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;padding:10px 16px;transition:background .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1)}.bulkBar_c821321f.bulkBarActive_c821321f{background:rgba(102,126,234,.06);border-color:rgba(102,126,234,.35);box-shadow:0 2px 8px rgba(102,126,234,.12)}.bulkSelectAll_c821321f{align-items:center;color:#525252;cursor:pointer;display:inline-flex;font-size:13px;font-weight:500;gap:8px;-webkit-user-select:none;-ms-user-select:none;user-select:none}.bulkSelectAll_c821321f:hover{color:#161616}.bulkCheckbox_c821321f{accent-color:#667eea;cursor:pointer;flex-shrink:0;height:16px;width:16px}.bulkActions_c821321f{align-items:center;display:flex;flex-wrap:wrap;gap:8px;margin-left:auto}.bulkCount_c821321f{background:rgba(102,126,234,.1);border:1px solid rgba(102,126,234,.25);color:#667eea;font-size:12px;padding:3px 10px}.bulkCount_c821321f,.otBadge_c821321f{border-radius:20px;font-weight:700;white-space:nowrap}.otBadge_c821321f{align-items:center;background:#fff3e0;border:1.5px solid #ff9800;color:#e65100;display:inline-flex;flex-shrink:0;font-size:11px;letter-spacing:.3px;padding:2px 8px}.rowNameRow_c821321f{align-items:center;display:flex;gap:8px}.list_c821321f{display:flex;flex-direction:column;gap:8px}.rowCard_c821321f{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;gap:16px;justify-content:space-between;padding:14px 18px;transition:box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1)}.rowCard_c821321f:hover{border-color:#c6c6c6;box-shadow:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06)}.rowCard_c821321f.rowCardSelected_c821321f{background:rgba(102,126,234,.05);border-color:rgba(102,126,234,.4);box-shadow:0 0 0 2px rgba(102,126,234,.12),0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.rowCheckWrap_c821321f{align-items:center;cursor:pointer;display:flex;flex-shrink:0}.rowCheckbox_c821321f{accent-color:#667eea;cursor:pointer;height:16px}.rowCheckPlaceholder_c821321f,.rowCheckbox_c821321f{flex-shrink:0;width:16px}.rowLeft_c821321f{display:flex;flex-direction:column;gap:4px;min-width:0}.rowName_c821321f{color:#161616;font-size:15px;font-weight:600}.rowMeta_c821321f{align-items:center;color:#8d8d8d;display:flex;font-size:12.5px;gap:6px}.rowMeta_c821321f .dot_c821321f{background:currentColor;border-radius:50%;flex-shrink:0;height:3px;width:3px}.rowRight_c821321f{align-items:center;display:flex;flex-shrink:0;gap:10px}.badge_c821321f{align-items:center;border-radius:20px;display:inline-flex;font-size:11.5px;font-weight:700;gap:5px;letter-spacing:.3px;padding:4px 12px;white-space:nowrap}.badge_c821321f:before{background:currentColor;border-radius:50%;content:\"\";flex-shrink:0;height:6px;opacity:.7;width:6px}.badge_c821321f.approved_c821321f{background:#defbe6;color:#24a148}.badge_c821321f.submitted_c821321f{background:rgba(102,126,234,.08);color:#667eea}.badge_c821321f.rejected_c821321f{background:#fff1f1;color:#da1e28}.badge_c821321f.draft_c821321f{background:#fdf6d8;color:#b28600}.btn_c821321f{align-items:center;border:1px solid #e0e0e0;border-radius:8px;cursor:pointer;display:inline-flex;font-family:inherit;font-size:13px;font-weight:500;gap:6px;outline:none;padding:7px 14px;transition:background .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1);white-space:nowrap}.btn_c821321f:disabled{cursor:not-allowed;opacity:.4}.btn_c821321f.btnDefault_c821321f{background:#fff;color:#161616}.btn_c821321f.btnDefault_c821321f:hover:not(:disabled){background:#f4f4f4;border-color:#c6c6c6;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.btn_c821321f.btnPrimary_c821321f{background:#667eea;border-color:#667eea;color:#fff}.btn_c821321f.btnPrimary_c821321f:hover:not(:disabled){background:#5a6fd6;border-color:#5a6fd6;box-shadow:0 4px 12px rgba(15,98,254,.35)}.btn_c821321f.btnApprove_c821321f{background:#42be65;border-color:#42be65;color:#fff}.btn_c821321f.btnApprove_c821321f:hover:not(:disabled){background:#36a35a;border-color:#36a35a;box-shadow:0 4px 12px rgba(66,190,101,.3)}.btn_c821321f.btnReject_c821321f{background:#fff;border-color:#ffd7d9;color:#da1e28}.btn_c821321f.btnReject_c821321f:hover:not(:disabled){background:#fff1f1;border-color:#da1e28;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.btn_c821321f.btnResubmit_c821321f{background:#fff;border-color:#f5d73b;color:#b28600}.btn_c821321f.btnResubmit_c821321f:hover:not(:disabled){background:#fdf6d8;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}.modalContainer_c821321f{border-radius:12px!important;display:flex;flex-direction:column;max-width:calc(100vw - 32px)!important;overflow:hidden;width:580px}.modalHeader_c821321f{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);border-bottom:1px solid #e0e0e0;display:flex;flex-shrink:0;justify-content:space-between;padding:18px 24px}.modalTitle_c821321f{color:#fff;font-size:17px;font-weight:700;margin:0}.modalCloseBtn_c821321f{background:hsla(0,0%,100%,.12)!important;border-radius:4px!important;color:hsla(0,0%,100%,.85)!important}.modalCloseBtn_c821321f:hover{background:hsla(0,0%,100%,.25)!important;color:#fff!important}.modalBody_c821321f{display:flex;flex-direction:column;gap:20px;max-height:calc(100vh - 220px);overflow-y:auto;padding:24px}.modalFooter_c821321f{align-items:center;background:#fff;border-top:1px solid #e0e0e0;display:flex;flex-shrink:0;gap:10px;padding:16px 24px}.fluentBtnApprove_c821321f{background-color:#42be65!important;border-color:#42be65!important}.fluentBtnApprove_c821321f:hover:not(:disabled){background-color:#36a35a!important;border-color:#36a35a!important}.fluentBtnReject_c821321f{background-color:#da1e28!important;border-color:#da1e28!important}.fluentBtnReject_c821321f:hover:not(:disabled){background-color:#b81922!important;border-color:#b81922!important}.fluentBtnResubmit_c821321f{background-color:#b28600!important;border-color:#b28600!important}.fluentBtnResubmit_c821321f:hover:not(:disabled){background-color:#9a7400!important;border-color:#9a7400!important}.panelMeta_c821321f{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:8px;display:flex;flex-direction:column;gap:4px;padding:14px 16px}.panelMeta_c821321f .panelMetaName_c821321f{color:#161616;font-size:15px;font-weight:700}.panelMeta_c821321f .panelMetaDetail_c821321f{color:#525252;display:flex;font-size:13px;gap:12px}.panelTableWrap_c821321f{border:1px solid #e0e0e0;border-radius:8px;overflow:hidden}.panelTable_c821321f{border-collapse:collapse;width:100%}.panelTable_c821321f thead tr{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}.panelTable_c821321f thead tr th{font-size:11.5px;font-weight:600;letter-spacing:.5px;padding:10px 12px;text-align:left;text-transform:uppercase;white-space:nowrap}.panelTable_c821321f thead tr th.colHrs_c821321f{text-align:center;width:56px}.panelTable_c821321f tbody tr{border-bottom:1px solid #e0e0e0;transition:background .15s cubic-bezier(.4,0,.2,1)}.panelTable_c821321f tbody tr:last-child{border-bottom:none}.panelTable_c821321f tbody tr:nth-child(2n){background:#f4f4f4}.panelTable_c821321f tbody tr td{color:#161616;font-size:13px;padding:8px 12px;vertical-align:top}.panelTable_c821321f tbody tr td.tdCenter_c821321f{font-weight:600;text-align:center;vertical-align:middle}.commentField_c821321f{display:flex;flex-direction:column;gap:6px}.commentField_c821321f label{color:#525252;font-size:12px;font-weight:600;letter-spacing:.3px;text-transform:uppercase}.commentField_c821321f label .required_c821321f{color:#da1e28;margin-left:2px}.commentField_c821321f textarea{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:4px;box-sizing:border-box;color:#161616;font-family:inherit;font-size:13.5px;line-height:1.5;min-height:96px;outline:none;padding:10px 12px;resize:vertical;transition:border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1),background .15s cubic-bezier(.4,0,.2,1);width:100%}.commentField_c821321f textarea:focus{background:#fff;border-color:#667eea;box-shadow:0 0 0 3px rgba(15,98,254,.15)}.commentField_c821321f textarea:-ms-input-placeholder{color:#8d8d8d}.commentField_c821321f textarea::placeholder{color:#8d8d8d}.panelFooter_c821321f{align-items:center;background:#fff;border-top:1px solid #e0e0e0;display:flex;flex-shrink:0;gap:10px;padding:16px 24px}.tabToggle_c821321f{background:#f4f4f4;border:1px solid #e0e0e0;border-radius:40px;gap:4px;margin-bottom:24px;padding:5px}.tabBtn_c821321f,.tabToggle_c821321f{align-items:center;display:inline-flex}.tabBtn_c821321f{background:transparent;border:1px solid transparent;border-radius:32px;color:#8d8d8d;cursor:pointer;font-family:inherit;font-size:13.5px;font-weight:500;gap:8px;padding:8px 20px;transition:background .15s cubic-bezier(.4,0,.2,1),color .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),box-shadow .15s cubic-bezier(.4,0,.2,1);white-space:nowrap}.tabBtn_c821321f svg{opacity:.55;transition:opacity .15s cubic-bezier(.4,0,.2,1)}.tabBtn_c821321f:hover:not(.tabBtnActive_c821321f){background:hsla(0,0%,100%,.7);color:#525252}.tabBtn_c821321f:hover:not(.tabBtnActive_c821321f) svg{opacity:.75}.tabBtnActive_c821321f{background:#fff;border-color:rgba(102,126,234,.25);box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);color:#667eea;font-weight:600}.tabBtnActive_c821321f svg{opacity:1}.teamGrid_c821321f{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}.reportCard_c821321f{align-items:center;background:#fff;border:1px solid #e0e0e0;border-radius:12px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);display:flex;gap:14px;padding:16px 18px;transition:box-shadow .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1),transform .15s cubic-bezier(.4,0,.2,1)}.reportCard_c821321f:hover{border-color:rgba(102,126,234,.3);box-shadow:0 4px 12px rgba(0,0,0,.1),0 2px 4px rgba(0,0,0,.06);transform:translateY(-1px)}.reportAvatar_c821321f{align-items:center;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;color:#fff;display:flex;flex-shrink:0;font-size:16px;font-weight:700;height:44px;justify-content:center;letter-spacing:.5px;text-transform:uppercase;width:44px}.reportInfo_c821321f{display:flex;flex-direction:column;gap:2px;min-width:0}.reportName_c821321f{color:#161616;font-size:14.5px;font-weight:600}.reportName_c821321f,.reportTitle_c821321f{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.reportTitle_c821321f{color:#525252;font-size:12.5px}.reportEmail_c821321f{color:#8d8d8d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}", true);
 
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  fadeIn: "fadeIn_16f795d1",
-  header: "header_16f795d1",
-  homeBtn: "homeBtn_16f795d1",
-  title: "title_16f795d1",
-  filterBar: "filterBar_16f795d1",
-  filterGroup: "filterGroup_16f795d1",
-  filterGroupWide: "filterGroupWide_16f795d1",
-  filterInput: "filterInput_16f795d1",
-  filterSelect: "filterSelect_16f795d1",
-  messageBar: "messageBar_16f795d1",
-  success: "success_16f795d1",
-  error: "error_16f795d1",
-  dismissBtn: "dismissBtn_16f795d1",
-  loadingWrap: "loadingWrap_16f795d1",
-  spinner: "spinner_16f795d1",
-  spin: "spin_16f795d1",
-  spinnerSm: "spinnerSm_16f795d1",
-  emptyState: "emptyState_16f795d1",
-  emptyTitle: "emptyTitle_16f795d1",
-  emptySubtitle: "emptySubtitle_16f795d1",
-  bulkBar: "bulkBar_16f795d1",
-  bulkBarActive: "bulkBarActive_16f795d1",
-  bulkSelectAll: "bulkSelectAll_16f795d1",
-  bulkCheckbox: "bulkCheckbox_16f795d1",
-  bulkActions: "bulkActions_16f795d1",
-  bulkCount: "bulkCount_16f795d1",
-  otBadge: "otBadge_16f795d1",
-  rowNameRow: "rowNameRow_16f795d1",
-  list: "list_16f795d1",
-  rowCard: "rowCard_16f795d1",
-  rowCardSelected: "rowCardSelected_16f795d1",
-  rowCheckWrap: "rowCheckWrap_16f795d1",
-  rowCheckbox: "rowCheckbox_16f795d1",
-  rowCheckPlaceholder: "rowCheckPlaceholder_16f795d1",
-  rowLeft: "rowLeft_16f795d1",
-  rowName: "rowName_16f795d1",
-  rowMeta: "rowMeta_16f795d1",
-  dot: "dot_16f795d1",
-  rowRight: "rowRight_16f795d1",
-  badge: "badge_16f795d1",
-  approved: "approved_16f795d1",
-  submitted: "submitted_16f795d1",
-  rejected: "rejected_16f795d1",
-  draft: "draft_16f795d1",
-  btn: "btn_16f795d1",
-  btnDefault: "btnDefault_16f795d1",
-  btnPrimary: "btnPrimary_16f795d1",
-  btnApprove: "btnApprove_16f795d1",
-  btnReject: "btnReject_16f795d1",
-  btnResubmit: "btnResubmit_16f795d1",
-  modalContainer: "modalContainer_16f795d1",
-  modalHeader: "modalHeader_16f795d1",
-  modalTitle: "modalTitle_16f795d1",
-  modalCloseBtn: "modalCloseBtn_16f795d1",
-  modalBody: "modalBody_16f795d1",
-  modalFooter: "modalFooter_16f795d1",
-  fluentBtnApprove: "fluentBtnApprove_16f795d1",
-  fluentBtnReject: "fluentBtnReject_16f795d1",
-  fluentBtnResubmit: "fluentBtnResubmit_16f795d1",
-  panelMeta: "panelMeta_16f795d1",
-  panelMetaName: "panelMetaName_16f795d1",
-  panelMetaDetail: "panelMetaDetail_16f795d1",
-  panelTableWrap: "panelTableWrap_16f795d1",
-  panelTable: "panelTable_16f795d1",
-  colHrs: "colHrs_16f795d1",
-  tdCenter: "tdCenter_16f795d1",
-  commentField: "commentField_16f795d1",
-  required: "required_16f795d1",
-  panelFooter: "panelFooter_16f795d1",
-  container: "container_16f795d1"
+  fadeIn: "fadeIn_c821321f",
+  header: "header_c821321f",
+  homeBtn: "homeBtn_c821321f",
+  title: "title_c821321f",
+  filterBar: "filterBar_c821321f",
+  filterGroup: "filterGroup_c821321f",
+  filterGroupWide: "filterGroupWide_c821321f",
+  filterInput: "filterInput_c821321f",
+  filterSelect: "filterSelect_c821321f",
+  messageBar: "messageBar_c821321f",
+  success: "success_c821321f",
+  error: "error_c821321f",
+  dismissBtn: "dismissBtn_c821321f",
+  loadingWrap: "loadingWrap_c821321f",
+  spinner: "spinner_c821321f",
+  spin: "spin_c821321f",
+  spinnerSm: "spinnerSm_c821321f",
+  emptyState: "emptyState_c821321f",
+  emptyTitle: "emptyTitle_c821321f",
+  emptySubtitle: "emptySubtitle_c821321f",
+  bulkBar: "bulkBar_c821321f",
+  bulkBarActive: "bulkBarActive_c821321f",
+  bulkSelectAll: "bulkSelectAll_c821321f",
+  bulkCheckbox: "bulkCheckbox_c821321f",
+  bulkActions: "bulkActions_c821321f",
+  bulkCount: "bulkCount_c821321f",
+  otBadge: "otBadge_c821321f",
+  rowNameRow: "rowNameRow_c821321f",
+  list: "list_c821321f",
+  rowCard: "rowCard_c821321f",
+  rowCardSelected: "rowCardSelected_c821321f",
+  rowCheckWrap: "rowCheckWrap_c821321f",
+  rowCheckbox: "rowCheckbox_c821321f",
+  rowCheckPlaceholder: "rowCheckPlaceholder_c821321f",
+  rowLeft: "rowLeft_c821321f",
+  rowName: "rowName_c821321f",
+  rowMeta: "rowMeta_c821321f",
+  dot: "dot_c821321f",
+  rowRight: "rowRight_c821321f",
+  badge: "badge_c821321f",
+  approved: "approved_c821321f",
+  submitted: "submitted_c821321f",
+  rejected: "rejected_c821321f",
+  draft: "draft_c821321f",
+  btn: "btn_c821321f",
+  btnDefault: "btnDefault_c821321f",
+  btnPrimary: "btnPrimary_c821321f",
+  btnApprove: "btnApprove_c821321f",
+  btnReject: "btnReject_c821321f",
+  btnResubmit: "btnResubmit_c821321f",
+  modalContainer: "modalContainer_c821321f",
+  modalHeader: "modalHeader_c821321f",
+  modalTitle: "modalTitle_c821321f",
+  modalCloseBtn: "modalCloseBtn_c821321f",
+  modalBody: "modalBody_c821321f",
+  modalFooter: "modalFooter_c821321f",
+  fluentBtnApprove: "fluentBtnApprove_c821321f",
+  fluentBtnReject: "fluentBtnReject_c821321f",
+  fluentBtnResubmit: "fluentBtnResubmit_c821321f",
+  panelMeta: "panelMeta_c821321f",
+  panelMetaName: "panelMetaName_c821321f",
+  panelMetaDetail: "panelMetaDetail_c821321f",
+  panelTableWrap: "panelTableWrap_c821321f",
+  panelTable: "panelTable_c821321f",
+  colHrs: "colHrs_c821321f",
+  tdCenter: "tdCenter_c821321f",
+  commentField: "commentField_c821321f",
+  required: "required_c821321f",
+  panelFooter: "panelFooter_c821321f",
+  tabToggle: "tabToggle_c821321f",
+  tabBtn: "tabBtn_c821321f",
+  tabBtnActive: "tabBtnActive_c821321f",
+  teamGrid: "teamGrid_c821321f",
+  reportCard: "reportCard_c821321f",
+  reportAvatar: "reportAvatar_c821321f",
+  reportInfo: "reportInfo_c821321f",
+  reportName: "reportName_c821321f",
+  reportTitle: "reportTitle_c821321f",
+  reportEmail: "reportEmail_c821321f",
+  container: "container_c821321f"
 });
+
+
+/***/ }),
+
+/***/ 24544:
+/*!*********************************************************!*\
+  !*** ./lib/webparts/timeSheet/services/GraphService.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getDirectReports: () => (/* binding */ getDirectReports)
+/* harmony export */ });
+/* harmony import */ var _PnPSetup__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PnPSetup */ 89916);
+/* harmony import */ var _pnp_graph_users__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @pnp/graph/users */ 71);
+
+
+/**
+ * Fetch the current user's direct reports from Microsoft Graph
+ * using @pnp/graph graphfi + SPFx behaviour.
+ */
+function getDirectReports() {
+    var graph = (0,_PnPSetup__WEBPACK_IMPORTED_MODULE_0__.getGraph)();
+    return graph.me.directReports
+        .select('id,displayName,mail,jobTitle,department')()
+        .then(function (result) { return result || []; });
+}
 
 
 /***/ }),
@@ -126,24 +164,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 10196);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! tslib */ 10196);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ 85959);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fluentui/react */ 76702);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 44533);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 67102);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 29425);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fluentui/react */ 80954);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fluentui/react */ 49885);
-/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @fluentui/react */ 5613);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @fluentui/react */ 76702);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fluentui/react */ 44533);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @fluentui/react */ 67102);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fluentui/react */ 29425);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fluentui/react */ 80954);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @fluentui/react */ 49885);
+/* harmony import */ var _fluentui_react__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @fluentui/react */ 5613);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ 24770);
 /* harmony import */ var _services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/TimesheetService */ 30264);
-/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
-/* harmony import */ var _utils_fmt__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/fmt */ 27583);
-/* harmony import */ var _utils_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/constants */ 47293);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
-/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ManagerDashboard.module.scss */ 13102);
+/* harmony import */ var _services_GraphService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/GraphService */ 24544);
+/* harmony import */ var _utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/dateUtils */ 28613);
+/* harmony import */ var _utils_fmt__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/fmt */ 27583);
+/* harmony import */ var _utils_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/constants */ 47293);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! TimeSheetWebPartStrings */ 31339);
+/* harmony import */ var TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ManagerDashboard.module.scss */ 13102);
+
 
 
 
@@ -158,21 +198,21 @@ __webpack_require__.r(__webpack_exports__);
 // ─── Constants ────────────────────────────────────────────────────────────────
 function getStatusOptions() {
     return [
-        { key: "Submitted", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusSubmitted },
-        { key: "Approved", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusApproved },
-        { key: "Rejected", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.StatusRejected },
-        { key: "All", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.AllStatuses },
+        { key: "Submitted", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.StatusSubmitted },
+        { key: "Approved", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.StatusApproved },
+        { key: "Rejected", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.StatusRejected },
+        { key: "All", text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.AllStatuses },
     ];
 }
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function badgeClass(status) {
     if (status === "Approved")
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].approved;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].approved;
     if (status === "Submitted")
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].submitted;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].submitted;
     if (status === "Rejected")
-        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rejected;
-    return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].draft;
+        return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rejected;
+    return _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].draft;
 }
 function toDateInputValue(d) {
     var y = d.getFullYear();
@@ -229,6 +269,17 @@ var IconUsers = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createE
     react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", { cx: "32", cy: "18", r: "7", stroke: "currentColor", strokeWidth: "2.5" }),
     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M4 40c0-7.732 6.268-14 14-14h2", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }),
     react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M24 40c0-7.732 6.268-14 14-14", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }))); };
+var IconAnalytics = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none" },
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", { cx: "8", cy: "8", r: "6.5", stroke: "currentColor", strokeWidth: "1.5" }),
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M8 5v3l2 1.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconTeam = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none" },
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", { cx: "6", cy: "5", r: "2.5", stroke: "currentColor", strokeWidth: "1.4" }),
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", { cx: "11.5", cy: "5", r: "2", stroke: "currentColor", strokeWidth: "1.4" }),
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M1 13c0-2.76 2.24-5 5-5h.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M9.5 13c0-2.21 1.57-4 3.5-4", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }))); };
+var IconPersonLg = function () { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { width: "48", height: "48", viewBox: "0 0 48 48", fill: "none" },
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("circle", { cx: "24", cy: "16", r: "9", stroke: "currentColor", strokeWidth: "2.5" }),
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }))); };
 // ─── Shared Fluent UI button styles (theme colour) ────────────────────────────
 var primaryBtnStyles = {
     root: { backgroundColor: '#667eea', borderColor: '#667eea', borderRadius: 6 },
@@ -244,7 +295,7 @@ var defaultBtnStyles = {
 // ─── Component ────────────────────────────────────────────────────────────────
 var ManagerDashboard = function () {
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__.AppContext), currentUser = _a.currentUser, navigateHome = _a.navigateHome;
-    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.currentMonthRange)(), wStart = _b.start, wEnd = _b.end;
+    var _b = (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__.currentMonthRange)(), wStart = _b.start, wEnd = _b.end;
     var _c = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(wStart), startDate = _c[0], setStartDate = _c[1];
     var _d = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(wEnd), endDate = _d[0], setEndDate = _d[1];
     var _f = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Submitted"), statusFilter = _f[0], setStatusFilter = _f[1];
@@ -265,6 +316,12 @@ var ManagerDashboard = function () {
     var _u = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null), bulkAction = _u[0], setBulkAction = _u[1];
     var _v = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), bulkComment = _v[0], setBulkComment = _v[1];
     var _w = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), bulkLoading = _w[0], setBulkLoading = _w[1];
+    // Tab toggle state
+    var _x = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("analytics"), activeTab = _x[0], setActiveTab = _x[1];
+    // Team Overview — direct reports from Graph API
+    var _y = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]), directReports = _y[0], setDirectReports = _y[1];
+    var _z = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false), teamLoading = _z[0], setTeamLoading = _z[1];
+    var _0 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""), teamError = _0[0], setTeamError = _0[1];
     // ─── Load data ────────────────────────────────────────────────────────────
     var loadData = function () {
         setLoading(true);
@@ -279,13 +336,30 @@ var ManagerDashboard = function () {
             setLoading(false);
         })
             .catch(function () {
-            setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadTeamFailed);
+            setError(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.LoadTeamFailed);
             setLoading(false);
         });
     };
     (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
         loadData();
     }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+        if (activeTab !== "team")
+            return;
+        if (directReports.length > 0 || teamLoading)
+            return;
+        setTeamLoading(true);
+        setTeamError("");
+        (0,_services_GraphService__WEBPACK_IMPORTED_MODULE_3__.getDirectReports)()
+            .then(function (reports) {
+            setDirectReports(reports);
+            setTeamLoading(false);
+        })
+            .catch(function () {
+            setTeamError("Could not load direct reports. Please try again.");
+            setTeamLoading(false);
+        });
+    }, [activeTab]); // eslint-disable-line
     // ─── Bulk selection helpers ────────────────────────────────────────────────
     var submittedRows = rows.filter(function (r) { return r.status === "Submitted"; });
     var allSelected = submittedRows.length > 0 &&
@@ -293,7 +367,7 @@ var ManagerDashboard = function () {
     var someSelected = selectedKeys.length > 0;
     var toggleRow = function (key) {
         setSelectedKeys(function (prev) {
-            return prev.indexOf(key) !== -1 ? prev.filter(function (k) { return k !== key; }) : (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__spreadArray)((0,tslib__WEBPACK_IMPORTED_MODULE_7__.__spreadArray)([], prev, true), [key], false);
+            return prev.indexOf(key) !== -1 ? prev.filter(function (k) { return k !== key; }) : (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__spreadArray)((0,tslib__WEBPACK_IMPORTED_MODULE_8__.__spreadArray)([], prev, true), [key], false);
         });
     };
     var toggleAll = function () {
@@ -309,9 +383,9 @@ var ManagerDashboard = function () {
         setBulkComment("");
         setBulkModalOpen(true);
     };
-    var handleBulkAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(void 0, void 0, void 0, function () {
+    var handleBulkAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(void 0, void 0, void 0, function () {
         var selected, _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     if (!bulkAction)
@@ -367,9 +441,9 @@ var ManagerDashboard = function () {
             return;
         setModalOpen(false);
     };
-    var handleAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(void 0, void 0, void 0, function () {
+    var handleAction = function () { return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__awaiter)(void 0, void 0, void 0, function () {
         var ids, msg, _a;
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__generator)(this, function (_b) {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_8__.__generator)(this, function (_b) {
             switch (_b.label) {
                 case 0:
                     if (!reviewRow || !reviewAction)
@@ -383,18 +457,18 @@ var ManagerDashboard = function () {
                     return [4 /*yield*/, (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.approveDayEntries)(ids, currentUser.displayName)];
                 case 2:
                     _b.sent();
-                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_8__.fmt)(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ApprovedMsg, {
+                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_9__.fmt)(TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ApprovedMsg, {
                         name: reviewRow.employeeName,
-                        date: (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateShort)(reviewRow.entryDate),
+                        date: (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__.formatDateShort)(reviewRow.entryDate),
                     }));
                     return [3 /*break*/, 5];
                 case 3: return [4 /*yield*/, (0,_services_TimesheetService__WEBPACK_IMPORTED_MODULE_2__.rejectDayEntries)(ids, currentUser.displayName, managerComment)];
                 case 4:
                     _b.sent();
                     msg = reviewAction === "resubmit"
-                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ResubmitMsg
-                        : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RejectedMsg;
-                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_8__.fmt)(msg, { name: reviewRow.employeeName }));
+                        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ResubmitMsg
+                        : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.RejectedMsg;
+                    setSuccessMessage((0,_utils_fmt__WEBPACK_IMPORTED_MODULE_9__.fmt)(msg, { name: reviewRow.employeeName }));
                     _b.label = 5;
                 case 5:
                     setModalOpen(false);
@@ -412,134 +486,161 @@ var ManagerDashboard = function () {
         });
     }); };
     var modalTitle = reviewAction === "approve"
-        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ApproveModal
+        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ApproveModal
         : reviewAction === "resubmit"
-            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RequestResubmitModal
-            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RejectModal;
+            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.RequestResubmitModal
+            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.RejectModal;
     var confirmBtnLabel = reviewAction === "approve"
-        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ConfirmApprove
+        ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ConfirmApprove
         : reviewAction === "resubmit"
-            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.SendResubmit
-            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ConfirmReject;
+            ? TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.SendResubmit
+            : TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ConfirmReject;
     var confirmDisabled = actionLoading || (reviewAction !== "approve" && !managerComment.trim());
+    var getInitials = function (name) {
+        var parts = name.trim().split(" ");
+        if (parts.length === 1)
+            return parts[0].charAt(0).toUpperCase();
+        return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    };
     // ─── Render ───────────────────────────────────────────────────────────────
-    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].container },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].header },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].homeBtn, title: "Home", onClick: navigateHome },
+    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].container },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].header },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].homeBtn, title: "Home", onClick: navigateHome },
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconHome, null)),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.TeamTimesheetsTitle)),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterBar },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.From),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-from", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) {
-                        return e.target.value && setStartDate(fromDateInputValue(e.target.value));
-                    } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.To),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-to", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) {
-                        return e.target.value && setEndDate(fromDateInputValue(e.target.value));
-                    } })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Status),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "mgr-status", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroup, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterGroupWide) },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-employee" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.EmployeeEmail),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-employee", type: "text", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.FilterByEmail }))),
-        successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].success) },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconSuccess, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, successMessage),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].dismissBtn, onClick: function () { return setSuccessMessage(""); } },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconClose, null)))),
-        error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].error) },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].title }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.TeamTimesheetsTitle)),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tabToggle },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tabBtn, " ").concat(activeTab === "analytics" ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tabBtnActive : ""), onClick: function () { return setActiveTab("analytics"); } },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconAnalytics, null),
+                "My Analytics"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tabBtn, " ").concat(activeTab === "team" ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tabBtnActive : ""), onClick: function () { return setActiveTab("team"); } },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconTeam, null),
+                "Team Overview")),
+        activeTab === "team" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, teamLoading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].loadingWrap },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].spinner }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Loading your direct reports\u2026"))) : teamError ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].error) },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error))),
-        loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].loadingWrap },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].spinner }),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.LoadingTeam))) : rows.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyState },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconUsers, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoTimesheetsFound),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.NoTimesheetsHint))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-            submittedRows.length > 0 && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkBar, " ").concat(someSelected ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkBarActive : "") },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkSelectAll },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkCheckbox, checked: allSelected, onChange: toggleAll }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, allSelected
-                        ? "Deselect all"
-                        : "Select all submitted (".concat(submittedRows.length, ")"))),
-                someSelected && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkActions },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].bulkCount },
-                        selectedKeys.length,
-                        " selected"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnApprove), disabled: bulkLoading, onClick: function () { return openBulkModal("approve"); } },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCheck, null),
-                        " Approve All"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnReject), disabled: bulkLoading, onClick: function () { return openBulkModal("reject"); } },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconReject, null),
-                        " Reject All"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnDefault), disabled: bulkLoading, onClick: function () { return setSelectedKeys([]); } }, "Clear"))))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].list }, rows.map(function (row) {
-                var key = rowKey(row);
-                var isSelected = selectedKeys.indexOf(key) !== -1;
-                return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: key, className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowCard, " ").concat(isSelected ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowCardSelected : "") },
-                    row.status === "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowCheckWrap, onClick: function (e) { return e.stopPropagation(); } },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowCheckbox, checked: isSelected, onChange: function () { return toggleRow(key); } }))),
-                    row.status !== "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowCheckPlaceholder })),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowLeft },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowNameRow },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowName }, row.employeeName),
-                            row.totalHours > _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].otBadge, title: "".concat((row.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
-                                "OT +",
-                                (row.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_3__.REGULAR_HOURS_PER_DAY).toFixed(2),
-                                "h"))),
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowMeta },
-                            (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateLabel)(row.entryDate),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].dot }),
-                            row.entries.length,
-                            " task",
-                            row.entries.length !== 1 ? "s" : "",
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].dot }),
-                            row.totalHours.toFixed(2),
-                            " hrs")),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].rowRight },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].badge, " ").concat(badgeClass(row.status)) }, row.status),
-                        row.status === "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnApprove), onClick: function () { return openModal(row, "approve"); } },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCheck, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, teamError))) : directReports.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyState },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconPersonLg, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyTitle }, "No direct reports found"),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptySubtitle }, "You don't have any direct reports in the organisation directory."))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].teamGrid }, directReports.map(function (person) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: person.id, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportCard },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportAvatar }, getInitials(person.displayName || "?")),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportInfo },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportName }, person.displayName),
+                (person.jobTitle || person.department) && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportTitle }, [person.jobTitle, person.department].filter(Boolean).join(" · "))),
+                person.mail && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].reportEmail }, person.mail))))); }))))),
+        activeTab === "analytics" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterBar },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterGroup },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-from" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.From),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-from", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterInput, value: toDateInputValue(startDate), onChange: function (e) {
+                            return e.target.value && setStartDate(fromDateInputValue(e.target.value));
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterGroup },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-to" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.To),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-to", type: "date", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterInput, value: toDateInputValue(endDate), onChange: function (e) {
+                            return e.target.value && setEndDate(fromDateInputValue(e.target.value));
+                        } })),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterGroup },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-status" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Status),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", { id: "mgr-status", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterGroup, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterGroupWide) },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { htmlFor: "mgr-employee" }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.EmployeeEmail),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "mgr-employee", type: "text", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.FilterByEmail }))),
+            successMessage && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].success) },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconSuccess, null),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, successMessage),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].dismissBtn, onClick: function () { return setSuccessMessage(""); } },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconClose, null)))),
+            error && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].messageBar, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].error) },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconError, null),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, error))),
+            loading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].loadingWrap },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].spinner }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.LoadingTeam))) : rows.length === 0 ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyState },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconUsers, null),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptyTitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.NoTimesheetsFound),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].emptySubtitle }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.NoTimesheetsHint))) : (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+                submittedRows.length > 0 && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkBar, " ").concat(someSelected ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkBarActive : "") },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkSelectAll },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkCheckbox, checked: allSelected, onChange: toggleAll }),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, allSelected
+                            ? "Deselect all"
+                            : "Select all submitted (".concat(submittedRows.length, ")"))),
+                    someSelected && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkActions },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].bulkCount },
+                            selectedKeys.length,
+                            " selected"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnApprove), disabled: bulkLoading, onClick: function () { return openBulkModal("approve"); } },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCheck, null),
+                            " Approve All"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnReject), disabled: bulkLoading, onClick: function () { return openBulkModal("reject"); } },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconReject, null),
+                            " Reject All"),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnDefault), disabled: bulkLoading, onClick: function () { return setSelectedKeys([]); } }, "Clear"))))),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].list }, rows.map(function (row) {
+                    var key = rowKey(row);
+                    var isSelected = selectedKeys.indexOf(key) !== -1;
+                    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { key: key, className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowCard, " ").concat(isSelected ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowCardSelected : "") },
+                        row.status === "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowCheckWrap, onClick: function (e) { return e.stopPropagation(); } },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { type: "checkbox", className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowCheckbox, checked: isSelected, onChange: function () { return toggleRow(key); } }))),
+                        row.status !== "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowCheckPlaceholder })),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowLeft },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowNameRow },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowName }, row.employeeName),
+                                row.totalHours > _utils_constants__WEBPACK_IMPORTED_MODULE_4__.REGULAR_HOURS_PER_DAY && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].otBadge, title: "".concat((row.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_4__.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
+                                    "OT +",
+                                    (row.totalHours - _utils_constants__WEBPACK_IMPORTED_MODULE_4__.REGULAR_HOURS_PER_DAY).toFixed(2),
+                                    "h"))),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowMeta },
+                                (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__.formatDateLabel)(row.entryDate),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].dot }),
+                                row.entries.length,
+                                " task",
+                                row.entries.length !== 1 ? "s" : "",
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].dot }),
+                                row.totalHours.toFixed(2),
+                                " hrs")),
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].rowRight },
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].badge, " ").concat(badgeClass(row.status)) }, row.status),
+                            row.status === "Submitted" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnApprove), onClick: function () { return openModal(row, "approve"); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconCheck, null),
+                                    " ",
+                                    TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ApproveBtn),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnReject), onClick: function () { return openModal(row, "reject"); } },
+                                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconReject, null),
+                                    " ",
+                                    TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.RejectBtn))),
+                            row.status === "Approved" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].btnResubmit), onClick: function () { return openModal(row, "resubmit"); } },
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconRefresh, null),
                                 " ",
-                                TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ApproveBtn),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnReject), onClick: function () { return openModal(row, "reject"); } },
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconReject, null),
-                                " ",
-                                TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RejectBtn))),
-                        row.status === "Approved" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { className: "".concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btn, " ").concat(_ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].btnResubmit), onClick: function () { return openModal(row, "resubmit"); } },
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement(IconRefresh, null),
-                            " ",
-                            TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.RequestResubmitBtn)))));
-            })))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Modal, { isOpen: bulkModalOpen, onDismiss: function () {
+                                TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.RequestResubmitBtn)))));
+                })))))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Modal, { isOpen: bulkModalOpen, onDismiss: function () {
                 if (!bulkLoading) {
                     setBulkModalOpen(false);
                 }
-            }, isBlocking: bulkLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalHeader },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalTitle }, bulkAction === "approve"
+            }, isBlocking: bulkLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalHeader },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalTitle }, bulkAction === "approve"
                     ? "Approve ".concat(selectedKeys.length, " Timesheet").concat(selectedKeys.length !== 1 ? "s" : "")
                     : "Reject ".concat(selectedKeys.length, " Timesheet").concat(selectedKeys.length !== 1 ? "s" : "")),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.IconButton, { iconProps: { iconName: "Cancel" }, ariaLabel: "Close", onClick: function () { return setBulkModalOpen(false); }, disabled: bulkLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalCloseBtn })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalBody },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMeta },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMetaName },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: "Cancel" }, ariaLabel: "Close", onClick: function () { return setBulkModalOpen(false); }, disabled: bulkLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalCloseBtn })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalBody },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMeta },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMetaName },
                         selectedKeys.length,
                         " timesheet",
                         selectedKeys.length !== 1 ? "s" : "",
                         " selected"),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMetaDetail },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMetaDetail },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, rows
                             .filter(function (r) { return selectedKeys.indexOf(rowKey(r)) !== -1; })
                             .map(function (r) { return r.employeeName; })
                             .filter(function (v, i, a) { return a.indexOf(v) === i; })
                             .join(", ")))),
                 bulkAction === "reject" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.TextField, { label: "Rejection Reason", required: true, multiline: true, rows: 4, value: bulkComment, onChange: function (_e, val) { return setBulkComment(val || ""); }, placeholder: "Provide a reason that will be sent to all selected employees\u2026", disabled: bulkLoading }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TextField, { label: "Rejection Reason", required: true, multiline: true, rows: 4, value: bulkComment, onChange: function (_e, val) { return setBulkComment(val || ""); }, placeholder: "Provide a reason that will be sent to all selected employees\u2026", disabled: bulkLoading }),
                     !bulkComment.trim() && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: {
                             color: "#a19f9d",
                             fontSize: 12,
@@ -552,42 +653,42 @@ var ManagerDashboard = function () {
                     " selected timesheet",
                     selectedKeys.length !== 1 ? "s" : "",
                     ". This action cannot be undone."))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalFooter },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, { disabled: bulkLoading || (bulkAction === "reject" && !bulkComment.trim()), className: bulkAction === "approve"
-                        ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fluentBtnApprove
-                        : _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fluentBtnReject, styles: { root: { borderRadius: 6 } }, onClick: handleBulkAction }, bulkLoading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_14__.SpinnerSize.small }),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalFooter },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.PrimaryButton, { disabled: bulkLoading || (bulkAction === "reject" && !bulkComment.trim()), className: bulkAction === "approve"
+                        ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].fluentBtnApprove
+                        : _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].fluentBtnReject, styles: { root: { borderRadius: 6 } }, onClick: handleBulkAction }, bulkLoading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_15__.SpinnerSize.small }),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { marginLeft: 6 } }, "Processing\u2026"))) : bulkAction === "approve" ? ("Approve ".concat(selectedKeys.length)) : ("Reject ".concat(selectedKeys.length))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel, disabled: bulkLoading, styles: defaultBtnStyles, onClick: function () { return setBulkModalOpen(false); } }))),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_9__.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalContainer },
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalHeader },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalTitle }, modalTitle),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.IconButton, { iconProps: { iconName: "Cancel" }, ariaLabel: "Close", onClick: closeModal, disabled: actionLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalCloseBtn })),
-            reviewRow && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalBody },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMeta },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMetaName }, reviewRow.employeeName),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelMetaDetail },
-                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_6__.formatDateLabel)(reviewRow.entryDate)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Cancel, disabled: bulkLoading, styles: defaultBtnStyles, onClick: function () { return setBulkModalOpen(false); } }))),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_10__.Modal, { isOpen: modalOpen, onDismiss: closeModal, isBlocking: actionLoading, containerClassName: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalContainer },
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalHeader },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalTitle }, modalTitle),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.IconButton, { iconProps: { iconName: "Cancel" }, ariaLabel: "Close", onClick: closeModal, disabled: actionLoading, className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalCloseBtn })),
+            reviewRow && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalBody },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMeta },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMetaName }, reviewRow.employeeName),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelMetaDetail },
+                        react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, (0,_utils_dateUtils__WEBPACK_IMPORTED_MODULE_7__.formatDateLabel)(reviewRow.entryDate)),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null,
                             "Total: ",
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("strong", null,
                                 reviewRow.totalHours.toFixed(2),
                                 " hrs")))),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelTableWrap },
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].panelTable },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelTableWrap },
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("table", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].panelTable },
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("thead", null,
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", null,
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Project),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Category),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Description),
-                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].colHrs }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Hrs))),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Project),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Category),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", null, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Description),
+                                react__WEBPACK_IMPORTED_MODULE_0__.createElement("th", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].colHrs }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Hrs))),
                         react__WEBPACK_IMPORTED_MODULE_0__.createElement("tbody", null, reviewRow.entries.map(function (e) { return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("tr", { key: e.id },
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.projectName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.activityCategoryName),
                             react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", null, e.taskDescription),
-                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].tdCenter }, e.hoursSpent))); })))),
+                            react__WEBPACK_IMPORTED_MODULE_0__.createElement("td", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].tdCenter }, e.hoursSpent))); })))),
                 reviewAction !== "approve" && (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_11__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ManagerCommentLabel, required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ""); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.ManagerCommentPlaceholder, disabled: actionLoading }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.TextField, { label: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ManagerCommentLabel, required: true, multiline: true, rows: 4, value: managerComment, onChange: function (_e, val) { return setManagerComment(val || ""); }, placeholder: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.ManagerCommentPlaceholder, disabled: actionLoading }),
                     !managerComment.trim() && (react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: {
                             color: "#a19f9d",
                             fontSize: 12,
@@ -601,15 +702,15 @@ var ManagerDashboard = function () {
                             : "requesting re-submission of",
                         " ",
                         "this timesheet.")))))),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].modalFooter },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_12__.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, styles: { root: { borderRadius: 6 } }, className: reviewAction === "approve"
-                        ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fluentBtnApprove
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].modalFooter },
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.PrimaryButton, { onClick: handleAction, disabled: confirmDisabled, styles: { root: { borderRadius: 6 } }, className: reviewAction === "approve"
+                        ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].fluentBtnApprove
                         : reviewAction === "reject"
-                            ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fluentBtnReject
-                            : _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_5__["default"].fluentBtnResubmit }, actionLoading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_13__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_14__.SpinnerSize.small }),
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { marginLeft: 6 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Processing))) : (confirmBtnLabel)),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_15__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_4__.Cancel, onClick: closeModal, disabled: actionLoading, styles: defaultBtnStyles })))));
+                            ? _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].fluentBtnReject
+                            : _ManagerDashboard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].fluentBtnResubmit }, actionLoading ? (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_14__.Spinner, { size: _fluentui_react__WEBPACK_IMPORTED_MODULE_15__.SpinnerSize.small }),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", { style: { marginLeft: 6 } }, TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Processing))) : (confirmBtnLabel)),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement(_fluentui_react__WEBPACK_IMPORTED_MODULE_16__.DefaultButton, { text: TimeSheetWebPartStrings__WEBPACK_IMPORTED_MODULE_5__.Cancel, onClick: closeModal, disabled: actionLoading, styles: defaultBtnStyles })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ManagerDashboard);
 

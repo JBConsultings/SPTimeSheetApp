@@ -6,6 +6,7 @@ var react_1 = require("react");
 var react_2 = require("@fluentui/react");
 var AppContext_1 = require("../context/AppContext");
 var TimesheetService_1 = require("../services/TimesheetService");
+var GraphService_1 = require("../services/GraphService");
 var dateUtils_1 = require("../utils/dateUtils");
 var fmt_1 = require("../utils/fmt");
 var constants_1 = require("../utils/constants");
@@ -85,6 +86,17 @@ var IconUsers = function () { return (React.createElement("svg", { width: "48", 
     React.createElement("circle", { cx: "32", cy: "18", r: "7", stroke: "currentColor", strokeWidth: "2.5" }),
     React.createElement("path", { d: "M4 40c0-7.732 6.268-14 14-14h2", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }),
     React.createElement("path", { d: "M24 40c0-7.732 6.268-14 14-14", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }))); };
+var IconAnalytics = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none" },
+    React.createElement("circle", { cx: "8", cy: "8", r: "6.5", stroke: "currentColor", strokeWidth: "1.5" }),
+    React.createElement("path", { d: "M8 5v3l2 1.5", stroke: "currentColor", strokeWidth: "1.5", strokeLinecap: "round", strokeLinejoin: "round" }))); };
+var IconTeam = function () { return (React.createElement("svg", { width: "16", height: "16", viewBox: "0 0 16 16", fill: "none" },
+    React.createElement("circle", { cx: "6", cy: "5", r: "2.5", stroke: "currentColor", strokeWidth: "1.4" }),
+    React.createElement("circle", { cx: "11.5", cy: "5", r: "2", stroke: "currentColor", strokeWidth: "1.4" }),
+    React.createElement("path", { d: "M1 13c0-2.76 2.24-5 5-5h.5", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }),
+    React.createElement("path", { d: "M9.5 13c0-2.21 1.57-4 3.5-4", stroke: "currentColor", strokeWidth: "1.4", strokeLinecap: "round" }))); };
+var IconPersonLg = function () { return (React.createElement("svg", { width: "48", height: "48", viewBox: "0 0 48 48", fill: "none" },
+    React.createElement("circle", { cx: "24", cy: "16", r: "9", stroke: "currentColor", strokeWidth: "2.5" }),
+    React.createElement("path", { d: "M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18", stroke: "currentColor", strokeWidth: "2.5", strokeLinecap: "round" }))); };
 // ─── Shared Fluent UI button styles (theme colour) ────────────────────────────
 var primaryBtnStyles = {
     root: { backgroundColor: '#667eea', borderColor: '#667eea', borderRadius: 6 },
@@ -121,6 +133,12 @@ var ManagerDashboard = function () {
     var _u = (0, react_1.useState)(null), bulkAction = _u[0], setBulkAction = _u[1];
     var _v = (0, react_1.useState)(""), bulkComment = _v[0], setBulkComment = _v[1];
     var _w = (0, react_1.useState)(false), bulkLoading = _w[0], setBulkLoading = _w[1];
+    // Tab toggle state
+    var _x = (0, react_1.useState)("analytics"), activeTab = _x[0], setActiveTab = _x[1];
+    // Team Overview — direct reports from Graph API
+    var _y = (0, react_1.useState)([]), directReports = _y[0], setDirectReports = _y[1];
+    var _z = (0, react_1.useState)(false), teamLoading = _z[0], setTeamLoading = _z[1];
+    var _0 = (0, react_1.useState)(""), teamError = _0[0], setTeamError = _0[1];
     // ─── Load data ────────────────────────────────────────────────────────────
     var loadData = function () {
         setLoading(true);
@@ -142,6 +160,23 @@ var ManagerDashboard = function () {
     (0, react_1.useEffect)(function () {
         loadData();
     }, [startDate, endDate, statusFilter, employeeFilter]); // eslint-disable-line
+    (0, react_1.useEffect)(function () {
+        if (activeTab !== "team")
+            return;
+        if (directReports.length > 0 || teamLoading)
+            return;
+        setTeamLoading(true);
+        setTeamError("");
+        (0, GraphService_1.getDirectReports)()
+            .then(function (reports) {
+            setDirectReports(reports);
+            setTeamLoading(false);
+        })
+            .catch(function () {
+            setTeamError("Could not load direct reports. Please try again.");
+            setTeamLoading(false);
+        });
+    }, [activeTab]); // eslint-disable-line
     // ─── Bulk selection helpers ────────────────────────────────────────────────
     var submittedRows = rows.filter(function (r) { return r.status === "Submitted"; });
     var allSelected = submittedRows.length > 0 &&
@@ -278,99 +313,126 @@ var ManagerDashboard = function () {
             ? strings.SendResubmit
             : strings.ConfirmReject;
     var confirmDisabled = actionLoading || (reviewAction !== "approve" && !managerComment.trim());
+    var getInitials = function (name) {
+        var parts = name.trim().split(" ");
+        if (parts.length === 1)
+            return parts[0].charAt(0).toUpperCase();
+        return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
+    };
     // ─── Render ───────────────────────────────────────────────────────────────
     return (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.container },
         React.createElement("div", { className: ManagerDashboard_module_scss_1.default.header },
             React.createElement("button", { className: ManagerDashboard_module_scss_1.default.homeBtn, title: "Home", onClick: navigateHome },
                 React.createElement(IconHome, null)),
             React.createElement("h1", { className: ManagerDashboard_module_scss_1.default.title }, strings.TeamTimesheetsTitle)),
-        React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterBar },
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-from" }, strings.From),
-                React.createElement("input", { id: "mgr-from", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) {
-                        return e.target.value && setStartDate(fromDateInputValue(e.target.value));
-                    } })),
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-to" }, strings.To),
-                React.createElement("input", { id: "mgr-to", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(endDate), onChange: function (e) {
-                        return e.target.value && setEndDate(fromDateInputValue(e.target.value));
-                    } })),
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
-                React.createElement("label", { htmlFor: "mgr-status" }, strings.Status),
-                React.createElement("select", { id: "mgr-status", className: ManagerDashboard_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
-            React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.filterGroup, " ").concat(ManagerDashboard_module_scss_1.default.filterGroupWide) },
-                React.createElement("label", { htmlFor: "mgr-employee" }, strings.EmployeeEmail),
-                React.createElement("input", { id: "mgr-employee", type: "text", className: ManagerDashboard_module_scss_1.default.filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: strings.FilterByEmail }))),
-        successMessage && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.success) },
-            React.createElement(IconSuccess, null),
-            React.createElement("span", null, successMessage),
-            React.createElement("button", { className: ManagerDashboard_module_scss_1.default.dismissBtn, onClick: function () { return setSuccessMessage(""); } },
-                React.createElement(IconClose, null)))),
-        error && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.error) },
-            React.createElement(IconError, null),
-            React.createElement("span", null, error))),
-        loading ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.loadingWrap },
+        React.createElement("div", { className: ManagerDashboard_module_scss_1.default.tabToggle },
+            React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.tabBtn, " ").concat(activeTab === "analytics" ? ManagerDashboard_module_scss_1.default.tabBtnActive : ""), onClick: function () { return setActiveTab("analytics"); } },
+                React.createElement(IconAnalytics, null),
+                "My Analytics"),
+            React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.tabBtn, " ").concat(activeTab === "team" ? ManagerDashboard_module_scss_1.default.tabBtnActive : ""), onClick: function () { return setActiveTab("team"); } },
+                React.createElement(IconTeam, null),
+                "Team Overview")),
+        activeTab === "team" && (React.createElement(React.Fragment, null, teamLoading ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.loadingWrap },
             React.createElement("div", { className: ManagerDashboard_module_scss_1.default.spinner }),
-            React.createElement("span", null, strings.LoadingTeam))) : rows.length === 0 ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.emptyState },
-            React.createElement(IconUsers, null),
-            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptyTitle }, strings.NoTimesheetsFound),
-            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptySubtitle }, strings.NoTimesheetsHint))) : (React.createElement(React.Fragment, null,
-            submittedRows.length > 0 && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.bulkBar, " ").concat(someSelected ? ManagerDashboard_module_scss_1.default.bulkBarActive : "") },
-                React.createElement("label", { className: ManagerDashboard_module_scss_1.default.bulkSelectAll },
-                    React.createElement("input", { type: "checkbox", className: ManagerDashboard_module_scss_1.default.bulkCheckbox, checked: allSelected, onChange: toggleAll }),
-                    React.createElement("span", null, allSelected
-                        ? "Deselect all"
-                        : "Select all submitted (".concat(submittedRows.length, ")"))),
-                someSelected && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.bulkActions },
-                    React.createElement("span", { className: ManagerDashboard_module_scss_1.default.bulkCount },
-                        selectedKeys.length,
-                        " selected"),
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), disabled: bulkLoading, onClick: function () { return openBulkModal("approve"); } },
-                        React.createElement(IconCheck, null),
-                        " Approve All"),
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), disabled: bulkLoading, onClick: function () { return openBulkModal("reject"); } },
-                        React.createElement(IconReject, null),
-                        " Reject All"),
-                    React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnDefault), disabled: bulkLoading, onClick: function () { return setSelectedKeys([]); } }, "Clear"))))),
-            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.list }, rows.map(function (row) {
-                var key = rowKey(row);
-                var isSelected = selectedKeys.indexOf(key) !== -1;
-                return (React.createElement("div", { key: key, className: "".concat(ManagerDashboard_module_scss_1.default.rowCard, " ").concat(isSelected ? ManagerDashboard_module_scss_1.default.rowCardSelected : "") },
-                    row.status === "Submitted" && (React.createElement("label", { className: ManagerDashboard_module_scss_1.default.rowCheckWrap, onClick: function (e) { return e.stopPropagation(); } },
-                        React.createElement("input", { type: "checkbox", className: ManagerDashboard_module_scss_1.default.rowCheckbox, checked: isSelected, onChange: function () { return toggleRow(key); } }))),
-                    row.status !== "Submitted" && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowCheckPlaceholder })),
-                    React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowLeft },
-                        React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowNameRow },
-                            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowName }, row.employeeName),
-                            row.totalHours > constants_1.REGULAR_HOURS_PER_DAY && (React.createElement("span", { className: ManagerDashboard_module_scss_1.default.otBadge, title: "".concat((row.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
-                                "OT +",
-                                (row.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2),
-                                "h"))),
-                        React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowMeta },
-                            (0, dateUtils_1.formatDateLabel)(row.entryDate),
-                            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.dot }),
-                            row.entries.length,
-                            " task",
-                            row.entries.length !== 1 ? "s" : "",
-                            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.dot }),
-                            row.totalHours.toFixed(2),
-                            " hrs")),
-                    React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowRight },
-                        React.createElement("span", { className: "".concat(ManagerDashboard_module_scss_1.default.badge, " ").concat(badgeClass(row.status)) }, row.status),
-                        row.status === "Submitted" && (React.createElement(React.Fragment, null,
-                            React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), onClick: function () { return openModal(row, "approve"); } },
-                                React.createElement(IconCheck, null),
+            React.createElement("span", null, "Loading your direct reports\u2026"))) : teamError ? (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.error) },
+            React.createElement(IconError, null),
+            React.createElement("span", null, teamError))) : directReports.length === 0 ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.emptyState },
+            React.createElement(IconPersonLg, null),
+            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptyTitle }, "No direct reports found"),
+            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptySubtitle }, "You don't have any direct reports in the organisation directory."))) : (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.teamGrid }, directReports.map(function (person) { return (React.createElement("div", { key: person.id, className: ManagerDashboard_module_scss_1.default.reportCard },
+            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.reportAvatar }, getInitials(person.displayName || "?")),
+            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.reportInfo },
+                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.reportName }, person.displayName),
+                (person.jobTitle || person.department) && (React.createElement("span", { className: ManagerDashboard_module_scss_1.default.reportTitle }, [person.jobTitle, person.department].filter(Boolean).join(" · "))),
+                person.mail && (React.createElement("span", { className: ManagerDashboard_module_scss_1.default.reportEmail }, person.mail))))); }))))),
+        activeTab === "analytics" && (React.createElement(React.Fragment, null,
+            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterBar },
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
+                    React.createElement("label", { htmlFor: "mgr-from" }, strings.From),
+                    React.createElement("input", { id: "mgr-from", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(startDate), onChange: function (e) {
+                            return e.target.value && setStartDate(fromDateInputValue(e.target.value));
+                        } })),
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
+                    React.createElement("label", { htmlFor: "mgr-to" }, strings.To),
+                    React.createElement("input", { id: "mgr-to", type: "date", className: ManagerDashboard_module_scss_1.default.filterInput, value: toDateInputValue(endDate), onChange: function (e) {
+                            return e.target.value && setEndDate(fromDateInputValue(e.target.value));
+                        } })),
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.filterGroup },
+                    React.createElement("label", { htmlFor: "mgr-status" }, strings.Status),
+                    React.createElement("select", { id: "mgr-status", className: ManagerDashboard_module_scss_1.default.filterSelect, value: statusFilter, onChange: function (e) { return setStatusFilter(e.target.value); } }, getStatusOptions().map(function (o) { return (React.createElement("option", { key: o.key, value: o.key }, o.text)); }))),
+                React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.filterGroup, " ").concat(ManagerDashboard_module_scss_1.default.filterGroupWide) },
+                    React.createElement("label", { htmlFor: "mgr-employee" }, strings.EmployeeEmail),
+                    React.createElement("input", { id: "mgr-employee", type: "text", className: ManagerDashboard_module_scss_1.default.filterInput, value: employeeFilter, onChange: function (e) { return setEmployeeFilter(e.target.value); }, placeholder: strings.FilterByEmail }))),
+            successMessage && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.success) },
+                React.createElement(IconSuccess, null),
+                React.createElement("span", null, successMessage),
+                React.createElement("button", { className: ManagerDashboard_module_scss_1.default.dismissBtn, onClick: function () { return setSuccessMessage(""); } },
+                    React.createElement(IconClose, null)))),
+            error && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.messageBar, " ").concat(ManagerDashboard_module_scss_1.default.error) },
+                React.createElement(IconError, null),
+                React.createElement("span", null, error))),
+            loading ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.loadingWrap },
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.spinner }),
+                React.createElement("span", null, strings.LoadingTeam))) : rows.length === 0 ? (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.emptyState },
+                React.createElement(IconUsers, null),
+                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptyTitle }, strings.NoTimesheetsFound),
+                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.emptySubtitle }, strings.NoTimesheetsHint))) : (React.createElement(React.Fragment, null,
+                submittedRows.length > 0 && (React.createElement("div", { className: "".concat(ManagerDashboard_module_scss_1.default.bulkBar, " ").concat(someSelected ? ManagerDashboard_module_scss_1.default.bulkBarActive : "") },
+                    React.createElement("label", { className: ManagerDashboard_module_scss_1.default.bulkSelectAll },
+                        React.createElement("input", { type: "checkbox", className: ManagerDashboard_module_scss_1.default.bulkCheckbox, checked: allSelected, onChange: toggleAll }),
+                        React.createElement("span", null, allSelected
+                            ? "Deselect all"
+                            : "Select all submitted (".concat(submittedRows.length, ")"))),
+                    someSelected && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.bulkActions },
+                        React.createElement("span", { className: ManagerDashboard_module_scss_1.default.bulkCount },
+                            selectedKeys.length,
+                            " selected"),
+                        React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), disabled: bulkLoading, onClick: function () { return openBulkModal("approve"); } },
+                            React.createElement(IconCheck, null),
+                            " Approve All"),
+                        React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), disabled: bulkLoading, onClick: function () { return openBulkModal("reject"); } },
+                            React.createElement(IconReject, null),
+                            " Reject All"),
+                        React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnDefault), disabled: bulkLoading, onClick: function () { return setSelectedKeys([]); } }, "Clear"))))),
+                React.createElement("div", { className: ManagerDashboard_module_scss_1.default.list }, rows.map(function (row) {
+                    var key = rowKey(row);
+                    var isSelected = selectedKeys.indexOf(key) !== -1;
+                    return (React.createElement("div", { key: key, className: "".concat(ManagerDashboard_module_scss_1.default.rowCard, " ").concat(isSelected ? ManagerDashboard_module_scss_1.default.rowCardSelected : "") },
+                        row.status === "Submitted" && (React.createElement("label", { className: ManagerDashboard_module_scss_1.default.rowCheckWrap, onClick: function (e) { return e.stopPropagation(); } },
+                            React.createElement("input", { type: "checkbox", className: ManagerDashboard_module_scss_1.default.rowCheckbox, checked: isSelected, onChange: function () { return toggleRow(key); } }))),
+                        row.status !== "Submitted" && (React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowCheckPlaceholder })),
+                        React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowLeft },
+                            React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowNameRow },
+                                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowName }, row.employeeName),
+                                row.totalHours > constants_1.REGULAR_HOURS_PER_DAY && (React.createElement("span", { className: ManagerDashboard_module_scss_1.default.otBadge, title: "".concat((row.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2), " hrs overtime") },
+                                    "OT +",
+                                    (row.totalHours - constants_1.REGULAR_HOURS_PER_DAY).toFixed(2),
+                                    "h"))),
+                            React.createElement("span", { className: ManagerDashboard_module_scss_1.default.rowMeta },
+                                (0, dateUtils_1.formatDateLabel)(row.entryDate),
+                                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.dot }),
+                                row.entries.length,
+                                " task",
+                                row.entries.length !== 1 ? "s" : "",
+                                React.createElement("span", { className: ManagerDashboard_module_scss_1.default.dot }),
+                                row.totalHours.toFixed(2),
+                                " hrs")),
+                        React.createElement("div", { className: ManagerDashboard_module_scss_1.default.rowRight },
+                            React.createElement("span", { className: "".concat(ManagerDashboard_module_scss_1.default.badge, " ").concat(badgeClass(row.status)) }, row.status),
+                            row.status === "Submitted" && (React.createElement(React.Fragment, null,
+                                React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnApprove), onClick: function () { return openModal(row, "approve"); } },
+                                    React.createElement(IconCheck, null),
+                                    " ",
+                                    strings.ApproveBtn),
+                                React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), onClick: function () { return openModal(row, "reject"); } },
+                                    React.createElement(IconReject, null),
+                                    " ",
+                                    strings.RejectBtn))),
+                            row.status === "Approved" && (React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnResubmit), onClick: function () { return openModal(row, "resubmit"); } },
+                                React.createElement(IconRefresh, null),
                                 " ",
-                                strings.ApproveBtn),
-                            React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnReject), onClick: function () { return openModal(row, "reject"); } },
-                                React.createElement(IconReject, null),
-                                " ",
-                                strings.RejectBtn))),
-                        row.status === "Approved" && (React.createElement("button", { className: "".concat(ManagerDashboard_module_scss_1.default.btn, " ").concat(ManagerDashboard_module_scss_1.default.btnResubmit), onClick: function () { return openModal(row, "resubmit"); } },
-                            React.createElement(IconRefresh, null),
-                            " ",
-                            strings.RequestResubmitBtn)))));
-            })))),
+                                strings.RequestResubmitBtn)))));
+                })))))),
         React.createElement(react_2.Modal, { isOpen: bulkModalOpen, onDismiss: function () {
                 if (!bulkLoading) {
                     setBulkModalOpen(false);

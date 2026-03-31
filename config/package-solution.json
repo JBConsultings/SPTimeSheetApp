@@ -26,6 +26,16 @@
       "videoUrl": "",
       "categories": []
     },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OrgChart.Read.All"
+      }
+    ],
     "features": [
       {
         "title": "time-sheet-app Feature",
